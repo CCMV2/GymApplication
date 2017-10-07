@@ -1,4 +1,7 @@
 This is the repository for our brand new Gym Application.
+
+
+
 Requirements:
 A gym owner has requested that we build a web application, which will hande the following:
 1. Management of trainers, subscriptions and available rooms by an administrator
@@ -6,6 +9,8 @@ A gym owner has requested that we build a web application, which will hande the 
 3. Client registration by a trainer
 4. Adding and extending client subscriptions by a trainer
 5. Managing users to classes by a trainer
+
+
 
 
 The gym owner has also expressed the desire to extend that web application in two additional steps.
@@ -26,6 +31,8 @@ It has a tabular form and it must respect the following colouring principles:
         - red for classes of high intensity
 The name of the class and the trainer should also be visible in each tab.
 4. According the user the possibility to manage himself the classes he/she wants to attend to
+
+
 
 The second step will include:
 1. Extending the web application on the administration side, which will contain:
