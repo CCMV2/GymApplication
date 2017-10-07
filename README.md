@@ -3,7 +3,7 @@ This is the repository for our brand new Gym Application.
 
 
 Requirements:
-A gym owner has requested that we build a web application, which will hande the following:
+A gym owner has requested that we build a web application, which will handle the following:
 1. Management of trainers, subscriptions and available rooms by an administrator
 2. Management of classes by an administrator or a trainer
 3. Client registration by a trainer
@@ -41,6 +41,7 @@ The new page must contain:
   - a Subject input
   - a Body input
   - a subscription list
+  
 Mails shall be then sent to all the clients which will have active subscription(s) found under the selected subscription(s)
 
 
