@@ -8,10 +8,10 @@ public class Timetable {
 	private String day;
 	private Date start;
 	private long duration;
-	private String room;
+	private Room room;
 	private Workout workout;
 
-	public Timetable(long id, String day, Date start, long duration, String room, Workout workout) {
+	public Timetable(long id, String day, Date start, long duration, Room room, Workout workout) {
 		this.id = id;
 		this.day = day;
 		this.start = start;
@@ -52,11 +52,11 @@ public class Timetable {
 		this.duration = duration;
 	}
 
-	public String getRoom() {
+	public Room getRoom() {
 		return room;
 	}
 
-	public void setRoom(String room) {
+	public void setRoom(Room room) {
 		this.room = room;
 	}
 
