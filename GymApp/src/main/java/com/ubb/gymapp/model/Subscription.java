@@ -15,8 +15,8 @@ public class Subscription {
 	private Integer duration;
 	private List<User> userList;
 
-	public Subscription(long passId, String name, Double price, List<Workout> workoutList, List<User> userList) {
-		this.subscriptionId = passId;
+	public Subscription(long subscriptionId, String name, Double price, List<Workout> workoutList, List<User> userList) {
+		this.subscriptionId = subscriptionId;
 		this.name = name;
 		this.price = price;
 		this.workoutList = workoutList;
