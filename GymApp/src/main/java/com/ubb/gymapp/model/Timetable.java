@@ -1,15 +1,17 @@
 package com.ubb.gymapp.model;
 
+import java.util.Date;
+
 public class Timetable {
 
 	private long id;
 	private String day;
-	private Double start;
-	private Double duration;
+	private Date start;
+	private long duration;
 	private String room;
 	private Workout workout;
 
-	public Timetable(long id, String day, Double start, Double duration, String room, Workout workout) {
+	public Timetable(long id, String day, Date start, long duration, String room, Workout workout) {
 		this.id = id;
 		this.day = day;
 		this.start = start;
@@ -34,19 +36,19 @@ public class Timetable {
 		this.day = day;
 	}
 
-	public Double getStart() {
+	public Date getStart() {
 		return start;
 	}
 
-	public void setStart(Double start) {
+	public void setStart(Date start) {
 		this.start = start;
 	}
 
-	public Double getDuration() {
+	public long getDuration() {
 		return duration;
 	}
 
-	public void setDuration(Double duration) {
+	public void setDuration(long duration) {
 		this.duration = duration;
 	}
 

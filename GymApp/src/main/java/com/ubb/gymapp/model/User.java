@@ -9,14 +9,14 @@ public class User {
 	private String email;
 	private long phonenumber;
 	private String userPermission;
-	private Pass pass;
+	private Subscription pass;
 
 	private enum UserType {
 		ADMIN, TRAINER, CLIENT
 	};
 
 	public User(long id, String password, String name, String surname, String email, long phonenumber, String userType,
-			Pass pass) {
+			Subscription pass) {
 		this.id = id;
 		this.password = password;
 		this.name = name;
@@ -83,11 +83,11 @@ public class User {
 		this.userPermission = type.toString();
 	}
 
-	public Pass getPass() {
+	public Subscription getPass() {
 		return pass;
 	}
 
-	public void setPass(Pass pass) {
+	public void setPass(Subscription pass) {
 		this.pass = pass;
 	}
 

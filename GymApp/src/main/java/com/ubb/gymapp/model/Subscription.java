@@ -3,11 +3,11 @@ package com.ubb.gymapp.model;
 import java.util.Date;
 import java.util.List;
 
-public class Pass {
+public class Subscription {
 
 	// trainer has special pass
 
-	private long passId;
+	private long subscriptionId;
 	private String name;
 	private Double price;
 	private List<Workout> workoutList;
@@ -15,8 +15,8 @@ public class Pass {
 	private Integer duration;
 	private List<User> userList;
 
-	public Pass(long passId, String name, Double price, List<Workout> workoutList, List<User> userList) {
-		this.passId = passId;
+	public Subscription(long passId, String name, Double price, List<Workout> workoutList, List<User> userList) {
+		this.subscriptionId = passId;
 		this.name = name;
 		this.price = price;
 		this.workoutList = workoutList;
@@ -24,11 +24,11 @@ public class Pass {
 	}
 
 	public long getPassId() {
-		return passId;
+		return subscriptionId;
 	}
 
 	public void setPassId(long passId) {
-		this.passId = passId;
+		this.subscriptionId = passId;
 	}
 
 	public String getName() {

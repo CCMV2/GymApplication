@@ -4,7 +4,6 @@ public class Workout {
 
 	private Integer workoutId;
 	private String workoutType;
-	private User trainer;
 	private String difficulty;
 	private String description;
 
@@ -12,10 +11,9 @@ public class Workout {
 		EASY, MEDIUM, HARD
 	};
 
-	public Workout(Integer workoutId, String workoutType, User trainer, String difficulty, String description) {
+	public Workout(Integer workoutId, String workoutType, String difficulty, String description) {
 		this.workoutId = workoutId;
 		this.workoutType = workoutType;
-		this.trainer = trainer;
 		this.difficulty = difficulty;
 		this.description = description;
 	}
@@ -34,14 +32,6 @@ public class Workout {
 
 	public void setWorkoutType(String workoutType) {
 		this.workoutType = workoutType;
-	}
-
-	public User getTrainer() {
-		return trainer;
-	}
-
-	public void setTrainer(User trainer) {
-		this.trainer = trainer;
 	}
 
 	public String getDifficulty() {
