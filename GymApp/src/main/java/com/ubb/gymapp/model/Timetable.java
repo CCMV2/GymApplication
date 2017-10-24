@@ -1,9 +1,26 @@
 package com.ubb.gymapp.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Timetable {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table (name = "timetable")
+@SequenceGenerator (sequenceName = "timetable_seq", allocationSize = 1, name = "timetableSequence")
+
+public class Timetable implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8162903751765800461L;
 	private long id;
 	private String day;
 	private Date start;
@@ -20,6 +37,9 @@ public class Timetable {
 		this.workout = workout;
 	}
 
+	@Id
+	@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "timetableSequence")
+	@Column (name = "idTimetable", unique = true, nullable = false)
 	public long getId() {
 		return id;
 	}
@@ -28,6 +48,7 @@ public class Timetable {
 		this.id = id;
 	}
 
+	@Column (name = "Day")	
 	public String getDay() {
 		return day;
 	}
@@ -35,7 +56,8 @@ public class Timetable {
 	public void setDay(String day) {
 		this.day = day;
 	}
-
+	
+	@Column (name = "Start")	
 	public Date getStart() {
 		return start;
 	}
@@ -44,6 +66,7 @@ public class Timetable {
 		this.start = start;
 	}
 
+	@Column (name = "Duration")	
 	public long getDuration() {
 		return duration;
 	}
@@ -52,6 +75,7 @@ public class Timetable {
 		this.duration = duration;
 	}
 
+	@Column (name = "room_idroom")	
 	public Room getRoom() {
 		return room;
 	}
@@ -60,6 +84,7 @@ public class Timetable {
 		this.room = room;
 	}
 
+	@Column (name = "idWorkout")	
 	public Workout getWorkoutId() {
 		return workout;
 	}
