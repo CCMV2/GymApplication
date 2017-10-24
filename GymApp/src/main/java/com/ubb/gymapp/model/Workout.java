@@ -15,6 +15,10 @@ import javax.persistence.Table;
 @SequenceGenerator (sequenceName = "workout_seq", allocationSize =1, name = "workoutSequence")
 public class Workout implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5485075350217272508L;
 	private Integer workoutId;
 	private String workoutType;
 	private String difficulty;
