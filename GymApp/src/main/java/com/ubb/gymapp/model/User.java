@@ -171,6 +171,8 @@ public class User implements Serializable{
 		if (pass == null) {
 			if (other.pass != null)
 				return false;
+			
+			
 		} else if (!pass.equals(other.pass))
 			return false;
 		
