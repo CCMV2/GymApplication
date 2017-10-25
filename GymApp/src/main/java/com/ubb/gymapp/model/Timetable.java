@@ -8,12 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table (name = "timetable")
-@SequenceGenerator (sequenceName = "timetable_seq", allocationSize = 1, name = "timetableSequence")
 
 public class Timetable implements Serializable {
 
@@ -38,7 +36,7 @@ public class Timetable implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "timetableSequence")
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column (name = "idTimetable", unique = true, nullable = false)
 	public long getId() {
 		return id;
