@@ -1,5 +1,15 @@
 package com.ubb.gymapp.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
 @Entity
 @Table (name="user")
 @SequenceGenerator (sequenceName = "user_seq", allocationSize =1, name = "userSequence")
@@ -21,7 +31,7 @@ public class User implements Serializable{
 
 	public User(long id, String password, String name, String surname, String email, long phonenumber, String userType,
 			Subscription pass) {
-		this.id = userIdd=;
+		this.id = id;
 		this.password = password;
 		this.name = name;
 		this.surname = surname;
@@ -107,12 +117,12 @@ public class User implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((userPermission == null) ? 0 : userPermission.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((phonenumber == null) ? 0 : phonenumber.hashCode());
+		result = prime * result + (int) (phonenumber ^ (phonenumber >>> 32));
 		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
 		return result;
@@ -120,6 +130,7 @@ public class User implements Serializable{
 
 	@Override
 	public boolean equals(Object obj) {
+		
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -127,10 +138,7 @@ public class User implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
 		
 		if (name == null) {
@@ -157,10 +165,7 @@ public class User implements Serializable{
 		} else if (!email.equals(other.email))
 			return false;
 		
-		if (phonenumber == null) {
-			if (other.phonenumber != null)
-				return false;
-		} else if (!phonenumber.equals(other.phonenumber))
+		if (phonenumber != other.phonenumber)
 			return false;
 		
 		if (pass == null) {
