@@ -1,0 +1,63 @@
+CREATE SCHEMA `gymapp` ;
+
+CREATE TABLE `gymapp`.`user` (
+  `idUser` INT NOT NULL AUTO_INCREMENT,
+	`Passw` VARCHAR(100) NOT NULL,
+	`Type` VARCHAR(100) NULL,
+	`Email` VARCHAR(100) NULL,
+	`Name` VARCHAR(100) NOT NULL,
+	`Surname` VARCHAR(100) NOT NULL,
+	`PhoneNr` VARCHAR(45) NULL,
+	`PassID` INT NOT NULL,
+ PRIMARY KEY (`idUser`)),
+ FOREIGN KEY (`PassID`) REFERENCES subscription(`idSubscription`);
+
+ CREATE TABLE `gymapp`.`subscription` (
+  `idSubscription` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(100) NOT NULL,
+  `Price` DECIMAL(2,2) NOT NULL,
+  `Availability` VARCHAR(100) NULL,
+  `Start` DATE NULL,
+  PRIMARY KEY (`idSubscription`));
+  
+  CREATE TABLE `gymapp`.`workoutlist` (
+  `idPass` INT NOT NULL,
+  `idWorkout` INT NOT NULL,
+  PRIMARY KEY (`idPass`, `idWorkout`)),
+  FOREIGN KEY (`idPass`) REFERENCES subscription(`idSubscription`),
+  FOREIGN KEY (`idWorkout`) REFERENCES workout(`idWorkout`);
+
+
+  
+  CREATE TABLE `gymapp`.`workout` (
+  `idWorkout` INT NOT NULL AUTO_INCREMENT,
+  `WorkoutType` VARCHAR(100) NOT NULL,
+  `Difficulty` VARCHAR(45) NULL,
+  `Desc` VARCHAR(100) NULL,
+  PRIMARY KEY (`idWorkout`));
+  
+  CREATE TABLE `gymapp`.`user_has_workout` (
+  `user_idUser` INT NOT NULL,
+  `workout_idWorkout` INT NOT NULL,
+  PRIMARY KEY (`user_idUser`, `workout_idWorkout`)),
+  FOREIGN KEY (`user_idUser`) REFERENCES user(`idUser`),
+  FOREIGN KEY (`workout_idWorkout`) REFERENCES workout(`idWorkout`);
+
+CREATE TABLE `gymapp`.`room` (
+  `idroom` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45),
+  PRIMARY KEY (`idroom`));
+
+
+  CREATE TABLE `gymapp`.`timetable` (
+  `idTimetable` INT NOT NULL AUTO_INCREMENT,
+  `idWorkout` INT NOT NULL,
+  `Day` VARCHAR(100) NOT NULL,
+  `Start` VARCHAR(45) NULL,
+  `Duration` VARCHAR(45) NULL,
+  `room_idroom` INT NOT NULL,
+  PRIMARY KEY (`idTimetable`)),
+  FOREIGN KEY (`room_idroom`) REFERENCES room(`idroom`);
+  
+ 
+
