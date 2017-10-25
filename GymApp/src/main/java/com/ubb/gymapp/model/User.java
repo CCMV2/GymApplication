@@ -7,15 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="user")
-@SequenceGenerator (sequenceName = "user_seq", allocationSize =1, name = "userSequence")
+@Table (name="users")
 
 public class User implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5987013838974216597L;
 	private long id;
 	private String password;
 	private String name;
@@ -42,7 +44,7 @@ public class User implements Serializable{
 	}
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "userSequence")
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column (name = "idUser", unique = true, nullable = false)
 	public long getId() {
 		return id;
