@@ -1,5 +1,13 @@
 CREATE SCHEMA `gymapp` ;
 
+DROP TABLE user;
+DROP TABLE subscription;
+DROP TABLE workoutlist;
+DROP TABLE workout;
+DROP TABLE user_has_workout;
+DROP TABLE timetable;
+DROP TABLE room;
+
 CREATE TABLE `gymapp`.`user` (
   `idUser` INT NOT NULL AUTO_INCREMENT,
 	`Passw` VARCHAR(100) NOT NULL,
