@@ -1,5 +1,11 @@
 package com.ubb.gymapp.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
 @Entity
 @Table (name="user")
 @SequenceGenerator (sequenceName = "user_seq", allocationSize =1, name = "userSequence")
