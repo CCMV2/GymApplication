@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity 
@@ -87,7 +89,8 @@ public class Subscription implements Serializable{
 	public void setDuration(Integer duration) {
 		this.duration = duration;
 	}
-
+	@ManyToMany(mappedBy="idPass")
+	@JoinTable(name="workoutlist")
 	public List<User> getUserList() {
 		return userList;
 	}
