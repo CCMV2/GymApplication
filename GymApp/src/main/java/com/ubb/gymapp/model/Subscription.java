@@ -9,12 +9,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity 
 @Table (name = "subscription")
-@SequenceGenerator (sequenceName = "subscription_seq", allocationSize =1, name = "subscriptionSequence")
 public class Subscription implements Serializable{
 
 	// trainer has special pass
@@ -23,7 +23,7 @@ public class Subscription implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 3371998938019434314L;
-	private long subscriptionId;
+	private Long subscriptionId;
 	private String name;
 	private Double price;
 	private List<Workout> workoutList;
@@ -39,7 +39,7 @@ public class Subscription implements Serializable{
 		this.userList = userList;
 	}
 	@Id
-	@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "subscriptionSequence")
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column (name = "idSubscription", unique = true, nullable = false)
 	public long getPassId() {
 		return subscriptionId;
@@ -89,7 +89,8 @@ public class Subscription implements Serializable{
 	public void setDuration(Integer duration) {
 		this.duration = duration;
 	}
-
+	@ManyToMany(mappedBy="idPass")
+	@JoinTable(name="workoutlist")
 	public List<User> getUserList() {
 		return userList;
 	}

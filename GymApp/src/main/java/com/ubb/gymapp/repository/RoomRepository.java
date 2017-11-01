@@ -1,11 +1,13 @@
 package com.ubb.gymapp.repository;
 
+
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.ubb.gymapp.model.Room;
 
-public interface RoomRepository extends CrudRepository<Room,Long> {
-	public List<Room> findRoomByName(String name);
+public interface RoomRepository extends JpaRepository<Room, Long> {
+	
+	List<Room> findByRoomName(String roomName);
 }

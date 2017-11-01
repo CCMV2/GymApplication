@@ -1,18 +1,19 @@
 package com.ubb.gymapp.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table (name = "workout")
-@SequenceGenerator (sequenceName = "workout_seq", allocationSize =1, name = "workoutSequence")
 public class Workout implements Serializable{
 
 	/**
@@ -23,6 +24,7 @@ public class Workout implements Serializable{
 	private String workoutType;
 	private String difficulty;
 	private String description;
+	private List<Subscription> subscriptionList;
 
 	private enum Difficulties {
 		EASY, MEDIUM, HARD
@@ -36,7 +38,7 @@ public class Workout implements Serializable{
 	}
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "workoutSequence")
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column (name = "idWorkout", unique = true, nullable = false)
 	public Integer getWorkoutId() {
 		return workoutId;
@@ -71,6 +73,16 @@ public class Workout implements Serializable{
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	@ManyToMany(mappedBy = "idWorkout")
+	@JoinTable(name = "workoutlist")
+	public List<Subscription> getSubscriptionList() {
+		return subscriptionList;
+	}
+
+	public void setSubscriptionList(List<Subscription> subscriptionList) {
+		this.subscriptionList = subscriptionList;
 	}
 
 	@Override

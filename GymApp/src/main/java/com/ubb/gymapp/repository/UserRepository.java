@@ -1,11 +1,9 @@
 package com.ubb.gymapp.repository;
 
-import java.io.Serializable;
-
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.ubb.gymapp.model.User;
 
-public interface UserRepository extends CrudRepository<User, Serializable>{
+public interface UserRepository extends JpaRepository<User, Long>{
 
 }
