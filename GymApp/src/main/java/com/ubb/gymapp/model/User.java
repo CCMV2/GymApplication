@@ -18,7 +18,7 @@ public class User implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -5987013838974216597L;
-	private long id;
+	private Long id;
 	private String password;
 	private String name;
 	private String surname;
@@ -31,7 +31,7 @@ public class User implements Serializable{
 		ADMIN, TRAINER, CLIENT
 	};
 
-	public User(long id, String password, String name, String surname, String email, long phonenumber, String userType,
+	public User(Long id, String password, String name, String surname, String email, long phonenumber, String userType,
 			Subscription pass) {
 		this.id = id;
 		this.password = password;
@@ -46,11 +46,11 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column (name = "idUser", unique = true, nullable = false)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
