@@ -19,11 +19,11 @@ public class GymappApplicationTests {
 	
 	@Autowired
 	private TimetableRepository timeRepo;
-
+	
 	@Test
-	public void contextLoads() {
-		List<Timetable> a= timeRepo.findByDay("mo");
-		assertNotNull(a);
+	public void tetfindby() {
+		//List<Timetable> a= timeRepo.findByDay("mo");
+		//assertNull(a);
 	}
 	
 	
