@@ -1,12 +1,12 @@
 CREATE SCHEMA `gymapp` ;
 
-DROP TABLE if exists workoutlist;
-DROP TABLE if exists user_has_workout;
-DROP TABLE if exists timetable;
-DROP TABLE if exists room;
-DROP TABLE if exists workout;
-DROP TABLE if exists users;
-DROP TABLE if exists subscription;
+DROP TABLE if exists `gymapp`.`workoutlist`;
+DROP TABLE if exists `gymapp`.`user_has_workout`;
+DROP TABLE if exists `gymapp`.`timetable`;
+DROP TABLE if exists `gymapp`.`room`;
+DROP TABLE if exists `gymapp`.`workout`;
+DROP TABLE if exists `gymapp`.`users`;
+DROP TABLE if exists `gymapp`.`subscription`;
 
  CREATE TABLE `gymapp`.`subscription` (
   `idSubscription` bigint NOT NULL AUTO_INCREMENT,
