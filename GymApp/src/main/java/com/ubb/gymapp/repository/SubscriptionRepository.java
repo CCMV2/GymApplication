@@ -8,12 +8,12 @@ import com.ubb.gymapp.model.Subscription;
 
 public interface SubscriptionRepository extends JpaRepository<Subscription,Long> {
 	
-	Subscription findBySubscriptionId(Long subscriptionId);
+	/*Subscription findBySubscriptionId(Long subscriptionId);
 	
 	Subscription findByName(String name);
 	
 	Subscription findByPrice(Double price);
 	
-	Subscription findByDuration(Integer duration);
+	Subscription findByDuration(Integer duration);*/
 
 }

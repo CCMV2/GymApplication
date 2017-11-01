@@ -7,7 +7,7 @@ import javax.sql.DataSource;
 
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan; 	
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -27,7 +27,6 @@ public class WebAppConfig {
    private static final String PROPERTY_NAME_DATABASE_PASSWORD              = "db.password";
    private static final String PROPERTY_NAME_DATABASE_URL                   = "db.url";
    private static final String PROPERTY_NAME_DATABASE_USERNAME              = "db.username";
-   private static final String PROPERTY_DATABASE_SCHEMA                     = "db.schema";
    
    private static final String PROPERTY_NAME_HIBERNATE_DIALECT              = "hibernate.dialect";
    private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL             = "hibernate.show_sql";
