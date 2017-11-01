@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.ubb.gymapp.model.Timetable;
-import com.ubb.gymapp.repository.TimetableRepository;
+import com.ubb.gymapp.model.User;
+import com.ubb.gymapp.repository.UserRepository;
 
 import static org.junit.Assert.*;
 
@@ -18,12 +18,15 @@ import static org.junit.Assert.*;
 public class GymappApplicationTests {
 	
 	@Autowired
-	private TimetableRepository timeRepo;
+	private UserRepository userRepo;
 	
 	@Test
-	public void tetfindby() {
-		//List<Timetable> a= timeRepo.findByDay("mo");
-		//assertNull(a);
+	public void addUser() {
+		User user = new User(1L, "aaa", "aaa", "aaa", "aaa", 2L, "aaa", null);
+		userRepo.save(user);
+		assertNotNull(user.getId());
+		//assertNotNull(lista);
+		//assertNotEquals(lista.size(), 0);
 	}
 	
 	
