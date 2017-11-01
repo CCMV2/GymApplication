@@ -24,7 +24,6 @@ public class Workout implements Serializable{
 	private String workoutType;
 	private String difficulty;
 	private String description;
-	private List<Subscription> subscriptionList;
 
 	private enum Difficulties {
 		EASY, MEDIUM, HARD
@@ -74,16 +73,6 @@ public class Workout implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	@ManyToMany(mappedBy = "idWorkout")
-	@JoinTable(name = "workoutlist")
-	public List<Subscription> getSubscriptionList() {
-		return subscriptionList;
-	}
-
-	public void setSubscriptionList(List<Subscription> subscriptionList) {
-		this.subscriptionList = subscriptionList;
-	}
 
 	@Override
 	public int hashCode() {
@@ -127,5 +116,7 @@ public class Workout implements Serializable{
 			return false;
 		return true;
 	}
+
+	
 
 }

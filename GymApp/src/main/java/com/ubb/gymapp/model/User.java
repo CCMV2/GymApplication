@@ -11,9 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name="users")
-
 public class User implements Serializable{
-
 	/**
 	 * 
 	 */
@@ -41,6 +39,9 @@ public class User implements Serializable{
 		this.phonenumber = phonenumber;
 		this.userPermission = userType;
 		this.pass = pass;
+	}
+	
+	public User() {
 	}
 
 	@Id
