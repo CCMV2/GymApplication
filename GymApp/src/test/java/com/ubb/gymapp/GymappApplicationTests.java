@@ -24,9 +24,9 @@ public class GymappApplicationTests {
 	
 	@Test
 	public void addUser() {
-		User user = new User(1L, "aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
-		userRepo.save(user);
-		User user1 = userRepo.findOne((long) 1);
+		User user = new User(0L, "aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		user = userRepo.save(user);
+		User user1 = userRepo.findOne(user.getId());
 		assertNotNull(user1.getId());
 		//assertNotNull(lista);
 		//assertNotEquals(lista.size(), 0);
@@ -35,10 +35,9 @@ public class GymappApplicationTests {
 	@Test
 	public void deleteUser(){
 		User newUser = new User(0L, "aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
-		userRepo.save(newUser);
-		User user =userRepo.findOne(newUser.getId());
-		userRepo.delete(user.getId());
-		assertNull(user.getId());
+		newUser = userRepo.save(newUser);
+		userRepo.delete(newUser.getId());
+		assertNull(userRepo.findOne(newUser.getId()));
 	}
 	
 	@Test
