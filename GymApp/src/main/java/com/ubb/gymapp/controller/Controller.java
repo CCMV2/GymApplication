@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubb.gymapp.model.Room;
+import com.ubb.gymapp.model.Subscription;
+import com.ubb.gymapp.model.Timetable;
 import com.ubb.gymapp.model.User;
+import com.ubb.gymapp.model.Workout;
 import com.ubb.gymapp.service.IAdminService;
 
 @RestController
@@ -32,5 +35,20 @@ public class Controller {
 	@RequestMapping (value = "/adduser", method = RequestMethod.POST)
 	public User addUser(@RequestBody User user) {
 		return adminService.addUser(user);
+	}
+	
+	@RequestMapping (value = "/getsubscription", method = RequestMethod.POST)
+	public Subscription findOneSubscription(@RequestBody Long parameter) {
+		return adminService.getSubscriptionById(parameter);
+	}
+	
+	@RequestMapping (value = "/gettimetable", method = RequestMethod.POST)
+	public Timetable findOneTimetable(@RequestBody Long parameter) {
+		return adminService.getTimetableById(parameter);
+	}
+	
+	@RequestMapping (value = "/getworkout", method = RequestMethod.POST)
+	public Workout findOneWorkout(@RequestBody Long parameter) {
+		return adminService.getWorkoutById(parameter);
 	}
 }

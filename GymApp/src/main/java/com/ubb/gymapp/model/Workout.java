@@ -29,6 +29,9 @@ public class Workout implements Serializable{
 		EASY, MEDIUM, HARD
 	};
 
+	public Workout() {
+	}
+	
 	public Workout(Long workoutId, String workoutType, String difficulty, String description) {
 		this.workoutId = workoutId;
 		this.workoutType = workoutType;
@@ -61,8 +64,8 @@ public class Workout implements Serializable{
 		return difficulty;
 	}
 
-	public void setDifficulty(Difficulties difficulty) {
-		this.difficulty = difficulty.toString();
+	public void setDifficulty(String difficulty) {
+		this.difficulty = difficulty;
 	}
 
 	@Column (name = "Desc")

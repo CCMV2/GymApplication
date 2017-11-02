@@ -11,7 +11,7 @@ DROP TABLE if exists `gymapp`.`subscription`;
  CREATE TABLE `gymapp`.`subscription` (
   `idSubscription` bigint NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(100) NOT NULL,
-  `Price` DECIMAL(2,2) NOT NULL,
+  `Price` bigint NOT NULL,
   `Start` DATE NULL,
   `Duration` INT NULL,
   PRIMARY KEY (`idSubscription`));
@@ -46,12 +46,13 @@ CREATE TABLE `gymapp`.`room` (
   CREATE TABLE `gymapp`.`timetable` (
   `idTimetable` bigint NOT NULL AUTO_INCREMENT,
   `idWorkout` bigint NOT NULL,
-  `Day` VARCHAR(100) NOT NULL,
-  `Start` VARCHAR(45) NULL,
-  `Duration` VARCHAR(45) NULL,
+  `day` VARCHAR(100) NOT NULL,
+  `start` VARCHAR(45) NULL,
+  `duration` VARCHAR(45) NULL,
   `idRoom` bigint NOT NULL,
   PRIMARY KEY (`idTimetable`),
-  FOREIGN KEY (`idRoom`) REFERENCES room(`idRoom`));
+  FOREIGN KEY (`idRoom`) REFERENCES room(`idRoom`),
+  FOREIGN KEY (`idWorkout`) REFERENCES workout(`idWorkout`));
   
    CREATE TABLE `gymapp`.`user_has_workout` (
   `id` bigint NOT NULL,
@@ -68,3 +69,4 @@ CREATE TABLE `gymapp`.`room` (
   PRIMARY KEY (`id`),
   FOREIGN KEY (`idSubscription`) REFERENCES subscription(`idSubscription`),
   FOREIGN KEY (`idWorkout`) REFERENCES workout(`idWorkout`));
+

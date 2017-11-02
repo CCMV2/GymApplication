@@ -23,12 +23,15 @@ public class Timetable implements Serializable {
 	private static final long serialVersionUID = 8162903751765800461L;
 	private Long id;
 	private String day;
-	private Date start;
-	private long duration;
+	private String start;
+	private String duration;
 	private Room room;
 	private Workout workout;
+	
+	public Timetable() {
+	}
 
-	public Timetable(long id, String day, Date start, long duration, Room room, Workout workout) {
+	public Timetable(Long id, String day, String start, String duration, Room room, Workout workout) {
 		this.id = id;
 		this.day = day;
 		this.start = start;
@@ -40,15 +43,15 @@ public class Timetable implements Serializable {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column (name = "idTimetable", unique = true, nullable = false)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	@Column (name = "Day")	
+	@Column (name = "day")	
 	public String getDay() {
 		return day;
 	}
@@ -57,21 +60,21 @@ public class Timetable implements Serializable {
 		this.day = day;
 	}
 	
-	@Column (name = "Start")	
-	public Date getStart() {
+	@Column (name = "start", nullable = true)	
+	public String getStart() {
 		return start;
 	}
 
-	public void setStart(Date start) {
+	public void setStart(String start) {
 		this.start = start;
 	}
 
-	@Column (name = "Duration")	
-	public long getDuration() {
+	@Column (name = "duration", nullable = true)	
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(long duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 
@@ -100,8 +103,8 @@ public class Timetable implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((day == null) ? 0 : day.hashCode());
-		result = prime * result + (int) (duration ^ (duration >>> 32));
-		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((duration == null) ? 0 : duration.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((room == null) ? 0 : room.hashCode());
 		result = prime * result + ((start == null) ? 0 : start.hashCode());
 		result = prime * result + ((workout == null) ? 0 : workout.hashCode());
@@ -122,9 +125,15 @@ public class Timetable implements Serializable {
 				return false;
 		} else if (!day.equals(other.day))
 			return false;
-		if (duration != other.duration)
+		if (duration == null) {
+			if (other.duration != null)
+				return false;
+		} else if (!duration.equals(other.duration))
 			return false;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (room == null) {
 			if (other.room != null)
