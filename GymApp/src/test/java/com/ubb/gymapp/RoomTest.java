@@ -17,9 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.ubb.gymapp.model.Room;
-import com.ubb.gymapp.model.User;
 import com.ubb.gymapp.repository.RoomRepository;
-import com.ubb.gymapp.repository.UserRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
