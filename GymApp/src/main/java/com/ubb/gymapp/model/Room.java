@@ -23,6 +23,15 @@ public class Room implements Serializable {
 	private Long roomId;
 	
 	private String roomName;
+	
+	public Room() {
+	}
+
+	public Room(Long roomId, String roomName) {
+		super();
+		this.roomId = roomId;
+		this.roomName = roomName;
+	}
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
