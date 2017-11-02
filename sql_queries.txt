@@ -24,7 +24,7 @@ CREATE TABLE `gymapp`.`user` (
 	`Name` VARCHAR(100) NOT NULL,
 	`Surname` VARCHAR(100) NOT NULL,
 	`PhoneNr` VARCHAR(45) NULL,
-	`idSubscription` bigint NOT NULL,
+	`idSubscription` bigint NULL,
  PRIMARY KEY (`idUser`),
  FOREIGN KEY (`idSubscription`) REFERENCES subscription(`idSubscription`));
   
@@ -58,7 +58,7 @@ CREATE TABLE `gymapp`.`room` (
   `idUser` bigint NOT NULL,
   `idWorkout` bigint NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`idUser`) REFERENCES users(`idUser`),
+  FOREIGN KEY (`idUser`) REFERENCES user(`idUser`),
   FOREIGN KEY (`idWorkout`) REFERENCES workout(`idWorkout`));
   
   CREATE TABLE `gymapp`.`workoutlist` (
@@ -68,4 +68,3 @@ CREATE TABLE `gymapp`.`room` (
   PRIMARY KEY (`id`),
   FOREIGN KEY (`idSubscription`) REFERENCES subscription(`idSubscription`),
   FOREIGN KEY (`idWorkout`) REFERENCES workout(`idWorkout`));
-

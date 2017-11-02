@@ -1,5 +1,6 @@
 package com.ubb.gymapp;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
@@ -58,7 +59,12 @@ public class GymappApplicationTests {
 	
 	@Test
 	public void testUpdateUsers(){
-		
+		User user = new User(0L, "aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		user = userRepo.save(user);
+		user.setName("test");
+		userRepo.save(user);
+		User dbUser = userRepo.findOne(user.getId());
+		assertEquals(dbUser.getName(),"test");
 	}
 	
 	
