@@ -20,7 +20,7 @@ public class Workout implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 5485075350217272508L;
-	private Integer workoutId;
+	private Long workoutId;
 	private String workoutType;
 	private String difficulty;
 	private String description;
@@ -29,7 +29,7 @@ public class Workout implements Serializable{
 		EASY, MEDIUM, HARD
 	};
 
-	public Workout(Integer workoutId, String workoutType, String difficulty, String description) {
+	public Workout(Long workoutId, String workoutType, String difficulty, String description) {
 		this.workoutId = workoutId;
 		this.workoutType = workoutType;
 		this.difficulty = difficulty;
@@ -39,11 +39,11 @@ public class Workout implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column (name = "idWorkout", unique = true, nullable = false)
-	public Integer getWorkoutId() {
+	public Long getWorkoutId() {
 		return workoutId;
 	}
 
-	public void setWorkoutId(Integer workoutId) {
+	public void setWorkoutId(Long workoutId) {
 		this.workoutId = workoutId;
 	}
 
@@ -115,6 +115,12 @@ public class Workout implements Serializable{
 		} else if (!workoutType.equals(other.workoutType))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Workout [workoutId=" + workoutId + ", workoutType=" + workoutType + ", difficulty=" + difficulty
+				+ ", description=" + description + "]";
 	}
 
 	

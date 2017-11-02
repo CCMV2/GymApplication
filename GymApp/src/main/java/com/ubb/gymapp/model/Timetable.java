@@ -5,21 +5,23 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table (name = "timetable")
-
 public class Timetable implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 8162903751765800461L;
-	private long id;
+	private Long id;
 	private String day;
 	private Date start;
 	private long duration;
@@ -73,7 +75,8 @@ public class Timetable implements Serializable {
 		this.duration = duration;
 	}
 
-	@Column (name = "room_idroom")	
+	@ManyToOne (fetch = FetchType.LAZY)
+	@JoinColumn (name = "idRoom")
 	public Room getRoom() {
 		return room;
 	}
@@ -82,7 +85,8 @@ public class Timetable implements Serializable {
 		this.room = room;
 	}
 
-	@Column (name = "idWorkout")	
+	@ManyToOne (fetch = FetchType.LAZY)
+	@JoinColumn (name = "idWorkout")	
 	public Workout getWorkoutId() {
 		return workout;
 	}
@@ -91,4 +95,60 @@ public class Timetable implements Serializable {
 		this.workout = workout;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((day == null) ? 0 : day.hashCode());
+		result = prime * result + (int) (duration ^ (duration >>> 32));
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((room == null) ? 0 : room.hashCode());
+		result = prime * result + ((start == null) ? 0 : start.hashCode());
+		result = prime * result + ((workout == null) ? 0 : workout.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Timetable other = (Timetable) obj;
+		if (day == null) {
+			if (other.day != null)
+				return false;
+		} else if (!day.equals(other.day))
+			return false;
+		if (duration != other.duration)
+			return false;
+		if (id != other.id)
+			return false;
+		if (room == null) {
+			if (other.room != null)
+				return false;
+		} else if (!room.equals(other.room))
+			return false;
+		if (start == null) {
+			if (other.start != null)
+				return false;
+		} else if (!start.equals(other.start))
+			return false;
+		if (workout == null) {
+			if (other.workout != null)
+				return false;
+		} else if (!workout.equals(other.workout))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Timetable [id=" + id + ", day=" + day + ", start=" + start + ", duration=" + duration + ", room=" + room
+				+ ", workout=" + workout + "]";
+	}
+
+	
 }

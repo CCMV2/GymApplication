@@ -12,8 +12,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "rooms")
-@SequenceGenerator (sequenceName = "room_seq", allocationSize = 1, name = "roomSeq")
+@Table (name = "room")
 public class Room implements Serializable {
 	
 	/**
@@ -21,18 +20,18 @@ public class Room implements Serializable {
 	 */
 	private static final long serialVersionUID = -3276612315392966807L;
 
-	private long roomId;
+	private Long roomId;
 	
 	private String roomName;
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "roomSeq")
-	@Column (name = "idroom", unique = true, nullable = false)
-	public long getRoomId() {
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column (name = "idRoom", unique = true, nullable = false)
+	public Long getRoomId() {
 		return roomId;
 	}
 
-	public void setRoomId(long roomId) {
+	public void setRoomId(Long roomId) {
 		this.roomId = roomId;
 	}
 	
