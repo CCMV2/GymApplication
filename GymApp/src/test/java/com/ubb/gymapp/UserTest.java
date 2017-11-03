@@ -28,6 +28,7 @@ public class UserTest {
 		user = userRepo.save(user);
 		User user1 = userRepo.findOne(user.getId());
 		assertNotNull(user1.getId());
+		userRepo.delete(user.getId());
 		//assertNotNull(lista);
 		//assertNotEquals(lista.size(), 0);
 	}
@@ -46,14 +47,16 @@ public class UserTest {
 		User dbUser = userRepo.save(newUser);
 		User user = userRepo.findOne(dbUser.getId());
 		assertNotNull(user);
+		userRepo.delete(dbUser.getId());
 	}
 	
 	@Test
 	public void testGetAllUsers(){
 		User newUser = new User(0L, "aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
-		userRepo.save(newUser);
+		newUser = userRepo.save(newUser);
 		List<User> listOfUsers = userRepo.findAll();
 		assertNotNull(listOfUsers);
+		userRepo.delete(newUser.getId());
 	}
 	
 	@Test
@@ -64,6 +67,7 @@ public class UserTest {
 		userRepo.save(user);
 		User dbUser = userRepo.findOne(user.getId());
 		assertEquals(dbUser.getName(),"test");
+		userRepo.delete(user.getId());
 	}
 	
 
