@@ -3,16 +3,13 @@ package com.ubb.gymapp.model;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,19 +22,17 @@ public class Workout implements Serializable{
 	private static final long serialVersionUID = 5485075350217272508L;
 	private Long workoutId;
 	private String workoutType;
-	private Difficulties difficulty;
+	private String difficulty;
 	private String description;
-	private List<Timetable> timetables;
 
-	public enum Difficulties {
+	private enum Difficulties {
 		EASY, MEDIUM, HARD
 	};
-	
-	public Workout() {
-	
-	}
 
-	public Workout(Long workoutId, String workoutType, Difficulties difficulty, String description) {
+	public Workout() {
+	}
+	
+	public Workout(Long workoutId, String workoutType, String difficulty, String description) {
 		this.workoutId = workoutId;
 		this.workoutType = workoutType;
 		this.difficulty = difficulty;
@@ -65,12 +60,11 @@ public class Workout implements Serializable{
 	}
 
 	@Column (name = "Difficulty")
-	@Enumerated(EnumType.STRING)
-	public Difficulties getDifficulty() {
+	public String getDifficulty() {
 		return difficulty;
 	}
 
-	public void setDifficulty(Difficulties difficulty) {
+	public void setDifficulty(String difficulty) {
 		this.difficulty = difficulty;
 	}
 
@@ -81,15 +75,6 @@ public class Workout implements Serializable{
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY,mappedBy="workout",cascade = CascadeType.PERSIST)
-	public List<Timetable> getTimetables() {
-		return timetables;
-	}
-
-	public void setTimetables(List<Timetable> timetables) {
-		this.timetables = timetables;
 	}
 
 	@Override
