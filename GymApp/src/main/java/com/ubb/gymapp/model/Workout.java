@@ -3,13 +3,16 @@ package com.ubb.gymapp.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,16 +23,21 @@ public class Workout implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 5485075350217272508L;
-	private Integer workoutId;
+	private Long workoutId;
 	private String workoutType;
-	private String difficulty;
+	private Difficulties difficulty;
 	private String description;
+	private List<Timetable> timetables;
 
-	private enum Difficulties {
+	public enum Difficulties {
 		EASY, MEDIUM, HARD
 	};
+	
+	public Workout() {
+	
+	}
 
-	public Workout(Integer workoutId, String workoutType, String difficulty, String description) {
+	public Workout(Long workoutId, String workoutType, Difficulties difficulty, String description) {
 		this.workoutId = workoutId;
 		this.workoutType = workoutType;
 		this.difficulty = difficulty;
@@ -39,11 +47,11 @@ public class Workout implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column (name = "idWorkout", unique = true, nullable = false)
-	public Integer getWorkoutId() {
+	public Long getWorkoutId() {
 		return workoutId;
 	}
 
-	public void setWorkoutId(Integer workoutId) {
+	public void setWorkoutId(Long workoutId) {
 		this.workoutId = workoutId;
 	}
 
@@ -57,12 +65,13 @@ public class Workout implements Serializable{
 	}
 
 	@Column (name = "Difficulty")
-	public String getDifficulty() {
+	@Enumerated(EnumType.STRING)
+	public Difficulties getDifficulty() {
 		return difficulty;
 	}
 
 	public void setDifficulty(Difficulties difficulty) {
-		this.difficulty = difficulty.toString();
+		this.difficulty = difficulty;
 	}
 
 	@Column (name = "Desc")
@@ -72,6 +81,15 @@ public class Workout implements Serializable{
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="workout",cascade = CascadeType.PERSIST)
+	public List<Timetable> getTimetables() {
+		return timetables;
+	}
+
+	public void setTimetables(List<Timetable> timetables) {
+		this.timetables = timetables;
 	}
 
 	@Override
@@ -115,6 +133,12 @@ public class Workout implements Serializable{
 		} else if (!workoutType.equals(other.workoutType))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Workout [workoutId=" + workoutId + ", workoutType=" + workoutType + ", difficulty=" + difficulty
+				+ ", description=" + description + "]";
 	}
 
 	

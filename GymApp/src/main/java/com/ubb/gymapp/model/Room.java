@@ -3,17 +3,18 @@ package com.ubb.gymapp.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "rooms")
-@SequenceGenerator (sequenceName = "room_seq", allocationSize = 1, name = "roomSeq")
+@Table (name = "room")
 public class Room implements Serializable {
 	
 	/**
@@ -21,18 +22,29 @@ public class Room implements Serializable {
 	 */
 	private static final long serialVersionUID = -3276612315392966807L;
 
-	private long roomId;
+	private Long roomId;
 	
 	private String roomName;
+	
+	private List<Timetable> timetables;
+	
+	public Room() {
+	}
+
+	public Room(Long roomId, String roomName) {
+		super();
+		this.roomId = roomId;
+		this.roomName = roomName;
+	}
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "roomSeq")
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column (name = "idroom", unique = true, nullable = false)
-	public long getRoomId() {
+	public Long getRoomId() {
 		return roomId;
 	}
 
-	public void setRoomId(long roomId) {
+	public void setRoomId(Long roomId) {
 		this.roomId = roomId;
 	}
 	
@@ -43,6 +55,15 @@ public class Room implements Serializable {
 
 	public void setRoomName(String roomName) {
 		this.roomName = roomName;
+	}
+
+	   @OneToMany(fetch = FetchType.LAZY,mappedBy="room",cascade = CascadeType.PERSIST)
+	public List<Timetable> getTimetables() {
+		return timetables;
+	}
+
+	public void setTimetables(List<Timetable> timetables) {
+		this.timetables = timetables;
 	}
 
 	@Override
