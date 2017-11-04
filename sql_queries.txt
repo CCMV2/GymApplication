@@ -5,7 +5,7 @@ DROP TABLE if exists `gymapp`.`user_has_workout`;
 DROP TABLE if exists `gymapp`.`timetable`;
 DROP TABLE if exists `gymapp`.`room`;
 DROP TABLE if exists `gymapp`.`workout`;
-DROP TABLE if exists `gymapp`.`users`;
+DROP TABLE if exists `gymapp`.`user`;
 DROP TABLE if exists `gymapp`.`subscription`;
 
  CREATE TABLE `gymapp`.`subscription` (
