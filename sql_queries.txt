@@ -33,7 +33,7 @@ CREATE TABLE `gymapp`.`user` (
   `idWorkout` bigint NOT NULL AUTO_INCREMENT,
   `WorkoutType` VARCHAR(100) NOT NULL,
   `Difficulty` VARCHAR(45) NULL,
-  `Desc` VARCHAR(100) NULL,
+  `Descr` VARCHAR(100) NULL,
   PRIMARY KEY (`idWorkout`));
   
 
@@ -55,7 +55,7 @@ CREATE TABLE `gymapp`.`room` (
   FOREIGN KEY (`idWorkout`) REFERENCES workout(`idWorkout`));
   
    CREATE TABLE `gymapp`.`user_has_workout` (
-  `id` bigint NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
   `idUser` bigint NOT NULL,
   `idWorkout` bigint NOT NULL,
   PRIMARY KEY (`id`),
@@ -63,7 +63,7 @@ CREATE TABLE `gymapp`.`room` (
   FOREIGN KEY (`idWorkout`) REFERENCES workout(`idWorkout`));
   
   CREATE TABLE `gymapp`.`workoutlist` (
-  `id` bigint NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
   `idSubscription` bigint NOT NULL,
   `idWorkout` bigint NOT NULL,
   PRIMARY KEY (`id`),

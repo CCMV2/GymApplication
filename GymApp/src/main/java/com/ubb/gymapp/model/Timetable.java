@@ -51,7 +51,7 @@ public class Timetable implements Serializable {
 		this.id = id;
 	}
 
-	@Column (name = "Day")	
+	@Column (name = "day")	
 	public String getDay() {
 		return day;
 	}
@@ -60,7 +60,7 @@ public class Timetable implements Serializable {
 		this.day = day;
 	}
 	
-	@Column (name = "Start")	
+	@Column (name = "start")	
 	public Date getStart() {
 		return start;
 	}
@@ -69,7 +69,7 @@ public class Timetable implements Serializable {
 		this.start = start;
 	}
 
-	@Column (name = "Duration")	
+	@Column (name = "duration")	
 	public long getDuration() {
 		return duration;
 	}
@@ -79,7 +79,7 @@ public class Timetable implements Serializable {
 	}
 
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="room_idroom")
+	@JoinColumn(name="idRoom")
 	public Room getRoom() {
 		return room;
 	}
