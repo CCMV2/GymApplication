@@ -24,7 +24,7 @@ public class WorkoutTest {
     public void testAdd() {
         Workout workout = new Workout(0L, "Swimming", "Hard", "You will get wet!");
         workout = workoutRepo.save(workout);
-        assertNotNull(workoutRepo.findOne(workout.getWorkoutId()));
+        assertNotNull(workoutRepo.findOne(workout.getIdWorkout()));
         workoutRepo.delete(workout);
     }
 
@@ -32,7 +32,7 @@ public class WorkoutTest {
     public void testFindOne() {
         Workout workout = new Workout(0L, "Swimming", "Hard", "You will get wet!");
         workout = workoutRepo.save(workout);
-        Workout newWorkout = workoutRepo.findOne(workout.getWorkoutId());
+        Workout newWorkout = workoutRepo.findOne(workout.getIdWorkout());
         assertEquals(workout, newWorkout);
         workoutRepo.delete(workout);
     }
@@ -42,7 +42,7 @@ public class WorkoutTest {
         Workout workout = new Workout(0L, "Swimming", "Hard", "You will get wet!");
         workout = workoutRepo.save(workout);
         workoutRepo.delete(workout);
-        assertNull(workoutRepo.findOne(workout.getWorkoutId()));
+        assertNull(workoutRepo.findOne(workout.getIdWorkout()));
     }
 
     @Test
@@ -68,7 +68,7 @@ public class WorkoutTest {
         workout.setDifficulty("newDifficulty");
         workout.setDescription("newDescription");
         workoutRepo.save(workout);
-        Workout newWorkout = workoutRepo.findOne(workout.getWorkoutId());
+        Workout newWorkout = workoutRepo.findOne(workout.getIdWorkout());
         assertEquals(newWorkout.getWorkoutType(), "newType");
         assertEquals(newWorkout.getDifficulty(), "newDifficulty");
         assertEquals(newWorkout.getDescription(), "newDescription");
