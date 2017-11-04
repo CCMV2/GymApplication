@@ -14,6 +14,7 @@ import com.ubb.gymapp.model.Subscription;
 import com.ubb.gymapp.model.Timetable;
 import com.ubb.gymapp.model.User;
 import com.ubb.gymapp.model.Workout;
+import com.ubb.gymapp.repository.WorkoutRepository;
 import com.ubb.gymapp.service.IAdminService;
 
 @RestController
@@ -21,6 +22,8 @@ public class Controller {
 	
 	@Autowired
 	private IAdminService adminService;
+	@Autowired
+	WorkoutRepository workoutRepo;
 	
 	@RequestMapping (value = "/getallusers", method = RequestMethod.GET)
 	public List<User> findAllUsers() {
@@ -50,5 +53,11 @@ public class Controller {
 	@RequestMapping (value = "/getworkout", method = RequestMethod.POST)
 	public Workout findOneWorkout(@RequestBody Long parameter) {
 		return adminService.getWorkoutById(parameter);
+	}
+	
+	@RequestMapping (value = "/addworkout", method = RequestMethod.POST)
+	public Workout addWorkout(@RequestBody Workout workout) {
+		
+		return workoutRepo.save(workout);
 	}
 }
