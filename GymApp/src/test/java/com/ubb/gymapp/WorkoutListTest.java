@@ -1,11 +1,5 @@
 package com.ubb.gymapp;
 
-import static org.hamcrest.CoreMatchers.hasItems;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
-
 import java.util.List;
 
 import org.junit.Test;
@@ -13,118 +7,113 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.ubb.gymapp.model.Room;
 import com.ubb.gymapp.model.Subscription;
+import com.ubb.gymapp.model.Timetable;
 import com.ubb.gymapp.model.Workout;
 import com.ubb.gymapp.model.WorkoutList;
-import com.ubb.gymapp.repository.RoomRepository;
 import com.ubb.gymapp.repository.SubscriptionRepository;
+import com.ubb.gymapp.repository.TimetableRepository;
 import com.ubb.gymapp.repository.WorkoutListRepository;
 import com.ubb.gymapp.repository.WorkoutRepository;
+
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class WorkoutListTest {
-
-	@Autowired
-	private WorkoutListRepository workoutListRepo;
-	@Autowired
-	private WorkoutRepository workoutRepo;
-	@Autowired
-	private SubscriptionRepository subscriptionRepo;
 	
-	@Test
-	public void testAdd() {
-		Workout workout = new Workout(0L,"Test","Test","Test");
-		Subscription sub = new Subscription("Test",50.0);
-		workout = workoutRepo.save(workout);
-		sub = subscriptionRepo.save(sub);
-		WorkoutList worklist = new WorkoutList(sub,workout);
-		worklist = workoutListRepo.save(worklist);
-		assertNotNull(workoutListRepo.findOne(worklist.getId()));
-		workoutListRepo.delete(worklist);
-		workoutRepo.delete(workout);
-		subscriptionRepo.delete(sub);
-	}
+	@Autowired
+	private WorkoutListRepository wlRepo ;
 	
-	@Transactional
-	@Test
-	public void testFindOne(){
-		Workout workout = new Workout(0L,"Test","Test","Test");
-		Subscription sub = new Subscription("Test",50.0);
-		workout = workoutRepo.save(workout);
-		sub = subscriptionRepo.save(sub);
-		WorkoutList worklist = new WorkoutList(sub,workout);
-		worklist = workoutListRepo.save(worklist);
-		assertEquals(workoutListRepo.findOne(worklist.getId()),worklist);
-		workoutListRepo.delete(worklist);
-		workoutRepo.delete(workout);
-		subscriptionRepo.delete(sub);
-	}
 	
+	@Autowired
+	private WorkoutRepository workoutRepo ;
+	
+	@Autowired
+	private SubscriptionRepository subscriptionRepo ;
+	
+	
+	 @Test
+	    public void testAdd() {
+	        Workout workout = new Workout(0L, "Swimming", "Hard", "You will get wet!");
+	        workout = workoutRepo.save(workout);
+	        Subscription subscription = new Subscription("abo1",500.0);
+	        subscription = subscriptionRepo.save(subscription);
+	        WorkoutList workoutList = new WorkoutList(subscription,workout);
+	        workoutList = wlRepo.save(workoutList);
+	        assertNotNull(workoutList);
+	        assertEquals(workoutList.getSubscription(),subscription);
+	        assertEquals(workoutList.getWorkout(),workout);
+	        wlRepo.delete(workoutList);
+	        workoutRepo.delete(workout);
+	        subscriptionRepo.delete(subscription);
+	        
+	    }
+	 
+	 @Test
+	 public void testFind(){
+		 	Workout workout = new Workout(0L, "Swimming", "Hard", "You will get wet!");
+	        workout = workoutRepo.save(workout);
+	        Subscription subscription = new Subscription("abo1",500.0);
+	        subscription = subscriptionRepo.save(subscription);
+	        WorkoutList workoutList = new WorkoutList(subscription,workout);
+	        workoutList = wlRepo.save(workoutList);
+	        assertNotNull(workoutList.getSubscription().getSubscriptionId());
+	        assertNotNull(workoutList.getWorkout().getIdWorkout());
+	        wlRepo.delete(workoutList);
+	        workoutRepo.delete(workout);
+	        subscriptionRepo.delete(subscription);
+	 }
+	 
 	@Test
 	public void testDelete(){
-		Workout workout = new Workout(0L,"Test","Test","Test");
-		Subscription sub = new Subscription("Test",50.0);
-		workout = workoutRepo.save(workout);
-		sub = subscriptionRepo.save(sub);
-		WorkoutList worklist = new WorkoutList(sub,workout);
-		worklist = workoutListRepo.save(worklist);
-		workoutListRepo.delete(worklist);
-		assertNull(workoutListRepo.findOne(worklist.getId()));
-		workoutRepo.delete(workout);
-		subscriptionRepo.delete(sub);
-	}
+		Workout workout = new Workout(0L, "Swimming", "Hard", "You will get wet!");
+        workout = workoutRepo.save(workout);
+        Subscription subscription = new Subscription("abo1",500.0);
+        subscription = subscriptionRepo.save(subscription);
+        WorkoutList workoutList = new WorkoutList(subscription,workout);
+        workoutList = wlRepo.save(workoutList);
+        
+        Workout workout1 = new Workout(0L, "Swimming", "Easy", "You will get wet!");
+        workout1 = workoutRepo.save(workout1);
+        Subscription subscription1 = new Subscription("abo2",500.0);
+        subscription1 = subscriptionRepo.save(subscription);
+        WorkoutList workoutList1 = new WorkoutList(subscription1,workout1);
+        workoutList1 = wlRepo.save(workoutList1);
+        
+        Workout workout2 = new Workout(0L, "Swimming", "Medium", "You will get wet!");
+        workout2 = workoutRepo.save(workout2);
+        Subscription subscription2 = new Subscription("abo3",500.0);
+        subscription2 = subscriptionRepo.save(subscription2);
+        WorkoutList workoutList2 = new WorkoutList(subscription2,workout2);
+        workoutList2 = wlRepo.save(workoutList2);
+        
+        List<WorkoutList> subList = wlRepo.findBySubscription(subscription2);
+        List<WorkoutList> wList = wlRepo.findByWorkout(workout2);
+        Long sId = subList.get(0).getId();
+        Long wId = wList.get(0).getId();
+        
+        
+        wlRepo.delete(subList.get(0));
+        
+        wlRepo.delete(wList.get(0));
+        
+        
+        assertFalse(wlRepo.exists(sId));
+        assertFalse(wlRepo.exists(sId));
+        
+        wlRepo.delete(workoutList);
+        wlRepo.delete(workoutList1);
+        
+        
+        workoutRepo.delete(workout);
+        workoutRepo.delete(workout1);
+        
+        subscriptionRepo.delete(subscription);
+        subscriptionRepo.delete(subscription1);
+        
+        
 
-	
-	@Transactional
-	@Test
-	public void testFindAll(){
-		Workout workout = new Workout(0L,"Test","Test","Test");
-		Subscription sub = new Subscription("Test",50.0);
-		Subscription sub2 = new Subscription("Test2",50.0);
-		Subscription sub3 = new Subscription("Test3",50.0);
-		workout = workoutRepo.save(workout);
-		sub = subscriptionRepo.save(sub);
-		sub2 = subscriptionRepo.save(sub2);
-		sub3 = subscriptionRepo.save(sub3);
-		WorkoutList worklist = new WorkoutList(sub,workout);
-		WorkoutList worklist2 = new WorkoutList(sub2,workout);
-		WorkoutList worklist3 = new WorkoutList(sub3,workout);
-		worklist = workoutListRepo.save(worklist);
-		worklist2 = workoutListRepo.save(worklist2);
-		worklist3 = workoutListRepo.save(worklist3);
-		List<WorkoutList> finalList = workoutListRepo.findAll();
-		assertThat(finalList,hasItems(worklist,worklist2,worklist3));
-		workoutListRepo.delete(worklist);
-		workoutListRepo.delete(worklist2);
-		workoutListRepo.delete(worklist3);
-		workoutRepo.delete(workout);
-		subscriptionRepo.delete(sub);
-		subscriptionRepo.delete(sub2);
-		subscriptionRepo.delete(sub3);
-	}
-
-	
-	@Transactional
-	@Test
-	public void testUpdate(){
-		Workout workout = new Workout(0L,"Test","Test","Test");
-		Subscription sub = new Subscription("Test",50.0);
-		Subscription sub2 = new Subscription("Test2",50.0);
-		workout = workoutRepo.save(workout);
-		sub = subscriptionRepo.save(sub);
-		WorkoutList worklist = new WorkoutList(sub,workout);
-		worklist = workoutListRepo.save(worklist);
-		worklist.setSubscription(sub2);
-		worklist = workoutListRepo.save(worklist);
-		WorkoutList worklist2 = workoutListRepo.findOne(worklist.getId());
-		assertEquals(worklist,worklist2);
-		workoutListRepo.delete(worklist);
-		workoutRepo.delete(workout);
-		subscriptionRepo.delete(sub);
-		subscriptionRepo.delete(sub2);
 	}
 }
