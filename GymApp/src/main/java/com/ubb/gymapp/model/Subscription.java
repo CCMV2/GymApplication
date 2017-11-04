@@ -32,8 +32,7 @@ public class Subscription implements Serializable{
 	private Date start;
 	private Integer duration;
 
-	public Subscription(long subscriptionId, String name, Double price) {
-		this.subscriptionId = subscriptionId;
+	public Subscription(String name, Double price) {
 		this.name = name;
 		this.price = price;
 	}
