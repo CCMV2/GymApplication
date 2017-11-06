@@ -59,7 +59,7 @@ public class TimeTableTest {
 		assertEquals(pro.get(0).getDuration(), 2L);
 	} 
 	
-	@Test
+	@Test 
 	public void deleteTimetable() {
 		Date dat=new Date();
 		Workout work = workRepo.findOne(1L);
