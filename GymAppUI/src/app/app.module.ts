@@ -8,18 +8,17 @@ import { CreateSubscriptionComponent } from './create-subscription/create-subscr
 import { AppRoutingModule } from './app-routing.module';
 import { UpdateWorkoutComponent } from './update-workout/update-workout.component';
 import { ListWorkoutComponent } from './list-workout/list-workout.component';
+import { ListSubscriptionComponent } from './list-subscription/list-subscription.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateWorkoutComponent,
     UpdateSubscriptionComponent,
-<<<<<<< HEAD
     UpdateWorkoutComponent,
-    ListWorkoutComponent
-=======
-    CreateSubscriptionComponent
->>>>>>> 4b4b5709e6de867f928998c8d97ed42dcdea1a61
+    ListWorkoutComponent,
+    CreateSubscriptionComponent,
+    ListSubscriptionComponent
   ],
   imports: [
     BrowserModule,
