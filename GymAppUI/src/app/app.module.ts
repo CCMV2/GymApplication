@@ -6,13 +6,15 @@ import { CreateWorkoutComponent } from './create-workout/create-workout.componen
 import { UpdateSubscriptionComponent } from './update-subscription/update-subscription.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UpdateWorkoutComponent } from './update-workout/update-workout.component';
+import { ListWorkoutComponent } from './list-workout/list-workout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateWorkoutComponent,
     UpdateSubscriptionComponent,
-    UpdateWorkoutComponent
+    UpdateWorkoutComponent,
+    ListWorkoutComponent
   ],
   imports: [
     BrowserModule,
