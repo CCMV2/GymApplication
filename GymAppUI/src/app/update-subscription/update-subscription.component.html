@@ -1,3 +1,26 @@
-<p>
-  update-subscription works!
-</p>
+<html>
+  
+      <title>
+          Update Subscription
+      </title>
+ 
+  
+<form action="/action_page.php">
+  <label>Subscription name:</label> 
+  <input type="text" name="SubName" ><br>
+  <label>Price:</label> <input type="number" name="Price" step="0.01" min=0 oninput="validity.valid||(value='');" ><br>
+  <label>Start date:</label> <input type="date" name="StartDate" ><br>
+  <label>Duration:</label> <input type="number" name="Duration" min=0 oninput="validity.valid||(value='');" ><br>
+
+  <label>Workouts:</label>
+  <br/>
+  <select name="Workouts" multiple>      
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="opel">Opel</option>
+      <option value="audi">Audi</option>
+  </select>
+  <br/><br/>
+  <input type="submit" value="Submit">
+</form>
+</html>
