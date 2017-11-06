@@ -46,17 +46,26 @@ public class TimeTableTest {
 	}
 	
 	
-	
 	@Test
 	public void readTimetable() {
-		Timetable pro = timeRepo.findOne(5L);
-		assertNotNull(pro.getId());
-		assertEquals(pro.getDay(), "Joi");
-		assertEquals(pro.getDuration(), 2L);
+		Date dat=new Date();
+		Workout work = workRepo.findOne(1L);
+		Room room = roomRepo.findOne(1L);
+		Timetable pro1 =new Timetable("Joi", dat, 2L, room, work);
+		timeRepo.save(pro1);
+		List<Timetable> pro = timeRepo.findByDay("Joi");
+		assertNotNull(pro.get(0).getId());
+		assertEquals(pro.get(0).getDay(), "Joi");
+		assertEquals(pro.get(0).getDuration(), 2L);
 	}
 	
 	@Test
 	public void deleteTimetable() {
+		Date dat=new Date();
+		Workout work = workRepo.findOne(1L);
+		Room room = roomRepo.findOne(1L);
+		Timetable pro1 =new Timetable("Joi", dat, 2L, room, work);
+		timeRepo.save(pro1);
 		List<Timetable> pro = timeRepo.findByDay("Joi");
 		Long id = pro.get(0).getId();
 		timeRepo.delete(pro.get(0));
@@ -65,10 +74,15 @@ public class TimeTableTest {
 	
 	@Test
 	public void updateTimetable() {
-		Timetable pro = timeRepo.findOne(7L);
+		Date dat=new Date();
+		Workout work = workRepo.findOne(1L);
+		Room room = roomRepo.findOne(1L);
+		Timetable pro1 =new Timetable("Joi", dat, 2L, room, work);
+		timeRepo.save(pro1);
+		Timetable pro = timeRepo.findByDay("Joi").get(0);
 		pro.setDay("Vineri");
 		timeRepo.save(pro);
-		Timetable pro_updated = timeRepo.findOne(7L);
+		Timetable pro_updated = timeRepo.findOne(pro.getId());
 		assertEquals(pro_updated.getDay(), "Vineri");
 	}
 	
