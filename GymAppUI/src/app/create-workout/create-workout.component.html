@@ -1,3 +1,28 @@
-<p>
-  create-workout works!
-</p>
+
+  <h1> Create New Workout</h1>
+
+<form>
+  <div>
+      <label for="wname">Name: </label>
+      <input type="text" name="wname" id="wname"><br>
+      <label for="description">Description: </label>
+      <input type="text" name="description" id="description"><br>
+  </div>
+  <div>
+    <input type="radio" id="easy"
+     name="difficulty" value="easy">
+    <label for="easy">EASY</label>
+
+    <input type="radio" id="medium"
+     name="difficulty" value="medium">
+    <label for="medium">MEDIUM</label>
+
+    <input type="radio" id="hard"
+     name="difficulty" value="hard">
+    <label for="hard">HARD</label>
+  </div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>
+<router-outlet></router-outlet>
