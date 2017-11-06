@@ -8,7 +8,9 @@ import { CreateSubscriptionComponent } from './create-subscription/create-subscr
 import { AppRoutingModule } from './app-routing.module';
 import { UpdateWorkoutComponent } from './update-workout/update-workout.component';
 import { ListWorkoutComponent } from './list-workout/list-workout.component';
-import { ListSubscriptionComponent } from './list-subscription/list-subscription.component';
+import { ListSubscriptionComponent } from './list-subscription/list-subscription.component'
+import { RoomPageComponent } from './room-page/room-page.component';;
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,13 @@ import { ListSubscriptionComponent } from './list-subscription/list-subscription
     UpdateWorkoutComponent,
     ListWorkoutComponent,
     CreateSubscriptionComponent,
-    ListSubscriptionComponent
+    ListSubscriptionComponent,
+    RoomPageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

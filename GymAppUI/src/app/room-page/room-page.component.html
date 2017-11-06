@@ -1,0 +1,29 @@
+<div>
+    <table>
+      <tr>
+        <th>
+          Id
+        </th>
+        <th>
+          Name
+        </th>
+      </tr>
+      <tr *ngFor="let room of allRooms">
+        <td>{{room?.id}}</td>
+        <td>{{room?.name}}</td>
+      </tr>
+    </table>
+    <div>
+    </div>
+    <input type="button" value="Create">
+    <input type="button" value="Delete">
+    <input type="button" value="Update">
+    <div *ngIf="create">
+      Name: <input type="text" [(ngModel)]="roomToCreate.name">
+      <input type="button" value="Create Room">
+    </div>
+    <div *ngIf="update">
+        Name: <input type="text" [(ngModel)]="roomToUpdate.name">
+        <input type="button" value="Update Room">
+    </div>
+</div>>
