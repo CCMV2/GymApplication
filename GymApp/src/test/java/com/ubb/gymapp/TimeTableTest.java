@@ -57,7 +57,7 @@ public class TimeTableTest {
 		assertNotNull(pro.get(0).getId());
 		assertEquals(pro.get(0).getDay(), "Joi");
 		assertEquals(pro.get(0).getDuration(), 2L);
-	}
+	} 
 	
 	@Test
 	public void deleteTimetable() {
