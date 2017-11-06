@@ -6,6 +6,7 @@ import { UpdateSubscriptionComponent } from './update-subscription/update-subscr
 import { UpdateWorkoutComponent } from './update-workout/update-workout.component';
 import { ListWorkoutComponent } from './list-workout/list-workout.component';
 import { CreateSubscriptionComponent } from './create-subscription/create-subscription.component';
+import { ListSubscriptionComponent } from './list-subscription/list-subscription.component';
 
 const routes: Routes = [
     //{ path: '', redirectTo: '/createworkout', pathMatch: 'full' },
@@ -13,7 +14,8 @@ const routes: Routes = [
     { path: 'updatesubscription', component: UpdateSubscriptionComponent },
     { path: 'updateworkout', component: UpdateWorkoutComponent},
     { path: 'listworkout', component: ListWorkoutComponent},
-    { path: 'createsubscription', component: CreateSubscriptionComponent }
+    { path: 'createsubscription', component: CreateSubscriptionComponent },
+    { path: 'listsubscription', component: ListSubscriptionComponent }
 ];
 
 @NgModule({
