@@ -4,18 +4,17 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CreateWorkoutComponent } from './create-workout/create-workout.component';
 import { UpdateSubscriptionComponent } from './update-subscription/update-subscription.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateWorkoutComponent
+    CreateWorkoutComponent,
+    UpdateSubscriptionComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      {path: 'createworkout', component: CreateWorkoutComponent},
-      {path: 'updatesubscription', component: UpdateSubscriptionComponent}
-    ])
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
