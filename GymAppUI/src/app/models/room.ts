@@ -1,9 +1,9 @@
 export class Room{
-    id: number;
-    name: string;
+    roomId: number;
+    roomName: string;
 
     constructor(id: number, name: string) {
-        this.id = id;
-        this.name = name;
+        this.roomId = id;
+        this.roomName = name;
     }
 }

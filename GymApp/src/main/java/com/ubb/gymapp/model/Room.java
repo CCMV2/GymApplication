@@ -26,8 +26,6 @@ public class Room implements Serializable {
 	private Long roomId;
 	
 	private String roomName;
-
-	private List<Timetable> timetables;
 	
 	public Room() {
 	}
@@ -56,15 +54,6 @@ public class Room implements Serializable {
 
 	public void setRoomName(String roomName) {
 		this.roomName = roomName;
-	}
-	
-	@OneToMany(fetch = FetchType.LAZY,mappedBy="room",cascade = CascadeType.PERSIST)
-	public List<Timetable> getTimetables() {
-		return timetables;
-	}
-
-	public void setTimetables(List<Timetable> timetables) {
-		this.timetables = timetables;
 	}
 
 	@Override

@@ -67,4 +67,22 @@ public class AdminServiceImplementation implements IAdminService {
 	public Subscription getSubscriptionById(Long id) {
 		return subscriptionRepo.findOne(id);
 	}
+
+	@Override
+	public List<Room> getAllRooms() {
+		return roomRepo.findAll();
+	}
+
+	@Override
+	public void addRoom(Room room) {
+		roomRepo.save(room);
+		
+	}
+
+	@Override
+	public void deleteRoom(Room room) {
+		roomRepo.delete(room);
+	}
+	
+	
 }

@@ -12,6 +12,9 @@ import { ListSubscriptionComponent } from './list-subscription/list-subscription
 import { RoomPageComponent } from './room-page/room-page.component';;
 import { FormsModule } from '@angular/forms';
 import { UserPageComponent } from './user-page/user-page.component';
+import {BackendService} from './backend.service';
+import {HttpModule } from "@angular/http";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,11 +29,13 @@ import { UserPageComponent } from './user-page/user-page.component';
     UserPageComponent
   ],
   imports: [
+    HttpModule ,
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [BackendService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

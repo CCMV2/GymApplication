@@ -3,6 +3,7 @@ package com.ubb.gymapp.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +29,26 @@ public class Controller {
 	@RequestMapping (value = "/getallusers", method = RequestMethod.GET)
 	public List<User> findAllUsers() {
 		return adminService.getAllUsers();
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping (value = "/getallrooms", method = RequestMethod.GET)
+	public List<Room> findAllRooms() {
+		return adminService.getAllRooms();
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping (value = "/addroom", method = RequestMethod.POST)
+	public String adddRoom(@RequestBody Room parameter) {
+		adminService.addRoom(parameter);
+		return "Save successful";
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping (value = "/deleteroom", method = RequestMethod.POST)
+	public String deleteRoom(@RequestBody Room parameter) {
+		adminService.deleteRoom(parameter);
+		return "Delete successful";
 	}
 	
 	@RequestMapping (value = "/getroom", method = RequestMethod.POST)
