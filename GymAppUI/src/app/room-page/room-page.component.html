@@ -15,15 +15,15 @@
     </table>
     <div>
     </div>
-    <input type="button" value="Create">
+    <input type="button" value="Create" (click)="mode='create'">
     <input type="button" value="Delete">
-    <input type="button" value="Update">
-    <div *ngIf="create">
+    <input type="button" value="Update" (click)="mode='update'">
+    <div *ngIf="mode==='create'">
       Name: <input type="text" [(ngModel)]="roomToCreate.name">
       <input type="button" value="Create Room">
     </div>
-    <div *ngIf="update">
+    <div *ngIf="mode==='update'">
         Name: <input type="text" [(ngModel)]="roomToUpdate.name">
         <input type="button" value="Update Room">
     </div>
-</div>>
+</div>

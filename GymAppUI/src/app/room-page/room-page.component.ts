@@ -11,6 +11,7 @@ export class RoomPageComponent implements OnInit {
   roomToCreate: Room = new Room(0,null);
   roomToUpdate: Room = new Room(0,null);
   allRooms: Room[] = [];
+  mode: string = "none";
 
   constructor() { }
 
