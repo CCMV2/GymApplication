@@ -15,6 +15,7 @@ import { UserPageComponent } from './user-page/user-page.component';
 import {BackendService} from './backend.service';
 import {HttpModule } from "@angular/http";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { TimetableComponent } from './timetable/timetable.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     CreateSubscriptionComponent,
     ListSubscriptionComponent,
     RoomPageComponent,
-    UserPageComponent
+    UserPageComponent,
+    TimetableComponent
   ],
   imports: [
     HttpModule ,
