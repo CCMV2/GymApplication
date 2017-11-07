@@ -11,6 +11,7 @@ import { ListWorkoutComponent } from './list-workout/list-workout.component';
 import { ListSubscriptionComponent } from './list-subscription/list-subscription.component'
 import { RoomPageComponent } from './room-page/room-page.component';;
 import { FormsModule } from '@angular/forms';
+import { UserPageComponent } from './user-page/user-page.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     ListWorkoutComponent,
     CreateSubscriptionComponent,
     ListSubscriptionComponent,
-    RoomPageComponent
+    RoomPageComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,
