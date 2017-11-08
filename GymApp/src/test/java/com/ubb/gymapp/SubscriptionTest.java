@@ -20,7 +20,7 @@ import com.ubb.gymapp.repository.SubscriptionRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SupscriptionTest {
+public class SubscriptionTest {
 	
 	@Autowired 
 	private SubscriptionRepository subscriptionRepo;
