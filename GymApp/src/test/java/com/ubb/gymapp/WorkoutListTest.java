@@ -1,5 +1,9 @@
 package com.ubb.gymapp;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+
 import java.util.List;
 
 import org.junit.Test;
@@ -9,15 +13,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.ubb.gymapp.model.Subscription;
-import com.ubb.gymapp.model.Timetable;
 import com.ubb.gymapp.model.Workout;
 import com.ubb.gymapp.model.WorkoutList;
 import com.ubb.gymapp.repository.SubscriptionRepository;
-import com.ubb.gymapp.repository.TimetableRepository;
 import com.ubb.gymapp.repository.WorkoutListRepository;
 import com.ubb.gymapp.repository.WorkoutRepository;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
