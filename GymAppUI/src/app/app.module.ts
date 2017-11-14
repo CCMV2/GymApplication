@@ -14,8 +14,12 @@ import { FormsModule } from '@angular/forms';
 import { UserPageComponent } from './user-page/user-page.component';
 import {BackendService} from './backend.service';
 import {HttpModule } from "@angular/http";
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TimetableComponent } from './timetable/timetable.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { DeleteUserComponent } from './delete-user/delete-user.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -28,14 +32,18 @@ import { TimetableComponent } from './timetable/timetable.component';
     ListSubscriptionComponent,
     RoomPageComponent,
     UserPageComponent,
-    TimetableComponent
+    TimetableComponent,
+    CreateUserComponent,
+    UpdateUserComponent,
+    DeleteUserComponent,
+    LoginPageComponent
   ],
   imports: [
     HttpModule ,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule.forRoot()
+    //NgbModule.forRoot()
   ],
   providers: [BackendService],
   bootstrap: [AppComponent]
