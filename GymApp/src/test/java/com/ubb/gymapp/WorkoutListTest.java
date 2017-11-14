@@ -36,7 +36,7 @@ public class WorkoutListTest {
 	
 	 @Test
 	    public void testAdd() {
-	        Workout workout = new Workout(0L, "Swimming", "Hard", "You will get wet!");
+	        Workout workout = new Workout("Swimming", "Hard", "You will get wet!");
 	        workout = workoutRepo.save(workout);
 	        Subscription subscription = new Subscription("abo1",500.0);
 	        subscription = subscriptionRepo.save(subscription);
@@ -53,7 +53,7 @@ public class WorkoutListTest {
 	 
 	 @Test
 	 public void testFind(){
-		 	Workout workout = new Workout(0L, "Swimming", "Hard", "You will get wet!");
+		 	Workout workout = new Workout("Swimming", "Hard", "You will get wet!");
 	        workout = workoutRepo.save(workout);
 	        Subscription subscription = new Subscription("abo1",500.0);
 	        subscription = subscriptionRepo.save(subscription);
@@ -68,21 +68,21 @@ public class WorkoutListTest {
 	 
 	@Test
 	public void testDelete(){
-		Workout workout = new Workout(0L, "Swimming", "Hard", "You will get wet!");
+		Workout workout = new Workout("Swimming", "Hard", "You will get wet!");
         workout = workoutRepo.save(workout);
         Subscription subscription = new Subscription("abo1",500.0);
         subscription = subscriptionRepo.save(subscription);
         WorkoutList workoutList = new WorkoutList(subscription,workout);
         workoutList = wlRepo.save(workoutList);
         
-        Workout workout1 = new Workout(0L, "Swimming", "Easy", "You will get wet!");
+        Workout workout1 = new Workout("Swimming", "Easy", "You will get wet!");
         workout1 = workoutRepo.save(workout1);
         Subscription subscription1 = new Subscription("abo2",500.0);
         subscription1 = subscriptionRepo.save(subscription);
         WorkoutList workoutList1 = new WorkoutList(subscription1,workout1);
         workoutList1 = wlRepo.save(workoutList1);
         
-        Workout workout2 = new Workout(0L, "Swimming", "Medium", "You will get wet!");
+        Workout workout2 = new Workout("Swimming", "Medium", "You will get wet!");
         workout2 = workoutRepo.save(workout2);
         Subscription subscription2 = new Subscription("abo3",500.0);
         subscription2 = subscriptionRepo.save(subscription2);
