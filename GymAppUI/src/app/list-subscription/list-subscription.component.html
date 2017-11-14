@@ -1,4 +1,4 @@
-<table>
+<table class="table table-condensed table-hover">
   <caption>
     Subscription list
   </caption>
@@ -9,85 +9,46 @@
     <th>Duration</th>
     <th>Workouts</th>
   </tr>
-  <tr>
+  <tr *ngFor="let entry of subscriptions">
     <td>
-      Cycling
+      {{entry.subscription.name}}
     </td>
     <td>
-      170.5
+      {{entry.subscription.price}}
     </td>
     <td>
-      12.11.2017
+      {{entry.subscription.start}}
     </td>
     <td>
-      30
+      {{entry.subscription.duration}}
     </td>
     <td>
-      <select name="Workouts" multiple>      
-        <option value="Workout 1">Workout 1</option>
-        <option value="Workout 2">Workout 2</option>
-        <option value="Workout 3">Workout 3</option>
-      </select><br>
+      <table class="table table-condensed table-hover">
+        <tr>
+          <th>
+            Description
+          </th>
+          <th>
+            Type
+          </th>
+          <th>
+            Difficulty
+          </th>
+        </tr>
+        <tr *ngFor="let workout of entry.workouts">
+          <td>
+            {{workout.description}}
+          </td>
+          <td>
+            {{workout.workoutType}}
+          </td>
+          <td>
+            {{workout.difficulty}}
+          </td>
+          <button (click)="deleteWorkout(entry,workout)">Delete</button>
+        </tr>
+      </table>
     </td>
-    <td>
-      <input type="button" value="delete">
-    </td>
-    <td>
-      <input type="button" value="update">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Gimnastica
-    </td>
-    <td>
-      100.7
-    </td>
-    <td>
-      10.01.2018
-    </td>
-    <td>
-      30
-    </td>
-    <td>
-      <select name="Workouts" multiple>      
-        <option value="Workout 1">Workout 1</option>
-        <option value="Workout 2">Workout 2</option>
-        <option value="Workout 3">Workout 3</option>
-      </select><br>
-    </td>
-    <td>
-      <input type="button" value="delete">
-    </td>
-    <td>
-      <input type="button" value="update">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Aerobic
-    </td>
-    <td>
-      120.6
-    </td>
-    <td>
-      19.02.2018
-    </td>
-    <td>
-      60
-    </td>
-    <td>
-      <select name="Workouts" multiple>      
-        <option value="Workout 1">Workout 1</option>
-        <option value="Workout 2">Workout 2</option>
-        <option value="Workout 3">Workout 3</option>
-      </select><br>
-    </td>
-    <td>
-      <input type="button" value="delete">
-    </td>
-    <td>
-      <input type="button" value="update">
-    </td>
+    <button (click)="delete(entry)">Delete</button>
   </tr>
 </table>
