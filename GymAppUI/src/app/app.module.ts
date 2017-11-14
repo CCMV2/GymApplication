@@ -14,7 +14,6 @@ import { FormsModule } from '@angular/forms';
 import { UserPageComponent } from './user-page/user-page.component';
 import {BackendService} from './backend.service';
 import {HttpModule } from "@angular/http";
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TimetableComponent } from './timetable/timetable.component';
 
 @NgModule({
@@ -34,8 +33,7 @@ import { TimetableComponent } from './timetable/timetable.component';
     HttpModule ,
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    NgbModule.forRoot()
+    FormsModule
   ],
   providers: [BackendService],
   bootstrap: [AppComponent]
