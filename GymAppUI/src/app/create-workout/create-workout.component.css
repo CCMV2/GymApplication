@@ -5,16 +5,17 @@ h1{
 form{
     position: absolute;
     padding-top: 70px;
-    left: 35%;
+    left: 30%;
 }
 
 #button{
     padding-top: 60px;
     text-align: center;
+    left: 30%;
 }
 
 button{
-    font-size: 30px;
+    font-size: 25px;
 }
 
 div{
@@ -23,7 +24,7 @@ div{
 }
 
 select{
-    font-size: 20px;
+    font-size: 25px;
 }
 
 option{
