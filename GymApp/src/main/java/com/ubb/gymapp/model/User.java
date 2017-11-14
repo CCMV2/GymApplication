@@ -28,13 +28,12 @@ public class User implements Serializable{
 	private String userPermission;
 	private Subscription subscription;
 	
-	private enum UserType {
+	public enum UserType {
 		ADMIN, TRAINER, CLIENT
 	};
 
-	public User(Long id, String password, String name, String surname, String email, String phonenumber, String userType,
+	public User(String password, String name, String surname, String email, String phonenumber, String userType,
 			Subscription pass) {
-		this.id = id;
 		this.password = password;
 		this.name = name;
 		this.surname = surname;
