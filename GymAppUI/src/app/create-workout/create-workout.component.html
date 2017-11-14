@@ -1,34 +1,36 @@
+<link rel = "stylesheet" href="create_workout.css">
+<h1> Create New Workout</h1>
 
-  <h1> Create New Workout</h1>
-
-<form>
-  <div>
-      <label for="wname">Name: </label>
-      <input type="text" name="wname" id="wname"><br>
-  </div>
-  <div>
-    <label for="difficulty">Choose difficulty: </label>
-    <input type="radio" id="easy"
-     name="difficulty" value="easy">
-    <label for="easy">EASY</label>
-
-    <input type="radio" id="medium"
-     name="difficulty" value="medium">
-    <label for="medium">MEDIUM</label>
-
-    <input type="radio" id="hard"
-     name="difficulty" value="hard">
-    <label for="hard">HARD</label>
-  </div>
-  <div>
-    <label for="trainer">Trainer: </label>
-    <input type="text" name="trainer" id="trainer"><br>
-  </div>
-  <div>
-  <label for="description">Description: </label>
-  <input type="text" name="description" id="description"><br>
-</div>
-  <div>
-    <button type="submit">Submit</button>
-  </div>
-</form>
+    <form>
+        <div>
+          <label for="wname">Name: </label>
+          <input type="text" name="wname" id="wname"><br>
+        </div>
+        <div>
+            <label for="difficulty">Choose difficulty: </label>
+            <input type="radio" id="easy" name="difficulty" value="easy">
+            <label for="easy">EASY</label>
+            <input type="radio" id="medium" name="difficulty" value="medium">
+            <label for="medium">MEDIUM</label>
+            <input type="radio" id="hard" name="difficulty" value="hard">
+            <label for="hard">HARD</label>
+        </div>
+        <div>
+            <label for="trainer">Trainer: </label>
+            <select>
+                <option>Mike</option>
+                <option>Johnny</option>
+                <option>Mark</option>
+                <option>Cena</option>
+                <option>Jimmy</option>
+                <option>Marcel</option>
+            </select> 
+        </div>
+        <div>
+            <label for="description">Description: </label>
+            <input type="text" name="description" id="description"><br>
+        </div>
+        <div id = "button">
+            <button type="submit">Submit</button>
+        </div>
+    </form>

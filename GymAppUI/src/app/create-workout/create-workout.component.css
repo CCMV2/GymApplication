@@ -1,0 +1,35 @@
+h1{
+    text-align: center;
+}
+
+form{
+    position: absolute;
+    padding-top: 70px;
+    left: 35%;
+}
+
+#button{
+    padding-top: 60px;
+    text-align: center;
+}
+
+button{
+    font-size: 30px;
+}
+
+div{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+select{
+    font-size: 20px;
+}
+
+option{
+    font-size: 20px;
+}
+
+label{
+    font-size: 25px;
+}
