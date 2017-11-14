@@ -15,7 +15,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 
 const routes: Routes = [
-    //{ path: '', redirectTo: '/createworkout', pathMatch: 'full' },
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'createworkout', component: CreateWorkoutComponent },
     { path: 'updatesubscription', component: UpdateSubscriptionComponent },
     { path: 'updateworkout', component: UpdateWorkoutComponent},

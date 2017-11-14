@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CreateWorkoutComponent } from './create-workout/create-workout.component';
 import { UpdateSubscriptionComponent } from './update-subscription/update-subscription.component';
@@ -20,6 +20,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { NavigationPaneComponent } from './navigation-pane/navigation-pane.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
     CreateUserComponent,
     UpdateUserComponent,
     DeleteUserComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    NavigationPaneComponent
   ],
   imports: [
     HttpModule ,

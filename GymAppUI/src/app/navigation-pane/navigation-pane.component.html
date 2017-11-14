@@ -1,0 +1,7 @@
+<div class="navigation-sidebar">
+  <h3>GymApp Admin</h3>
+  <span *ngFor="let url of urls">
+    <button class="nav-btn" (click)="navigate(url)" [class.nav-btn-active]="url.active">{{url.text}}</button>
+  </span>
+</div>
+
