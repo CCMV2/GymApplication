@@ -30,6 +30,7 @@ const routes: Routes = [
     { path: 'login', component: LoginPageComponent},
     { path: 'updateuser', component: UpdateUserComponent},
     { path: 'listusers', component: UserPageComponent}
+    
 ];
 
 @NgModule({
