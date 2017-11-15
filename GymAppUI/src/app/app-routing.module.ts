@@ -13,6 +13,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { UserPageComponent } from "./user-page/user-page.component";
 
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -27,7 +28,8 @@ const routes: Routes = [
     { path: 'createuser', component: CreateUserComponent},
     { path: 'deleteuser', component: DeleteUserComponent},
     { path: 'login', component: LoginPageComponent},
-    { path: 'updateuser', component: UpdateUserComponent}
+    { path: 'updateuser', component: UpdateUserComponent},
+    { path: 'listusers', component: UserPageComponent}
 ];
 
 @NgModule({
