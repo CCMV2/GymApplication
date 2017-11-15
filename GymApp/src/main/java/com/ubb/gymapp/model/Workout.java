@@ -34,8 +34,7 @@ public class Workout implements Serializable{
 	public Workout() {
 	}
 	
-	public Workout(Long workoutId, String workoutType, String difficulty, String description) {
-		this.idWorkout = workoutId;
+	public Workout(String workoutType, String difficulty, String description) {
 		this.workoutType = workoutType;
 		this.difficulty = difficulty;
 		this.description = description;

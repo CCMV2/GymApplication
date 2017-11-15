@@ -1,29 +1,35 @@
 <h1> Update Workout</h1>
 
-<form>
-  <div>
-      <label for="wname">New name: </label>
-      <input type="text" name="wname" id="wname"><br>
-  </div>
-  <div>
-    <label for="difficulty">Choose difficulty: </label>
-    <input type="radio" id="easy"
-     name="difficulty" value="easy">
-    <label for="easy">EASY</label>
-
-    <input type="radio" id="medium"
-     name="difficulty" value="medium">
-    <label for="medium">MEDIUM</label>
-
-    <input type="radio" id="hard"
-     name="difficulty" value="hard">
-    <label for="hard">HARD</label>
-  </div>
-  <div>
-  <label for="description">New description: </label>
-  <input type="text" name="description" id="description"><br>
-</div>
-  <div>
-    <button type="submit">Submit</button>
-  </div>
-</form>
+    <form>
+        <div>
+          <label for="wname">New name: </label>
+          <input type="text" name="wname" id="wname"><br>
+        </div>
+        <div>
+            <label for="description">New description: </label>
+            <input type="text" name="description" id="description"><br>
+        </div>
+        <div>
+          <label for="difficulty">Choose difficulty: </label>
+          <input type="radio" id="easy" name="difficulty" value="easy">
+          <label for="easy">EASY</label>
+          <input type="radio" id="medium" name="difficulty" value="medium">
+          <label for="medium">MEDIUM</label>
+          <input type="radio" id="hard" name="difficulty" value="hard">
+          <label for="hard">HARD</label>
+      </div>
+        <div>
+          <label for="trainer">New trainer: </label>
+          <select>
+              <option>Mike</option>
+              <option>Johnny</option>
+              <option>Mark</option>
+              <option>Cena</option>
+              <option>Jimmy</option>
+              <option>Marcel</option>
+          </select>
+      </div>
+        <div id = "button">
+            <button type="submit">Submit</button>
+        </div>
+    </form>

@@ -1,29 +1,39 @@
 <div>
-    <table class="table">
-      <tr>
-        <th>
-          Id
-        </th>
-        <th>
-          Name
-        </th>
-      </tr>
-      <tr *ngFor="let room of allRooms" (click)="select(room)">
-        <td>{{room?.roomId}}</td>
-        <td>{{room?.roomName}}</td>
-      </tr>
-    </table>
-    <div>
+  <table class="table table-hover room-table">
+    <tr>
+      <th>
+        Id
+      </th>
+      <th>
+        Name
+      </th>
+    </tr>
+    <tr *ngFor="let room of allRooms" (click)="select(room)">
+      <td>{{room?.roomId}}</td>
+      <td>{{room?.roomName}}</td>
+    </tr>
+  </table>
+  <div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <input class="btn-primary btn room-btn" type="button" value="Create" (click)="mode='create'">
     </div>
-    <input type="button" value="Create" (click)="mode='create'">
-    <input type="button" [disabled]="!selectedRoom" value="Delete" (click)="deleteRoom()">
-    <input type="button" value="Update" (click)="mode='update'">
-    <div *ngIf="mode==='create'">
-      Name: <input type="text" [(ngModel)]="roomToCreate.roomName">
-      <input type="button" value="Create Room" (click)="addRoom()">
+    <div class="col-md-4">
+      <input class="btn-primary btn room-btn" type="button" value="Update" (click)="mode='update'">
     </div>
-    <div *ngIf="mode==='update'">
-        Name: <input type="text" [(ngModel)]="roomToUpdate.roomName">
-        <input type="button" value="Update Room">
+    <div class="col-md-4">
+      <input class="btn-primary btn room-btn" type="button" [disabled]="!selectedRoom" value="Delete" (click)="deleteRoom()">
     </div>
+  </div>
+  <div *ngIf="mode==='create'">
+    Name:
+    <input type="text" [(ngModel)]="roomToCreate.roomName">
+    <input type="button" value="Create Room" (click)="addRoom()">
+  </div>
+  <div *ngIf="mode==='update'">
+    Name:
+    <input type="text" [(ngModel)]="roomToUpdate.roomName">
+    <input type="button" value="Update Room">
+  </div>
 </div>

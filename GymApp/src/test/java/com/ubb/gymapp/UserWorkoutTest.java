@@ -34,8 +34,8 @@ public class UserWorkoutTest {
 	
 	@Test
 	public void testAdd() {
-		Workout workout = new Workout(0L,"Test","Test","Test");
-		User user = new User(0L, "aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		Workout workout = new Workout("Test","Test","Test");
+		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
 		workout = workoutRepo.save(workout);
 		user = userRepo.save(user);
 		UserWorkout worklist = new UserWorkout(user,workout);
@@ -49,8 +49,8 @@ public class UserWorkoutTest {
 	@Transactional
 	@Test
 	public void testFindOne(){
-		Workout workout = new Workout(0L,"Test","Test","Test");
-		User user = new User(0L, "aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		Workout workout = new Workout("Test","Test","Test");
+		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
 		workout = workoutRepo.save(workout);
 		user = userRepo.save(user);
 		UserWorkout worklist = new UserWorkout(user,workout);
@@ -63,8 +63,8 @@ public class UserWorkoutTest {
 	
 	@Test
 	public void testDelete(){
-		Workout workout = new Workout(0L,"Test","Test","Test");
-		User user = new User(0L, "aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		Workout workout = new Workout("Test","Test","Test");
+		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
 		workout = workoutRepo.save(workout);
 		user = userRepo.save(user);
 		UserWorkout worklist = new UserWorkout(user,workout);
@@ -79,10 +79,10 @@ public class UserWorkoutTest {
 	@Transactional
 	@Test
 	public void testFindAll(){
-		Workout workout = new Workout(0L,"Test","Test","Test");
-		User user = new User(0L, "aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
-		User user2 = new User(0L, "aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
-		User user3 = new User(0L, "aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		Workout workout = new Workout("Test","Test","Test");
+		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		User user2 = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		User user3 = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
 		workout = workoutRepo.save(workout);
 		user = userRepo.save(user);
 		user2 = userRepo.save(user2);
@@ -108,9 +108,9 @@ public class UserWorkoutTest {
 	@Transactional
 	@Test
 	public void testUpdate(){
-		Workout workout = new Workout(0L,"Test","Test","Test");
-		User user = new User(0L, "aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
-		User user2 = new User(0L, "aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		Workout workout = new Workout("Test","Test","Test");
+		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		User user2 = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
 		workout = workoutRepo.save(workout);
 		user = userRepo.save(user);
 		UserWorkout worklist = new UserWorkout(user,workout);

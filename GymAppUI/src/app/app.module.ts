@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CreateWorkoutComponent } from './create-workout/create-workout.component';
 import { UpdateSubscriptionComponent } from './update-subscription/update-subscription.component';
@@ -12,10 +12,15 @@ import { ListSubscriptionComponent } from './list-subscription/list-subscription
 import { RoomPageComponent } from './room-page/room-page.component';;
 import { FormsModule } from '@angular/forms';
 import { UserPageComponent } from './user-page/user-page.component';
-import {BackendService} from './backend.service';
-import {HttpModule } from "@angular/http";
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { BackendService } from './backend.service';
+import { HttpModule } from "@angular/http";
+//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TimetableComponent } from './timetable/timetable.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { DeleteUserComponent } from './delete-user/delete-user.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { NavigationPaneComponent } from './navigation-pane/navigation-pane.component';
 
 @NgModule({
   declarations: [
@@ -28,14 +33,19 @@ import { TimetableComponent } from './timetable/timetable.component';
     ListSubscriptionComponent,
     RoomPageComponent,
     UserPageComponent,
-    TimetableComponent
+    TimetableComponent,
+    CreateUserComponent,
+    UpdateUserComponent,
+    DeleteUserComponent,
+    LoginPageComponent,
+    NavigationPaneComponent
   ],
   imports: [
-    HttpModule ,
+    HttpModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule.forRoot()
+    //NgbModule.forRoot()
   ],
   providers: [BackendService],
   bootstrap: [AppComponent]

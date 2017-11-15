@@ -22,7 +22,7 @@ public class GymappApplicationTests {
 	
 	@Test
 	public void addUser() {
-		User user = new User(1L, "aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
 		userRepo.save(user);
 		assertNotNull(user.getId());
 		//assertNotNull(lista);

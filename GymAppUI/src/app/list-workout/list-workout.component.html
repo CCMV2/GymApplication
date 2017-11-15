@@ -1,47 +1,36 @@
-<table>
-  <tr>
-    <th>
-      Name
-    </th>
-    <th>
-      Difficulty
-    </th>
-    <th>
-      Description
-    </th>
-  </tr>
-  <tr>
-    <td>
-      Swimming
-    </td>
-    <td>
-        MEDIUM
-      </td>
-      <td>
-          You'll get wet!!
-        </td>
-        <td>
-            <input type="button" value="Delete">
-        </td>
-        <td>
-            <input type="button" value="Update">
-        </td>
-  </tr>
-  <tr>
-      <td>
-        Zumba
-      </td>
-      <td>
-          EASY
-        </td>
-        <td>
-            You'll sweat!!
-          </td>
-          <td>
-              <input type="button" value="Delete">
-          </td>
-          <td>
-              <input type="button" value="Update">
-          </td>
-    </tr>
-</table>
+<h1>
+    Workout List
+</h1>
+<form>
+    <table class="table table-hover room-table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Difficulty
+            </th>
+            <th>
+                Trainer
+            </th>
+            <th>
+                Description
+            </th>
+            <th colspan="2">
+                Operations
+            </th>
+        </tr>
+        <tr *ngFor="let trainerworkout of allWorkouts" (click)="select(trainerworkout)" [class.selected]="trainerworkout === selectedWorkout">
+            <td>{{trainerworkout.workout.workoutType}}</td>
+            <td>{{trainerworkout.workout.difficulty}}</td>
+            <td>{{trainerworkout.trainer.name}}</td>
+            <td>{{trainerworkout.workout.description}}</td>
+            <td>
+                <input type="button" value="Delete" (click)="delete()">
+            </td>
+            <td>
+                <input type="button" value="Update">
+            </td>
+        </tr>
+    </table>
+</form>
