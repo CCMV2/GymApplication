@@ -1,7 +1,50 @@
+div{
+    width:800px; margin:0 auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: auto;
+    align-content: center;
+    position: ;
+   
+}
+
+/* div, #all{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: lightblue;
+} */
+
 h1{
     text-align: center;
 }
 
+head{
+    text-align: center;
+}
+
 form{
-    font-size: 150%;
+    position: absolute;
+    padding-top: 70px;
+    left: 35%;
+}
+
+#button{
+    padding-top: 60px;
+    text-align: center;
+}
+
+button{
+    font-size: 25px;
+}
+
+select{
+    font-size: 20px;
+}
+
+option{
+    font-size: 20px;
+}
+
+label{
+    font-size: 25px;
 }
