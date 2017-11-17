@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Workout } from '../models/workout';
+import { BackendService } from '../backend.service';
 
 @Component({
   selector: 'app-list-workout',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListWorkoutComponent implements OnInit {
 
-  constructor() { }
+  selectedWorkout: Workout;
+
+  allWorkouts: Workout[];
+
+  constructor(private backendService: BackendService) { }
 
   ngOnInit() {
+    this.getAllWorkouts();
   }
 
+  getAllWorkouts(){
+    this.backendService.getAllWorkouts().subscribe(res =>
+      this.allWorkouts = res)
+  }
+
+  select(workout: Workout) {
+    this.selectedWorkout = workout;
+  }
+
+  delete() {
+    console.log("start delete");
+    this.backendService.deleteWorkout(this.selectedWorkout);
+    this.getAllWorkouts();
+    console.log(this.allWorkouts);
+  }
 }

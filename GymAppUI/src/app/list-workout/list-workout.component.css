@@ -9,6 +9,14 @@ table, th, td{
     padding: 10px 10px;
 }
 
+tr.selected {
+    background:grey;
+}
+
+tr.selected:hover {
+    background: green;
+}
+
 table{
     position: absolute;
     border-collapse: collapse;

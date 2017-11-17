@@ -1,6 +1,7 @@
 import {Headers,Http} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import {Room} from "./models/room";
+import {Workout} from "./models/workout";
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch'
 import { Injectable } from '@angular/core';
@@ -28,5 +29,16 @@ export class BackendService {
         console.error(error);
         return error.message || error;
     }
+    
+    public getAllWorkouts(): Observable<Workout[]> {
+        return this.http.get("http://localhost:9123/getallworkouts",{headers: this.headers}).map(response => response.json()).catch(this.handleError)
+    }
 
+    public addWorkout(workout: Workout): Observable<any> {
+        return this.http.post("http://localhost:9123/addworkout",workout,{headers: this.headers}).map(response => response.json()).catch(this.handleError)
+    }
+
+    public deleteWorkout(workout: Workout): Observable<any> {
+        return this.http.post("http://localhost:9123/deleteworkout",workout,{headers: this.headers}).map(response => response.json()).catch(this.handleError)
+    }
 }

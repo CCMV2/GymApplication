@@ -1,64 +1,36 @@
 <h1>
-  Workout List
+    Workout List
 </h1>
 <form>
-   <table>
-      <tr>
-          <th>
-              Name
-          </th>
-          <th>
-              Difficulty
-          </th>
-          <th>
-              Trainer
-          </th>
-          <th>
-              Description
-          </th>
-          <th colspan="2">
-              Operations
-          </th>
-      </tr>
-      <tr>
-          <td>
-              Swimming
-          </td>
-          <td>
-              MEDIUM
-          </td>
-          <td>
-              John
-          </td>
-          <td>
-              You'll get wet!!
-          </td>
-          <td>
-              <input type="button" value="Delete">
-          </td>
-          <td>
-              <input type="button" value="Update">
-          </td>
-      </tr>
-      <tr>
-          <td>
-              Zumba
-          </td>
-          <td>
-              EASY
-          </td>
-          <td>
-              Cena
-          </td>
-          <td>
-              You'll sweat!!
-          </td>
-          <td>
-              <input type="button" value="Delete">
-          </td>
-          <td>
-              <input type="button" value="Update">
-          </td>
-      </tr>
-  </table>
+    <table class="table table-hover room-table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Difficulty
+            </th>
+            <th>
+                Trainer
+            </th>
+            <th>
+                Description
+            </th>
+            <th colspan="2">
+                Operations
+            </th>
+        </tr>
+        <tr *ngFor="let workout of allWorkouts" (click)="select(workout)" [class.selected]="workout === selectedWorkout">
+            <td>{{workout.idWorkout}}</td>
+            <td>{{workout.workoutType}}</td>
+            <td>{{workout.difficulty}}</td>
+            <td>{{workout.description}}</td>
+            <td>
+                <input type="button" value="Delete" (click)="delete()">
+            </td>
+            <td>
+                <input type="button" value="Update">
+            </td>
+        </tr>
+    </table>
 </form>
