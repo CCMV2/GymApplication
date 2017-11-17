@@ -18,6 +18,12 @@ public interface IAdminService {
 	
 	public Workout getWorkoutById(Long id);
 	
+	public List<Workout> getAllWorkouts();
+	
+	public void addWorkout(Workout workout);
+	
+	public void deleteWorkout(Workout workout);
+	
 	public Timetable getTimetableById(Long id);
 	
 	public Subscription getSubscriptionById(Long id);

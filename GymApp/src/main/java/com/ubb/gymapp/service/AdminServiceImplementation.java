@@ -33,10 +33,6 @@ public class AdminServiceImplementation implements IAdminService {
 	
 	@Autowired
 	public TimetableRepository timetableRepo;
-	
-	public Workout getWorkoutById(long id){
-		return workoutRepo.findOne(id);
-	}
 
 	@Override
 	public List<User> getAllUsers() {
@@ -56,6 +52,24 @@ public class AdminServiceImplementation implements IAdminService {
 	@Override
 	public Workout getWorkoutById(Long id) {
 		return workoutRepo.findOne(id);
+	}
+	
+
+	@Override
+	public List<Workout> getAllWorkouts() {
+		return workoutRepo.findAll();
+	}
+
+	@Override
+	public void addWorkout(Workout workout) {
+		workoutRepo.save(workout);
+		
+	}
+
+	@Override
+	public void deleteWorkout(Workout workout) {
+		workoutRepo.delete(workout);
+		
 	}
 
 	@Override
@@ -83,6 +97,5 @@ public class AdminServiceImplementation implements IAdminService {
 	public void deleteRoom(Room room) {
 		roomRepo.delete(room);
 	}
-	
 	
 }

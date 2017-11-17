@@ -81,4 +81,18 @@ public class Controller {
 		
 		return workoutRepo.save(workout);
 	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping (value = "/getallworkouts", method = RequestMethod.GET)
+	public List<Workout> findAllWorkouts() {
+		return adminService.getAllWorkouts();
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping (value = "/deleteworkout", method = RequestMethod.POST)
+	public String deleteWorkout(@RequestBody Workout parameter) {
+		adminService.deleteWorkout(parameter);
+		return "Delete successful";
+	}
+	
 }
