@@ -1,35 +1,30 @@
 <h1> Create New Workout</h1>
 
-    <form>
         <div>
           <label for="wname">Name: </label>
-          <input type="text" name="wname" id="wname"><br>
+          <input type="text" name="wname" id="wname" [(ngModel)]="createdWorkoutName"><br>
         </div>
         <div>
             <label for="description">Description: </label>
-            <input type="text" name="description" id="description"><br>
+            <input type="text" name="description" id="description" [(ngModel)]="createdWorkoutDescription"><br>
         </div>
         <div>
             <label for="difficulty">Choose difficulty: </label>
-            <input type="radio" id="easy" name="difficulty" value="easy">
+            <input type="radio" id="easy" name="difficulty" value="EASY" [(ngModel)]="createdWorkoutDifficulty">
             <label for="easy">EASY</label>
-            <input type="radio" id="medium" name="difficulty" value="medium">
+            <input type="radio" id="medium" name="difficulty" value="MEDIUM" [(ngModel)]="createdWorkoutDifficulty">
             <label for="medium">MEDIUM</label>
-            <input type="radio" id="hard" name="difficulty" value="hard">
+            <input type="radio" id="hard" name="difficulty" value="HARD" [(ngModel)]="createdWorkoutDifficulty">
             <label for="hard">HARD</label>
         </div>
         <div>
             <label for="trainer">Trainer: </label>
             <select>
-                <option>Mike</option>
-                <option>Johnny</option>
-                <option>Mark</option>
-                <option>Cena</option>
-                <option>Jimmy</option>
-                <option>Marcel</option>
+                <option value="{{createdWorkoutTrainer.name}}" [(ngModel)]="createdWorkoutTrainer" selected hidden>{{createdWorkoutTrainer.name}}</option>
+                <option *ngFor="let trainer of trainerList" value="trainer.name" >{{trainer.name}}</option>
             </select>
+            {{createdWorkoutTrainer.name}}
         </div>
         <div id = "button">
-            <button type="submit">Submit</button>
+            <input type="button" value="Add" (click)="addWorkout()">
         </div>
-    </form>

@@ -19,7 +19,7 @@ export class ListWorkoutComponent implements OnInit {
     this.getAllWorkouts();
   }
 
-  getAllWorkouts(){
+  getAllWorkouts() {
     this.backendService.getAllWorkouts().subscribe(res =>
       this.allWorkouts = res)
   }
@@ -30,8 +30,10 @@ export class ListWorkoutComponent implements OnInit {
 
   delete() {
     console.log("start delete");
-    this.backendService.deleteWorkout(this.selectedWorkout);
-    this.getAllWorkouts();
+    this.backendService.deleteWorkout(this.selectedWorkout).subscribe(res => {
+      console.log(res); this.getAllWorkouts(); this.selectedWorkout = null
+    })
+    
     console.log(this.allWorkouts);
   }
 }

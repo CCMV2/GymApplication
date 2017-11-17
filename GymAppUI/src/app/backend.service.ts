@@ -5,6 +5,7 @@ import {Workout} from "./models/workout";
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch'
 import { Injectable } from '@angular/core';
+import { User } from './models/user';
 
 @Injectable()
 export class BackendService {
@@ -40,5 +41,9 @@ export class BackendService {
 
     public deleteWorkout(workout: Workout): Observable<any> {
         return this.http.post("http://localhost:9123/deleteworkout",workout,{headers: this.headers}).map(response => response.json()).catch(this.handleError)
+    }
+
+    public getAllTrainers(): Observable<User[]> {
+        return this.http.get("http://localhost:9123/getalltrainers",{headers: this.headers}).map(response => response.json()).catch(this.handleError)
     }
 }
