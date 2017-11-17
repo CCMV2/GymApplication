@@ -76,6 +76,7 @@ public class Controller {
 		return adminService.getWorkoutById(parameter);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping (value = "/addworkout", method = RequestMethod.POST)
 	public Workout addWorkout(@RequestBody Workout workout) {
 		
@@ -93,6 +94,12 @@ public class Controller {
 	public String deleteWorkout(@RequestBody Workout parameter) {
 		adminService.deleteWorkout(parameter);
 		return "Delete successful";
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping (value = "/getalltrainers", method = RequestMethod.GET)
+	public List<User> getAllTrainers () {
+		return adminService.getAllTrainers();
 	}
 	
 }

@@ -1,4 +1,4 @@
-package com.ubb.gymapp.service;
+ package com.ubb.gymapp.service;
 
 import java.util.List;
 
@@ -70,6 +70,11 @@ public class AdminServiceImplementation implements IAdminService {
 	public void deleteWorkout(Workout workout) {
 		workoutRepo.delete(workout);
 		
+	}
+	
+	@Override
+	public List<User> getAllTrainers() {
+		return userRepo.findAllByUserPermission("TRAINER");
 	}
 
 	@Override

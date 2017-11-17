@@ -14,6 +14,8 @@ public interface IAdminService {
 	
 	public List<User> getAllUsers();
 	
+	public List<User> getAllTrainers();
+	
 	public User addUser(User user);
 	
 	public Workout getWorkoutById(Long id);
