@@ -16,5 +16,6 @@ export class User{
       this.phonenumber = phonenumber;
       this.userPermission = userPermission;
     }
+    
   }
   
