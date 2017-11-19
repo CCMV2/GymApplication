@@ -6,6 +6,7 @@ import com.ubb.gymapp.model.Room;
 import com.ubb.gymapp.model.Subscription;
 import com.ubb.gymapp.model.Timetable;
 import com.ubb.gymapp.model.User;
+import com.ubb.gymapp.model.UserWorkout;
 import com.ubb.gymapp.model.Workout;
 
 public interface IAdminService {
@@ -20,9 +21,9 @@ public interface IAdminService {
 	
 	public Workout getWorkoutById(Long id);
 	
-	public List<Workout> getAllWorkouts();
+	public List<UserWorkout> getTrainerWorkouts();
 	
-	public void addWorkout(Workout workout);
+	public void addTrainerWorkout(UserWorkout userWorkout);
 	
 	public void deleteWorkout(Workout workout);
 	

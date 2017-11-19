@@ -1,4 +1,4 @@
- package com.ubb.gymapp.service;
+package com.ubb.gymapp.service;
 
 import java.util.List;
 
@@ -9,28 +9,33 @@ import com.ubb.gymapp.model.Room;
 import com.ubb.gymapp.model.Subscription;
 import com.ubb.gymapp.model.Timetable;
 import com.ubb.gymapp.model.User;
+import com.ubb.gymapp.model.UserWorkout;
 import com.ubb.gymapp.model.Workout;
 import com.ubb.gymapp.repository.RoomRepository;
 import com.ubb.gymapp.repository.SubscriptionRepository;
 import com.ubb.gymapp.repository.TimetableRepository;
 import com.ubb.gymapp.repository.UserRepository;
+import com.ubb.gymapp.repository.UserWorkoutRepository;
 import com.ubb.gymapp.repository.WorkoutRepository;
 
 @Service
 public class AdminServiceImplementation implements IAdminService {
-	
+
 	@Autowired
 	public WorkoutRepository workoutRepo;
-	
+
 	@Autowired
 	public UserRepository userRepo;
-	
+
+	@Autowired
+	public UserWorkoutRepository userWorkoutRepo;
+
 	@Autowired
 	public RoomRepository roomRepo;
-	
+
 	@Autowired
 	public SubscriptionRepository subscriptionRepo;
-	
+
 	@Autowired
 	public TimetableRepository timetableRepo;
 
@@ -53,25 +58,24 @@ public class AdminServiceImplementation implements IAdminService {
 	public Workout getWorkoutById(Long id) {
 		return workoutRepo.findOne(id);
 	}
-	
 
 	@Override
-	public List<Workout> getAllWorkouts() {
-		return workoutRepo.findAll();
+	public List<UserWorkout> getTrainerWorkouts() {
+		return userWorkoutRepo.findAll();
 	}
 
 	@Override
-	public void addWorkout(Workout workout) {
-		workoutRepo.save(workout);
-		
+	public void addTrainerWorkout(UserWorkout userWorkout) {
+		workoutRepo.save(userWorkout.getWorkout());
+		userWorkoutRepo.save(userWorkout);
 	}
 
 	@Override
 	public void deleteWorkout(Workout workout) {
 		workoutRepo.delete(workout);
-		
+
 	}
-	
+
 	@Override
 	public List<User> getAllTrainers() {
 		return userRepo.findAllByUserPermission("TRAINER");
@@ -95,12 +99,12 @@ public class AdminServiceImplementation implements IAdminService {
 	@Override
 	public void addRoom(Room room) {
 		roomRepo.save(room);
-		
+
 	}
 
 	@Override
 	public void deleteRoom(Room room) {
 		roomRepo.delete(room);
 	}
-	
+
 }

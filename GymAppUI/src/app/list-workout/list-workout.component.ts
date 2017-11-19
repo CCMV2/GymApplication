@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Workout } from '../models/workout';
 import { BackendService } from '../backend.service';
+import {TrainerWorkout} from '../models/trainerWorkout'
+//import { User } from '../models/user'
 
 @Component({
   selector: 'app-list-workout',
@@ -11,7 +13,9 @@ export class ListWorkoutComponent implements OnInit {
 
   selectedWorkout: Workout;
 
-  allWorkouts: Workout[];
+  allWorkouts: TrainerWorkout[];
+
+  //trainerList: User[];
 
   constructor(private backendService: BackendService) { }
 

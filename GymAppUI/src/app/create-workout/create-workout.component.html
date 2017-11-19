@@ -1,5 +1,5 @@
 <h1> Create New Workout</h1>
-
+    <div class="form">
         <div>
           <label for="wname">Name: </label>
           <input type="text" name="wname" id="wname" [(ngModel)]="createdWorkoutName"><br>
@@ -19,12 +19,12 @@
         </div>
         <div>
             <label for="trainer">Trainer: </label>
-            <select>
-                <option value="{{createdWorkoutTrainer.name}}" [(ngModel)]="createdWorkoutTrainer" selected hidden>{{createdWorkoutTrainer.name}}</option>
-                <option *ngFor="let trainer of trainerList" value="trainer.name" >{{trainer.name}}</option>
+            <select [(ngModel)]="createdWorkoutTrainer">
+                <option value="null" hidden>Choose a trainer</option>
+                <option *ngFor="let trainer of trainerList" [ngValue]="trainer" >{{trainer.name}}</option>
             </select>
-            {{createdWorkoutTrainer.name}}
         </div>
         <div id = "button">
             <input type="button" value="Add" (click)="addWorkout()">
         </div>
+    </div>

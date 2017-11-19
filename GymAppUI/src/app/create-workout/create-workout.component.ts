@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Workout } from '../models/workout';
-import { BackendService} from '../backend.service'
+import { BackendService } from '../backend.service'
 import { User } from '../models/user';
+import { TrainerWorkout } from '../models/trainerWorkout';
 
 @Component({
   selector: 'app-create-workout',
@@ -14,7 +15,8 @@ export class CreateWorkoutComponent implements OnInit {
   createdWorkoutDifficulty: string = "";
   createdWorkoutDescription: string = "";
 
-  createdWorkoutTrainer: User = new User(0, "", "Choose a trainer", "", "", "", "");
+  initialWorkoutTrainer: User = new User(0, "", "Choose a trainer", "", "", "", "");
+  createdWorkoutTrainer: User = null;
 
   trainerList: User[];
 
@@ -25,11 +27,11 @@ export class CreateWorkoutComponent implements OnInit {
   }
 
   addWorkout() {
-    let createdWorkout: Workout = new Workout(0, this.createdWorkoutName, this.createdWorkoutDifficulty, this.createdWorkoutDescription);
+    let createdWorkout: TrainerWorkout = new TrainerWorkout(new Workout(0, this.createdWorkoutName, this.createdWorkoutDifficulty, this.createdWorkoutDescription), this.createdWorkoutTrainer);
     this.backendService.addWorkout(createdWorkout).subscribe(res => console.log(res));
   }
 
-  getAllTrainers(){
+  getAllTrainers() {
     this.backendService.getAllTrainers().subscribe(res => this.trainerList = res);
   }
 

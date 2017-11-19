@@ -20,11 +20,11 @@
                 Operations
             </th>
         </tr>
-        <tr *ngFor="let workout of allWorkouts" (click)="select(workout)" [class.selected]="workout === selectedWorkout">
-            <td>{{workout.workoutType}}</td>
-            <td>{{workout.difficulty}}</td>
-            <td>Ash Kenigochi</td>
-            <td>{{workout.description}}</td>
+        <tr *ngFor="let trainerworkout of allWorkouts" (click)="select(trainerworkout)" [class.selected]="trainerworkout === selectedWorkout">
+            <td>{{trainerworkout.workout.workoutType}}</td>
+            <td>{{trainerworkout.workout.difficulty}}</td>
+            <td>{{trainerworkout.trainer.name}}</td>
+            <td>{{trainerworkout.workout.description}}</td>
             <td>
                 <input type="button" value="Delete" (click)="delete()">
             </td>
