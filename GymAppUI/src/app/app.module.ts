@@ -21,6 +21,7 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { NavigationPaneComponent } from './navigation-pane/navigation-pane.component';
+import { CreateTimetableComponent } from "./timetable/create-timetable/create-timetable.component";
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { NavigationPaneComponent } from './navigation-pane/navigation-pane.compo
     UpdateUserComponent,
     DeleteUserComponent,
     LoginPageComponent,
+    CreateTimetableComponent,
     NavigationPaneComponent
   ],
   imports: [

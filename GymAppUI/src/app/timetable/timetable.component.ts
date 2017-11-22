@@ -12,4 +12,5 @@ export class TimetableComponent implements OnInit {
   ngOnInit() {
   }
 
+  
 }

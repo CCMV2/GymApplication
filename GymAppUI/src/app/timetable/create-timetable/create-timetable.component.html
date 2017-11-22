@@ -1,0 +1,23 @@
+<div>
+	<h1>Create new timetable</h1>
+	Day: <select>
+		<option>Montag</option>
+		<option>Dienstag</option>
+		<option>Mittwoch</option>
+		<option>Donnerstag</option>
+		<option>Freitag</option>
+		<option>Samstag</option>
+		<option>Sonnntag</option>
+	</select> 
+	<br> Start: <input type="text"> <br> Duration: <input
+		type="text">
+	<br> Room: 
+	
+	<select>
+		<option *ngFor="let item of allRooms"> {{item?.roomName}} </option>
+	</select> 
+	<br> Workout: 
+	<select>
+		<option *ngFor="let item of allWorkouts"> {{item?.workout.workoutType}} </option>
+	</select>
+</div>

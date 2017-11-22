@@ -14,6 +14,7 @@ import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { UserPageComponent } from "./user-page/user-page.component";
+import { CreateTimetableComponent } from "./timetable/create-timetable/create-timetable.component";
 
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -25,6 +26,7 @@ const routes: Routes = [
     { path: 'listsubscription', component: ListSubscriptionComponent },
     { path: 'roompage', component: RoomPageComponent },
     { path: 'timetable', component: TimetableComponent },
+    { path: 'newtimetable', component: CreateTimetableComponent },
     { path: 'createuser', component: CreateUserComponent},
     { path: 'deleteuser', component: DeleteUserComponent},
     { path: 'login', component: LoginPageComponent},

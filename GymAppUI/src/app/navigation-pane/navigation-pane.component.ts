@@ -22,6 +22,7 @@ export class NavigationPaneComponent implements OnInit {
     { active: false, url: "createsubscription", text: "New Subscription" },
     { active: false, url: "listsubscription", text: "Subscriptions" },
     { active: false, url: "timetable", text: "Timetable" },
+    { active: false, url: "newtimetable", text: "New Timetable" },
     { active: false, url: "createuser", text: "New User" },
     { active: false, url: "deleteuser", text: "Delete User" },
     { active: false, url: "updateuser", text: "Update User" }

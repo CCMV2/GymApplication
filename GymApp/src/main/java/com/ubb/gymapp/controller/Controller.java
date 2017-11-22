@@ -67,7 +67,7 @@ public class Controller {
 	public Subscription addSubscription(@RequestBody Subscription subscription){
 		return adminService.addSubscription(subscription);
 	}
-	@RequestMapping(value="/listsubscription",method = RequestMethod.POST)
+	@RequestMapping(value="/deletesubscription",method = RequestMethod.POST)
 	public String deleteSubscription(@RequestBody Subscription subscription){
 		try {
 			adminService.deleteSubscription(subscription);
@@ -75,8 +75,6 @@ public class Controller {
 		} catch (Exception e) {
 			return "Failed: " + e.getMessage();
 		}
-		
-		
 	}
 	
 
