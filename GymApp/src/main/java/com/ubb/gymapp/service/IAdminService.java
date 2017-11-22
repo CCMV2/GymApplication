@@ -25,11 +25,21 @@ public interface IAdminService {
 	
 	public void addTrainerWorkout(UserWorkout userWorkout);
 	
+	public Subscription addSubscription(Subscription subscription);
+	
+	public Subscription getSubscriptionById(Long id);
+	
+	public List<Subscription> findAllSubscriptions();
+	
+	public 	void deleteSubscription(Subscription subscription);
+	
+	
+	
 	public void deleteWorkout(Workout workout);
 	
 	public Timetable getTimetableById(Long id);
 	
-	public Subscription getSubscriptionById(Long id);
+	
 	
 	public List<Room> getAllRooms();
 	

@@ -58,10 +58,27 @@ public class Controller {
 		return adminService.addUser(user);
 	}
 
-	@RequestMapping(value = "/getsubscription", method = RequestMethod.POST)
-	public Subscription findOneSubscription(@RequestBody Long parameter) {
-		return adminService.getSubscriptionById(parameter);
+	@RequestMapping(value = "/listsubscription", method = RequestMethod.POST)
+	public List<Subscription> findAllSubscriptions() {
+		return adminService.findAllSubscriptions();
 	}
+	
+	@RequestMapping(value="/createsubscription", method = RequestMethod.POST)
+	public Subscription addSubscription(@RequestBody Subscription subscription){
+		return adminService.addSubscription(subscription);
+	}
+	@RequestMapping(value="/listsubscription",method = RequestMethod.POST)
+	public String deleteSubscription(@RequestBody Subscription subscription){
+		try {
+			adminService.deleteSubscription(subscription);
+			return "Successful";
+		} catch (Exception e) {
+			return "Failed: " + e.getMessage();
+		}
+		
+		
+	}
+	
 
 	@RequestMapping(value = "/gettimetable", method = RequestMethod.POST)
 	public Timetable findOneTimetable(@RequestBody Long parameter) {

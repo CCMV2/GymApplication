@@ -107,4 +107,24 @@ public class AdminServiceImplementation implements IAdminService {
 		roomRepo.delete(room);
 	}
 
+	@Override
+	public Subscription addSubscription(Subscription subscription) {
+		return subscriptionRepo.save(subscription);
+		
+	}
+
+	@Override
+	public List<Subscription> findAllSubscriptions() {
+		return subscriptionRepo.findAll();
+	}
+
+	@Override
+	public void deleteSubscription(Subscription subscription) {
+		subscriptionRepo.delete(subscription);
+	}
+
+
 }
+
+
+
