@@ -123,6 +123,24 @@ public class AdminServiceImplementation implements IAdminService {
 		subscriptionRepo.delete(subscription);
 	}
 
+	@Override
+	public void addTimeTable(Timetable timetable) {
+		timetableRepo.save(timetable);
+		
+	}
+
+	@Override
+	public void updateTimeTable(Timetable timetable) {
+		timetableRepo.save(timetable);
+		
+	}
+
+	@Override
+	public void deleteTimeTable(Timetable timetable) {
+		timetableRepo.delete(timetable);
+		
+	}
+
 
 }
 
