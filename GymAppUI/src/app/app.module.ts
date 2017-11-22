@@ -12,8 +12,8 @@ import { ListSubscriptionComponent } from './list-subscription/list-subscription
 import { RoomPageComponent } from './room-page/room-page.component';;
 import { FormsModule } from '@angular/forms';
 import { UserPageComponent } from './user-page/user-page.component';
-import {BackendService} from './backend.service';
-import {HttpModule } from "@angular/http";
+import { BackendService } from './backend.service';
+import { HttpModule } from "@angular/http";
 //import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TimetableComponent } from './timetable/timetable.component';
 import { CreateUserComponent } from './create-user/create-user.component';
@@ -41,7 +41,7 @@ import { NavigationPaneComponent } from './navigation-pane/navigation-pane.compo
     NavigationPaneComponent
   ],
   imports: [
-    HttpModule ,
+    HttpModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

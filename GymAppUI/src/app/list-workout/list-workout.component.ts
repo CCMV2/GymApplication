@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Workout } from '../models/workout';
 import { BackendService } from '../backend.service';
-import {TrainerWorkout} from '../models/trainerWorkout'
+import { TrainerWorkout } from '../models/trainer-workout'
 //import { User } from '../models/user'
 
 @Component({
@@ -37,7 +37,7 @@ export class ListWorkoutComponent implements OnInit {
     this.backendService.deleteWorkout(this.selectedWorkout).subscribe(res => {
       console.log(res); this.getAllWorkouts(); this.selectedWorkout = null
     })
-    
+
     console.log(this.allWorkouts);
   }
 }

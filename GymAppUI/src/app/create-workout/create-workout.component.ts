@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Workout } from '../models/workout';
 import { BackendService } from '../backend.service'
 import { User } from '../models/user';
-import { TrainerWorkout } from '../models/trainerWorkout';
+import { TrainerWorkout } from '../models/trainer-workout';
 
 @Component({
   selector: 'app-create-workout',
