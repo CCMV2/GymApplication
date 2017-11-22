@@ -3,6 +3,7 @@ import {Observable} from "rxjs/Observable";
 import {Room} from "./models/room";
 import {TrainerWorkout} from "./models/trainer-workout";
 import {Workout} from "./models/workout";
+import {Subscription} from "./models/Subscription";
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch'
 import { Injectable } from '@angular/core';
@@ -25,6 +26,15 @@ export class BackendService {
 
     public deleteRoom(room: Room): Observable<any> {
         return this.http.post("http://localhost:9123/deleteroom",room,{headers: this.headers}).map(response => response.json()).catch(this.handleError)
+    }
+    public addSubscription(subscription :Subscription): Observable<any>{
+        return this.http.post("http://localhost:9123/createsubscription",subscription,{headers: this.headers}).map(response => response.json()).catch(this.handleError)
+    }
+    public findAllSubscriptions():Observable<Subscription[]>{
+        return this.http.get("http://localhost:9123/listsubscription",{headers: this.headers}).map(response => response.json()).catch(this.handleError)
+    }
+    public deleteSubscription(subscription: Subscription) :Observable<any>{
+        return this.http.post("http://localhost:9123/listsubscription",{headers:this.headers}).map(response => response.json()).catch(this.handleError)
     }
 
     private handleError(error: any): Observable<any>{
@@ -52,4 +62,6 @@ export class BackendService {
     public getAllTrainers(): Observable<User[]> {
         return this.http.get("http://localhost:9123/getalltrainers",{headers: this.headers}).map(response => response.json()).catch(this.handleError)
     }
+
+
 }

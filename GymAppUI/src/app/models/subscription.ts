@@ -6,7 +6,8 @@ export class Subscription{
 	duration: number;
 
 
-    constructor(subscriptionId: number,
+    constructor(
+        subscriptionId: number,
         name: string,
         price: number,
         start: Date,
