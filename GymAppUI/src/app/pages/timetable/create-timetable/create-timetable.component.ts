@@ -37,16 +37,16 @@ export class CreateTimetableComponent implements OnInit {
         });
       }
     findRoomByName(name: string ): Room {
-        for (let i in this.allRooms) {
+        for (let i of this.allRooms) {
             if(i.roomName == name)
                 return i;
         }
         return null;
       }
-    
+
     findWorkoutByType(type: string ): TrainerWorkout {
-        for (let i in this.allWorkouts) {
-            if(i.workoutType == type)
+        for (let i of this.allWorkouts) {
+            if(i.workout.workoutType == type)
                 return i;
         }
         return null;
