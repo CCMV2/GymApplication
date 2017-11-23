@@ -22,6 +22,7 @@ import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { NavigationPaneComponent } from './navigation-pane/navigation-pane.component';
 import { CreateTimetableComponent } from "./timetable/create-timetable/create-timetable.component";
+import { SideButtonComponent } from './tool-box/side-button/side-button.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CreateTimetableComponent } from "./timetable/create-timetable/create-ti
     DeleteUserComponent,
     LoginPageComponent,
     CreateTimetableComponent,
-    NavigationPaneComponent
+    NavigationPaneComponent,
+    SideButtonComponent
   ],
   imports: [
     HttpModule,
