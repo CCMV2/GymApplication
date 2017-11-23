@@ -1,0 +1,30 @@
+<h1> Create New Workout</h1>
+    <div class="form">
+        <div>
+          <label for="wname">Name: </label>
+          <input type="text" name="wname" id="wname" [(ngModel)]="createdWorkoutName"><br>
+        </div>
+        <div>
+            <label for="description">Description: </label>
+            <input type="text" name="description" id="description" [(ngModel)]="createdWorkoutDescription"><br>
+        </div>
+        <div>
+            <label for="difficulty">Choose difficulty: </label>
+            <input type="radio" id="easy" name="difficulty" value="EASY" [(ngModel)]="createdWorkoutDifficulty">
+            <label for="easy">EASY</label>
+            <input type="radio" id="medium" name="difficulty" value="MEDIUM" [(ngModel)]="createdWorkoutDifficulty">
+            <label for="medium">MEDIUM</label>
+            <input type="radio" id="hard" name="difficulty" value="HARD" [(ngModel)]="createdWorkoutDifficulty">
+            <label for="hard">HARD</label>
+        </div>
+        <div>
+            <label for="trainer">Trainer: </label>
+            <select [(ngModel)]="createdWorkoutTrainer">
+                <option value="null" hidden>Choose a trainer</option>
+                <option *ngFor="let trainer of trainerList" [ngValue]="trainer" >{{trainer.name}}</option>
+            </select>
+        </div>
+        <div id = "button">
+            <input type="button" value="Add" (click)="addWorkout()">
+        </div>
+    </div>
