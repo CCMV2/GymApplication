@@ -1,6 +1,17 @@
 <div>
-<button class="nav-btn" (click)="activateButtons()">{{Tab.title}}</button>
-<div *ngIf="activated">
-  <button *ngFor="let url of Tab.items" (click)="navigate(url)" class="link-buttons nav-btn">{{url.text}}</button>
-</div>
+  <button class="nav-btn" (click)="activateButtons()">
+      <span>
+      {{Tab.title}}
+      </span>
+    <span [class.glyphicon-chevron-up]="activated"
+          [class.glyphicon-chevron-down]="!activated"
+          class="glyphicon side-glyph">
+      </span>
+  </button>
+  <div *ngIf="activated">
+    <button *ngFor="let url of Tab.items" (click)="navigate(url)" class="link-buttons nav-btn-url">
+      <span class="glyphicon glyphicon-share link-glyph"></span>
+      {{url.text}}
+    </button>
+  </div>
 </div>

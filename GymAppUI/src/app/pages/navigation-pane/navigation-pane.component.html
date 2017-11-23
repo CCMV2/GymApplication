@@ -1,5 +1,20 @@
-<div class="navigation-sidebar">
-  <h3>GymApp Admin</h3>
+<div class="navigation-sidebar" *ngIf="active">
+  <button class="btn btn-primary btn-toggle" (click)="toggleBar()">
+    <span class="glyphicon glyphicon-chevron-left side-glyph"
+    style="float:left;"></span>
+    <span style="font-size:20px">GymApp Admin</span>
+  </button>
   <!--button class="nav-btn" (click)="navigate(url)" [class.nav-btn-active]="url.active">{{url.text}}</button!-->
   <side-button *ngFor="let tab of tabs" [tab]="tab"></side-button>
+</div>
+<div *ngIf="!active">
+  <button class="btn btn-primary btn-toggle-closed-back">
+  </button>
+</div>
+<div *ngIf="!active">
+  <button class="btn btn-primary btn-toggle-closed" (click)="toggleBar()">
+    <span class="glyphicon glyphicon-chevron-right side-glyph-closed"
+          style="float:left;"></span>
+    <span style="font-size:20px"></span>
+  </button>
 </div>

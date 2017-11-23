@@ -19,6 +19,8 @@ class tab {
 })
 export class NavigationPaneComponent implements OnInit {
 
+  active: boolean = false;
+
   tabs: tab[] = [
     {
       title: "User", items: [
@@ -28,16 +30,24 @@ export class NavigationPaneComponent implements OnInit {
     },
     {
       title: "Workout", items: [
-        { active: false, url: "createworkout", text: "New Workout" },
-        { active: false, url: "listworkout", text: "Workouts" }
-      ]
+      { active: false, url: "createworkout", text: "New Workout" },
+      { active: false, url: "listworkout", text: "Workouts" }
+    ]
+    },
+    {
+      title: "Subscription", items: [
+      { active: false, url: "createsubscription", text: "New Subscription" },
+      { active: false, url: "listsubscription", text: "Subscriptions" }
+    ]
+    },
+    {
+      title: "Room", items: [
+      { active: false, url: "roompage", text: "Rooms" }
+    ]
     }
 
-    /*{ active: false, url: "roompage", text: "Rooms" },
-    { active: false, url: "createworkout", text: "New Workout" },
+    /*
     { active: false, url: "updatesubscription", text: "Update Subscription" },
-    { active: false, url: "updateworkout", text: "Update Workout" },
-    { active: false, url: "listworkout", text: "Workouts" },
     { active: false, url: "createsubscription", text: "New Subscription" },
     { active: false, url: "listsubscription", text: "Subscriptions" },
     { active: false, url: "timetable", text: "Timetable" },
@@ -48,6 +58,10 @@ export class NavigationPaneComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  toggleBar(): void {
+    this.active = !this.active;
   }
 
 }
