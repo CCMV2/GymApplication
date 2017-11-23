@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from "../../backend.service";
-import { Room } from "../../models/room";
-import { TrainerWorkout } from "../../models/trainer-workout";
+import {Room} from "../../../models/room";
+import {TrainerWorkout} from "../../../models/trainer-workout";
+import {BackendService} from "../../../backend.service";
+
 
 @Component( {
     selector: 'app-create-timetable',
