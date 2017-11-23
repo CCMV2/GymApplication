@@ -44,12 +44,9 @@ import { ClientPageComponent } from './pages/client-page/client-page.component';
     LoginPageComponent,
     CreateTimetableComponent,
     NavigationPaneComponent,
-<<<<<<< HEAD
-    SideButtonComponent
-=======
+    SideButtonComponent,
     AdminPageComponent,
     ClientPageComponent
->>>>>>> 3dc0b37a719409ccf81569e566aca8d4253d7dfe
   ],
   imports: [
     HttpModule,
