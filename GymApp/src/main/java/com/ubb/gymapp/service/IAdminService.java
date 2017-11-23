@@ -39,6 +39,8 @@ public interface IAdminService {
 	
 	public Timetable getTimetableById(Long id);
 	
+	public List<Timetable> getAllTimetables();
+	
 	public void addTimeTable(Timetable timetable);
 	
 	public void updateTimeTable(Timetable timetable);

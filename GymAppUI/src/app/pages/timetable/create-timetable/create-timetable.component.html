@@ -1,6 +1,6 @@
 <div>
 	<h1>Create new timetable</h1>
-	Day: <select>
+	Day: <select [(ngModel)]="timetableToCreate.day">
 		<option>Montag</option>
 		<option>Dienstag</option>
 		<option>Mittwoch</option>
@@ -9,15 +9,16 @@
 		<option>Samstag</option>
 		<option>Sonnntag</option>
 	</select> 
-	<br> Start: <input type="text"> <br> Duration: <input
-		type="text">
+	<br> Start: <input type="date" [(ngModel)]="timetableToCreate.start"> 
+	<br> Duration: <input type="text" [(ngModel)]="timetableToCreate.duration">
 	<br> Room: 
-	
-	<select>
+	<select [(ngModel)]="timetableToCreate.roomName">
 		<option *ngFor="let item of allRooms"> {{item?.roomName}} </option>
 	</select> 
 	<br> Workout: 
-	<select>
+	<select [(ngModel)]="timetableToCreate.workoutType">
 		<option *ngFor="let item of allWorkouts"> {{item?.workout.workoutType}} </option>
 	</select>
+	<br>
+    <button (click)="addTimetable(item)" >Add</button>
 </div>

@@ -58,14 +58,6 @@ public class Controller {
 		return adminService.addUser(user);
 	}
 
-	
-	
-
-	@RequestMapping(value = "/gettimetable", method = RequestMethod.POST)
-	public Timetable findOneTimetable(@RequestBody Long parameter) {
-		return adminService.getTimetableById(parameter);
-	}
-
 	@RequestMapping(value = "/getworkout", method = RequestMethod.POST)
 	public Workout findOneWorkout(@RequestBody Long parameter) {
 		return adminService.getWorkoutById(parameter);

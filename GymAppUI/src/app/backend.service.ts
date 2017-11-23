@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch'
 import { Injectable } from '@angular/core';
 import { User } from './models/user';
+import { Timetable } from "./models/Timetable";
 
 @Injectable()
 export class BackendService {
@@ -27,6 +28,23 @@ export class BackendService {
     public deleteRoom(room: Room): Observable<any> {
         return this.http.post("http://localhost:9123/deleteroom",room,{headers: this.headers}).map(response => response.json()).catch(this.handleError)
     }
+
+    public getAllTimetables(): Observable<Timetable[]> {
+        return this.http.get("http://localhost:9123/getalltimetables",{headers: this.headers}).map(response => response.json()).catch(this.handleError)
+    }
+
+    public addTimetable(timetable: Timetable): Observable<any> {
+        return this.http.post("http://localhost:9123/addtimetable",timetable,{headers: this.headers}).map(response => response.json()).catch(this.handleError)
+    }
+
+    public deleteTimetable(timetable: Timetable): Observable<any> {
+        return this.http.post("http://localhost:9123/deletetimetable",timetable,{headers: this.headers}).map(response => response.json()).catch(this.handleError)
+    }
+    
+    public updateTimetable(timetable: Timetable): Observable<any> {
+        return this.http.post("http://localhost:9123/updatetimetable",timetable,{headers: this.headers}).map(response => response.json()).catch(this.handleError)
+    }
+    
     public addSubscription(subscription :Subscription): Observable<any>{
         return this.http.post("http://localhost:9123/createsubscription",subscription,{headers: this.headers}).map(response => response.json()).catch(this.handleError)
     }

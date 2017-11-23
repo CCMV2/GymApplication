@@ -80,7 +80,7 @@ public class AdminServiceImplementation implements IAdminService {
 	public List<User> getAllTrainers() {
 		return userRepo.findAllByUserPermission("TRAINER");
 	}
-
+	
 	@Override
 	public Timetable getTimetableById(Long id) {
 		return timetableRepo.findOne(id);
@@ -139,6 +139,12 @@ public class AdminServiceImplementation implements IAdminService {
 	public void deleteTimeTable(Timetable timetable) {
 		timetableRepo.delete(timetable);
 		
+	}
+
+	@Override
+	public List<Timetable> getAllTimetables() {
+		// TODO Auto-generated method stub
+		return timetableRepo.findAll();
 	}
 
 

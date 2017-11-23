@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Timetable } from '../../models/Timetable';
-import { BackendService } from '../../backend.service';
+import { Timetable } from '../models/Timetable';
+import { BackendService } from '../backend.service';
 import { Router } from "@angular/router";
 
 @Component( {
