@@ -3,7 +3,7 @@ import {Observable} from "rxjs/Observable";
 import {Room} from "./models/room";
 import {TrainerWorkout} from "./models/trainer-workout";
 import {Workout} from "./models/workout";
-import {Subscription} from "./models/Subscription";
+import {Subscription} from "./models/subscriptionModel";
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch'
 import { Injectable } from '@angular/core';
@@ -41,11 +41,11 @@ export class BackendService {
         console.error(error);
         return error.message || error;
     }
-    
+
     // public getAllWorkouts(): Observable<Workout[]> {
     //     return this.http.get("http://localhost:9123/getallworkouts",{headers: this.headers}).map(response => response.json()).catch(this.handleError)
     // }
-    
+
     //this actually only returns trainer workouts
     public getAllWorkouts(): Observable<TrainerWorkout[]> {
         return this.http.get("http://localhost:9123/gettrainerworkouts",{headers: this.headers}).map(response => response.json()).catch(this.handleError)

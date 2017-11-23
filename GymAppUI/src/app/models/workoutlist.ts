@@ -1,4 +1,4 @@
-import {Subscription} from "./subscription";
+import {Subscription} from "./subscriptionModel";
 import {Workout} from "./workout";
 
 export class WorkoutList {

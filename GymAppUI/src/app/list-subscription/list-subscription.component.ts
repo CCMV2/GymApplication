@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Subscription} from "../models/subscription";
+import {Subscription} from "../models/subscriptionModel";
 import {WorkoutList} from "../models/workoutlist";
 import {Workout} from "../models/workout";
 
@@ -17,6 +17,8 @@ export class ListSubscriptionComponent implements OnInit {
     new WorkoutList(new Subscription(4, "Test4", 100, new Date(2017, 11, 3), 10), [new Workout(1,"TestType","Very Hard","Test Description")]),
     new WorkoutList(new Subscription(5, "Test5", 100, new Date(2017, 11, 3), 10), [new Workout(1,"TestType","Very Hard","Test Description"),new Workout(1,"TestType","Very Hard","Test Description"),new Workout(1,"TestType","Very Hard","Test Description"),new Workout(1,"TestType","Very Hard","Test Description")])
   ];
+
+  test: {[key:string]: string} = {"key":"value"};
 
   constructor() {
   }
