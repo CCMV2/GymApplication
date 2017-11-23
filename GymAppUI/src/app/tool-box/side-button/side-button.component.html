@@ -1,1 +1,6 @@
-<button class="nav-btn" (click)="navigate(url)" [class.nav-btn-active]="url.active">{{url.text}}</button>
+<div>
+<button class="nav-btn" (click)="activateButtons()">{{Tab.title}}</button>
+<div *ngIf="activated">
+  <button *ngFor="let url of Tab.items" (click)="navigate(url)" class="link-buttons nav-btn">{{url.text}}</button>
+</div>
+</div>

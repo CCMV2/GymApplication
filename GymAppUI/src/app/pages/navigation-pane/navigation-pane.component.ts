@@ -6,6 +6,12 @@ class menuItem {
   text: string;
   active: boolean;
 }
+
+class tab {
+  title: string;
+  items: menuItem[];
+}
+
 @Component({
   selector: 'navigation-pane',
   templateUrl: './navigation-pane.component.html',
@@ -13,8 +19,21 @@ class menuItem {
 })
 export class NavigationPaneComponent implements OnInit {
 
-  urls: menuItem[] = [
-    { active: false, url: "roompage", text: "Rooms" },
+  tabs: tab[] = [
+    {
+      title: "User", items: [
+        { active: false, url: "createuser", text: "New User" },
+        { active: false, url: "listusers", text: "User List" }
+      ]
+    },
+    {
+      title: "Workout", items: [
+        { active: false, url: "createworkout", text: "New Workout" },
+        { active: false, url: "listworkout", text: "Workouts" }
+      ]
+    }
+
+    /*{ active: false, url: "roompage", text: "Rooms" },
     { active: false, url: "createworkout", text: "New Workout" },
     { active: false, url: "updatesubscription", text: "Update Subscription" },
     { active: false, url: "updateworkout", text: "Update Workout" },
@@ -22,23 +41,13 @@ export class NavigationPaneComponent implements OnInit {
     { active: false, url: "createsubscription", text: "New Subscription" },
     { active: false, url: "listsubscription", text: "Subscriptions" },
     { active: false, url: "timetable", text: "Timetable" },
-    { active: false, url: "newtimetable", text: "New Timetable" },
-    { active: false, url: "createuser", text: "New User" },
-    { active: false, url: "deleteuser", text: "Delete User" },
-    { active: false, url: "updateuser", text: "Update User" }
+    { active: false, url: "newtimetable", text: "New Timetable" }*/
+
   ]
 
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    console.log(this.urls);
   }
 
-  navigate(url: menuItem) {
-    for(let i = 0; i < this.urls.length; i++){
-      this.urls[i].active = false;
-    }
-    this.urls[this.urls.indexOf(url)].active = true;
-    this.router.navigate(["/" + url.url]);
-  }
 }
