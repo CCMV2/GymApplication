@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Subscription} from "../models/subscriptionModel";
 import {WorkoutList} from "../models/workoutlist";
 import {Workout} from "../models/workout";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list-subscription',
@@ -20,7 +21,7 @@ export class ListSubscriptionComponent implements OnInit {
 
   test: {[key:string]: string} = {"key":"value"};
 
-  constructor() {
+  constructor(private router:Router) {
   }
 
   ngOnInit() {
@@ -33,5 +34,10 @@ export class ListSubscriptionComponent implements OnInit {
   deleteWorkout(workoutlist,workout): void {
     this.subscriptions[this.subscriptions.indexOf(workoutlist)].workouts.splice(this.subscriptions[this.subscriptions.indexOf(workoutlist)].workouts.indexOf(workout),1);
   }
+  updateSubscription= function () {
+    this.router.navigateByUrl('/updatesubscription');
+  };
+ 
+
 
 }
