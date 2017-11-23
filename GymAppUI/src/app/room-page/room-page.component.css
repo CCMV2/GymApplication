@@ -1,10 +1,13 @@
 .room-table{
     margin-top: 30px;
+    width: 50%!important;
+    margin: 0 auto;
 }
 
 .room-table th{
     background-color: #14305e;
     color: white; 
+    text-align:center;
 }
 
 .room-btn{
