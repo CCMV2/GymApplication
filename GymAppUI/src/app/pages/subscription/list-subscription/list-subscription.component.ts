@@ -3,6 +3,7 @@ import {Subscription} from "../../../models/subscriptionModel";
 import {WorkoutList} from "../../../models/workoutlist";
 import {Workout} from "../../../models/workout";
 import {Router} from '@angular/router';
+import {SessionStorageService} from "ngx-webstorage";
 
 @Component({
   selector: 'app-list-subscription',
@@ -21,7 +22,7 @@ export class ListSubscriptionComponent implements OnInit {
 
   test: {[key:string]: string} = {"key":"value"};
 
-  constructor(private router:Router) {
+  constructor(private router:Router,private session:SessionStorageService) {
   }
 
   ngOnInit() {
@@ -34,7 +35,9 @@ export class ListSubscriptionComponent implements OnInit {
   deleteWorkout(workoutlist,workout): void {
     this.subscriptions[this.subscriptions.indexOf(workoutlist)].workouts.splice(this.subscriptions[this.subscriptions.indexOf(workoutlist)].workouts.indexOf(workout),1);
   }
-  updateSubscription= function () {
+  updateSubscription(entry:WorkoutList):void {
+    this.session.store("subscriptionToUpdate",entry.subscription);
+    
     this.router.navigateByUrl('/updatesubscription');
   };
  

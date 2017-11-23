@@ -25,6 +25,7 @@ import { NavigationPaneComponent } from './pages/navigation-pane/navigation-pane
 import { CreateTimetableComponent } from "./pages/timetable/create-timetable/create-timetable.component";
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { ClientPageComponent } from './pages/client-page/client-page.component';
+import{SessionStorageService} from "ngx-webstorage";
 
 @NgModule({
   declarations: [
@@ -55,7 +56,7 @@ import { ClientPageComponent } from './pages/client-page/client-page.component';
     FormsModule,
     //NgbModule.forRoot()
   ],
-  providers: [BackendService],
+  providers: [BackendService,SessionStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
