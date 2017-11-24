@@ -37,7 +37,7 @@ export class ListSubscriptionComponent implements OnInit {
   }
   updateSubscription(entry:WorkoutList):void {
     this.session.store("subscriptionToUpdate",entry.subscription);
-    
+    this.session.store("workoutsToStore",entry.workouts);
     this.router.navigateByUrl('/updatesubscription');
   };
  
