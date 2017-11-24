@@ -1,4 +1,4 @@
-export class User{
+export class User {
     id: number;
     password: string;
     name: string;
@@ -6,16 +6,15 @@ export class User{
     email: string;
     phonenumber: string;
     userPermission: string;
-  
-    constructor(id: number, password: string, name: string, surname: string, email: string, phonenumber: string, userPermission: string) {
-      this.id = id;
-      this.password = password;
-      this.name = name;
-      this.surname = surname;
-      this.email = email;
-      this.phonenumber = phonenumber;
-      this.userPermission = userPermission;
+
+    constructor( id: number, password: string, name: string, surname: string, email: string, phonenumber: string, userPermission: string ) {
+        this.id = id;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.phonenumber = phonenumber;
+        this.userPermission = userPermission;
     }
-    
-  }
-  
+
+}

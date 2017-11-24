@@ -1,6 +1,7 @@
 package com.ubb.gymapp;
 
 import com.ubb.gymapp.model.Workout;
+import com.ubb.gymapp.model.Workout.Difficulty;
 import com.ubb.gymapp.repository.WorkoutRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +23,7 @@ public class WorkoutTest {
 
     @Test
     public void testAdd() {
-        Workout workout = new Workout("Swimming", "Hard", "You will get wet!");
+        Workout workout = new Workout("Swimming", Difficulty.HARD, "You will get wet!");
         workout = workoutRepo.save(workout);
         assertNotNull(workoutRepo.findOne(workout.getIdWorkout()));
         workoutRepo.delete(workout);
@@ -30,7 +31,7 @@ public class WorkoutTest {
 
     @Test
     public void testFindOne() {
-        Workout workout = new Workout("Swimming", "Hard", "You will get wet!");
+        Workout workout = new Workout("Swimming", Difficulty.HARD, "You will get wet!");
         workout = workoutRepo.save(workout);
         Workout newWorkout = workoutRepo.findOne(workout.getIdWorkout());
         assertEquals(workout, newWorkout);
@@ -39,7 +40,7 @@ public class WorkoutTest {
 
     @Test
     public void testDelete() {
-        Workout workout = new Workout("Swimming", "Hard", "You will get wet!");
+        Workout workout = new Workout("Swimming", Difficulty.HARD, "You will get wet!");
         workout = workoutRepo.save(workout);
         workoutRepo.delete(workout);
         assertNull(workoutRepo.findOne(workout.getIdWorkout()));
@@ -47,9 +48,9 @@ public class WorkoutTest {
 
     @Test
     public void testFindAll() {
-        Workout workout1 = new Workout("Swimming", "Hard", "You will get wet!");
-        Workout workout2 = new Workout("Yoga", "Eassy", "You will fall asleep!");
-        Workout workout3 = new Workout("Tennis", "Medium", "You will scream like Sharapova!");
+        Workout workout1 = new Workout("Swimming", Difficulty.HARD, "You will get wet!");
+        Workout workout2 = new Workout("Yoga", Difficulty.EASY, "You will fall asleep!");
+        Workout workout3 = new Workout("Tennis", Difficulty.MEDIUM, "You will scream like Sharapova!");
         workout1 = workoutRepo.save(workout1);
         workout2 = workoutRepo.save(workout2);
         workout3 = workoutRepo.save(workout3);
@@ -62,15 +63,14 @@ public class WorkoutTest {
 
     @Test
     public void testUpdate() {
-        Workout workout = new Workout("Swimming", "Hard", "You will get wet!");
+        Workout workout = new Workout("Swimming", Difficulty.HARD, "You will get wet!");
         workout = workoutRepo.save(workout);
         workout.setWorkoutType("newType");
-        workout.setDifficulty("newDifficulty");
         workout.setDescription("newDescription");
         workoutRepo.save(workout);
         Workout newWorkout = workoutRepo.findOne(workout.getIdWorkout());
         assertEquals(newWorkout.getWorkoutType(), "newType");
-        assertEquals(newWorkout.getDifficulty(), "newDifficulty");
+        assertEquals(newWorkout.getDifficulty(), Difficulty.HARD);
         assertEquals(newWorkout.getDescription(), "newDescription");
         workoutRepo.delete(workout);
     }

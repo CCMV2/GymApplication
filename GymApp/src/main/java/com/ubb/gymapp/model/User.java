@@ -1,9 +1,13 @@
 package com.ubb.gymapp.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,10 +15,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-@Table (name="user")
-public class User implements Serializable{
+@Table(name = "user")
+public class User implements Serializable, UserDetails {
 	/**
 	 * 
 	 */
@@ -25,30 +33,30 @@ public class User implements Serializable{
 	private String surname;
 	private String email;
 	private String phonenumber;
-	private String userPermission;
 	private Subscription subscription;
-	
+	private UserType userType;
+
 	public enum UserType {
 		ADMIN, TRAINER, CLIENT
 	};
 
-	public User(String password, String name, String surname, String email, String phonenumber, String userType,
+	public User(String password, String name, String surname, String email, String phonenumber, UserType userType,
 			Subscription pass) {
 		this.password = password;
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
 		this.phonenumber = phonenumber;
-		this.userPermission = userType;
+		this.userType = userType;
 		this.subscription = pass;
 	}
-	
+
 	public User() {
 	}
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column (name = "idUser", unique = true, nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idUser", unique = true, nullable = false)
 	public Long getId() {
 		return id;
 	}
@@ -56,8 +64,8 @@ public class User implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	@Column (name = "Passw")
+
+	@Column(name = "Passw")
 	public String getPassword() {
 		return password;
 	}
@@ -65,8 +73,8 @@ public class User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	@Column (name = "Name")
+
+	@Column(name = "Name")
 	public String getName() {
 		return name;
 	}
@@ -74,8 +82,8 @@ public class User implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	@Column (name = "Surname")
+
+	@Column(name = "Surname")
 	public String getSurname() {
 		return surname;
 	}
@@ -83,8 +91,8 @@ public class User implements Serializable{
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	
-	@Column (name = "Email")
+
+	@Column(name = "Email")
 	public String getEmail() {
 		return email;
 	}
@@ -92,7 +100,8 @@ public class User implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	@Column (name = "PhoneNr")
+
+	@Column(name = "PhoneNr")
 	public String getPhonenumber() {
 		return phonenumber;
 	}
@@ -100,18 +109,19 @@ public class User implements Serializable{
 	public void setPhonenumber(String phonenumber) {
 		this.phonenumber = phonenumber;
 	}
-	
-	@Column (name = "Type")
-	public String getUserPermission() {
-		return userPermission;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "Type")
+	public UserType getUserType() {
+		return userType;
 	}
 
-	public void setUserPermission(String type) {
-		this.userPermission = type;
+	public void setUserType(UserType type) {
+		this.userType = type;
 	}
-	
-	@ManyToOne (fetch = FetchType.LAZY)
-	@JoinColumn (name = "idSubscription")
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idSubscription")
 	public Subscription getPass() {
 		return subscription;
 	}
@@ -119,8 +129,6 @@ public class User implements Serializable{
 	public void setPass(Subscription pass) {
 		this.subscription = pass;
 	}
-	
-	
 
 	@Override
 	public int hashCode() {
@@ -133,7 +141,7 @@ public class User implements Serializable{
 		result = prime * result + ((phonenumber == null) ? 0 : phonenumber.hashCode());
 		result = prime * result + ((subscription == null) ? 0 : subscription.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
-		result = prime * result + ((userPermission == null) ? 0 : userPermission.hashCode());
+		result = prime * result + ((userType == null) ? 0 : userType.hashCode());
 		return result;
 	}
 
@@ -181,10 +189,10 @@ public class User implements Serializable{
 				return false;
 		} else if (!surname.equals(other.surname))
 			return false;
-		if (userPermission == null) {
-			if (other.userPermission != null)
+		if (userType == null) {
+			if (other.userType != null)
 				return false;
-		} else if (!userPermission.equals(other.userPermission))
+		} else if (!userType.equals(other.userType))
 			return false;
 		return true;
 	}
@@ -192,9 +200,56 @@ public class User implements Serializable{
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", password=" + password + ", name=" + name + ", surname=" + surname + ", email="
-				+ email + ", phonenumber=" + phonenumber + ", userPermission=" + userPermission + ", subscription="
+				+ email + ", phonenumber=" + phonenumber + ", userType=" + userType.toString() + ", subscription="
 				+ subscription + "]";
 	}
-	
-	
+
+	@Override
+	@Transient
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		GrantedAuthority authority = new GrantedAuthority() {
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public String getAuthority() {
+				return userType.toString();
+			}
+		};
+		return Arrays.asList(new GrantedAuthority[] { authority });
+	}
+
+	@Override
+	@Transient
+	public String getUsername() {
+		return email;
+	}
+
+	@Override
+	@Transient
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	@Transient
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	@Transient
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	@Transient
+	public boolean isEnabled() {
+		return true;
+	}
+
 }

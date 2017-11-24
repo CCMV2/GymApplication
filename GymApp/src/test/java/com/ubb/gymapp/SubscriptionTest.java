@@ -65,17 +65,19 @@ public class SubscriptionTest {
 		Subscription s2 = new Subscription("testAbo2",700.0);
 		Subscription s3 = new Subscription("testAbo3",840.0);
 		Subscription s4 = new Subscription("testAbo4",1000.0);
+		long currentSubscriptions = subscriptionRepo.count();
 		
 		s1 = subscriptionRepo.save(s1);
 		s2 = subscriptionRepo.save(s2);
 		s3 = subscriptionRepo.save(s3);
 		s4 = subscriptionRepo.save(s4);
 		
+		currentSubscriptions +=4;
 		List<Subscription> dbSubscriptions = subscriptionRepo.findAll();
 		
 
 		assertNotNull(dbSubscriptions);
-		assertEquals(dbSubscriptions.size(),4);
+		assertEquals(dbSubscriptions.size(), currentSubscriptions);
 		
 		subscriptionRepo.delete(s1);
 		subscriptionRepo.delete(s2);

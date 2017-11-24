@@ -1,6 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="row page-container">
-    <navigation-pane class="col-md-2"></navigation-pane>
-    <div class="page col-md-10" style="margin-right: 0px"><router-outlet></router-outlet></div>
+    <navigation-pane class="col-md-2"  *ngIf="authenticationService.isLoggedIn()"></navigation-pane>
+    <div class="page col-md-8" style="margin-right: 0px"><router-outlet></router-outlet></div>    
+    <app-header class="col-md-2"  *ngIf="authenticationService.isLoggedIn()"></app-header>
 </div>
 

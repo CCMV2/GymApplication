@@ -1,11 +1,12 @@
 package com.ubb.gymapp.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,8 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "workout")
-public class Workout implements Serializable{
+@Table(name = "workout")
+public class Workout implements Serializable {
 
 	/**
 	 * 
@@ -23,33 +24,30 @@ public class Workout implements Serializable{
 	private static final long serialVersionUID = 5485075350217272508L;
 	private Long idWorkout;
 	private String workoutType;
-	private String difficulty;
+	private Difficulty difficulty;
 	private String description;
-	private List<Timetable> timetables;
 
-	public enum Difficulties {
+	public enum Difficulty {
 		EASY, MEDIUM, HARD
 	};
 
 	public Workout() {
 	}
-	
-	public Workout(String workoutType, String difficulty, String description) {
+
+	public Workout(String workoutType, Difficulty difficulty, String description) {
 		this.workoutType = workoutType;
 		this.difficulty = difficulty;
 		this.description = description;
 	}
 
-	
-	
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column (name = "idWorkout", unique = true, nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idWorkout", unique = true, nullable = false)
 	public Long getIdWorkout() {
 		return idWorkout;
 	}
-	
-	@Column (name = "WorkoutType")
+
+	@Column(name = "WorkoutType")
 	public String getWorkoutType() {
 		return workoutType;
 	}
@@ -62,16 +60,17 @@ public class Workout implements Serializable{
 		this.workoutType = workoutType;
 	}
 
-	@Column (name = "Difficulty")
-	public String getDifficulty() {
+	@Enumerated(EnumType.STRING)
+	@Column(name = "Difficulty")
+	public Difficulty getDifficulty() {
 		return difficulty;
 	}
 
-	public void setDifficulty(String difficulty) {
+	public void setDifficulty(Difficulty difficulty) {
 		this.difficulty = difficulty;
 	}
 
-	@Column (name = "Descr")
+	@Column(name = "Descr")
 	public String getDescription() {
 		return description;
 	}
@@ -80,15 +79,7 @@ public class Workout implements Serializable{
 		this.description = description;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY,mappedBy="workout",cascade = CascadeType.PERSIST)
-	public List<Timetable> getTimetables() {
-		return timetables;
-	}
-
-	public void setTimetables(List<Timetable> timetables) {
-		this.timetables = timetables;
-	}
-
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "workout", cascade = CascadeType.PERSIST)
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -137,7 +128,5 @@ public class Workout implements Serializable{
 		return "Workout [workoutId=" + idWorkout + ", workoutType=" + workoutType + ", difficulty=" + difficulty
 				+ ", description=" + description + "]";
 	}
-
-	
 
 }

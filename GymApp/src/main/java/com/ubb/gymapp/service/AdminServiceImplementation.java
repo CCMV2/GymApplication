@@ -3,6 +3,8 @@ package com.ubb.gymapp.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ubb.gymapp.model.Room;
@@ -11,6 +13,7 @@ import com.ubb.gymapp.model.Timetable;
 import com.ubb.gymapp.model.User;
 import com.ubb.gymapp.model.UserWorkout;
 import com.ubb.gymapp.model.Workout;
+import com.ubb.gymapp.model.User.UserType;
 import com.ubb.gymapp.repository.RoomRepository;
 import com.ubb.gymapp.repository.SubscriptionRepository;
 import com.ubb.gymapp.repository.TimetableRepository;
@@ -51,6 +54,9 @@ public class AdminServiceImplementation implements IAdminService {
 
 	@Override
 	public User addUser(User user) {
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = passwordEncoder.encode(user.getPassword());
+		user.setPassword(hashedPassword);
 		return userRepo.save(user);
 	}
 
@@ -78,7 +84,7 @@ public class AdminServiceImplementation implements IAdminService {
 
 	@Override
 	public List<User> getAllTrainers() {
-		return userRepo.findAllByUserPermission("TRAINER");
+		return userRepo.findAllByUserType(UserType.TRAINER);
 	}
 	
 	@Override

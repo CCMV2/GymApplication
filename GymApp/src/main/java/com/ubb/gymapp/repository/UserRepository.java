@@ -5,9 +5,10 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.ubb.gymapp.model.User;
+import com.ubb.gymapp.model.User.UserType;
 
 public interface UserRepository extends JpaRepository<User, Long>{
 	
-	public List<User> findAllByUserPermission(String userPermission);
+	public List<User> findAllByUserType(UserType userType);
 	
 }

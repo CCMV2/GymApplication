@@ -28,11 +28,15 @@ public class TimeTableController {
 		return adminService.getAllTimetables();
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/addtimetable", method = RequestMethod.POST)
 	public String addTimeTable(@RequestBody Timetable parameter) {
-		adminService.addTimeTable(parameter);
-		return "Save successful";
+		try {
+			adminService.addTimeTable(parameter);
+			return "The timetable has been saved!";
+		} catch (Exception e) {
+			return "Failed: " + e.getMessage();
+		}
+
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")

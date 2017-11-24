@@ -1,6 +1,6 @@
-import { Room } from "./room";
-import { Workout } from "./workout";
-import { TrainerWorkout } from "./trainer-workout";
+import { Room } from './room';
+import { Workout } from './workout';
+import { TrainerWorkout } from './trainer-workout';
 
 export class Timetable {
       id: number;
@@ -20,11 +20,11 @@ export class Timetable {
         this.roomName = roomName;
         this.workoutType = workoutType;
     }
-    
-    setRoom(room: Room): void{
+
+    setRoom(room: Room): void {
         this.room = room;
     }
-    setWorkout(workout: TrainerWorkout): void{
+    setWorkout(workout: TrainerWorkout): void {
         this.workout = workout.workout;
     }
 }

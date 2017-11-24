@@ -1,5 +1,8 @@
 <div>
 	<h1>Create new timetable</h1>
+	<div class="message" *ngIf="message.length > 0">
+    	<b>{{message}}</b>
+    </div>
 	Day: <select [(ngModel)]="timetableToCreate.day">
 		<option>Montag</option>
 		<option>Dienstag</option>
@@ -13,12 +16,12 @@
 	<br> Duration: <input type="text" [(ngModel)]="timetableToCreate.duration">
 	<br> Room: 
 	<select [(ngModel)]="timetableToCreate.roomName">
-		<option *ngFor="let item of allRooms"> {{item?.roomName}} </option>
+		<option *ngFor="let item of allRooms" value="{{item?.roomName}}"> {{item?.roomName}} </option>
 	</select> 
 	<br> Workout: 
 	<select [(ngModel)]="timetableToCreate.workoutType">
-		<option *ngFor="let item of allWorkouts"> {{item?.workout.workoutType}} </option>
+		<option *ngFor="let item of allWorkouts" value="{{item?.workout.workoutType}}"> {{item?.workout.workoutType}} </option>
 	</select>
 	<br>
-    <button (click)="addTimetable(item)" >Add</button>
+    <button (click)="addTimetable()">Add</button>
 </div>

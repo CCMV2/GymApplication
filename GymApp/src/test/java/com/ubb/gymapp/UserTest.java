@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.ubb.gymapp.model.User;
+import com.ubb.gymapp.model.User.UserType;
 import com.ubb.gymapp.repository.UserRepository;
 
 @RunWith(SpringRunner.class)
@@ -24,7 +25,7 @@ public class UserTest {
 	
 	@Test
 	public void addUser() {
-		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
 		user = userRepo.save(user);
 		User user1 = userRepo.findOne(user.getId());
 		assertNotNull(user1.getId());
@@ -35,7 +36,7 @@ public class UserTest {
 	
 	@Test
 	public void deleteUser(){
-		User newUser = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		User newUser = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
 		newUser = userRepo.save(newUser);
 		userRepo.delete(newUser.getId());
 		assertNull(userRepo.findOne(newUser.getId()));
@@ -43,7 +44,7 @@ public class UserTest {
 	
 	@Test
 	public void testFindUserById(){
-		User newUser = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		User newUser = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
 		User dbUser = userRepo.save(newUser);
 		User user = userRepo.findOne(dbUser.getId());
 		assertNotNull(user);
@@ -52,7 +53,7 @@ public class UserTest {
 	
 	@Test
 	public void testGetAllUsers(){
-		User newUser = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		User newUser = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
 		newUser = userRepo.save(newUser);
 		List<User> listOfUsers = userRepo.findAll();
 		assertNotNull(listOfUsers);
@@ -61,7 +62,7 @@ public class UserTest {
 	
 	@Test
 	public void testUpdateUsers(){
-		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
 		user = userRepo.save(user);
 		user.setName("test");
 		userRepo.save(user);
@@ -70,5 +71,6 @@ public class UserTest {
 		userRepo.delete(user.getId());
 	}
 	
-
+	//TODO add test for findAllByUserType
+	
 }

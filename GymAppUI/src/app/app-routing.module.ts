@@ -13,33 +13,33 @@ import {CreateUserComponent} from './pages/user/create-user/create-user.componen
 import {DeleteUserComponent} from './pages/user/delete-user/delete-user.component';
 import {LoginPageComponent} from './pages/login-page/login-page.component';
 import {UpdateUserComponent} from './pages/user/update-user/update-user.component';
-import {UserPageComponent} from "./pages/user/user-page/user-page.component";
-import {CreateTimetableComponent} from "./pages/timetable/create-timetable/create-timetable.component";
-import {AdminPageComponent} from "./pages/admin-page/admin-page.component";
+import {UserPageComponent} from './pages/user/user-page/user-page.component';
+import { HomeComponent } from './pages/home/home/home.component';
+import {CreateTimetableComponent} from './pages/timetable/create-timetable/create-timetable.component';
+import {AdminPageComponent} from './pages/admin-page/admin-page.component';
+import { AuthGuardGuard } from './services/auth-guard.guard';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
-  {path: 'admin-page', component: AdminPageComponent},
-  {path: 'createworkout', component: CreateWorkoutComponent},
-  {path: 'updatesubscription', component: UpdateSubscriptionComponent},
-  {path: 'updateworkout', component: UpdateWorkoutComponent},
-  {path: 'listworkout', component: ListWorkoutComponent},
-  {path: 'createsubscription', component: CreateSubscriptionComponent},
-  {path: 'listsubscription', component: ListSubscriptionComponent},
-  {path: 'roompage', component: RoomPageComponent},
-  {path: 'timetable', component: TimetableComponent},
-  {path: 'newtimetable', component: CreateTimetableComponent},
-  {path: 'createuser', component: CreateUserComponent},
-  {path: 'deleteuser', component: DeleteUserComponent},
-  {path: 'login', component: LoginPageComponent},
-  {path: 'updateuser', component: UpdateUserComponent},
-  {path: 'listusers', component: UserPageComponent}
-
+    { path: '', component: HomeComponent, canActivate: [AuthGuardGuard] },
+    { path: 'admin-page', component: AdminPageComponent},
+    { path: 'createworkout', component: CreateWorkoutComponent, canActivate: [AuthGuardGuard] },
+    { path: 'updatesubscription', component: UpdateSubscriptionComponent, canActivate: [AuthGuardGuard] },
+    { path: 'updateworkout', component: UpdateWorkoutComponent, canActivate: [AuthGuardGuard]},
+    { path: 'listworkout', component: ListWorkoutComponent, canActivate: [AuthGuardGuard]},
+    { path: 'createsubscription', component: CreateSubscriptionComponent, canActivate: [AuthGuardGuard] },
+    { path: 'listsubscription', component: ListSubscriptionComponent, canActivate: [AuthGuardGuard] },
+    { path: 'roompage', component: RoomPageComponent, canActivate: [AuthGuardGuard] },
+    { path: 'timetable', component: TimetableComponent, canActivate: [AuthGuardGuard] },
+    { path: 'newtimetable', component: CreateTimetableComponent, canActivate: [AuthGuardGuard] },
+	{ path: 'createuser', component: CreateUserComponent, canActivate: [AuthGuardGuard]},
+    { path: 'deleteuser', component: DeleteUserComponent, canActivate: [AuthGuardGuard]},
+    { path: 'login', component: LoginPageComponent},
+    { path: 'updateuser', component: UpdateUserComponent, canActivate: [AuthGuardGuard]},
+    { path: 'listusers', component: UserPageComponent, canActivate: [AuthGuardGuard]}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule { }

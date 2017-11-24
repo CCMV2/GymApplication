@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from "../../../backend.service";
-import { Room } from "../../../models/room";
-import { TrainerWorkout } from "../../../models/trainer-workout";
-import { Timetable } from "../../../models/Timetable";
-import { Workout } from "../../../models/workout";
+import { BackendService } from '../../../backend.service';
+import { Room } from '../../../models/room';
+import { TrainerWorkout } from '../../../models/trainer-workout';
+import { Timetable } from '../../../models/Timetable';
+import { Workout } from '../../../models/workout';
 
 @Component( {
     selector: 'app-create-timetable',
@@ -14,7 +14,8 @@ export class CreateTimetableComponent implements OnInit {
 
     allRooms: Room[] = [];
     allWorkouts: TrainerWorkout[] = [];
-    timetableToCreate: Timetable = new Timetable("Monday", new Date(), 0, "", "");
+    timetableToCreate: Timetable = new Timetable('Montag', new Date(), 0, '', '');
+    message = '';
 
     constructor( private backendService: BackendService ) { }
 
@@ -33,21 +34,23 @@ export class CreateTimetableComponent implements OnInit {
         this.timetableToCreate.setWorkout(workout);
         debugger;
         this.backendService.addTimetable(this.timetableToCreate).subscribe(res => {
-          console.log(res);
+          this.message = res;
         });
       }
     findRoomByName(name: string ): Room {
-        for (let i of this.allRooms) {
-            if(i.roomName == name)
+        for (const i of this.allRooms) {
+            if (i.roomName === name) {
                 return i;
+            }
         }
         return null;
       }
 
     findWorkoutByType(type: string ): TrainerWorkout {
-        for (let i of this.allWorkouts) {
-            if(i.workout.workoutType == type)
+        for (const i of this.allWorkouts) {
+            if (i.workout.workoutType === type) {
                 return i;
+            }
         }
         return null;
       }

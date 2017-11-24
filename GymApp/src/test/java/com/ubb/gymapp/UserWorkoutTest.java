@@ -16,8 +16,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ubb.gymapp.model.User;
+import com.ubb.gymapp.model.User.UserType;
 import com.ubb.gymapp.model.UserWorkout;
 import com.ubb.gymapp.model.Workout;
+import com.ubb.gymapp.model.Workout.Difficulty;
 import com.ubb.gymapp.repository.UserRepository;
 import com.ubb.gymapp.repository.UserWorkoutRepository;
 import com.ubb.gymapp.repository.WorkoutRepository;
@@ -34,8 +36,8 @@ public class UserWorkoutTest {
 	
 	@Test
 	public void testAdd() {
-		Workout workout = new Workout("Test","Test","Test");
-		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		Workout workout = new Workout("Test", Difficulty.EASY,"Test");
+		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
 		workout = workoutRepo.save(workout);
 		user = userRepo.save(user);
 		UserWorkout worklist = new UserWorkout(user,workout);
@@ -49,8 +51,8 @@ public class UserWorkoutTest {
 	@Transactional
 	@Test
 	public void testFindOne(){
-		Workout workout = new Workout("Test","Test","Test");
-		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		Workout workout = new Workout("Test", Difficulty.EASY,"Test");
+		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
 		workout = workoutRepo.save(workout);
 		user = userRepo.save(user);
 		UserWorkout worklist = new UserWorkout(user,workout);
@@ -63,8 +65,8 @@ public class UserWorkoutTest {
 	
 	@Test
 	public void testDelete(){
-		Workout workout = new Workout("Test","Test","Test");
-		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		Workout workout = new Workout("Test", Difficulty.EASY,"Test");
+		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
 		workout = workoutRepo.save(workout);
 		user = userRepo.save(user);
 		UserWorkout worklist = new UserWorkout(user,workout);
@@ -79,10 +81,10 @@ public class UserWorkoutTest {
 	@Transactional
 	@Test
 	public void testFindAll(){
-		Workout workout = new Workout("Test","Test","Test");
-		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
-		User user2 = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
-		User user3 = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		Workout workout = new Workout("Test", Difficulty.EASY, "Test");
+		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
+		User user2 = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
+		User user3 = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
 		workout = workoutRepo.save(workout);
 		user = userRepo.save(user);
 		user2 = userRepo.save(user2);
@@ -108,9 +110,9 @@ public class UserWorkoutTest {
 	@Transactional
 	@Test
 	public void testUpdate(){
-		Workout workout = new Workout("Test","Test","Test");
-		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
-		User user2 = new User("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", null);
+		Workout workout = new Workout("Test", Difficulty.EASY,"Test");
+		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
+		User user2 = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
 		workout = workoutRepo.save(workout);
 		user = userRepo.save(user);
 		UserWorkout worklist = new UserWorkout(user,workout);
