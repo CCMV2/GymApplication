@@ -19,7 +19,7 @@ class tab {
 })
 export class NavigationPaneComponent implements OnInit {
 
-  active: boolean = false;
+  active: boolean = true;
 
   tabs: tab[] = [
     {
@@ -43,6 +43,12 @@ export class NavigationPaneComponent implements OnInit {
     {
       title: "Room", items: [
       { active: false, url: "roompage", text: "Rooms" }
+    ]
+    },
+    {
+      title: "Timetable", items: [
+      { active: false, url: "newtimetable", text: "New Timetable" },
+      { active: false, url: "timetable", text: "Timetable" }
     ]
     }
 
