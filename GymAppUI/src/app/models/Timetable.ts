@@ -12,7 +12,7 @@ export class Timetable {
       workout: Workout;
       roomName: string;
       workoutType: string;
-      time: Time;
+      time: string;
 
 
     constructor(day: string, start: Date, duration: number, roomName: string, workoutType: string) {
