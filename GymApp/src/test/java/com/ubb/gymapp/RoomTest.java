@@ -24,7 +24,7 @@ public class RoomTest {
 	
 	@Test
 	public void testAdd() {
-		Room room = new Room(0L,"TestRoom");
+		Room room = new Room("TestRoom");
 		room = roomRepo.save(room);
 		assertNotNull(roomRepo.findOne(room.getRoomId()));
 		roomRepo.delete(room);
@@ -32,7 +32,7 @@ public class RoomTest {
 	
 	@Test
 	public void testFindOne(){
-		Room room = new Room(0L,"TestRoom");
+		Room room = new Room("TestRoom");
 		room = roomRepo.save(room);
 		Room newRoom = roomRepo.findOne(room.getRoomId());
 		assertEquals(room, newRoom);
@@ -41,7 +41,7 @@ public class RoomTest {
 	
 	@Test
 	public void testDelete(){
-		Room room = new Room(0L,"TestRoom");
+		Room room = new Room("TestRoom");
 		room = roomRepo.save(room);
 		roomRepo.delete(room);
 		assertNull(roomRepo.findOne(room.getRoomId()));
@@ -49,9 +49,9 @@ public class RoomTest {
 	
 	@Test
 	public void testFindAll(){
-		Room room1 = new Room(0L,"TestRoom1");
-		Room room2 = new Room(0L,"TestRoom2");
-		Room room3 = new Room(0L,"TestRoom3");
+		Room room1 = new Room("TestRoom1");
+		Room room2 = new Room("TestRoom2");
+		Room room3 = new Room("TestRoom3");
 		room1 = roomRepo.save(room1);
 		room2 = roomRepo.save(room2);
 		room3 = roomRepo.save(room3);
@@ -64,7 +64,7 @@ public class RoomTest {
 	
 	@Test
 	public void testUpdate(){
-		Room room = new Room(0L,"TestRoom");
+		Room room = new Room("TestRoom");
 		room = roomRepo.save(room);
 		room.setRoomName("newName");
 		roomRepo.save(room);

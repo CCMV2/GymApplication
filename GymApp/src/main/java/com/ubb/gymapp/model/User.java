@@ -40,15 +40,13 @@ public class User implements Serializable, UserDetails {
 		ADMIN, TRAINER, CLIENT
 	};
 
-	public User(String password, String name, String surname, String email, String phonenumber, UserType userType,
-			Subscription pass) {
+	public User(String password, String name, String surname, String email, String phonenumber, UserType userType) {
 		this.password = password;
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
 		this.phonenumber = phonenumber;
 		this.userType = userType;
-		this.subscription = pass;
 	}
 
 	public User() {

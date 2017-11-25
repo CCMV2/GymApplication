@@ -25,7 +25,7 @@ public class UserTest {
 	
 	@Test
 	public void addUser() {
-		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
+		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN);
 		user = userRepo.save(user);
 		User user1 = userRepo.findOne(user.getId());
 		assertNotNull(user1.getId());
@@ -36,7 +36,7 @@ public class UserTest {
 	
 	@Test
 	public void deleteUser(){
-		User newUser = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
+		User newUser = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN);
 		newUser = userRepo.save(newUser);
 		userRepo.delete(newUser.getId());
 		assertNull(userRepo.findOne(newUser.getId()));
@@ -44,7 +44,7 @@ public class UserTest {
 	
 	@Test
 	public void testFindUserById(){
-		User newUser = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
+		User newUser = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN);
 		User dbUser = userRepo.save(newUser);
 		User user = userRepo.findOne(dbUser.getId());
 		assertNotNull(user);
@@ -53,7 +53,7 @@ public class UserTest {
 	
 	@Test
 	public void testGetAllUsers(){
-		User newUser = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
+		User newUser = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN);
 		newUser = userRepo.save(newUser);
 		List<User> listOfUsers = userRepo.findAll();
 		assertNotNull(listOfUsers);
@@ -62,7 +62,7 @@ public class UserTest {
 	
 	@Test
 	public void testUpdateUsers(){
-		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN, null);
+		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN);
 		user = userRepo.save(user);
 		user.setName("test");
 		userRepo.save(user);

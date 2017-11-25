@@ -24,9 +24,8 @@ public class Room implements Serializable {
 	public Room() {
 	}
 
-	public Room(Long roomId, String roomName) {
+	public Room(String roomName) {
 		super();
-		this.roomId = roomId;
 		this.roomName = roomName;
 	}
 
