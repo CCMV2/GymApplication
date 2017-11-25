@@ -24,4 +24,16 @@ public class SubscriptionWorkouts {
 	}
 	
 	
+	public SubscriptionWorkouts(Subscription subscription, List<Workout> workouts) {
+		super();
+		this.subscription = subscription;
+		this.workouts = workouts;
+	}
+	
+	public SubscriptionWorkouts(){
+		
+	}
+	
+	
+	
 }

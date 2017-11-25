@@ -9,6 +9,7 @@ import com.ubb.gymapp.model.Timetable;
 import com.ubb.gymapp.model.User;
 import com.ubb.gymapp.model.UserWorkout;
 import com.ubb.gymapp.model.Workout;
+import com.ubb.gymapp.model.WorkoutList;
 
 public interface IAdminService {
 
@@ -33,6 +34,8 @@ public interface IAdminService {
 	public Subscription getSubscriptionById(Long id);
 	
 	public List<Subscription> findAllSubscriptions();
+	
+	public List<SubscriptionWorkouts> findSubcriptionsAndWorkouts();
 	
 	public 	void deleteSubscription(Subscription subscription);
 	

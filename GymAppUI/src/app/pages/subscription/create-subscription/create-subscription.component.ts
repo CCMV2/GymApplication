@@ -26,9 +26,6 @@ export class CreateSubscriptionComponent implements OnInit {
 
   ngOnInit() {
     this.getWorkouts();
-
-
-
   }
 
   getWorkouts(): void {
@@ -41,15 +38,10 @@ export class CreateSubscriptionComponent implements OnInit {
   addSubscription(): void {
     const name = this.subscriptionToCreate.name;
     const price = this.subscriptionToCreate.price;
-    // const start = this.subscriptionToCreate.start;
     const duration = this.subscriptionToCreate.duration;
     this.subscriptionToCreate.start = new Date();
-    // this.subscriptionToCreate.start.setFullYear();
-    // const day = this.subscriptionToCreate.start.getDate;
-    // const month = this.subscriptionToCreate.start.getMonth;
     this.workoutList.setSubscription(this.subscriptionToCreate);
     this.workoutList.setWorkouts(this.workouts);
-    debugger;
     this.backendService.addSubscription(this.workoutList).subscribe(res => {
       this.message = res;
     })

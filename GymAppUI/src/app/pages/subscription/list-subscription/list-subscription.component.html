@@ -9,7 +9,7 @@
     <th>Duration</th>
     <th>Workouts</th>
   </tr>
-  <tr *ngFor="let entry of subscriptions">
+  <tr *ngFor="let entry of subscriptionAndWorkouts">
     <td>
       {{entry.subscription.name}}
     </td>
@@ -22,7 +22,7 @@
     <td>
       {{entry.subscription.duration}}
     </td>
-    <td>
+    <!-- <td>
       <table class="table table-condensed table-hover">
         <tr>
           <th>
@@ -48,7 +48,7 @@
           <button (click)="deleteWorkout(entry,workout)">Delete</button>
         </tr>
       </table>
-    </td>
+    </td> -->
     <button (click)="delete(entry)">Delete</button>
     <br>
     <br>

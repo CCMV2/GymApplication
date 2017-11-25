@@ -17,9 +17,9 @@ public class SubscriptionController {
 	@Autowired
 	private IAdminService adminService;
 	
-	@RequestMapping(value = "/listsubscription", method = RequestMethod.POST)
-	public List<Subscription> findAllSubscriptions() {
-		return adminService.findAllSubscriptions();
+	@RequestMapping(value = "/listsubscription", method = RequestMethod.GET)
+	public List<SubscriptionWorkouts> findAllSubscriptionsAndItsWorkouts() {
+		return adminService.findSubcriptionsAndWorkouts();
 	}
 	
 	@RequestMapping(value="/createsubscription", method = RequestMethod.POST)
