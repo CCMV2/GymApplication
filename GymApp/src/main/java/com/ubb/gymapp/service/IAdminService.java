@@ -36,7 +36,7 @@ public interface IAdminService {
 	
 	public 	void deleteSubscription(Subscription subscription);
 	
-	
+	public void deleteUser(User user);
 	
 	public void deleteWorkout(Workout workout);
 	

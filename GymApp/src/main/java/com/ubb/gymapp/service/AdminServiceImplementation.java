@@ -140,6 +140,11 @@ public class AdminServiceImplementation implements IAdminService {
 	public void deleteSubscription(Subscription subscription) {
 		subscriptionRepo.delete(subscription);
 	}
+	
+	@Override
+	public void deleteUser(User user){
+		userRepo.delete(user);
+	}
 
 	@Override
 	public void addTimeTable(Timetable timetable) {
