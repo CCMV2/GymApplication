@@ -13,8 +13,8 @@ export class CreateUserComponent implements OnInit {
     createdUserSurname: string="";
     createdUserEmail: string="";
     createdUserPassword: string="";
-    createdUserPhoneNumber: int="";
-    createduserPermission:sting="";
+    createdUserPhoneNumber: string="";
+    createduserPermission:string="";
     
     constructor(private backendService: BackendService) { }
 
