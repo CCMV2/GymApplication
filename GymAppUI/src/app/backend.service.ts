@@ -24,6 +24,18 @@ export class BackendService {
 
     constructor( private http: Http, private authenticationService: AuthenticationService ) { }
 
+    public getAllUsers(): Observable<User[]> {
+        return this.http.get(this.link + 'getallusers', this.options).map( response => response.json() ).catch(this.handleError);
+    }
+
+    public addUser( user: User ): Observable<any> {
+        return this.http.post(this.link + 'adduser', user, this.options).map( response => response.json() ).catch(this.handleError);
+    }
+
+    public deleteUser( user: User ): Observable<any> {
+        return this.http.post(this.link + 'deleteuser', user, this.options).map( response => response.json() ).catch(this.handleError);
+    }
+
     public getAllRooms(): Observable<Room[]> {
         return this.http.get(this.link + 'getallrooms', this.options).map( response => response.json() ).catch(this.handleError);
     }
