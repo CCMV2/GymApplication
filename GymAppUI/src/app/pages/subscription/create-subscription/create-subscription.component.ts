@@ -3,6 +3,7 @@ import {BackendService} from '../../../backend.service';
 import {Workout} from '../../../models/workout';
 import {WorkoutList} from '../../../models/workoutlist';
 import {Subscription} from '../../../models/subscriptionModel';
+import { Subscribable } from 'rxjs/Observable';
 @Component({
   selector: 'app-create-subscription',
   templateUrl: './create-subscription.component.html',
@@ -14,19 +15,47 @@ export class CreateSubscriptionComponent implements OnInit {
   createdSubscriptionPrice: number = 0.0;
   createdSubscriptionStart : Date = null;
   createdSubscriptionDuration : number = null;
+  workouts : Workout[] = [];
+  message = '';
+ 
 
-  createdWorkouts : Workout[];
-
-
-
-
-
+  subscriptionToCreate: Subscription = new Subscription ('', 0, new Date(), 0);
+  workoutList : WorkoutList = new WorkoutList(this.subscriptionToCreate, this.workouts);
 
   constructor(private backendService: BackendService) { }
 
   ngOnInit() {
+    this.getWorkouts();
+
+
 
   }
+
+  getWorkouts(): void {
+    this.backendService.getAllRealWorkouts().subscribe( res => {
+      this.workouts = res;
+      console.log (this.workouts);
+    })
+  }
+
+  addSubscription(): void {
+    const name = this.subscriptionToCreate.name;
+    const price = this.subscriptionToCreate.price;
+    // const start = this.subscriptionToCreate.start;
+    const duration = this.subscriptionToCreate.duration;
+    this.subscriptionToCreate.start = new Date();
+    // this.subscriptionToCreate.start.setFullYear();
+    // const day = this.subscriptionToCreate.start.getDate;
+    // const month = this.subscriptionToCreate.start.getMonth;
+    this.workoutList.setSubscription(this.subscriptionToCreate);
+    this.workoutList.setWorkouts(this.workouts);
+    debugger;
+    this.backendService.addSubscription(this.workoutList).subscribe(res => {
+      this.message = res;
+    })
+    
+  }
+
 
 
 

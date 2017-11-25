@@ -3,42 +3,49 @@
 		<h2>Create New Subscription</h2>
 	</legend>
 	<div class="centered col-sm-7">
+		
 		<form class="form-horizontal">
+				<div class="alert" *ngIf="message.length > 0">
+					<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+					<strong>{{message}}!</strong> 
+				</div>
+
+				<!-- <div class="message" *ngIf="message.length > 0">
+					<b>{{message}}</b>
+				</div> -->
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="name">Subscription name:</label>
 				 <div class="col-sm-9"> 
-				 	<input type="text" name="SubName">
+				 	<input type="text" name="name" [(ngModel)]="subscriptionToCreate.name">
 			 	</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-3"  for="price">Price:</label>
 				 <div class="col-sm-9"> 
-					<input type="number" step="0.01" name="Price" min=0 oninput="validity.valid||(value='');">
+					<input type="number" step="0.01" name="price" [(ngModel)]="subscriptionToCreate.price" min=0 oninput="validity.valid||(value='');">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-3"  for="start">Start Date:</label>
 				 <div class="col-sm-9"> 
-					<input type="date" name="StartDate">
+					<input type="date" name="start" [(ngModel)]="subscriptionToCreate.start">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-3"  for="duration">Duration:</label>
 				 <div class="col-sm-9"> 
-					<input type="number" name="Duration" min=0 oninput="validity.valid||(value='');">
+					<input type="number" name="duration" [(ngModel)]="subscriptionToCreate.duration" min=0 oninput="validity.valid||(value='');">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-3"  for="workouts">Workouts:</label>
 				 <div class="col-sm-9"> 
-					<select name="Workouts" multiple>
-						<option value="Subscription 1">Subscription 1</option>
-						<option value="Subscription 2">Subscription 2</option>
-						<option value="Subscription 3">Subscription 3</option>
+					<select name="workouts" multiple>
+						<option *ngFor="let workout of workouts" value="{{workout.idWorkout}}">{{workout.workoutType}}</option>
 					</select>
 				</div>
 			</div>
-			<button type="submit" class="btn btn-success submit">Submit</button>
+			<button (click)="addSubscription()" class="btn btn-success submit">Add</button>
 		</form>
 	</div>
 </fieldset>

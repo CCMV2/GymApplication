@@ -10,6 +10,7 @@ import { Injectable } from '@angular/core';
 import { User } from './models/user';
 import { Timetable } from './models/Timetable';
 import { AuthenticationService } from './services/authentication.service';
+import { WorkoutList } from './models/workoutlist';
 
 @Injectable()
 export class BackendService {
@@ -51,8 +52,8 @@ export class BackendService {
         return this.http.post(this.link +'updatetimetable', timetable, this.options).map(response => response.json()).catch(this.handleError);
     }
 
-    public addSubscription(subscription: Subscription): Observable<any>{
-        return this.http.post(this.link + 'createsubscription', subscription, this.options).map(response => response.json()).catch(this.handleError);
+    public addSubscription(subscription: WorkoutList): Observable<any>{
+        return this.http.post(this.link + 'createsubscription', subscription, this.options).map(response => response.text()).catch(this.handleError);
 
     }
     public getdAllSubscriptions(): Observable<Subscription[]> {
@@ -74,6 +75,11 @@ export class BackendService {
     //this actually only returns trainer workouts
     public getAllWorkouts(): Observable<TrainerWorkout[]> {
         return this.http.get(this.link + 'gettrainerworkouts', this.options).map( response => response.json() ).catch(this.handleError);
+    }
+
+    // this return the real list of Workouts >:( 
+    public getAllRealWorkouts(): Observable<Workout[]> {
+        return this.http.get(this.link + 'getallworkouts', this.options).map( response => response.json() ).catch(this.handleError);
     }
 
     public addWorkout( trainerWorkout: TrainerWorkout ): Observable<any> {

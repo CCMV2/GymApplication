@@ -9,4 +9,12 @@ export class WorkoutList {
     this.subscription = subscription;
     this.workouts = workouts;
   }
+
+  setWorkouts(workouts: Workout []): void{
+    this.workouts = workouts;
+  }
+
+  setSubscription(subscription: Subscription) : void {
+    this.subscription = subscription;
+  }
 }
