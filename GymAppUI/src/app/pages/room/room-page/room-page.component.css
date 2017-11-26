@@ -1,12 +1,11 @@
 .room-table{
     margin-top: 30px;
-    width: 50%!important;
     margin: 0 auto;
 }
 
 .room-table th{
     background-color: #14305e;
-    color: white; 
+    color: white;
     text-align:center;
 }
 
@@ -15,5 +14,21 @@
 }
 
 .room-table tr.selected tr{
-    background-color: black; 
+    background-color: black;
+}
+
+.create-div {
+  margin-top: 20px;
+}
+
+.room-button {
+  margin-left: 20px;
+}
+
+.create-button {
+  margin-top: 20px;
+}
+
+.room-name {
+  width: 200px;
 }
