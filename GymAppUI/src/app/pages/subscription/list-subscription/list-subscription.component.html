@@ -9,20 +9,24 @@
     <th>Duration</th>
     <th>Workouts</th>
   </tr>
-  <tr *ngFor="let entry of subscriptionAndWorkouts">
+  <tr *ngFor="let entry of subscriptionAndWorkouts.subscription">
     <td>
-      {{entry.subscription.name}}
+      {{entry.name}}
     </td>
     <td>
-      {{entry.subscription.price}}
+    
+    {{entry.price}}
     </td>
     <td>
-      {{entry.subscription.start}}
+     
+     {{entry.start}}
     </td>
     <td>
-      {{entry.subscription.duration}}
+      {{entry.duration}}
     </td>
-    <!-- <td>
+
+  
+    <td>
       <table class="table table-condensed table-hover">
         <tr>
           <th>
@@ -35,25 +39,26 @@
             Difficulty
           </th>
         </tr>
-        <tr *ngFor="let workout of entry.workouts">
+        <tr *ngFor="let workout of subscriptionAndWorkouts.workouts">
           <td>
-            {{workout.description}}
+            {{workout?.description}}
           </td>
           <td>
-            {{workout.workoutType}}
+            {{workout?.workoutType}}
           </td>
           <td>
-            {{workout.difficulty}}
+            {{workout?.difficulty}}
           </td>
           <button (click)="deleteWorkout(entry,workout)">Delete</button>
         </tr>
       </table>
-    </td> -->
+    </td>
+    </tr>
     <button (click)="delete(entry)">Delete</button>
     <br>
     <br>
     <button type="button" class="btn btn-primary-outline pull-right" (click)="updateSubscription(entry)"><i class="fa fa-plus"></i> Update</button>
     
     
-  </tr>
+  
 </table>

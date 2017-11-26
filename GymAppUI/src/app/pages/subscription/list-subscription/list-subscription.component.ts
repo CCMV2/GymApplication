@@ -14,6 +14,7 @@ import {SessionStorageService} from "ngx-webstorage";
 export class ListSubscriptionComponent implements OnInit {
 
   subscriptionAndWorkouts: WorkoutList[] = [];
+  
   subscriptions: Subscription[] = [];
   // test: {[key:string]: string} = {"key":"value"};
 
@@ -36,12 +37,13 @@ getSubscriptionAndWorkouts(): void {
 // }
 
 
-  // delete(entry: WorkoutList): void{
-  //   this.subscriptions.splice(this.subscriptions.indexOf(entry),1);
-  // }
+ // delete(entry: WorkoutList): void{
+    //this.backendService.deleteSubscription
+     //this.subscriptions.splice(this.subscriptions.indexOf(entry),1);
+   //}
 
-  // deleteWorkout(workoutlist,workout): void {
-  //   this.subscriptions[this.subscriptions.indexOf(workoutlist)].workouts.splice(this.subscriptions[this.subscriptions.indexOf(workoutlist)].workouts.indexOf(workout),1);
+  //deleteWorkout(workoutlist,workout): void {
+    // this.subscriptions[this.subscriptions.indexOf(workoutlist)].workouts.splice(this.subscriptions[this.subscriptions.indexOf(workoutlist)].workouts.indexOf(workout),1);
   // }
   updateSubscription(entry:WorkoutList):void {
     this.session.store("subscriptionToUpdate",entry.subscription);
