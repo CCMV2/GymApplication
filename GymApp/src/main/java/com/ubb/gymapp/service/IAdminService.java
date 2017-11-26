@@ -25,6 +25,8 @@ public interface IAdminService {
 	
 	public void addTrainerWorkout(UserWorkout userWorkout);
 	
+	public void updateTrainerWorkout(UserWorkout userWorkout);
+	
 	public Subscription addSubscription(Subscription subscription);
 	
 	public Subscription getSubscriptionById(Long id);
