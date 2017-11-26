@@ -18,6 +18,7 @@ import { HomeComponent } from './pages/home/home/home.component';
 import {CreateTimetableComponent} from './pages/timetable/create-timetable/create-timetable.component';
 import {AdminPageComponent} from './pages/admin-page/admin-page.component';
 import { AuthGuardGuard } from './services/auth-guard.guard';
+import { UpdateTimetableComponent } from "./pages/timetable/update-timetable/update-timetable.component";
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuardGuard] },
@@ -30,6 +31,7 @@ const routes: Routes = [
     { path: 'listsubscription', component: ListSubscriptionComponent, canActivate: [AuthGuardGuard] },
     { path: 'roompage', component: RoomPageComponent, canActivate: [AuthGuardGuard] },
     { path: 'timetable', component: TimetableComponent, canActivate: [AuthGuardGuard] },
+    { path: 'updateTimetable', component: UpdateTimetableComponent, canActivate: [AuthGuardGuard] },
     { path: 'newtimetable', component: CreateTimetableComponent, canActivate: [AuthGuardGuard] },
 	{ path: 'createuser', component: CreateUserComponent, canActivate: [AuthGuardGuard]},
     { path: 'deleteuser', component: DeleteUserComponent, canActivate: [AuthGuardGuard]},

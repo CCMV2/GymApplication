@@ -21,7 +21,6 @@ export class Timetable {
         this.duration = duration;
         this.roomName = roomName;
         this.workoutType = workoutType;
- 
     }
 
     setRoom(room: Room): void {
