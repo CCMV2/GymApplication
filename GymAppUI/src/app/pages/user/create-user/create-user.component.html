@@ -1,5 +1,29 @@
- <div style= " margin: 0 auto;">
- First name: <input type="text" name="fname"><br>
+<fieldset>
+  <legend>
+    <h2>Create New User</h2>
+  </legend>
+<div style= " margin: 0 auto;">
+  First name: <input type="text" name="fname"><br>
   Last name: <input type="text" name="lname"><br>
-  <input type="submit" value="Submit">
+  Password:  <input type="text" name="passw"><br>
+  Email: <input type="text" name="email"><br>
+  PhoneNr: <input type="text" name="phonenr"><br>
+  <!-- Subscription ID: ?? -->
+  <div>
+    <label for="type">Choose Type: </label>
+
+    <input type="radio" id="trainer" name="type" value="TRAINER" [(ngModel)]="createdUserType">
+    <label for="trainer">TRAINER</label>
+
+    <input type="radio" id="client" name="type" value="CLIENT" [(ngModel)]="createdUserType">
+    <label for="client">CLIENT</label>
+
+    <input type="radio" id="admin" name="type" value="ADMIN" [(ngModel)]="createdUserType">
+    <label for="admin">ADMIN</label>
   </div>
+
+  <!--
+  <input type="submit" value="Submit"> -->
+  <input type="button" onclick="alert('User created!')" value="Submit">
+  </div>
+</fieldset>

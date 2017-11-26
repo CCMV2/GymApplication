@@ -1,3 +1,49 @@
-<p>
-  update-user works!
-</p>
+<fieldset>
+  <legend>
+    <h2>Update User</h2>
+  </legend>
+  <div class="centered col-sm-7">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label class="control-label col-sm-3" for="name">Username:</label>
+        <div class="col-sm-9">
+          <input type="text" name="SubName" [(ngModel)]="username">
+        </div>
+      </div>
+
+      <div  class="form-group">
+        <label  class="control-label col-sm-3" for="passw" >Password:</label>
+        <div  class="col-sm-9">
+          <input type="text" name="Password" step="0.01" min=0 oninput="validity.valid||(value='');" [(ngModel)]="password" ><br>
+        </div>
+      </div>
+
+      <div  class="form-group">
+        <label  class="control-label col-sm-3" for="email">Email:</label>
+        <div  class="col-sm-9">
+          <input type="text" name="Email" [(ngModel)]="email">
+        </div>
+      </div>
+      <div  class="form-group">
+        <label  class="control-label col-sm-3" for="phonenr">PhoneNr:</label>
+        <div  class="col-sm-9">
+          <input type="number" name="PhoneNr" min=0 oninput="validity.valid||(value='');" [(ngModel)]="phonenr">
+        </div>
+      </div>
+      <div class="form-group">
+        <label  class="control-label col-sm-3" for="type">Type:</label>
+        <div  class="col-sm-9">
+          <select name="Type" multiple>
+            <option  *ngFor="let type of types " value="type">{{user.type}}</option>
+            <!--option value="saab">Saab</option>
+            <option value="opel">Opel</option>
+            <option value="audi">Audi</option-->
+          </select>
+        </div>
+      </div>
+
+
+      <button type="submit" class="btn btn-success submit">Submit</button>
+    </form>
+  </div>
+</fieldset>
