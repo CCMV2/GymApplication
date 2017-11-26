@@ -14,11 +14,11 @@
 		<tr *ngFor="let item of allTimetables">
 			<td>{{item?.id}}</td>
 			<td>{{item?.day}}</td>
-			<td>{{item?.start}}</td>
+			<td ng-non-bindable>{{item?.start | date:'HH:mm'}}</td>
 			<td>{{item?.duration}}</td>
 			<td>{{item?.room.roomName}}</td>
 			<td>{{item?.workout.workoutType}}</td>
-			<td><button (click)="goToUpdatePage(item.id)" >Update</button></td>
+			<td><button (click)="goToUpdatePage(item)" >Update</button></td>
 			<td><button (click)="deleteTimetable(item)">Delete</button></td>
 		</tr>
 	</table>

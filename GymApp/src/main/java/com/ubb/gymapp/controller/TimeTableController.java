@@ -36,14 +36,17 @@ public class TimeTableController {
 		} catch (Exception e) {
 			return "Failed: " + e.getMessage();
 		}
-
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/updatetimetable", method = RequestMethod.POST)
 	public String updateTimeTable(@RequestBody Timetable parameter) {
-		adminService.updateTimeTable(parameter);
-		return "Update successful";
+		try {
+			adminService.updateTimeTable(parameter);
+			return "Update successful";
+		} catch (Exception e) {
+			return "Failed: " + e.getMessage();
+		}
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200")

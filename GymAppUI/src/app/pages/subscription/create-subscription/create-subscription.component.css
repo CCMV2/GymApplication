@@ -2,5 +2,30 @@
 	margin-left:10%
 }
 .submit{
-	float:right;
+    float:right;
+    margin-right: 150px;
+    background-color: #09a7e6;
+    border-color: #09a7e6;
+}
+
+.alert {
+    padding: 20px;
+    background-color: #09a7e6;
+	color: rgb(0, 0, 0);
+	text-align: center;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+h2{
+    text-indent: 150px;
 }

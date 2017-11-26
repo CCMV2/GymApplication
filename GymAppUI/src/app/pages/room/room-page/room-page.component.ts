@@ -14,6 +14,7 @@ export class RoomPageComponent implements OnInit {
   selectedRoom: Room;
   allRooms: Room[] = [];
   mode: string = "none";
+  updating: boolean = false;
 
   constructor(private backendService: BackendService) { }
 
@@ -41,11 +42,23 @@ export class RoomPageComponent implements OnInit {
     this.selectedRoom = room;
   }
 
-  deleteRoom(): void {
-    this.backendService.deleteRoom(this.selectedRoom).subscribe(res => {
+  setRoomToUpdate(room: Room) {
+    this.roomToUpdate = room;
+    this.updating = true;
+  }
+
+  updateRoom(): void {
+    this.backendService.addRoom(this.roomToUpdate).subscribe( res=> {
       console.log(res);
       this.refreshRooms();
-      this.selectedRoom = undefined;
+    });
+    this.updating = false;
+  }
+
+  deleteRoom(room: Room): void {
+    this.backendService.deleteRoom(room).subscribe(res => {
+      console.log(res);
+      this.refreshRooms();
     })
   }
 

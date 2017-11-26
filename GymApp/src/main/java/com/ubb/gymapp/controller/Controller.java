@@ -56,6 +56,11 @@ public class Controller {
 	public Workout findOneWorkout(@RequestBody Long parameter) {
 		return adminService.getWorkoutById(parameter);
 	}
+	
+	@RequestMapping(value = "/getallworkouts", method = RequestMethod.GET)
+	public List<Workout> getAllWorkouts() {
+		return adminService.getAllWorkouts();
+	}
 
 	@RequestMapping(value = "/addtrainerworkout", method = RequestMethod.POST)
 	public String addWorkout(@RequestBody UserWorkout userWorkout) {

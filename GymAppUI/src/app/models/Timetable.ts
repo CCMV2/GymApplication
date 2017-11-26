@@ -1,6 +1,7 @@
 import { Room } from './room';
 import { Workout } from './workout';
 import { TrainerWorkout } from './trainer-workout';
+import { Time } from "@angular/common/src/common";
 
 export class Timetable {
       id: number;
@@ -11,6 +12,7 @@ export class Timetable {
       workout: Workout;
       roomName: string;
       workoutType: string;
+      time: string;
 
 
     constructor(day: string, start: Date, duration: number, roomName: string, workoutType: string) {

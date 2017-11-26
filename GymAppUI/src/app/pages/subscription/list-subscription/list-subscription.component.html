@@ -9,51 +9,34 @@
     <th>Duration</th>
     <th>Workouts</th>
   </tr>
-  <tr *ngFor="let entry of subscriptions">
-    <td>
-      {{entry.subscription.name}}
-    </td>
-    <td>
-      {{entry.subscription.price}}
-    </td>
-    <td>
-      {{entry.subscription.start}}
-    </td>
-    <td>
-      {{entry.subscription.duration}}
-    </td>
+  <tr *ngFor="let entry of subscriptionAndWorkouts">
+    <td>{{entry?.subscription.name}} </td>
+    <td>{{entry?.subscription.price}} LEI</td>
+    <td>{{entry?.subscription.start | date:'dd - MMM'}}</td>
+    <td>{{entry?.subscription.duration}} Days</td>
+
     <td>
       <table class="table table-condensed table-hover">
         <tr>
-          <th>
-            Description
-          </th>
-          <th>
-            Type
-          </th>
-          <th>
-            Difficulty
-          </th>
+          <th>Type</th>
+          <th>Difficulty</th>
         </tr>
         <tr *ngFor="let workout of entry.workouts">
-          <td>
-            {{workout.description}}
-          </td>
-          <td>
-            {{workout.workoutType}}
-          </td>
-          <td>
-            {{workout.difficulty}}
-          </td>
+          <td>{{workout?.workoutType}}</td>
+          <td>{{workout?.difficulty}}</td>
           <button (click)="deleteWorkout(entry,workout)">Delete</button>
         </tr>
       </table>
     </td>
-    <button (click)="delete(entry)">Delete</button>
-    <br>
-    <br>
-    <button type="button" class="btn btn-primary-outline pull-right" (click)="updateSubscription(entry)"><i class="fa fa-plus"></i> Update</button>
+    <td>
+        <button type="button" class="btn btn-primary-outline pull-right" (click)="delete(entry)"><i class="fa fa-plus"></i>Delete</button>
+        <br>
+        <br>
+        <button id="update" type="button" class="btn btn-primary-outline pull-right" (click)="updateSubscription(entry)"><i class="fa fa-plus"></i>Update</button>
+    </td>
+    </tr>
     
     
-  </tr>
+    
+  
 </table>

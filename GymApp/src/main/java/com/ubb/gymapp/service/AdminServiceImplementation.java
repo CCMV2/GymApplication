@@ -1,5 +1,6 @@
 package com.ubb.gymapp.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,18 +8,21 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.ubb.gymapp.dto.SubscriptionWorkouts;
 import com.ubb.gymapp.model.Room;
 import com.ubb.gymapp.model.Subscription;
 import com.ubb.gymapp.model.Timetable;
 import com.ubb.gymapp.model.User;
 import com.ubb.gymapp.model.UserWorkout;
 import com.ubb.gymapp.model.Workout;
+import com.ubb.gymapp.model.WorkoutList;
 import com.ubb.gymapp.model.User.UserType;
 import com.ubb.gymapp.repository.RoomRepository;
 import com.ubb.gymapp.repository.SubscriptionRepository;
 import com.ubb.gymapp.repository.TimetableRepository;
 import com.ubb.gymapp.repository.UserRepository;
 import com.ubb.gymapp.repository.UserWorkoutRepository;
+import com.ubb.gymapp.repository.WorkoutListRepository;
 import com.ubb.gymapp.repository.WorkoutRepository;
 
 @Service
@@ -41,6 +45,9 @@ public class AdminServiceImplementation implements IAdminService {
 
 	@Autowired
 	public TimetableRepository timetableRepo;
+	
+	@Autowired
+	public WorkoutListRepository workoutListRepo;
 
 	@Override
 	public List<User> getAllUsers() {
@@ -127,8 +134,14 @@ public class AdminServiceImplementation implements IAdminService {
 	}
 
 	@Override
-	public Subscription addSubscription(Subscription subscription) {
-		return subscriptionRepo.save(subscription);
+	public void addSubscription(SubscriptionWorkouts subscriptionWorkouts) {
+		Subscription subscription = subscriptionWorkouts.getSubscription();
+		subscriptionRepo.save(subscription);
+		for(Workout workout: subscriptionWorkouts.getWorkouts()){
+			WorkoutList workoutList = new WorkoutList(subscription, workout);
+			workoutListRepo.save(workoutList);
+		}
+		
 		
 	}
 
@@ -137,9 +150,43 @@ public class AdminServiceImplementation implements IAdminService {
 		return subscriptionRepo.findAll();
 	}
 
+	/*!
+	 * 
+	 */
+	public List<SubscriptionWorkouts> findSubcriptionsAndWorkouts() {
+		List<Subscription> subscriptions = this.findAllSubscriptions();
+		List<WorkoutList> workoutList = new ArrayList<WorkoutList>();
+		List<Workout> workouts = new ArrayList<Workout>();
+		List<SubscriptionWorkouts> subscriptionWorkoutsList = new ArrayList<SubscriptionWorkouts>();
+		for(Subscription sub: subscriptions){
+			workoutList = workoutListRepo.findBySubscription(sub);   //asta are cate 1 subscr. si 1 workout.
+			
+		for (WorkoutList workList: workoutList){
+			if(!workouts.contains(workList.getWorkout())){
+				workouts.add(workList.getWorkout());
+				
+		}
+			
+					
+		}	
+			
+			SubscriptionWorkouts subscriptionWorkout = new SubscriptionWorkouts(sub,workouts);
+			subscriptionWorkoutsList.add(subscriptionWorkout);		
+		}
+		
+		return subscriptionWorkoutsList;
+		}
+	
+	
+
 	@Override
 	public void deleteSubscription(Subscription subscription) {
 		subscriptionRepo.delete(subscription);
+	}
+	
+	@Override
+	public void deleteUser(User user){
+		userRepo.delete(user);
 	}
 
 	@Override
@@ -164,6 +211,11 @@ public class AdminServiceImplementation implements IAdminService {
 	public List<Timetable> getAllTimetables() {
 		// TODO Auto-generated method stub
 		return timetableRepo.findAll();
+	}
+
+	@Override
+	public List<Workout> getAllWorkouts() {
+		return workoutRepo.findAll();
 	}
 
 

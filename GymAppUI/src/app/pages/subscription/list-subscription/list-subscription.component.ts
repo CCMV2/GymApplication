@@ -3,6 +3,7 @@ import {Subscription} from "../../../models/subscriptionModel";
 import {WorkoutList} from "../../../models/workoutlist";
 import {Workout} from "../../../models/workout";
 import {Router} from '@angular/router';
+import { BackendService } from "../../../backend.service";
 import {SessionStorageService} from "ngx-webstorage";
 
 @Component({
@@ -12,32 +13,44 @@ import {SessionStorageService} from "ngx-webstorage";
 })
 export class ListSubscriptionComponent implements OnInit {
 
-  subscriptions: WorkoutList[] = [
-    new WorkoutList(new Subscription(1, "Test1", 100, new Date(2017, 11, 3), 10), [new Workout(1,"TestType","Very Hard","Test Description"),new Workout(1,"TestType","Very Hard","Test Description"),new Workout(1,"TestType","Very Hard","Test Description")]),
-    new WorkoutList(new Subscription(2, "Test2", 100, new Date(2017, 11, 3), 10), [new Workout(1,"TestType","Very Hard","Test Description"),new Workout(1,"TestType","Very Hard","Test Description")]),
-    new WorkoutList(new Subscription(3, "Test3", 100, new Date(2017, 11, 3), 10), [new Workout(1,"TestType","Very Hard","Test Description")]),
-    new WorkoutList(new Subscription(4, "Test4", 100, new Date(2017, 11, 3), 10), [new Workout(1,"TestType","Very Hard","Test Description")]),
-    new WorkoutList(new Subscription(5, "Test5", 100, new Date(2017, 11, 3), 10), [new Workout(1,"TestType","Very Hard","Test Description"),new Workout(1,"TestType","Very Hard","Test Description"),new Workout(1,"TestType","Very Hard","Test Description"),new Workout(1,"TestType","Very Hard","Test Description")])
-  ];
+  subscriptionAndWorkouts: WorkoutList[] = [];
+  
+  subscriptions: Subscription[] = [];
+  // test: {[key:string]: string} = {"key":"value"};
 
-  test: {[key:string]: string} = {"key":"value"};
-
-  constructor(private router:Router,private session:SessionStorageService) {
+  constructor(private backendService: BackendService, private router:Router ,private session:SessionStorageService) {
   }
 
   ngOnInit() {
+    this.getSubscriptionAndWorkouts();
   }
 
-  delete(entry: WorkoutList): void{
-    this.subscriptions.splice(this.subscriptions.indexOf(entry),1);
+getSubscriptionAndWorkouts(): void {
+  this.backendService.getAllSubscriptions().subscribe( res => {
+      this.subscriptionAndWorkouts = res;
+      debugger;
+      console.log( this.subscriptionAndWorkouts );
+  } );
+}
+
+// getSubscriptions(): void {
+//   this.subscriptionAndWork
+// }
+  delete(sub:Subscription):void{
+    this.backendService.deleteSubscription(sub);
   }
 
-  deleteWorkout(workoutlist,workout): void {
-    this.subscriptions[this.subscriptions.indexOf(workoutlist)].workouts.splice(this.subscriptions[this.subscriptions.indexOf(workoutlist)].workouts.indexOf(workout),1);
-  }
+  //delete(entry: WorkoutList): void{
+   // this.backendService.deleteSubscription(entry)
+    // this.subscriptions.splice(this.subscriptions.indexOf(entry),1);
+   //}
+
+  //deleteWorkout(workoutlist,workout): void {
+    // this.subscriptions[this.subscriptions.indexOf(workoutlist)].workouts.splice(this.subscriptions[this.subscriptions.indexOf(workoutlist)].workouts.indexOf(workout),1);
+  // }
   updateSubscription(entry:WorkoutList):void {
     this.session.store("subscriptionToUpdate",entry.subscription);
-    
+    this.session.store("workoutsToStore",entry.workouts);
     this.router.navigateByUrl('/updatesubscription');
   };
  
