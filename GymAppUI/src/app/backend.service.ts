@@ -69,7 +69,7 @@ export class BackendService {
 
     }
     public getAllSubscriptions(): Observable<WorkoutList[]> {
-        return this.http.get(this.link + 'listsubscription', this.options).map(response => response.text()).catch(this.handleError);
+        return this.http.get(this.link + 'listsubscription', this.options).map(response => response.json()).catch(this.handleError);
     }
     public deleteSubscription(subscription: Subscription): Observable<any> {
         return this.http.post(this.link + 'deletesubscription', this.options).map(response => response.json()).catch(this.handleError);

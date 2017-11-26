@@ -33,6 +33,10 @@ public class SubscriptionWorkouts {
 	public SubscriptionWorkouts(){
 		
 	}
+	@Override
+	public String toString() {
+		return "SubscriptionWorkouts [subscription=" + subscription + ", workouts=" + workouts + "]";
+	}
 	
 	
 	

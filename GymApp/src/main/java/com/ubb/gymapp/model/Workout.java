@@ -91,7 +91,13 @@ public class Workout implements Serializable {
 		return result;
 	}
 
-	@Override
+	public boolean equals(Workout other){
+		return this.idWorkout == other.idWorkout &&
+				this.workoutType.equals(other.workoutType)&&
+				this.difficulty == other.difficulty &&
+				this.description.equals(other.description);
+	}
+	/*@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -121,7 +127,7 @@ public class Workout implements Serializable {
 		} else if (!workoutType.equals(other.workoutType))
 			return false;
 		return true;
-	}
+	}*/
 
 	@Override
 	public String toString() {

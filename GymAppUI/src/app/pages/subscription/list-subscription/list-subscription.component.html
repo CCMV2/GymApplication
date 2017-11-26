@@ -9,20 +9,20 @@
     <th>Duration</th>
     <th>Workouts</th>
   </tr>
-  <tr *ngFor="let entry of subscriptionAndWorkouts.subscription">
+  <tr *ngFor="let entry of subscriptionAndWorkouts">
     <td>
-      {{entry.name}}
+      {{entry?.subscription.name}}
     </td>
     <td>
     
-    {{entry.price}}
+    {{entry?.subscription.price}}
     </td>
     <td>
      
-     {{entry.start}}
+     {{entry?.subscription.start}}
     </td>
     <td>
-      {{entry.duration}}
+      {{entry?.subscription.duration}}
     </td>
 
   
@@ -39,8 +39,8 @@
             Difficulty
           </th>
         </tr>
-        <tr *ngFor="let workout of subscriptionAndWorkouts.workouts">
-          <td>
+        <tr *ngFor="let workout of entry.workouts">
+          <td >
             {{workout?.description}}
           </td>
           <td>
@@ -53,11 +53,14 @@
         </tr>
       </table>
     </td>
+    <td>
+        <button type="button" class="btn btn-primary-outline pull-right" (click)="delete(entry)"><i class="fa fa-plus"></i>Delete</button>
+        <br>
+        <br>
+        <button type="button" class="btn btn-primary-outline pull-right" (click)="updateSubscription(entry)"><i class="fa fa-plus"></i>Update</button>
+    </td>
     </tr>
-    <button (click)="delete(entry)">Delete</button>
-    <br>
-    <br>
-    <button type="button" class="btn btn-primary-outline pull-right" (click)="updateSubscription(entry)"><i class="fa fa-plus"></i> Update</button>
+    
     
     
   

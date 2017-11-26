@@ -28,6 +28,7 @@ export class ListSubscriptionComponent implements OnInit {
 getSubscriptionAndWorkouts(): void {
   this.backendService.getAllSubscriptions().subscribe( res => {
       this.subscriptionAndWorkouts = res;
+      debugger;
       console.log( this.subscriptionAndWorkouts );
   } );
 }
@@ -35,11 +36,13 @@ getSubscriptionAndWorkouts(): void {
 // getSubscriptions(): void {
 //   this.subscriptionAndWork
 // }
+  delete(sub:Subscription):void{
+    this.backendService.deleteSubscription(sub);
+  }
 
-
- // delete(entry: WorkoutList): void{
-    //this.backendService.deleteSubscription
-     //this.subscriptions.splice(this.subscriptions.indexOf(entry),1);
+  //delete(entry: WorkoutList): void{
+   // this.backendService.deleteSubscription(entry)
+    // this.subscriptions.splice(this.subscriptions.indexOf(entry),1);
    //}
 
   //deleteWorkout(workoutlist,workout): void {

@@ -145,18 +145,19 @@ public class AdminServiceImplementation implements IAdminService {
 		List<WorkoutList> workoutList = new ArrayList<WorkoutList>();
 		List<Workout> workouts = new ArrayList<Workout>();
 		List<SubscriptionWorkouts> subscriptionWorkoutsList = new ArrayList<SubscriptionWorkouts>();
-	//	SubscriptionWorkouts subscriptionWorkout = new SubscriptionWorkouts();
-		List<Subscription> s = new ArrayList<Subscription>();
 		for(Subscription sub: subscriptions){
 			workoutList = workoutListRepo.findBySubscription(sub);   //asta are cate 1 subscr. si 1 workout.
-			s.add(sub);
-			
 			
 		for (WorkoutList workList: workoutList){
-			workouts.add(workList.getWorkout());
-					
+			if(!workouts.contains(workList.getWorkout())){
+				workouts.add(workList.getWorkout());
+				
 		}
-			SubscriptionWorkouts subscriptionWorkout = new SubscriptionWorkouts(sub,workouts);	
+			
+					
+		}	
+			
+			SubscriptionWorkouts subscriptionWorkout = new SubscriptionWorkouts(sub,workouts);
 			subscriptionWorkoutsList.add(subscriptionWorkout);		
 		}
 		
