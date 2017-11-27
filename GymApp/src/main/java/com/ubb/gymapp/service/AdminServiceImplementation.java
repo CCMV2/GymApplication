@@ -106,6 +106,12 @@ public class AdminServiceImplementation implements IAdminService {
 		workoutRepo.delete(workout);
 
 	}
+	
+	@Override
+	public List<UserWorkout> getAllUserWorkoutsForWorkout(Workout workout) {
+		return userWorkoutRepo.findAllByWorkout(workout);
+		
+	}
 
 	@Override
 	public List<User> getAllTrainers() {

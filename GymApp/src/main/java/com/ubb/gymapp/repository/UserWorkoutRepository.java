@@ -1,5 +1,7 @@
 package com.ubb.gymapp.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -14,4 +16,6 @@ public interface UserWorkoutRepository extends JpaRepository<UserWorkout,Long>{
 	 @Modifying
 	 @Query("delete from UserWorkout u where u.workout = ?1")
 	 public void deleteByWorkout(Workout workout);
-}
+
+	 public List<UserWorkout> findAllByWorkout(Workout workout);
+}	

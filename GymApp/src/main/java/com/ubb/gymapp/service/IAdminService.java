@@ -30,6 +30,8 @@ public interface IAdminService {
 	
 	public void updateTrainerWorkout(UserWorkout userWorkout);
 	
+	public List<UserWorkout> getAllUserWorkoutsForWorkout(Workout workout);
+	
 	public void addSubscription(SubscriptionWorkouts subscriptionWorkouts);
 	
 	public Subscription getSubscriptionById(Long id);
