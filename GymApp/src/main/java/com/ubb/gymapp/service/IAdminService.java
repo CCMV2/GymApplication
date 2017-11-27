@@ -28,6 +28,8 @@ public interface IAdminService {
 	
 	public void addTrainerWorkout(UserWorkout userWorkout);
 	
+	public void updateTrainerWorkout(UserWorkout userWorkout);
+	
 	public void addSubscription(SubscriptionWorkouts subscriptionWorkouts);
 	
 	public Subscription getSubscriptionById(Long id);

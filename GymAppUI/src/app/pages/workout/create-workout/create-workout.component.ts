@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../../models/user";
-import {BackendService} from "../../../backend.service";
-import {TrainerWorkout} from "../../../models/trainer-workout";
-import {Workout} from "../../../models/workout";
+import { User } from "../../../models/user";
+import { BackendService } from "../../../backend.service";
+import { TrainerWorkout } from "../../../models/trainer-workout";
+import { Workout } from "../../../models/workout";
 
 @Component({
   selector: 'app-create-workout',

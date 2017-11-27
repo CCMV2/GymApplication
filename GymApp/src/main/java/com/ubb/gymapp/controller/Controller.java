@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubb.gymapp.model.Room;
-import com.ubb.gymapp.model.Subscription;
-import com.ubb.gymapp.model.Timetable;
 import com.ubb.gymapp.model.User;
 import com.ubb.gymapp.model.UserWorkout;
 import com.ubb.gymapp.model.Workout;
@@ -68,7 +66,18 @@ public class Controller {
 		}
 
 	}
+	
+	@RequestMapping(value = "/updatetrainerworkout", method = RequestMethod.POST)
+	public String updateTrainerWorkout(@RequestBody UserWorkout userWorkout) {
+		try {
+			adminService.updateTrainerWorkout(userWorkout);
+			return "Successful";
+		} catch (Exception e) {
+			return "Failed: " + e.getMessage();
+		}
 
+	}
+	
 	@RequestMapping(value = "/gettrainerworkouts", method = RequestMethod.GET)
 	public List<UserWorkout> findAllWorkouts() {
 		return adminService.getTrainerWorkouts();
