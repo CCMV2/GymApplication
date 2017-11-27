@@ -178,6 +178,9 @@ public class AdminServiceImplementation implements IAdminService {
 
 	@Override
 	public void deleteSubscription(Subscription subscription) {
+		
+		workoutListRepo.deleteBySubscription(subscription);
+		
 		subscriptionRepo.delete(subscription);
 	}
 	

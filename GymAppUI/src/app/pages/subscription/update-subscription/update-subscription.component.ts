@@ -21,7 +21,6 @@ export class UpdateSubscriptionComponent implements OnInit {
   ngOnInit() {
     this.workoutList = this.session.retrieve('workoutlist');
     this.subscription = this.workoutList.subscription;
-    this.subscription.start = new Date(this.subscription.start);
     debugger;
     this.getWorkouts();
   }

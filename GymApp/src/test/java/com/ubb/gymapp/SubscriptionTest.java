@@ -30,8 +30,6 @@ public class SubscriptionTest {
 	@Test 
 	public void addSubscription() {
 		Subscription subscription = new Subscription("abo1",500.0);
-		Date date = new GregorianCalendar(2017,10,04).getTime();
-		subscription.setStart(date);
 		subscription.setDuration(2);
 		subscription = subscriptionRepo.save(subscription);
 		Long id = subscription.getSubscriptionId();
@@ -39,7 +37,6 @@ public class SubscriptionTest {
 		assertNotNull(subscriptionSaved);
 		assertEquals(subscription.getName(),subscriptionSaved.getName());
 	    assertEquals(subscription.getPrice(),subscriptionSaved.getPrice(),0);
-	    assertEquals(subscription.getStart(),subscriptionSaved.getStart());
 	    assertEquals(subscription.getDuration(),subscriptionSaved.getDuration());
 	    subscriptionRepo.delete(subscription);
 	}
@@ -98,7 +95,6 @@ public class SubscriptionTest {
 		sub = subscriptionRepo.save(sub);
 		sub.setName("test");
 		sub.setPrice(700.0);
-		sub.setStart(date);
 		sub.setDuration(1);
 		subscriptionRepo.save(sub);
 		
@@ -107,7 +103,6 @@ public class SubscriptionTest {
 		
 		assertEquals(sub.getName(),newSubscription.getName());
 		assertEquals(sub.getPrice(),newSubscription.getPrice());
-		assertEquals(sub.getStart(),newSubscription.getStart());
 		assertEquals(sub.getDuration(),Integer.valueOf(newSubscription.getDuration()));
 		
 		subscriptionRepo.delete(sub);
