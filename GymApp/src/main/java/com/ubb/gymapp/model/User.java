@@ -3,6 +3,7 @@ package com.ubb.gymapp.model;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,7 +38,7 @@ public class User implements Serializable, UserDetails {
 	private String phonenumber;
 	private Subscription subscription;
 	private UserType userType;
-
+	private Date start;
 	public enum UserType {
 		ADMIN, TRAINER, CLIENT;
 		@Override
@@ -107,6 +108,15 @@ public class User implements Serializable, UserDetails {
 		this.email = email;
 	}
 
+	@Column (name = "Start")
+	public Date getStart() {
+		return start;
+	}
+
+	public void setStart(Date start) {
+		this.start = start;
+	}
+	
 	@Column(name = "PhoneNr")
 	public String getPhonenumber() {
 		return phonenumber;
@@ -128,11 +138,11 @@ public class User implements Serializable, UserDetails {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idSubscription")
-	public Subscription getPass() {
+	public Subscription getSubscription() {
 		return subscription;
 	}
 
-	public void setPass(Subscription pass) {
+	public void setSubscription(Subscription pass) {
 		this.subscription = pass;
 	}
 
@@ -145,6 +155,7 @@ public class User implements Serializable, UserDetails {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((phonenumber == null) ? 0 : phonenumber.hashCode());
+		result = prime * result + ((start == null) ? 0 : start.hashCode());
 		result = prime * result + ((subscription == null) ? 0 : subscription.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
 		result = prime * result + ((userType == null) ? 0 : userType.hashCode());

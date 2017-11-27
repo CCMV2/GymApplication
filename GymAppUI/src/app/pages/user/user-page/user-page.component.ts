@@ -25,11 +25,13 @@ export class UserPageComponent implements OnInit {
     } );
   }
   delete(sub: User): void{
-    this.backendService.deleteUser(sub);
+     
+    this.backendService.deleteUser(sub).subscribe(res => {
+        console.log(res); this.getUsers(); });
   }
   updateUser(entry: User ): void {
-    this.session.store('userToUpdate', entry.id);
-    this.router.navigateByUrl('/updatesubscription');
+    this.session.store('userToUpdate', entry);
+    this.router.navigateByUrl('/updateuser');
   }
 }
 
