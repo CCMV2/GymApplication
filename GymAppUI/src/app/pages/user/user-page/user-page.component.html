@@ -1,47 +1,49 @@
-<div id="user-wrapper"></div>
-<div class="user-header" style="background-color: rgba(66, 134, 244,0.7); width: 50%; margin: 0 auto; text-align: center; text: white;">
-	<h1 >USER LIST</h1>
-</div>
+<h1>
+  User list
+</h1>
+<table class="table table-condensed table-hover">
+  <tr>
+    <th>ID</th>
+    <th>Password</th>
+    <th>Type</th>
+    <th>Email</th>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>PhoneNr</th>
+    <th>ID Subscription</th>
+  </tr>
+  <tr *ngFor="let entry of userLists">
+    <td>
+      {{entry?.id}}
+    </td>
+    <td>
+      {{entry?.password}}
+    </td>
+    <td>
+      {{entry?.type}}
+    </td>
+    <td>
+      {{entry?.email}}
+    </td>
+    <td>
+      {{entry?.name}}
+    </td>
+    <td>
+      {{entry?.surname}}
+    </td>
+    <td>
+      {{entry?.phonenumber}}
+    </td>
+    <td>
+      {{entry?.userPermission}}
+    </td>
 
-<form>
-	<table style="width: 50%; margin: 0 auto;">
-		<tr>
-			<th>Name</th>
-			<th>LastName</th>
-			<th>Type</th>
-		</tr>
+    <td>
+      <button type="button" class="btn btn-primary-outline pull-right" (click)="delete(entry)"><i class="fa fa-plus"></i>Delete</button>
+      <br>
+      <br>
+      <button type="button" class="btn btn-primary-outline pull-right" (click)="updateUser(entry)"><i class="fa fa-plus"></i>Update</button>
+    </td>
+  </tr>
 
-		<tr>
-
-			<td>Stefi</td>
-			<td>Vlg</td>
-
-			<td>Trainer</td>
-			<td><input type="button" value="Delete"></td>
-			<td><input type="button" value="Update"></td>
-		</tr>
-
-
-
-		<tr>
-
-			<td>Simti</td>
-			<td>Rares</td>
-
-			<td>Advanced ZUmba Student</td>
-			<td><input type="button" value="Delete"></td>
-			<td><input type="button" value="Update"></td>
-		</tr>
-
-		<tr>
-
-			<td>Gelly</td>
-			<td>Belly</td>
-
-			<td>Invatacel</td>
-			<td><input type="button" value="Delete"></td>
-			<td><input type="button" value="Update"></td>
-		</tr>
-
-	</table>
-</form>
+</table>

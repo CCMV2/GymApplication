@@ -4,6 +4,9 @@ package com.ubb.gymapp.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ubb.gymapp.model.Room;
 import com.ubb.gymapp.model.Timetable;
@@ -16,4 +19,9 @@ public interface TimetableRepository extends JpaRepository<Timetable, Long>{
     List<Timetable> findByRoom(Room room);
 	
     List<Timetable> findByWorkout(Workout workout);
+    
+	 @Transactional
+	 @Modifying
+	 @Query("delete from Timetable t where t.workout = ?1")
+	 public void deleteByWorkout(Workout workout);
 }

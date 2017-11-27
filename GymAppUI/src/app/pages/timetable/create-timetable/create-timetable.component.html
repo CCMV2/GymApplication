@@ -12,7 +12,8 @@
 		<option>Samstag</option>
 		<option>Sonnntag</option>
 	</select> 
-	<br> Start: <input type="time" [(ngModel)]="timetableToCreate.time"> 
+	
+	<br> Start: <p-calendar icon="fa-clock-o" name="start" [(ngModel)]="timetableToCreate.start" [timeOnly]="true" [showIcon]="true"></p-calendar> 
 	<br> Duration: <input type="text" [(ngModel)]="timetableToCreate.duration">
 	<br> Room: 
 	<select [(ngModel)]="timetableToCreate.roomName">

@@ -29,10 +29,6 @@ export class CreateTimetableComponent implements OnInit {
         const workoutType = this.timetableToCreate.workoutType;
         const room = this.findRoomByName(roomName);
         const workout = this.findWorkoutByType(workoutType);
-        this.timetableToCreate.start = new Date();
-        const hours = parseInt(this.timetableToCreate.time.split(':')[0]);
-        const mins = parseInt(this.timetableToCreate.time.split(':')[1]);
-        this.timetableToCreate.start.setHours(hours, mins, 0, 0);
         this.timetableToCreate.setRoom(room);
         this.timetableToCreate.setWorkout(workout);
         this.backendService.addTimetable(this.timetableToCreate).subscribe(res => {

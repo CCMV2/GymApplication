@@ -20,6 +20,8 @@ import javax.persistence.Transient;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "user")
 public class User implements Serializable, UserDetails {
@@ -204,6 +206,7 @@ public class User implements Serializable, UserDetails {
 
 	@Override
 	@Transient
+	@JsonIgnore
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		GrantedAuthority authority = new GrantedAuthority() {
 

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {SessionStorageService} from "ngx-webstorage";
-import {Subscription} from "../../../models/subscriptionModel";
-import {Workout} from "../../../models/workout";
+import {SessionStorageService} from 'ngx-webstorage';
+import {Subscription} from '../../../models/subscriptionModel';
+import {Workout} from '../../../models/workout';
+import { WorkoutList } from '../../../models/workoutlist';
+import { BackendService } from '../../../backend.service';
 
 @Component({
   selector: 'app-update-subscription',
@@ -10,13 +12,25 @@ import {Workout} from "../../../models/workout";
 
 })
 export class UpdateSubscriptionComponent implements OnInit {
-  subscription :Subscription;
-  workouts: Workout[];
-  constructor(private session:SessionStorageService) { }
+    subscription: Subscription;
+    workouts: Workout[];
+    workoutList: WorkoutList;
+
+  constructor(private session: SessionStorageService, private backendService: BackendService) { }
 
   ngOnInit() {
-    this.subscription = this.session.retrieve("subscriptionToUpdate");
-    this.workouts = this.session.retrieve("workoutsToStore");
+    this.workoutList = this.session.retrieve('workoutlist');
+    this.subscription = this.workoutList.subscription;
+    this.subscription.start = new Date(this.subscription.start);
+    debugger;
+    this.getWorkouts();
+  }
+
+  getWorkouts(): void {
+    this.backendService.getAllRealWorkouts().subscribe( res => {
+      this.workouts = res;
+      console.log (this.workouts);
+    });
   }
 
 
