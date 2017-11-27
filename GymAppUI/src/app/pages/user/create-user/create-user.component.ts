@@ -8,28 +8,24 @@ import { User } from "../../../models/user";
     styleUrls: ['./create-user.component.css']
 } )
 export class CreateUserComponent implements OnInit {
-
-    createdUserName: string="";
-    createdUserSurname: string="";
-    createdUserEmail: string="";
-    createdUserPassword: string="";
-    createdUserPhoneNumber: string="";
-    createduserPermission:string="";
     
-    constructor(private backendService: BackendService) { }
+    message =  '';
+    createdUser: User = new User( 0, '', '', '', '', '', '' );
+
+    constructor( private backendService: BackendService ) { }
 
     ngOnInit() {
-        this.getAllUsers();
+
     }
-    
-    addUser(){
-// tslint:disable-next-line:prefer-const
-        let createdUser: User = new User(0,this.createdUserPassword,this.createdUserName,this.createdUserSurname,this.createdUserEmail,this.createdUserPhoneNumber,this.createduserPermission);
-        this.backendService.addUser(createdUser);
+
+    addUser() {
+        //tslint:disable-next-line:prefer-const
+        
+        this.backendService.addUser( this.createdUser ).subscribe(res => {
+            this.message = res;
+        });
     }
-    
-    getAllUsers(){
-        this.backendService.getAllUsers();
-    }
+
+
 
 }

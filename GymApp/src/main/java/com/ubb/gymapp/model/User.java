@@ -39,7 +39,13 @@ public class User implements Serializable, UserDetails {
 	private UserType userType;
 
 	public enum UserType {
-		ADMIN, TRAINER, CLIENT
+		ADMIN, TRAINER, CLIENT;
+		@Override
+	    public String toString() {
+	        return name();
+	    }
+		
+	
 	};
 
 	public User(String password, String name, String surname, String email, String phonenumber, UserType userType) {
