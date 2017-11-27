@@ -1,7 +1,5 @@
 package com.ubb.gymapp.repository;
 
-import java.util.Date;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.ubb.gymapp.model.Subscription;

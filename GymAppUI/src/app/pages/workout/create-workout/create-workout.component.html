@@ -6,7 +6,7 @@
         </div>
         <div>
             <label for="description">Description: </label>
-            <input type="text" name="description" id="description" [(ngModel)]="createdWorkoutDescription"><br>
+            <textarea name="description" id="description" [(ngModel)]="createdWorkoutDescription"></textarea><br>
         </div>
         <div>
             <label for="difficulty">Choose difficulty: </label>
@@ -21,7 +21,7 @@
             <label for="trainer">Trainer: </label>
             <select [(ngModel)]="createdWorkoutTrainer">
                 <option value="null" hidden>Choose a trainer</option>
-                <option *ngFor="let trainer of trainerList" [ngValue]="trainer" >{{trainer.name}}</option>
+                <option *ngFor="let trainer of trainerList" [ngValue]="trainer" >{{trainer.name}} {{trainer.surname}}</option>
             </select>
         </div>
         <div id = "button">

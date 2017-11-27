@@ -1,28 +1,37 @@
-
-<div>
-	<table class="table for timetable" align="center" >
-		<tr bgcolor=MidnightBlue>
-			<th><font color="white">Id</font></th>
-			<th><font color="white">Day</font></th>
-			<th><font color="white">Start</font></th>
-			<th><font color="white">Duration</font></th>
-			<th><font color="white">Room</font></th>
-			<th><font color="white">Workout</font></th>
-			<th></th>
-			<th></th>
-		</tr>
-		<tr *ngFor="let item of allTimetables">
-			<td>{{item?.id}}</td>
-			<td>{{item?.day}}</td>
-			<td ng-non-bindable>{{item?.start | date:'HH:mm'}}</td>
-			<td>{{item?.duration}}</td>
-			<td>{{item?.room.roomName}}</td>
-			<td>{{item?.workout.workoutType}}</td>
-			<td><button (click)="goToUpdatePage(item)" >Update</button></td>
-			<td><button (click)="deleteTimetable(item)">Delete</button></td>
-		</tr>
-	</table>
-
-	
-
-</div>
+<fieldset>
+	<legend><h2>Workout List</h2></legend>
+	<div>
+		<table class="table table-hover list-table" align="center" >
+			<tr bgcolor=MidnightBlue>
+				<th><font color="white">Id</font></th>
+				<th><font color="white">Day</font></th>
+				<th><font color="white">Start</font></th>
+				<th><font color="white">Duration</font></th>
+				<th><font color="white">Room</font></th>
+				<th><font color="white">Workout</font></th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr *ngFor="let item of allTimetables">
+				<td>{{item?.id}}</td>
+				<td>{{item?.day}}</td>
+				<td ng-non-bindable>{{item?.start | date:'HH:mm'}}</td>
+				<td>{{item?.duration}} h</td>
+				<td>{{item?.room.roomName}}</td>
+				<td>{{item?.workout.workoutType}}</td>
+				 <td>
+	            	<button type="button" class="room-button btn btn-info" (click)="goToUpdatePage(item)">
+						  <span class="glyphicon-pencil" aria-hidden="true"></span>
+          					Update
+					</button>
+	            </td>
+				<td>
+					<button type="button" class="room-button btn btn-danger" (click)="deleteTimetable(item)">
+						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						Delete
+					</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</fieldset>

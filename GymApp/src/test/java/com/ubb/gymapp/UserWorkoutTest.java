@@ -1,10 +1,7 @@
 package com.ubb.gymapp;
 
 import static org.hamcrest.CoreMatchers.hasItems;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -125,5 +122,22 @@ public class UserWorkoutTest {
 		workoutRepo.delete(workout);
 		userRepo.delete(user);
 		userRepo.delete(user2);
+	}
+	
+	@Test
+	public void deleteByWorkout(){
+		Workout work1 = new Workout("Zumba", Difficulty.MEDIUM, "Pretty much the most awesome workout ever. Dance to great music, with great people, and burn a ton of calories without even realizing it.");
+		workoutRepo.save(work1);
+		User trainer1 = new User("trainer1", "John", "Doe", "john.doe@gmail.com", "0758914523", UserType.TRAINER);
+		userRepo.save(trainer1);
+		UserWorkout uw1 = new UserWorkout(trainer1, work1);
+		userWorkoutRepo.save(uw1);
+		long uw1Id = uw1.getId();
+		userWorkoutRepo.deleteByWorkout(work1);
+		boolean isDeleted = !userWorkoutRepo.exists(uw1Id);
+		assertTrue(isDeleted);
+		workoutRepo.delete(work1);
+		userRepo.delete(trainer1);
+
 	}
 }

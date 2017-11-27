@@ -1,36 +1,42 @@
-<h1>
-    Workout List
-</h1>
-<form>
-    <table class="table table-hover room-table">
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Difficulty
-            </th>
-            <th>
-                Trainer
-            </th>
-            <th>
-                Description
-            </th>
-            <th colspan="2">
-                Operations
-            </th>
-        </tr>
-        <tr *ngFor="let trainerworkout of allWorkouts" (click)="select(trainerworkout)" [class.selected]="trainerworkout === selectedWorkout">
-            <td>{{trainerworkout.workout.workoutType}}</td>
-            <td>{{trainerworkout.workout.difficulty}}</td>
-            <td>{{trainerworkout.trainer.name}}</td>
-            <td>{{trainerworkout.workout.description}}</td>
-            <td>
-                <input type="button" value="Delete" (click)="delete()">
-            </td>
-            <td>
-                <input type="button" value="Update">
-            </td>
-        </tr>
-    </table>
-</form>
+<fieldset>
+	<legend><h2>Workout List</h2></legend>
+	<form>
+	    <table class="table table-hover list-table">
+	        <tr>
+	            <th>
+	                Name
+	            </th>
+	            <th>
+	                Difficulty
+	            </th>
+	            <th>
+	                Trainer
+	            </th>
+	            <th>
+	                Description
+	            </th>
+	            <th colspan="2">
+	                Operations
+	            </th>
+	        </tr>
+	        <tr *ngFor="let trainerworkout of allWorkouts">
+	            <td>{{trainerworkout.workout.workoutType}}</td>
+	            <td>{{trainerworkout.workout.difficulty}}</td>
+	            <td>{{trainerworkout.trainer.name}}</td>
+	            <td>{{trainerworkout.workout.description}}</td>
+	            <td>
+	            	<button type="button" class="room-button btn btn-info" (click)="update(trainerworkout)">
+						  <span class="glyphicon-pencil" aria-hidden="true"></span>
+          					Update
+					</button>
+	            </td>
+	              <td>
+	            	<button type="button" class="room-button btn btn-danger" (click)="delete(trainerworkout)">
+						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						Delete
+					</button>
+	            </td>
+	        </tr>
+	    </table>
+	</form>
+</fieldset>
