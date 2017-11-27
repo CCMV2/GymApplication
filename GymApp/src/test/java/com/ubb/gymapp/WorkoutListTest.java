@@ -1,8 +1,6 @@
 package com.ubb.gymapp;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -113,8 +111,54 @@ public class WorkoutListTest {
         
         subscriptionRepo.delete(subscription);
         subscriptionRepo.delete(subscription1);
-        
-        
-
+	}
+	
+	@Test
+	public void findWorkoutsBySubscription() {
+		Subscription sub1 = new Subscription("Standard", 100.0);
+		subscriptionRepo.save(sub1);
+		Workout work1 = new Workout("Zumba", Difficulty.MEDIUM, "Pretty much the most awesome workout ever. Dance to great music, with great people, and burn a ton of calories without even realizing it.");
+		Workout work2 = new Workout("Pilates", Difficulty.HARD, "Pilates is a physical fitness system developed in the early 20th century by Joseph Pilates, after whom it was named. It is practiced worldwide.");
+		Workout work3 = new Workout("Tae-Bo", Difficulty.HARD, "Tae Bo is a total body fitness system that incorporates martial arts techniques such as kicks and punches, which became quite popular in the 1990s.");
+		workoutRepo.save(work1);
+		workoutRepo.save(work2);
+		workoutRepo.save(work3);
+		WorkoutList wl1 = new WorkoutList(sub1, work1);
+		WorkoutList wl2 = new WorkoutList(sub1, work2);
+		WorkoutList wl3 = new WorkoutList(sub1, work3);
+		wlRepo.save(wl1);
+		wlRepo.save(wl2);
+		wlRepo.save(wl3);
+		
+		List<Workout> wls = wlRepo.findWorkoutsBySubscription(sub1);
+		assertNotNull(wls);
+		assertEquals(wls.size(), 3);
+		wlRepo.delete(wl1);
+		wlRepo.delete(wl2);
+		wlRepo.delete(wl3);
+		workoutRepo.delete(work1);
+		workoutRepo.delete(work2);
+		workoutRepo.delete(work3);
+		subscriptionRepo.delete(sub1);
+		
+	}
+	
+	@Test
+	public void deleteByWorkout() {
+		Subscription sub1 = new Subscription("Standard", 100.0);
+		subscriptionRepo.save(sub1);
+		Workout work1 = new Workout("Zumba", Difficulty.MEDIUM, "Pretty much the most awesome workout ever. Dance to great music, with great people, and burn a ton of calories without even realizing it.");
+		workoutRepo.save(work1);
+		WorkoutList wl1 = new WorkoutList(sub1, work1);
+		wlRepo.save(wl1);
+		long id = wl1.getId();
+		
+		wlRepo.deleteByWorkout(work1);
+		boolean isDeleted = !wlRepo.exists(id);
+		assertTrue(isDeleted);
+		wlRepo.delete(wl1);
+		workoutRepo.delete(work1);
+		subscriptionRepo.delete(sub1);
+		
 	}
 }

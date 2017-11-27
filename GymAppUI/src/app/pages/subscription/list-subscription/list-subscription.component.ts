@@ -28,7 +28,6 @@ export class ListSubscriptionComponent implements OnInit {
 getSubscriptionAndWorkouts(): void {
   this.backendService.getAllSubscriptions().subscribe( res => {
       this.subscriptionAndWorkouts = res;
-      debugger;
       console.log( this.subscriptionAndWorkouts );
   } );
 }
@@ -49,11 +48,10 @@ getSubscriptionAndWorkouts(): void {
     // this.subscriptions[this.subscriptions.indexOf(workoutlist)].workouts.splice(this.subscriptions[this.subscriptions.indexOf(workoutlist)].workouts.indexOf(workout),1);
   // }
   updateSubscription(entry:WorkoutList):void {
-    this.session.store("subscriptionToUpdate",entry.subscription);
-    this.session.store("workoutsToStore",entry.workouts);
+      // de ce nu ati trimis direct un workoutlist?
+    this.session.store('workoutlist', entry);
     this.router.navigateByUrl('/updatesubscription');
-  };
- 
+  }
 
 
 }

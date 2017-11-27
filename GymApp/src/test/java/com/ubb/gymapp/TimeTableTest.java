@@ -9,7 +9,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.ubb.gymapp.model.Room;
 import com.ubb.gymapp.model.Timetable;
+import com.ubb.gymapp.model.User;
+import com.ubb.gymapp.model.UserWorkout;
 import com.ubb.gymapp.model.Workout;
+import com.ubb.gymapp.model.User.UserType;
+import com.ubb.gymapp.model.Workout.Difficulty;
 import com.ubb.gymapp.repository.RoomRepository;
 import com.ubb.gymapp.repository.TimetableRepository;
 import com.ubb.gymapp.repository.WorkoutRepository;
@@ -106,5 +110,21 @@ public class TimeTableTest {
 		roomRepo.delete(room);
 	}
 	
+	@Test
+	public void deleteByWorkout(){
+		Workout work1 = new Workout("Zumba", Difficulty.MEDIUM, "Pretty much the most awesome workout ever. Dance to great music, with great people, and burn a ton of calories without even realizing it.");
+		workRepo.save(work1);
+		Room room1 = new Room("Main room");
+		roomRepo.save(room1);
+		Timetable timetable = new Timetable("Montag", new Date(), 10, room1, work1);
+		timeRepo.save(timetable);
+		long id = timetable.getId();
+		timeRepo.deleteByWorkout(work1);
+		boolean isDeleted = !timeRepo.exists(id);
+		assertTrue(isDeleted);
+		roomRepo.delete(room1);
+		workRepo.delete(work1);
+
+	}
 
 }

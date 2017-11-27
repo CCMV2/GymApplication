@@ -27,16 +27,16 @@ export class ListWorkoutComponent implements OnInit {
     this.backendService.getAllWorkouts().subscribe(res =>
       this.allWorkouts = res)
   }
-
-  select(workout: Workout) {
-    this.selectedWorkout = workout;
+  
+  update(workout: TrainerWorkout) {
+      console.log('implement me!');
   }
 
-  delete() {
+  delete(workout: TrainerWorkout) {
     console.log("start delete");
-    this.backendService.deleteWorkout(this.selectedWorkout).subscribe(res => {
-      console.log(res); this.getAllWorkouts(); this.selectedWorkout = null
-    })
+    this.backendService.deleteWorkout(workout.workout).subscribe(res => {
+      console.log(res); this.getAllWorkouts();
+    });
 
     console.log(this.allWorkouts);
   }

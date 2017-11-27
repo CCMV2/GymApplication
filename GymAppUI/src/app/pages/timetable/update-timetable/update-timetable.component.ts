@@ -26,9 +26,7 @@ export class UpdateTimetableComponent implements OnInit {
         this.timetableToCreate = this.session.retrieve('timetableToUpdate') ;
         this.timetableToCreate.roomName = this.timetableToCreate.room.roomName;
         this.timetableToCreate.workoutType = this.timetableToCreate.workout.workoutType;
-        const hours = new Date(this.timetableToCreate.start).getHours();
-        const min = new Date(this.timetableToCreate.start).getMinutes();
-        this.timetableToCreate.time = hours +  ':' + min;
+        this.timetableToCreate.start = new Date(this.timetableToCreate.start);
     }
 
     findRoomByName(name: string ): Room {
@@ -45,10 +43,6 @@ export class UpdateTimetableComponent implements OnInit {
         const workoutType = this.timetableToCreate.workoutType;
         const room = this.findRoomByName(roomName);
         const workout = this.findWorkoutByType(workoutType);
-        this.timetableToCreate.start = new Date();
-        const hours = parseInt(this.timetableToCreate.time.split( ':' )[0]);
-        const mins = parseInt(this.timetableToCreate.time.split( ':' )[1]);
-        this.timetableToCreate.start.setHours(hours, mins, 0, 0);
         this.timetableToCreate.room = room ;
         this.timetableToCreate.workout = workout.workout ;
         this.backendService.updateTimetable(this.timetableToCreate).subscribe(res => {

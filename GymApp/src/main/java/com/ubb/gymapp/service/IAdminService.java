@@ -9,7 +9,6 @@ import com.ubb.gymapp.model.Timetable;
 import com.ubb.gymapp.model.User;
 import com.ubb.gymapp.model.UserWorkout;
 import com.ubb.gymapp.model.Workout;
-import com.ubb.gymapp.model.WorkoutList;
 
 public interface IAdminService {
 

@@ -1,12 +1,6 @@
-form{
-    position: relative;
-    background-color: aqua;
-}
-table, th, td{ 
-    border: 2px solid black; 
-    font-size: 30px;
-    text-align: center;
-    padding: 10px 10px;
+.list-table{
+    margin-top: 30px;
+    margin: 0 auto;
 }
 
 tr.selected {
@@ -18,19 +12,8 @@ tr.selected:hover {
 }
 
 table{
-    position: absolute;
     border-collapse: collapse;
-    top: 30px;
-    left: 15%;
-    right: 15%;
-    width: 70%;
 }
-
-h1{
-    text-align: center;
-    font-size: 50px;
-}
-
 input{
     font-size: 25px;
 }
