@@ -20,7 +20,7 @@ export class UserPageComponent implements OnInit {
   getUsers(): void {
     this.backendService.getAllUsers().subscribe( res => {
       this.userLists = res;
-      debugger;
+     
       console.log( this.userLists );
     } );
   }

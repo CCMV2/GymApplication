@@ -16,7 +16,7 @@ public class UserController {
 	@Autowired
 	private IAdminService adminService;
 	
-	@RequestMapping(value = "/listusers", method = RequestMethod.POST)
+	@RequestMapping(value = "/listusers", method = RequestMethod.GET)
 	public List<User> findAllUsers(){
 		return adminService.getAllUsers();
 	}
