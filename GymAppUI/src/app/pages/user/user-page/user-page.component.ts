@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from "../../../models/user";
-import { BackendService } from "../../../backend.service";
+import {User} from '../../../models/user';
+import {Router} from '@angular/router';
+import { BackendService } from '../../../backend.service';
+import {SessionStorageService} from 'ngx-webstorage';
 
 @Component({
   selector: 'app-user-page',
@@ -9,29 +11,26 @@ import { BackendService } from "../../../backend.service";
 })
 export class UserPageComponent implements OnInit {
 
-  selectedUser: User;
-  allUsers: User[];
-  constructor(private backendService: BackendService) {
-      
-  }
+  userLists: User[] = [];
+   // users: User[] = [];
+  constructor(private backendService: BackendService, private router: Router , private session: SessionStorageService) {}
 
-  ngOnInit() {
-      this.getAllUsers();
+  ngOnInit() { this.getUsers(); }
+
+  getUsers(): void {
+    this.backendService.getAllUsers().subscribe( res => {
+      this.userLists = res;
+      debugger;
+      console.log( this.userLists );
+    } );
   }
-  getAllUsers(){
-      this.backendService.getAllUsers();
+  delete(sub: User): void{
+    this.backendService.deleteUser(sub);
   }
-  
-  select(user: User){
-      this.selectedUser = user;
-  }
-  
-  delete() {
-      console.log("start delete");
-      this.backendService.deleteUser(this.selectedUser);
-      this.selectedUser = null;
-      console.log(this.allUsers);
+  updateUser(entry: User ): void {
+    this.session.store('userToUpdate', entry.id);
+    this.router.navigateByUrl('/updatesubscription');
   }
 }
 
-//type script
+

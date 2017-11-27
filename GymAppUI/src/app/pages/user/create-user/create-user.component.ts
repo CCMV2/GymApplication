@@ -15,19 +15,19 @@ export class CreateUserComponent implements OnInit {
     createdUserPassword: string="";
     createdUserPhoneNumber: string="";
     createduserPermission:string="";
-    
+
     constructor(private backendService: BackendService) { }
 
     ngOnInit() {
         this.getAllUsers();
     }
-    
+
     addUser(){
-// tslint:disable-next-line:prefer-const
+   //tslint:disable-next-line:prefer-const
         let createdUser: User = new User(0,this.createdUserPassword,this.createdUserName,this.createdUserSurname,this.createdUserEmail,this.createdUserPhoneNumber,this.createduserPermission);
         this.backendService.addUser(createdUser);
     }
-    
+
     getAllUsers(){
         this.backendService.getAllUsers();
     }
