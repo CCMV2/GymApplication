@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Timetable } from '../../models/Timetable';
 import { BackendService } from '../../backend.service';
 import { Router } from "@angular/router";
+import { SessionStorageService } from "ngx-webstorage/dist/services";
 
 @Component( {
     selector: 'app-timetable',
@@ -11,7 +12,7 @@ import { Router } from "@angular/router";
 export class TimetableComponent implements OnInit {
     allTimetables: Timetable[] = [];
 
-    constructor(private backendService: BackendService, private router: Router) { }
+    constructor(private backendService: BackendService, private router: Router,private session: SessionStorageService) { }
 
     ngOnInit() {
         this.getTimetables();
@@ -38,9 +39,10 @@ export class TimetableComponent implements OnInit {
         });
       }
       */
-    goToUpdatePage(id: number): void {
-        this.router.navigate(['/updateTimetable'], { queryParams: { id: id }});
-      }//de facut pagina
+    goToUpdatePage(entry: Timetable): void {
+        this.session.store('timetableToUpdate', entry);
+        this.router.navigateByUrl('/updateTimetable');
+      }
 
     getTimetables(): void {
         this.backendService.getAllTimetables().subscribe( res => {

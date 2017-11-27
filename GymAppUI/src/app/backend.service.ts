@@ -61,10 +61,10 @@ export class BackendService {
     }
 
     public updateTimetable(timetable: Timetable): Observable<any> {
-        return this.http.post(this.link +'updatetimetable', timetable, this.options).map(response => response.json()).catch(this.handleError);
+        return this.http.post(this.link + 'updatetimetable', timetable, this.options).map(response => response.text()).catch(this.handleError);
     }
 
-    public addSubscription(subscription: WorkoutList): Observable<any>{
+    public addSubscription(subscription: WorkoutList): Observable<any> {
         return this.http.post(this.link + 'createsubscription', subscription, this.options).map(response => response.text()).catch(this.handleError);
 
     }

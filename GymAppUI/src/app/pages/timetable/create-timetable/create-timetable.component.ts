@@ -35,7 +35,6 @@ export class CreateTimetableComponent implements OnInit {
         this.timetableToCreate.start.setHours(hours, mins, 0, 0);
         this.timetableToCreate.setRoom(room);
         this.timetableToCreate.setWorkout(workout);
-        debugger;
         this.backendService.addTimetable(this.timetableToCreate).subscribe(res => {
           this.message = res;
         });
