@@ -10,7 +10,6 @@ import {ListSubscriptionComponent} from './pages/subscription/list-subscription/
 import {RoomPageComponent} from './pages/room/room-page/room-page.component';
 import {TimetableComponent} from './pages/timetable/timetable.component';
 import {CreateUserComponent} from './pages/user/create-user/create-user.component';
-import {DeleteUserComponent} from './pages/user/delete-user/delete-user.component';
 import {LoginPageComponent} from './pages/login-page/login-page.component';
 import {UpdateUserComponent} from './pages/user/update-user/update-user.component';
 import {UserPageComponent} from './pages/user/user-page/user-page.component';
@@ -33,8 +32,7 @@ const routes: Routes = [
     { path: 'timetable', component: TimetableComponent, canActivate: [AuthGuardGuard] },
     { path: 'updateTimetable', component: UpdateTimetableComponent, canActivate: [AuthGuardGuard] },
     { path: 'newtimetable', component: CreateTimetableComponent, canActivate: [AuthGuardGuard] },
-	{ path: 'createuser', component: CreateUserComponent, canActivate: [AuthGuardGuard]},
-    { path: 'deleteuser', component: DeleteUserComponent, canActivate: [AuthGuardGuard]},
+	  { path: 'createuser', component: CreateUserComponent, canActivate: [AuthGuardGuard]},
     { path: 'login', component: LoginPageComponent},
     { path: 'updateuser', component: UpdateUserComponent, canActivate: [AuthGuardGuard]},
     { path: 'listusers', component: UserPageComponent, canActivate: [AuthGuardGuard]}
