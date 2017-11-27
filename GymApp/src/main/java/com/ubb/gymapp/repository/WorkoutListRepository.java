@@ -24,4 +24,13 @@ public interface WorkoutListRepository extends JpaRepository<WorkoutList,Long>{
 	 @Modifying
 	 @Query("delete from WorkoutList w where w.workout = ?1")
 	 public void deleteByWorkout(Workout workout);
+	 
+	 @Transactional
+	 @Modifying
+	 @Query("delete from WorkoutList w where w.subscription = ?1")
+	 public void deleteBySubscription(Subscription subscripition);
+	 
+	
+		 
+	 
 }

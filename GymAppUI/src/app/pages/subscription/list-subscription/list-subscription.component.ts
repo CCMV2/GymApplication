@@ -23,6 +23,7 @@ export class ListSubscriptionComponent implements OnInit {
 
   ngOnInit() {
     this.getSubscriptionAndWorkouts();
+  
   }
 
 getSubscriptionAndWorkouts(): void {
@@ -36,7 +37,10 @@ getSubscriptionAndWorkouts(): void {
 //   this.subscriptionAndWork
 // }
   delete(sub:Subscription):void{
-    this.backendService.deleteSubscription(sub);
+    this.backendService.deleteSubscription(sub).subscribe( res => {
+      this.getSubscriptionAndWorkouts();
+      console.log( this.subscriptionAndWorkouts );
+  } );
   }
 
   //delete(entry: WorkoutList): void{

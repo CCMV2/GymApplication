@@ -15,7 +15,7 @@ export class CreateSubscriptionComponent implements OnInit {
   message = '';
  
 
-  subscriptionToCreate: Subscription = new Subscription ('', 0, new Date(), 0);
+  subscriptionToCreate: Subscription = new Subscription ('', 0, 0);
   workoutList : WorkoutList = new WorkoutList(this.subscriptionToCreate, null);
 
   constructor(private backendService: BackendService) { }
