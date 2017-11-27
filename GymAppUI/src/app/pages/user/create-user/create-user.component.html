@@ -3,27 +3,32 @@
     <h2>Create New User</h2>
   </legend>
 <div style= " margin: 0 auto;">
-  First name: <input type="text" name="fname"><br>
-  Last name: <input type="text" name="lname"><br>
-  Password:  <input type="text" name="passw"><br>
-  Email: <input type="text" name="email"><br>
-  PhoneNr: <input type="text" name="phonenr"><br>
+  	<div class="alert" *ngIf="message.length > 0">
+		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+		<strong>{{message}}!</strong> 
+	</div>
+  
+  First name: <input type="text" name="fname" [(ngModel)]="createdUser.name"><br>
+  Last name: <input type="text" name="lname" [(ngModel)]="createdUser.surname"><br>
+  Password:  <input type="password" name="passw" [(ngModel)]="createdUser.password"><br>
+  Email: <input type="text" name="email" [(ngModel)]="createdUser.email"><br>
+  PhoneNr: <input type="text" name="phonenr" [(ngModel)]="createdUser.phonenumber"><br>
   <!-- Subscription ID: ?? -->
   <div>
     <label for="type">Choose Type: </label>
 
-    <input type="radio" id="trainer" name="type" value="TRAINER" [(ngModel)]="createdUserType">
+    <input type="radio" id="trainer" name="type" value="TRAINER" [(ngModel)]="createdUser.userType">
     <label for="trainer">TRAINER</label>
 
-    <input type="radio" id="client" name="type" value="CLIENT" [(ngModel)]="createdUserType">
+    <input type="radio" id="client" name="type" value="CLIENT" [(ngModel)]="createdUser.userType">
     <label for="client">CLIENT</label>
 
-    <input type="radio" id="admin" name="type" value="ADMIN" [(ngModel)]="createdUserType">
+    <input type="radio" id="admin" name="type" value="ADMIN" [(ngModel)]="createdUser.userType">
     <label for="admin">ADMIN</label>
   </div>
 
   <!--
   <input type="submit" value="Submit"> -->
-  <input type="button" onclick="alert('User created!')" value="Submit">
+  <input type="button" (click)="addUser()" value="Submit">
   </div>
 </fieldset>

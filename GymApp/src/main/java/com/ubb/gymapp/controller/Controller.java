@@ -22,10 +22,7 @@ public class Controller {
 	@Autowired
 	private IAdminService adminService;
 
-	@RequestMapping(value = "/getallusers", method = RequestMethod.GET)
-	public List<User> findAllUsers() {
-		return adminService.getAllUsers();
-	}
+	
 
 	@RequestMapping(value = "/getallrooms", method = RequestMethod.GET)
 	public List<Room> findAllRooms() {
@@ -49,10 +46,7 @@ public class Controller {
 		return adminService.getRoom(parameter);
 	}
 
-	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
-	public User addUser(@RequestBody User user) {
-		return adminService.addUser(user);
-	}
+	
 
 	@RequestMapping(value = "/getworkout", method = RequestMethod.POST)
 	public Workout findOneWorkout(@RequestBody Long parameter) {
