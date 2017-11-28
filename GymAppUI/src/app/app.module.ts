@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -15,7 +16,6 @@ import { UserPageComponent } from './pages/user/user-page/user-page.component';
 import { BackendService } from './backend.service';
 import { HttpModule } from '@angular/http';
 //import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-//import { SideButtonComponent } from './tool-box/side-button/side-button.component';
 import { TimetableComponent } from './pages/timetable/timetable.component';
 import { CreateUserComponent } from './pages/user/create-user/create-user.component';
 import { UpdateUserComponent } from './pages/user/update-user/update-user.component';
@@ -29,8 +29,9 @@ import { AuthenticationService } from './services/authentication.service';
 import { HomeComponent } from './pages/home/home/home.component';
 import { AuthGuardGuard } from './services/auth-guard.guard';
 import { HeaderComponent } from './common/header/header.component';
-import { UpdateTimetableComponent } from "./pages/timetable/update-timetable/update-timetable.component";
-import { SideButtonComponent } from "./tool-box/side-button/side-button.component";
+import { UpdateTimetableComponent } from './pages/timetable/update-timetable/update-timetable.component';
+import { SideButtonComponent } from './tool-box/side-button/side-button.component';
+import {CalendarModule, MultiSelectModule} from 'primeng/primeng';
 
 @NgModule({
   declarations: [
@@ -59,14 +60,18 @@ import { SideButtonComponent } from "./tool-box/side-button/side-button.componen
   imports: [
     HttpModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    FormsModule
-     //NgbModule.forRoot()
+    FormsModule,
+    CalendarModule,
+    MultiSelectModule
+    //NgbModule.forRoot()
   ],
   providers: [BackendService,
               AuthenticationService,
               AuthGuardGuard,
-              SessionStorageService],
+              SessionStorageService
+              ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
