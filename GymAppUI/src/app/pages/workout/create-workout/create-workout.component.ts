@@ -11,15 +11,11 @@ import { Workout } from "../../../models/workout";
 })
 export class CreateWorkoutComponent implements OnInit {
 
-  createdWorkoutName: string = "";
-  createdWorkoutDifficulty: string = "";
-  createdWorkoutDescription: string = "";
-
-  initialWorkoutTrainer: User = new User(0, "", "Choose a trainer", "", "", "", "");
-  createdWorkoutTrainer: User = null;
+  trainerWorkouts: TrainerWorkout = new TrainerWorkout(new Workout(0, "", "", ""), []);
 
   trainerList: User[] = [];
-  selectedTrainers: User[] = [];
+
+  message = "";
 
   constructor(private backendService: BackendService) { }
 
@@ -28,8 +24,11 @@ export class CreateWorkoutComponent implements OnInit {
   }
 
   addWorkout() {
-    let createdWorkout: TrainerWorkout = new TrainerWorkout(new Workout(0, this.createdWorkoutName, this.createdWorkoutDifficulty, this.createdWorkoutDescription), this.createdWorkoutTrainer);
-    this.backendService.addWorkout(createdWorkout).subscribe(res => console.log(res));
+    this.backendService.addWorkout(this.trainerWorkouts).subscribe(res => {
+      console.log(res);
+      this.message = res;
+    }
+    );
   }
 
   getAllTrainers() {

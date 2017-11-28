@@ -14,27 +14,27 @@ export class UpdateWorkoutComponent implements OnInit {
 
   constructor(private backendService: BackendService, private session: SessionStorageService) { }
 
-  // updatedWorkoutName: string = "";
-  // updatedWorkoutDifficulty: string = "";
-  // updatedWorkoutDescription: string = "";
+  trainerWorkouts: TrainerWorkout;
 
   trainerList: User[] = [];
-  selectedTrainers: User[] = [];
 
-  workoutToUpdate: TrainerWorkout;
+  message = "";
 
   ngOnInit() {
-    this.workoutToUpdate = this.session.retrieve( 'workoutToUpdate' );
-    console.log(this.workoutToUpdate);
-    // this.updatedWorkoutName = this.workoutToUpdate.workoutType;
-    // this.updatedWorkoutDescription=this.workoutToUpdate.description;
-    // this.updatedWorkoutDifficulty=this.workoutToUpdate.difficulty;
-    this.backendService.getAllTrainersForWorkout(this.workoutToUpdate.workout).subscribe(res => {this.selectedTrainers = res;console.log(this.selectedTrainers)});
-        
+    this.trainerWorkouts = this.session.retrieve('workoutToUpdate');
     this.getAllTrainers();
+  }
+
+  updateWorkout() {
+    this.backendService.addWorkout(this.trainerWorkouts).subscribe(res => {
+      console.log(res);
+      this.message = res;
+    }
+    );
   }
 
   getAllTrainers() {
     this.backendService.getAllTrainers().subscribe(res => this.trainerList = res);
   }
+
 }

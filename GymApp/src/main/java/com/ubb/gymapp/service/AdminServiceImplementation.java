@@ -9,14 +9,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ubb.gymapp.dto.SubscriptionWorkouts;
+import com.ubb.gymapp.dto.WorkoutTrainers;
 import com.ubb.gymapp.model.Room;
 import com.ubb.gymapp.model.Subscription;
 import com.ubb.gymapp.model.Timetable;
 import com.ubb.gymapp.model.User;
+import com.ubb.gymapp.model.User.UserType;
 import com.ubb.gymapp.model.UserWorkout;
 import com.ubb.gymapp.model.Workout;
 import com.ubb.gymapp.model.WorkoutList;
-import com.ubb.gymapp.model.User.UserType;
 import com.ubb.gymapp.repository.RoomRepository;
 import com.ubb.gymapp.repository.SubscriptionRepository;
 import com.ubb.gymapp.repository.TimetableRepository;
@@ -73,22 +74,21 @@ public class AdminServiceImplementation implements IAdminService {
 	}
 
 	@Override
-	public List<UserWorkout> getTrainerWorkouts() {
-		return userWorkoutRepo.findAll();
+	public List<WorkoutTrainers> getTrainerWorkouts() {
+		List<Workout> workoutList = workoutRepo.findAll();
+		List<WorkoutTrainers> workoutTrainersList = new ArrayList<>();
+		for(Workout workout : workoutList) {
+			List<User> userList = userWorkoutRepo.findUsersByWorkout(workout);
+			WorkoutTrainers workoutTrainers = new WorkoutTrainers(workout, userList);
+			workoutTrainersList.add(workoutTrainers);
+		}
+		return workoutTrainersList;
 	}
 	
 //	@Override
 //	public List<User> getAllUsersForWorkout(Workout workout){
 //		return userRepo.findAllByWorkout(workout);
 //	}
-	
-	@Override
-	public void addTrainerWorkout(UserWorkout userWorkout) {
-		Workout workout = userWorkout.getWorkout();
-		workout = workoutRepo.save(userWorkout.getWorkout());
-		userWorkout.setWorkout(workout);
-		userWorkoutRepo.save(userWorkout);
-	}
 	
 	@Override
 	public void updateTrainerWorkout(UserWorkout userWorkout){
@@ -152,7 +152,8 @@ public class AdminServiceImplementation implements IAdminService {
 	@Override
 	public void addSubscription(SubscriptionWorkouts subscriptionWorkouts) {
 		Subscription subscription = subscriptionWorkouts.getSubscription();
-		subscriptionRepo.save(subscription);
+		subscription = subscriptionRepo.save(subscription);
+		workoutListRepo.deleteBySubscription(subscription);
 		for(Workout workout: subscriptionWorkouts.getWorkouts()){
 			WorkoutList workoutList = new WorkoutList(subscription, workout);
 			workoutListRepo.save(workoutList);
@@ -221,6 +222,17 @@ public class AdminServiceImplementation implements IAdminService {
 	@Override
 	public List<Workout> getAllWorkouts() {
 		return workoutRepo.findAll();
+	}
+
+	@Override
+	public void addWorkoutTrainers(WorkoutTrainers workoutTrainers) {
+		Workout workout = workoutTrainers.getWorkout();
+		workout = workoutRepo.save(workout);
+		userWorkoutRepo.deleteByWorkout(workout);
+		for(User user: workoutTrainers.getTrainers()) {
+			UserWorkout userWorkout = new UserWorkout(user, workout);
+			userWorkoutRepo.save(userWorkout);
+		}
 	}
 
 

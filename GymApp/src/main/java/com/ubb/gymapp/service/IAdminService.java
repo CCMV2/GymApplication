@@ -3,6 +3,7 @@ package com.ubb.gymapp.service;
 import java.util.List;
 
 import com.ubb.gymapp.dto.SubscriptionWorkouts;
+import com.ubb.gymapp.dto.WorkoutTrainers;
 import com.ubb.gymapp.model.Room;
 import com.ubb.gymapp.model.Subscription;
 import com.ubb.gymapp.model.Timetable;
@@ -22,14 +23,12 @@ public interface IAdminService {
 	
 	public Workout getWorkoutById(Long id);
 	
-	public List<UserWorkout> getTrainerWorkouts();
+	public List<WorkoutTrainers> getTrainerWorkouts();
 	
 	public List<Workout> getAllWorkouts();
-	
-	//public List<User> getAllUsersForWorkout(Workout workout);
-	
-	public void addTrainerWorkout(UserWorkout userWorkout);
-	
+		
+	public void addWorkoutTrainers(WorkoutTrainers workoutTrainers);
+		
 	public void updateTrainerWorkout(UserWorkout userWorkout);
 	
 	public List<UserWorkout> getAllUserWorkoutsForWorkout(Workout workout);

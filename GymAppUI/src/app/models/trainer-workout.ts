@@ -3,10 +3,10 @@ import {User} from './user';
 
 export class TrainerWorkout {
     workout: Workout;
-    trainer: User;
+    trainers: User[];
 
-    constructor(workout: Workout, trainer: User){
+    constructor(workout: Workout, trainers: User[]){
         this.workout = workout;
-        this.trainer = trainer;
+        this.trainers = trainers;
     }
 }
