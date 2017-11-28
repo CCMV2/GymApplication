@@ -2,17 +2,20 @@
   <legend>
     <h2>Create New User</h2>
   </legend>
+  
+  
 <div style= " margin: 0 auto;">
   	<div class="alert" *ngIf="message.length > 0">
 		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
 		<strong>{{message}}!</strong> 
 	</div>
   
-  First name: <input type="text" name="fname" [(ngModel)]="createdUser.name"><br>
-  Last name: <input type="text" name="lname" [(ngModel)]="createdUser.surname"><br>
-  Password:  <input type="password" name="passw" [(ngModel)]="createdUser.password"><br>
-  Email: <input type="text" name="email" [(ngModel)]="createdUser.email"><br>
-  PhoneNr: <input type="text" name="phonenr" [(ngModel)]="createdUser.phonenumber"><br>
+
+  <label>First name:</label> <input type="text" name="fname" [(ngModel)]="createdUser.name"><br>
+  <label>Last name:</label> <input type="text" name="lname" [(ngModel)]="createdUser.surname"><br>
+  <label>Password:</label>  <input type="password" name="passw" [(ngModel)]="createdUser.password"><br>
+  <label>Email:</label> <input type="text" name="email" [(ngModel)]="createdUser.email"><br>
+  <label>PhoneNr:</label> <input type="text" name="phonenr" [(ngModel)]="createdUser.phonenumber"><br>
   <!-- Subscription ID: ?? -->
   <div>
     <label for="type">Choose Type: </label>
@@ -29,6 +32,8 @@
 
   <!--
   <input type="submit" value="Submit"> -->
-  <input type="button" (click)="addUser()" value="Submit">
+  <button type="button" class="button" (click)="addUser()"><span>Submint </span></button>
+  
   </div>
 </fieldset>
+
