@@ -22,12 +22,7 @@
 					<input type="number" step="0.01" name="price" [(ngModel)]="subscriptionToCreate.price" min=0 oninput="validity.valid||(value='');">
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-4"  for="start">Start Date:</label>
-				 <div class="col-sm-7"> 
-				 	<p-calendar name="start" [(ngModel)]="subscriptionToCreate.start" [showIcon]="true" dateFormat="dd.mm.yy"></p-calendar>
-				</div>
-			</div>
+		
 			<div class="form-group">
 				<label class="control-label col-sm-4"  for="duration">Duration (days):</label>
 				 <div class="col-sm-7"> 

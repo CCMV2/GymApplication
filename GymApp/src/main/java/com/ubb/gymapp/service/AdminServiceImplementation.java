@@ -84,6 +84,19 @@ public class AdminServiceImplementation implements IAdminService {
 		userWorkout.setWorkout(workout);
 		userWorkoutRepo.save(userWorkout);
 	}
+	
+	@Override
+	public void updateTrainerWorkout(UserWorkout userWorkout){
+		Workout tempWorkout = workoutRepo.findOne(userWorkout.getWorkout().getIdWorkout());
+		tempWorkout.setWorkoutType(userWorkout.getWorkout().getWorkoutType());
+		tempWorkout.setDescription(userWorkout.getWorkout().getDescription());
+		tempWorkout.setDifficulty(userWorkout.getWorkout().getDifficulty());
+		workoutRepo.save(tempWorkout);
+		UserWorkout tempUserWorkout = userWorkoutRepo.findOne(userWorkout.getId());
+		tempUserWorkout.setWorkout(tempWorkout);
+		tempUserWorkout.setTrainer(userWorkout.getTrainer());
+		userWorkoutRepo.save(tempUserWorkout);
+	}
 
 	@Override
 	public void deleteWorkout(Workout workout) {
@@ -92,6 +105,12 @@ public class AdminServiceImplementation implements IAdminService {
 		workoutListRepo.deleteByWorkout(workout);
 		workoutRepo.delete(workout);
 
+	}
+	
+	@Override
+	public List<UserWorkout> getAllUserWorkoutsForWorkout(Workout workout) {
+		return userWorkoutRepo.findAllByWorkout(workout);
+		
 	}
 
 	@Override
@@ -159,6 +178,9 @@ public class AdminServiceImplementation implements IAdminService {
 
 	@Override
 	public void deleteSubscription(Subscription subscription) {
+		
+		workoutListRepo.deleteBySubscription(subscription);
+		
 		subscriptionRepo.delete(subscription);
 	}
 	

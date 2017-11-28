@@ -23,7 +23,6 @@ public class Subscription implements Serializable{
 	private Long subscriptionId;
 	private String name;
 	private Double price;
-	private Date start;
 	private Integer duration;
 
 	public Subscription(String name, Double price) {
@@ -61,14 +60,9 @@ public class Subscription implements Serializable{
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	@Column (name = "Start")
-	public Date getStart() {
-		return start;
-	}
 
-	public void setStart(Date start) {
-		this.start = start;
-	}
+
+
 	@Column (name = "Duration")
 	public Integer getDuration() {
 		return duration;
@@ -85,7 +79,6 @@ public class Subscription implements Serializable{
 		result = prime * result + ((duration == null) ? 0 : duration.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
-		result = prime * result + ((start == null) ? 0 : start.hashCode());
 		result = prime * result + ((subscriptionId == null) ? 0 : subscriptionId.hashCode());
 		return result;
 	}
@@ -114,11 +107,6 @@ public class Subscription implements Serializable{
 				return false;
 		} else if (!price.equals(other.price))
 			return false;
-		if (start == null) {
-			if (other.start != null)
-				return false;
-		} else if (!start.equals(other.start))
-			return false;
 		if (subscriptionId == null) {
 			if (other.subscriptionId != null)
 				return false;
@@ -130,7 +118,7 @@ public class Subscription implements Serializable{
 	@Override
 	public String toString() {
 		return "Subscription [subscriptionId=" + subscriptionId + ", name=" + name + ", price=" + price + ", start="
-				+ start + ", duration=" + duration + "]";
+				 + ", duration=" + duration + "]";
 	}
 	
 	

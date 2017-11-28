@@ -20,16 +20,18 @@ export class UserPageComponent implements OnInit {
   getUsers(): void {
     this.backendService.getAllUsers().subscribe( res => {
       this.userLists = res;
-      debugger;
+     
       console.log( this.userLists );
     } );
   }
   delete(sub: User): void{
-    this.backendService.deleteUser(sub);
+     
+    this.backendService.deleteUser(sub).subscribe(res => {
+        console.log(res); this.getUsers(); });
   }
   updateUser(entry: User ): void {
-    this.session.store('userToUpdate', entry.id);
-    this.router.navigateByUrl('/updatesubscription');
+    this.session.store('userToUpdate', entry);
+    this.router.navigateByUrl('/updateuser');
   }
 }
 

@@ -71,6 +71,20 @@ public class UserTest {
 		userRepo.delete(user.getId());
 	}
 	
-	//TODO add test for findAllByUserType
+	@Test
+	public void testFindAllByUserType() {
+		User trainer = new User("password", "Don","Huan","huan@mail.com", "0721878974", UserType.TRAINER);
+		User user1 = new User("password", "Don","Huan","huan@mail.com", "0721878974", UserType.CLIENT);
+		User user2 = new User("password", "Don","Huan","huan@mail.com", "0721878974", UserType.CLIENT);
+		
+		userRepo.save(trainer);
+		userRepo.save(user1);
+		userRepo.save(user2);
+		List<User> trainerList = userRepo.findAllByUserType(UserType.TRAINER);
+		assertNotNull(trainerList);
+		userRepo.delete(trainer.getId());
+		userRepo.delete(user1.getId());
+		userRepo.delete(user2.getId());
+	}
 	
 }

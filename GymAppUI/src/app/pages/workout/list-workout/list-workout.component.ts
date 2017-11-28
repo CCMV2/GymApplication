@@ -33,7 +33,6 @@ export class ListWorkoutComponent implements OnInit {
   }
 
   delete(workout: TrainerWorkout) {
-    console.log("start delete");
     this.backendService.deleteWorkout(workout.workout).subscribe(res => {
       console.log(res); this.getAllWorkouts();
     });

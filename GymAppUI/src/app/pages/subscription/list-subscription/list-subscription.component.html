@@ -5,14 +5,12 @@
   <tr>
     <th>Name</th>
     <th>Price</th>
-    <th>Start</th>
     <th>Duration</th>
     <th>Workouts</th>
   </tr>
   <tr *ngFor="let entry of subscriptionAndWorkouts">
     <td>{{entry?.subscription.name}} </td>
     <td>{{entry?.subscription.price}} LEI</td>
-    <td>{{entry?.subscription.start | date:'dd - MMM'}}</td>
     <td>{{entry?.subscription.duration}} Days</td>
 
     <td>
@@ -24,12 +22,12 @@
         <tr *ngFor="let workout of entry.workouts">
           <td>{{workout?.workoutType}}</td>
           <td>{{workout?.difficulty}}</td>
-          <button (click)="deleteWorkout(entry,workout)">Delete</button>
+          <!--button>Delete</button-->
         </tr>
       </table>
     </td>
     <td>
-        <button type="button" class="btn btn-primary-outline pull-right" (click)="delete(entry)"><i class="fa fa-plus"></i>Delete</button>
+        <button type="button" class="btn btn-primary-outline pull-right" (click)="delete(entry.subscription)"><i class="fa fa-plus"></i>Delete</button>
         <br>
         <br>
         <button id="update" type="button" class="btn btn-primary-outline pull-right" (click)="updateSubscription(entry)"><i class="fa fa-plus"></i>Update</button>

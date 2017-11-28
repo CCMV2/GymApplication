@@ -4,23 +4,22 @@
 <table class="table table-condensed table-hover">
   <tr>
     <th>ID</th>
-    <th>Password</th>
+    
     <th>Type</th>
     <th>Email</th>
     <th>Name</th>
     <th>Surname</th>
     <th>PhoneNr</th>
-    <th>ID Subscription</th>
+    <th>Start</th>
+    <th>Subscription</th>
   </tr>
   <tr *ngFor="let entry of userLists">
     <td>
       {{entry?.id}}
     </td>
+    
     <td>
-      {{entry?.password}}
-    </td>
-    <td>
-      {{entry?.type}}
+      {{entry?.userType}}
     </td>
     <td>
       {{entry?.email}}
@@ -34,10 +33,16 @@
     <td>
       {{entry?.phonenumber}}
     </td>
-    <td>
-      {{entry?.userPermission}}
+    
+     <td>
+      {{entry?.start | date:'dd.MM.yyyy'}}
     </td>
-
+    
+    <td>
+    	<div *ngIf="entry.subscription">
+      		{{entry?.subscription.name}}
+      </div>
+    </td>
     <td>
       <button type="button" class="btn btn-primary-outline pull-right" (click)="delete(entry)"><i class="fa fa-plus"></i>Delete</button>
       <br>

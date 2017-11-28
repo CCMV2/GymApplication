@@ -2,48 +2,53 @@
   <legend>
     <h2>Update User</h2>
   </legend>
-  <div class="centered col-sm-7">
-    <form class="form-horizontal">
-      <div class="form-group">
-        <label class="control-label col-sm-3" for="name">Username:</label>
-        <div class="col-sm-9">
-          <input type="text" name="SubName" [(ngModel)]="username">
-        </div>
-      </div>
+<div style= " margin: 0 auto;">
+  	<div class="alert" *ngIf="message.length > 0">
+		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+		<strong>{{message}}!</strong> 
+	</div>
+  
+  First name: <input type="text" name="fname" [(ngModel)]="createdUser.name"><br>
+  Last name: <input type="text" name="lname" [(ngModel)]="createdUser.surname"><br>
+  Password:  <input type="password" name="passw" [(ngModel)]="createdUser.password"><br>
+  Email: <input type="text" name="email" [(ngModel)]="createdUser.email"><br>
+  PhoneNr: <input type="text" name="phonenr" [(ngModel)]="createdUser.phonenumber"><br>
+  <!-- Subscription ID: ?? -->
+  <div>
+    <label for="type">Choose Type: </label>
 
-      <div  class="form-group">
-        <label  class="control-label col-sm-3" for="passw" >Password:</label>
-        <div  class="col-sm-9">
-          <input type="text" name="Password" step="0.01" min=0 oninput="validity.valid||(value='');" [(ngModel)]="password" ><br>
-        </div>
-      </div>
+    <input type="radio" id="trainer" name="type" value="TRAINER" [(ngModel)]="createdUser.userType">
+    <label for="trainer">TRAINER</label>
 
-      <div  class="form-group">
-        <label  class="control-label col-sm-3" for="email">Email:</label>
-        <div  class="col-sm-9">
-          <input type="text" name="Email" [(ngModel)]="email">
-        </div>
-      </div>
-      <div  class="form-group">
-        <label  class="control-label col-sm-3" for="phonenr">PhoneNr:</label>
-        <div  class="col-sm-9">
-          <input type="number" name="PhoneNr" min=0 oninput="validity.valid||(value='');" [(ngModel)]="phonenr">
-        </div>
-      </div>
-      <div class="form-group">
-        <label  class="control-label col-sm-3" for="type">Type:</label>
-        <div  class="col-sm-9">
-          <select name="Type" multiple>
-            <option  *ngFor="let type of types " value="type">{{user.type}}</option>
-            <!--option value="saab">Saab</option>
-            <option value="opel">Opel</option>
-            <option value="audi">Audi</option-->
-          </select>
-        </div>
-      </div>
+    <input type="radio" id="client" name="type" value="CLIENT" [(ngModel)]="createdUser.userType">
+    <label for="client">CLIENT</label>
 
-
-      <button type="submit" class="btn btn-success submit">Submit</button>
-    </form>
+    <input type="radio" id="admin" name="type" value="ADMIN" [(ngModel)]="createdUser.userType">
+    <label for="admin">ADMIN</label>
+  </div>
+	<fieldset>
+  <legend>
+    <h2>Assign Subscription</h2>
+  </legend>
+  
+   <div  class="form-group">
+            <label  class="control-label col-sm-3" for="start">Start date:</label>
+            <div  class="col-sm-9"> 
+        		<p-calendar name="start" [(ngModel)]="createdUser.start" [showIcon]="true" dateFormat="dd.mm.yy"></p-calendar>
+            </div>
+        </div>
+        
+        <div>
+            <label for="subscription">Subscription: </label>
+            <select [(ngModel)]="createdUser.subscription">
+                <option value="null" hidden>Choose a Subscription</option>
+                <option *ngFor="let subscription of subscriptionList" [ngValue]="subscription" >{{subscription.name}}</option>
+            </select>
+        </div>
+        </fieldset>
+  <!--
+  <input type="submit" value="Submit"> -->
+  <input type="button" (click)="updateUser()" value="Submit">
   </div>
 </fieldset>
+

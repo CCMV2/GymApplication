@@ -140,4 +140,37 @@ public class UserWorkoutTest {
 		userRepo.delete(trainer1);
 
 	}
+	
+	@Test
+	public void findAllByWorkout() {
+		Workout workout1 = new Workout("Zumba", Difficulty.EASY,"Test");
+		Workout workout2 = new Workout("Zumba", Difficulty.HARD,"Test");
+		Workout workout3 = new Workout("Swimming", Difficulty.MEDIUM,"Test");
+		workoutRepo.save(workout1);
+		workoutRepo.save(workout2);
+		workoutRepo.save(workout3);
+		User trainer1 = new User("trainer1", "John", "Doe", "john.doe@gmail.com", "0758914523", UserType.TRAINER);
+		User trainer2 = new User("trainer2", "Jane", "Doe", "jane.doe@gmail.com", "0758914523", UserType.TRAINER);
+		userRepo.save(trainer1);
+		userRepo.save(trainer2);
+		UserWorkout uw1 = new UserWorkout(trainer1, workout1);
+		UserWorkout uw2 = new UserWorkout(trainer1, workout2);
+		UserWorkout uw3 = new UserWorkout(trainer1, workout3);
+		UserWorkout uw4 = new UserWorkout(trainer2, workout1);
+		userWorkoutRepo.save(uw1);
+		userWorkoutRepo.save(uw2);
+		userWorkoutRepo.save(uw3);
+		userWorkoutRepo.save(uw4);
+		List<UserWorkout> uwList = userWorkoutRepo.findAllByWorkout(workout1);
+		assertEquals(uwList.size(), 2);
+		userWorkoutRepo.delete(uw1);
+		userWorkoutRepo.delete(uw2);
+		userWorkoutRepo.delete(uw3);
+		userWorkoutRepo.delete(uw4);
+		workoutRepo.delete(workout1);
+		workoutRepo.delete(workout2);
+		workoutRepo.delete(workout3);
+		userRepo.delete(trainer1);
+		userRepo.delete(trainer2);
+	}
 }

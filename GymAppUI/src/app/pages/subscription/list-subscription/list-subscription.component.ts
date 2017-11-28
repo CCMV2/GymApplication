@@ -23,6 +23,7 @@ export class ListSubscriptionComponent implements OnInit {
 
   ngOnInit() {
     this.getSubscriptionAndWorkouts();
+  
   }
 
 getSubscriptionAndWorkouts(): void {
@@ -32,21 +33,15 @@ getSubscriptionAndWorkouts(): void {
   } );
 }
 
-// getSubscriptions(): void {
-//   this.subscriptionAndWork
-// }
+
   delete(sub:Subscription):void{
-    this.backendService.deleteSubscription(sub);
+    this.backendService.deleteSubscription(sub).subscribe( res => {
+      this.getSubscriptionAndWorkouts();
+      console.log( this.subscriptionAndWorkouts );
+  } );
   }
 
-  //delete(entry: WorkoutList): void{
-   // this.backendService.deleteSubscription(entry)
-    // this.subscriptions.splice(this.subscriptions.indexOf(entry),1);
-   //}
-
-  //deleteWorkout(workoutlist,workout): void {
-    // this.subscriptions[this.subscriptions.indexOf(workoutlist)].workouts.splice(this.subscriptions[this.subscriptions.indexOf(workoutlist)].workouts.indexOf(workout),1);
-  // }
+  
   updateSubscription(entry:WorkoutList):void {
       // de ce nu ati trimis direct un workoutlist?
     this.session.store('workoutlist', entry);

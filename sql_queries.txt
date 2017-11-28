@@ -1,3 +1,4 @@
+Drop schema `gymapp`;
 CREATE SCHEMA `gymapp` ;
 
 DROP TABLE if exists `gymapp`.`workoutlist`;
@@ -12,7 +13,6 @@ DROP TABLE if exists `gymapp`.`subscription`;
   `idSubscription` bigint NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(100) NOT NULL,
   `Price` bigint NOT NULL,
-  `Start` DATE NULL,
   `Duration` INT NULL,
   PRIMARY KEY (`idSubscription`));
 
@@ -25,6 +25,7 @@ CREATE TABLE `gymapp`.`user` (
 	`Surname` VARCHAR(100) NOT NULL,
 	`PhoneNr` VARCHAR(45) NULL,
 	`idSubscription` bigint NULL,
+     `Start` DATE NULL,
  PRIMARY KEY (`idUser`),
  FOREIGN KEY (`idSubscription`) REFERENCES subscription(`idSubscription`));
   
@@ -33,7 +34,7 @@ CREATE TABLE `gymapp`.`user` (
   `idWorkout` bigint NOT NULL AUTO_INCREMENT,
   `WorkoutType` VARCHAR(100) NOT NULL,
   `Difficulty` VARCHAR(45) NULL,
-  `Descr` VARCHAR(100) NULL,
+  `Descr` VARCHAR(1000) NULL,
   PRIMARY KEY (`idWorkout`));
   
 
@@ -69,4 +70,3 @@ CREATE TABLE `gymapp`.`room` (
   PRIMARY KEY (`id`),
   FOREIGN KEY (`idSubscription`) REFERENCES subscription(`idSubscription`),
   FOREIGN KEY (`idWorkout`) REFERENCES workout(`idWorkout`));
-
