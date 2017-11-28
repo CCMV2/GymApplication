@@ -19,7 +19,6 @@ import { HttpModule } from '@angular/http';
 import { TimetableComponent } from './pages/timetable/timetable.component';
 import { CreateUserComponent } from './pages/user/create-user/create-user.component';
 import { UpdateUserComponent } from './pages/user/update-user/update-user.component';
-import { DeleteUserComponent } from './pages/user/delete-user/delete-user.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { NavigationPaneComponent } from './pages/navigation-pane/navigation-pane.component';
 import { CreateTimetableComponent } from './pages/timetable/create-timetable/create-timetable.component';
@@ -33,7 +32,6 @@ import { HeaderComponent } from './common/header/header.component';
 import { UpdateTimetableComponent } from './pages/timetable/update-timetable/update-timetable.component';
 import { SideButtonComponent } from './tool-box/side-button/side-button.component';
 import {CalendarModule, MultiSelectModule} from 'primeng/primeng';
-
 
 @NgModule({
   declarations: [
@@ -49,7 +47,6 @@ import {CalendarModule, MultiSelectModule} from 'primeng/primeng';
     TimetableComponent,
     CreateUserComponent,
     UpdateUserComponent,
-    DeleteUserComponent,
     LoginPageComponent,
     CreateTimetableComponent,
     NavigationPaneComponent,

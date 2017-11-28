@@ -1,8 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
-import { User } from "../../../models/user";
-import { BackendService } from "../../../backend.service";
+import { User } from '../../../models/user';
+import { BackendService } from '../../../backend.service';
 import { SessionStorageService } from 'ngx-webstorage';
-import { Subscription } from "../../../models/subscriptionModel";
+import { Subscription } from '../../../models/subscriptionModel';
 
 @Component( {
     selector: 'app-update-user',
@@ -18,18 +19,15 @@ export class UpdateUserComponent implements OnInit {
 
     ngOnInit() {
         this.createdUser = this.session.retrieve( 'userToUpdate' );
-        
-        this.getAllSubs();
+this.getAllSubs();
     }
 
-    getAllSubs(){
+    getAllSubs() {
         this.backendService.getAllSubscriptionsForUser().subscribe( res => {
             this.subscriptionList = res;
         } );
     }
-    
     updateUser() {
-        debugger;
         this.backendService.addUser( this.createdUser ).subscribe( res => {
             this.message = res;
         } );

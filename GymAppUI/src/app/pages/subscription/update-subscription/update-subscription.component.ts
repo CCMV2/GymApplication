@@ -15,13 +15,13 @@ export class UpdateSubscriptionComponent implements OnInit {
     subscription: Subscription;
     workouts: Workout[];
     workoutList: WorkoutList;
+    message = '';
 
   constructor(private session: SessionStorageService, private backendService: BackendService) { }
 
   ngOnInit() {
     this.workoutList = this.session.retrieve('workoutlist');
     this.subscription = this.workoutList.subscription;
-    debugger;
     this.getWorkouts();
   }
 
@@ -30,7 +30,15 @@ export class UpdateSubscriptionComponent implements OnInit {
       this.workouts = res;
       console.log (this.workouts);
     });
-  }
 
+    
+  }
+  updateSubscription(workList: WorkoutList): void {
+    this.backendService.addSubscription(workList).subscribe(res => {
+
+      this.message = res;
+      console.log(this.message);
+    });
+  }
 
 }

@@ -78,7 +78,7 @@ export class BackendService {
         return this.http.get(this.link + 'listsubscriptions', this.options).map(response => response.json()).catch(this.handleError);
     }
     public deleteSubscription(subscription: Subscription): Observable<any> {
-        return this.http.post(this.link + 'deletesubscription', this.options).map(response => response.text()).catch(this.handleError);
+        return this.http.post(this.link + 'deletesubscription',subscription, this.options).map(response => response.text()).catch(this.handleError);
     }
 
     private handleError( error: any ): Observable<any> {

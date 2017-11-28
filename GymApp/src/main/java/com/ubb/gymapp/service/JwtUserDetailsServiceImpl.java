@@ -23,14 +23,21 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
     	//FIXME add new method findByUsername in the repository
     	//        User user = userRepository.findByUsername(username);
     	// and replace the lines below with the right line
-    	
-    	User user = new User();
-    	user.setEmail("admin");
-    	PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    	String hashedPassword = passwordEncoder.encode("admin");
-    	user.setPassword(hashedPassword);
-    	user.setUserType(UserType.ADMIN);
-    	
+    	User user = null;
+    	if(username.equals("admin")){
+    		user = new User();
+    		user.setEmail("admin");
+    		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    		String hashedPassword = passwordEncoder.encode("admin");
+    		user.setPassword(hashedPassword);
+    		user.setUserType(UserType.ADMIN);
+    		
+    		
+    	}
+    	else
+    	{
+    		
+    	}
         if (user == null) {
             throw new UsernameNotFoundException(String.format("No user found with username '%s'.", username));
         } else {

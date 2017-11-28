@@ -1,28 +1,49 @@
-<div>
-	<h1>Create new timetable</h1>
-	<div class="message" *ngIf="message.length > 0">
-    	<b>{{message}}</b>
-    </div>
-	Day: <select [(ngModel)]="timetableToCreate.day">
-		<option>Montag</option>
-		<option>Dienstag</option>
-		<option>Mittwoch</option>
-		<option>Donnerstag</option>
-		<option>Freitag</option>
-		<option>Samstag</option>
-		<option>Sonnntag</option>
-	</select> 
-	
-	<br> Start: <p-calendar icon="fa-clock-o" name="start" [(ngModel)]="timetableToCreate.start" [timeOnly]="true" [showIcon]="true"></p-calendar> 
-	<br> Duration: <input type="text" [(ngModel)]="timetableToCreate.duration">
-	<br> Room: 
-	<select [(ngModel)]="timetableToCreate.roomName">
-		<option *ngFor="let item of allRooms" value="{{item?.roomName}}"> {{item?.roomName}} </option>
-	</select> 
-	<br> Workout: 
-	<select [(ngModel)]="timetableToCreate.workoutType">
-		<option *ngFor="let item of allWorkouts" value="{{item?.workout.workoutType}}"> {{item?.workout.workoutType}} </option>
-	</select>
-	<br>
-    <button (click)="addTimetable()">Add</button>
-</div>
+<fieldset>
+	<legend>
+		<h2>Create Timetable</h2>
+	</legend>
+	<div class="centered col-sm-7">
+	<form class="form-horizontal">
+		<div class="message" *ngIf="message.length > 0">
+			<b>{{message}}</b>
+		</div>
+		<div class="form-group">
+		<label class="control-label col-sm-3" for="name">Day:</label> 
+		 <select [(ngModel)]="timetableToCreate.day" name="day">
+			<option>Montag</option>
+			<option>Dienstag</option>
+			<option>Mittwoch</option>
+			<option>Donnerstag</option>
+			<option>Freitag</option>
+			<option>Samstag</option>
+			<option>Sonnntag</option>
+		</select>
+		</div>
+		<div class="form-group">
+				<label class="control-label col-sm-3" for="name">Start:</label> 
+				<p-calendar icon="fa-clock-o" name="start" [(ngModel)]="timetableToCreate.start" [timeOnly]="true" [showIcon]="true"></p-calendar> 
+		</div>
+		<div class="form-group">
+				<label class="control-label col-sm-3" for="name">Duration</label> <input
+					type="text" [(ngModel)]="timetableToCreate.duration" name="duration">
+
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="name">Room:</label> <select
+					[(ngModel)]="timetableToCreate.roomName" name="room">
+					<option *ngFor="let item of allRooms" value="{{item?.roomName}}">
+						{{item?.roomName}}</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="name">Workout:</label> <select
+					[(ngModel)]="timetableToCreate.workoutType" name="workout">
+					<option *ngFor="let item of allWorkouts"
+						value="{{item?.workout.workoutType}}">
+						{{item?.workout.workoutType}}</option>
+				</select>
+			</div>
+		<button (click)="addTimetable()"  class="btn btn-success">Add</button>
+		</form>
+	</div>
+</fieldset>
