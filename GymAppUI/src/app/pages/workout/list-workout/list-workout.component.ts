@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Workout } from '../../../models/workout';
 import { BackendService } from '../../../backend.service';
 import { TrainerWorkout } from '../../../models/trainer-workout'
+import { Router } from '@angular/router';
+import { SessionStorageService } from 'ngx-webstorage';
+//import { TrainerListWorkout } from '../../../models/trainerlist-workout';
+import { Observable } from 'rxjs/Observable';
 //import { User } from '../models/user'
 
 @Component({
@@ -13,23 +17,51 @@ export class ListWorkoutComponent implements OnInit {
 
   selectedWorkout: Workout;
 
-  allWorkouts: TrainerWorkout[];
+  //allWorkouts: Workout[] = [];
+  allWorkouts: TrainerWorkout[] = [];
 
-  //trainerList: User[];
+  //finalWorkoutLists: TrainerListWorkout[] = [];
 
-  constructor(private backendService: BackendService) { }
+  //trainerList: TrainerWorkout[] = [];
+
+  constructor(private backendService: BackendService, private router: Router , private session: SessionStorageService) { }
 
   ngOnInit() {
     this.getAllWorkouts();
   }
 
   getAllWorkouts() {
-    this.backendService.getAllWorkouts().subscribe(res =>
-      this.allWorkouts = res)
-  }
+      this.backendService.getAllWorkouts().subscribe(res =>
+        this.allWorkouts = res)
+    }
+
+  // getAllWorkouts() {
+  //   this.backendService.getAllRealWorkouts().subscribe(res =>
+  //     {this.allWorkouts = res;console.log(this.allWorkouts);this.initializeTrainerLists()})
+  // }
   
-  update(workout: TrainerWorkout) {
-      console.log('implement me!');
+  // initializeTrainerLists(){
+  //   for(let i = 0; i<4; i++){
+  //     let x = this.allWorkouts[i];
+  //     let list: TrainerWorkout[] = this.newTrainerList(x);
+  //     let tList: TrainerListWorkout = new TrainerListWorkout(x, list);
+  //     this.finalWorkoutLists.push()
+  //   }
+  //   //forEach(x => {this.finalWorkoutLists.push(new TrainerListWorkout(x, this.newTrainerList(x))); console.log(x)});
+  // }
+
+  // getTrainersForWorkout(workout: Workout) {
+  //     this.backendService.getAllTrainersForWorkout(workout).subscribe(res => this.trainerList = res);
+  // }
+
+  // newTrainerList(workout: Workout) {
+  //   this.getTrainersForWorkout(workout);
+  //   return this.trainerList;
+  // }
+
+  update(workout: Workout ): void {
+    this.session.store('workoutToUpdate', workout);
+    this.router.navigateByUrl('/updateworkout');
   }
 
   delete(workout: TrainerWorkout) {

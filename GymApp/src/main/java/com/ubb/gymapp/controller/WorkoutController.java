@@ -66,6 +66,12 @@ public class WorkoutController {
 
 	}
 	
+//	@RequestMapping(value = "/getusersbyworkout", method = RequestMethod.GET)
+//	public List<User> getAllUsersByWorkout(@RequestBody Workout workout) {
+//		return adminService.getAllUsersForWorkout(workout);
+//
+//	}
+
 	@RequestMapping(value = "/updatetrainerworkout", method = RequestMethod.POST)
 	public String updateTrainerWorkout(@RequestBody UserWorkout userWorkout) {
 		try {

@@ -21,8 +21,9 @@
 	        </tr>
 	        <tr *ngFor="let trainerworkout of allWorkouts">
 	            <td>{{trainerworkout.workout.workoutType}}</td>
-	            <td>{{trainerworkout.workout.difficulty}}</td>
-	            <td>{{trainerworkout.trainer.name}}</td>
+				<td>{{trainerworkout.workout.difficulty}}</td>
+				<td>{{trainerworkout.trainer.name}}</td>
+	            <!-- <td><ul><li *ngFor="let trainers of trainerworkout.trainers">{{trainers.trainer.name}}</li></ul></td> -->
 	            <td>{{trainerworkout.workout.description}}</td>
 	            <td>
 	            	<button type="button" class="room-button btn btn-info" (click)="update(trainerworkout)">

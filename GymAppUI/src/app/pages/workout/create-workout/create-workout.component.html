@@ -19,6 +19,13 @@
         </div>
         <div>
             <label for="trainer">Trainer: </label>
+
+            <div class="form-group">
+				<label class="control-label col-sm-4"  for="trainerList">Workouts:</label>
+				 <div class="col-sm-7"> 
+				 	<p-multiSelect name="trainers" [options]="trainerList" [(ngModel)]="selectedTrainers" optionLabel="name"></p-multiSelect>
+				</div>
+			</div>
             <select [(ngModel)]="createdWorkoutTrainer">
                 <option value="null" hidden>Choose a trainer</option>
                 <option *ngFor="let trainer of trainerList" [ngValue]="trainer" >{{trainer.name}} {{trainer.surname}}</option>

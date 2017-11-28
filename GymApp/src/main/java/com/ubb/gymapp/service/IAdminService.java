@@ -26,6 +26,8 @@ public interface IAdminService {
 	
 	public List<Workout> getAllWorkouts();
 	
+	//public List<User> getAllUsersForWorkout(Workout workout);
+	
 	public void addTrainerWorkout(UserWorkout userWorkout);
 	
 	public void updateTrainerWorkout(UserWorkout userWorkout);

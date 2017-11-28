@@ -18,7 +18,8 @@ export class CreateWorkoutComponent implements OnInit {
   initialWorkoutTrainer: User = new User(0, "", "Choose a trainer", "", "", "", "");
   createdWorkoutTrainer: User = null;
 
-  trainerList: User[];
+  trainerList: User[] = [];
+  selectedTrainers: User[] = [];
 
   constructor(private backendService: BackendService) { }
 

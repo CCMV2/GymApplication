@@ -112,5 +112,7 @@ export class BackendService {
         return this.http.get(this.link + 'getalltrainers', this.options).map( response => response.json() ).catch(this.handleError);
     }
 
-
+    public getAllTrainersForWorkout(workout: Workout){
+        return this.http.get(this.link + 'getalluserworkoutsbyworkout', this.options).map(response => response.json() ).catch(this.handleError);
+    }
 }

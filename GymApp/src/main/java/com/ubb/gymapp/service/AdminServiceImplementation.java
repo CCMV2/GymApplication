@@ -76,7 +76,12 @@ public class AdminServiceImplementation implements IAdminService {
 	public List<UserWorkout> getTrainerWorkouts() {
 		return userWorkoutRepo.findAll();
 	}
-
+	
+//	@Override
+//	public List<User> getAllUsersForWorkout(Workout workout){
+//		return userRepo.findAllByWorkout(workout);
+//	}
+	
 	@Override
 	public void addTrainerWorkout(UserWorkout userWorkout) {
 		Workout workout = userWorkout.getWorkout();
