@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.ubb.gymapp.model.User;
 import com.ubb.gymapp.model.User.UserType;
 import com.ubb.gymapp.repository.UserRepository;
+import com.ubb.gymapp.service.JwtUserDetailsServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -22,6 +23,16 @@ public class UserTest {
 	
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Test
+	public void authenticateUser(){
+		
+		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN);
+		user = userRepo.save(user);
+		User user1 = userRepo.findByEmail("aaa");
+		assertEquals(user.getId(), user1.getId());
+		
+	}
 	
 	@Test
 	public void addUser() {

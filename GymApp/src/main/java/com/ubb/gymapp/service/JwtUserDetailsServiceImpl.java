@@ -36,6 +36,7 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
     	}
     	else
     	{
+    		user = userRepository.findByEmail(username);
     		
     	}
         if (user == null) {
