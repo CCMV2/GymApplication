@@ -18,6 +18,7 @@ import {CreateTimetableComponent} from './pages/timetable/create-timetable/creat
 import {AdminPageComponent} from './pages/admin-page/admin-page.component';
 import { AuthGuardGuard } from './services/auth-guard.guard';
 import { UpdateTimetableComponent } from "./pages/timetable/update-timetable/update-timetable.component";
+import {SubscriptionDetailsComponent} from "./pages/subscription/subscription-details/subscription-details.component";
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuardGuard] },
@@ -35,7 +36,8 @@ const routes: Routes = [
 	  { path: 'createuser', component: CreateUserComponent, canActivate: [AuthGuardGuard]},
     { path: 'login', component: LoginPageComponent},
     { path: 'updateuser', component: UpdateUserComponent, canActivate: [AuthGuardGuard]},
-    { path: 'listusers', component: UserPageComponent, canActivate: [AuthGuardGuard]}
+    { path: 'listusers', component: UserPageComponent, canActivate: [AuthGuardGuard]},
+    { path: 'subscriptiondetails',component: SubscriptionDetailsComponent, canActivate:[AuthGuardGuard]}
 ];
 
 @NgModule({

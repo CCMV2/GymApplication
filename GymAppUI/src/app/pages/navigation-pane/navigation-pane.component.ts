@@ -37,7 +37,8 @@ export class NavigationPaneComponent implements OnInit {
     {
       title: "Subscription", items: [
       { active: false, url: "createsubscription", text: "New Subscription" },
-      { active: false, url: "listsubscription", text: "Subscriptions" }
+      { active: false, url: "listsubscription", text: "Subscriptions" },
+      {active: false, url: "subscriptiondetails", text: "Details"}
     ]
     },
     {

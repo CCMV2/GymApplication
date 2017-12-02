@@ -27,6 +27,11 @@ public class SubscriptionController {
 		return adminService.findAllSubscriptions();
 	}
 	
+	@RequestMapping(value = "/subscriptiondetails",method = RequestMethod.GET)
+	public List<Subscription> getSubscriptionDetails(){
+		return adminService.findAllSubscriptions();
+	}
+	
 	@RequestMapping(value="/createsubscription", method = RequestMethod.POST)
 	public String addSubscription(@RequestBody SubscriptionWorkouts subscriptionWorkouts){
 		try {

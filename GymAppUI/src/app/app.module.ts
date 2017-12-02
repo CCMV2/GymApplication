@@ -32,6 +32,7 @@ import { HeaderComponent } from './common/header/header.component';
 import { UpdateTimetableComponent } from './pages/timetable/update-timetable/update-timetable.component';
 import { SideButtonComponent } from './tool-box/side-button/side-button.component';
 import {CalendarModule, MultiSelectModule} from 'primeng/primeng';
+import { SubscriptionDetailsComponent } from './pages/subscription/subscription-details/subscription-details.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import {CalendarModule, MultiSelectModule} from 'primeng/primeng';
     ClientPageComponent,
     HomeComponent,
     HeaderComponent,
-    UpdateTimetableComponent
+    UpdateTimetableComponent,
+    SubscriptionDetailsComponent
   ],
   imports: [
     HttpModule,
