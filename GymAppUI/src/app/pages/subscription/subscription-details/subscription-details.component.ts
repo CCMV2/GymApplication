@@ -5,16 +5,25 @@ import {WorkoutList} from '../../../models/workoutlist';
 import {Subscription} from '../../../models/subscriptionModel';
 import { Subscribable } from 'rxjs/Observable';
 
+
 @Component({
   selector: 'app-subscription-details',
   templateUrl: './subscription-details.component.html',
   styleUrls: ['./subscription-details.component.css']
 })
 export class SubscriptionDetailsComponent implements OnInit {
-
-  constructor() { }
-
+  subscriptionsAndWorkouts: WorkoutList[] = [];
+  constructor(private backendService: BackendService) { }
+  
+  
   ngOnInit() {
+    this.getSubscriptions();
+  }
+  getSubscriptions(): void{
+    this.backendService.getAllSubscriptionDetails().subscribe( res => {
+      this.subscriptionsAndWorkouts = res;
+      console.log( this.subscriptionsAndWorkouts);
+  } );
   }
 
 }

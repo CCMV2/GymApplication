@@ -72,7 +72,7 @@ export class BackendService {
         return this.http.get(this.link + 'listsubscription', this.options).map(response => response.json()).catch(this.handleError);
     }
 
-    public getAllSubscriptionDetails():Observable<Subscription[]>{
+    public getAllSubscriptionDetails():Observable<WorkoutList[]>{
         return this.http.get(this.link + 'subscriptiondetails', this.options).map(response => response.json()).catch(this.handleError);
 
     }

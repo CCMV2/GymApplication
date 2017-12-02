@@ -28,8 +28,8 @@ public class SubscriptionController {
 	}
 	
 	@RequestMapping(value = "/subscriptiondetails",method = RequestMethod.GET)
-	public List<Subscription> getSubscriptionDetails(){
-		return adminService.findAllSubscriptions();
+	public List<SubscriptionWorkouts> getSubscriptionDetails(){
+		return adminService.findSubcriptionsAndWorkouts();
 	}
 	
 	@RequestMapping(value="/createsubscription", method = RequestMethod.POST)
