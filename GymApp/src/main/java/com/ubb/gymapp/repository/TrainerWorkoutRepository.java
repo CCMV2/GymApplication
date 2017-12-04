@@ -7,20 +7,25 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ubb.gymapp.model.User;
-import com.ubb.gymapp.model.UserWorkout;
+import com.ubb.gymapp.model.Trainer;
+import com.ubb.gymapp.model.TrainerWorkout;
 import com.ubb.gymapp.model.Workout;
 
-public interface UserWorkoutRepository extends JpaRepository<UserWorkout, Long> {
+public interface TrainerWorkoutRepository extends JpaRepository<TrainerWorkout, Long> {
 
 	@Transactional
 	@Modifying
-	@Query("delete from UserWorkout u where u.workout = ?1")
+	@Query("delete from TrainerWorkout u where u.workout = ?1")
 	public void deleteByWorkout(Workout workout);
 
-	public List<UserWorkout> findAllByWorkout(Workout workout);
+	@Transactional
+	@Modifying
+	@Query("delete from TrainerWorkout u where u.trainer = ?1")
+	public void deleteByTrainer(Trainer trainer);
+	
+	public List<TrainerWorkout> findAllByWorkout(Workout workout);
 
-	@Query("select w.trainer from UserWorkout w where w.workout = ?1")
-	public List<User> findUsersByWorkout(Workout workout);
+	@Query("select w.trainer from TrainerWorkout w where w.workout = ?1")
+	public List<Trainer> findTrainersByWorkout(Workout workout);
 
 }

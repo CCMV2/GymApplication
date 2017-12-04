@@ -10,32 +10,33 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubb.gymapp.dto.SubscriptionWorkouts;
 import com.ubb.gymapp.model.Subscription;
-import com.ubb.gymapp.service.IAdminService;
+import com.ubb.gymapp.service.SubscriptionService;
 
 @RestController
 public class SubscriptionController {
+	
 	@Autowired
-	private IAdminService adminService;
+	private SubscriptionService subscriptionService;
 	
 	@RequestMapping(value = "/listsubscription", method = RequestMethod.GET)
 	public List<SubscriptionWorkouts> findAllSubscriptionsAndItsWorkouts() {
-		return adminService.findSubcriptionsAndWorkouts();
+		return subscriptionService.findSubcriptionsAndWorkouts();
 	}
 	
 	@RequestMapping(value = "/listsubscriptions", method = RequestMethod.GET)
 	public List<Subscription> findAllSubscriptions() {
-		return adminService.findAllSubscriptions();
+		return subscriptionService.findAllSubscriptions();
 	}
 	
 	@RequestMapping(value = "/subscriptiondetails",method = RequestMethod.GET)
 	public List<SubscriptionWorkouts> getSubscriptionDetails(){
-		return adminService.findSubcriptionsAndWorkouts();
+		return subscriptionService.findSubcriptionsAndWorkouts();
 	}
 	
 	@RequestMapping(value="/createsubscription", method = RequestMethod.POST)
 	public String addSubscription(@RequestBody SubscriptionWorkouts subscriptionWorkouts){
 		try {
-			adminService.addSubscription(subscriptionWorkouts);
+			subscriptionService.addSubscription(subscriptionWorkouts);
 			return "Successful";
 		} catch (Exception e) {
 			return "Failed: " + e.getMessage();
@@ -45,7 +46,7 @@ public class SubscriptionController {
 	@RequestMapping(value="/deletesubscription",method = RequestMethod.POST)
 	public String deleteSubscription(@RequestBody Subscription subscription){
 		try {
-			adminService.deleteSubscription(subscription);
+			subscriptionService.deleteSubscription(subscription);
 			return "Successful";
 		} catch (Exception e) {
 			return "Failed: " + e.getMessage();

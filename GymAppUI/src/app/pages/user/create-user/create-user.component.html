@@ -13,7 +13,9 @@
 
   <label>First name:</label> <input type="text" name="fname" [(ngModel)]="createdUser.name"><br>
   <label>Last name:</label> <input type="text" name="lname" [(ngModel)]="createdUser.surname"><br>
-  <label>Password:</label>  <input type="password" name="passw" [(ngModel)]="createdUser.password"><br>
+  <label *ngIf="createdUser.userType!=='CLIENT'">Password:</label>  <input *ngIf="createdUser.userType!=='CLIENT'" type="password" name="passw" [(ngModel)]="createdUser.password">
+  <label *ngIf="createdUser.userType==='CLIENT'">CNP:</label>  <input *ngIf="createdUser.userType==='CLIENT'" type="text" name="passw" [(ngModel)]="createdUser.cnp">
+  <br>
   <label>Email:</label> <input type="text" name="email" [(ngModel)]="createdUser.email"><br>
   <label>PhoneNr:</label> <input type="text" name="phonenr" [(ngModel)]="createdUser.phonenumber"><br>
   <!-- Subscription ID: ?? -->
@@ -32,7 +34,7 @@
 
   <!--
   <input type="submit" value="Submit"> -->
-  <button type="button" class="button" (click)="addUser()"><span>Submint </span></button>
+  <button type="button" class="button" (click)="addUser()"><span>Submit </span></button>
   
   </div>
 </fieldset>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from "../../../models/user";
-import { BackendService } from "../../../backend.service";
-import { TrainerWorkout } from "../../../models/trainer-workout";
-import { Workout } from "../../../models/workout";
+import { Trainer } from '../../../models/user';
+import { BackendService } from '../../../backend.service';
+import { TrainerWorkout } from '../../../models/trainer-workout';
+import { Workout } from '../../../models/workout';
 
 @Component({
   selector: 'app-create-workout',
@@ -11,11 +11,11 @@ import { Workout } from "../../../models/workout";
 })
 export class CreateWorkoutComponent implements OnInit {
 
-  trainerWorkouts: TrainerWorkout = new TrainerWorkout(new Workout(0, "", "", ""), []);
+  trainerWorkouts: TrainerWorkout = new TrainerWorkout(new Workout(0, '', '', ''), []);
 
-  trainerList: User[] = [];
+  trainerList: Trainer[] = [];
 
-  message = "";
+  message = '';
 
   constructor(private backendService: BackendService) { }
 
@@ -32,7 +32,12 @@ export class CreateWorkoutComponent implements OnInit {
   }
 
   getAllTrainers() {
-    this.backendService.getAllTrainers().subscribe(res => this.trainerList = res);
+    this.backendService.getAllTrainers().subscribe(res => {
+        this.trainerList = res;
+        for (let trainer of this.trainerList) {
+            trainer.completeName = trainer.name + ' ' + trainer.surname;
+        }
+    });
   }
 
 }

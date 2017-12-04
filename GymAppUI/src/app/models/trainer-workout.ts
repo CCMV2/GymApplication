@@ -1,11 +1,11 @@
 import {Workout} from './workout';
-import {User} from './user';
+import {Trainer} from './user';
 
 export class TrainerWorkout {
     workout: Workout;
-    trainers: User[];
+    trainers: Trainer[];
 
-    constructor(workout: Workout, trainers: User[]){
+    constructor(workout: Workout, trainers: Trainer[]) {
         this.workout = workout;
         this.trainers = trainers;
     }

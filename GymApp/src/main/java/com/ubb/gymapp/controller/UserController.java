@@ -8,33 +8,75 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubb.gymapp.model.Administrator;
+import com.ubb.gymapp.model.Client;
+import com.ubb.gymapp.model.Trainer;
 import com.ubb.gymapp.model.User;
-import com.ubb.gymapp.service.IAdminService;
+import com.ubb.gymapp.service.UserService;
 
 @RestController
 public class UserController {
+	
 	@Autowired
-	private IAdminService adminService;
+	private UserService userService;
 	
 	@RequestMapping(value = "/listusers", method = RequestMethod.GET)
 	public List<User> findAllUsers(){
-		return adminService.getAllUsers();
+		return userService.getAllUsers();
 	}
 	
-	@RequestMapping(value = "/createuser", method = RequestMethod.POST)
-	public String addUser(@RequestBody User user){
+	@RequestMapping(value = "/createclient", method = RequestMethod.POST)
+	public String addClient(@RequestBody Client client){
 		try{
-			adminService.addUser(user);
+			userService.addUser(client);
+			return "Successful";
+		} catch (Exception e) {
+			return "Failed:" + e.getMessage();
+		}
+	}
+	@RequestMapping(value = "/createadmin", method = RequestMethod.POST)
+	public String addAdmin(@RequestBody Administrator admin){
+		try{
+			userService.addUser(admin);
+			return "Successful";
+		} catch (Exception e) {
+			return "Failed:" + e.getMessage();
+		}
+	}
+	@RequestMapping(value = "/createtrainer", method = RequestMethod.POST)
+	public String addTrainer(@RequestBody Trainer trainer){
+		try{
+			userService.addUser(trainer);
 			return "Successful";
 		} catch (Exception e) {
 			return "Failed:" + e.getMessage();
 		}
 	}
 	
-	@RequestMapping(value = "/deleteuser", method=RequestMethod.POST)
-	public String deleteUser(@RequestBody User user){
+	@RequestMapping(value = "/deleteadmin", method=RequestMethod.POST)
+	public String deleteAdmin(@RequestBody Administrator admin){
 		try {
-			adminService.deleteUser(user);
+			userService.deleteUser(admin);
+			return "Successful";
+		} catch (Exception e) {
+			return "Failed:" + e.getMessage(); 
+		}
+	}
+	
+	@RequestMapping(value = "/deleteclient", method=RequestMethod.POST)
+	public String deleteClient(@RequestBody Client client){
+		try {
+			userService.deleteUser(client);
+			return "Successful";
+		} catch (Exception e) {
+			return "Failed:" + e.getMessage(); 
+		}
+	}
+	
+	@RequestMapping(value = "/deletetrainer", method=RequestMethod.POST)
+	public String deleteTrainer(@RequestBody Trainer trainer){
+		try {
+			userService.deleteUser(trainer);
 			return "Successful";
 		} catch (Exception e) {
 			return "Failed:" + e.getMessage(); 

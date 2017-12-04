@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from "../../../backend.service";
-import { User } from "../../../models/user";
+import { BackendService } from '../../../backend.service';
+import { User, Client, Administrator, Trainer } from '../../../models/user';
 
 @Component( {
     selector: 'app-create-user',
@@ -8,9 +8,9 @@ import { User } from "../../../models/user";
     styleUrls: ['./create-user.component.css']
 } )
 export class CreateUserComponent implements OnInit {
-    
+
     message =  '';
-    createdUser: User = new User( 0, '', '', '', '', '', '' );
+    createdUser: User = new User( 0, '', '', '', '', '', 'TRAINER' );
 
     constructor( private backendService: BackendService ) { }
 
@@ -19,13 +19,9 @@ export class CreateUserComponent implements OnInit {
     }
 
     addUser() {
-        //tslint:disable-next-line:prefer-const
-        
-        this.backendService.addUser( this.createdUser ).subscribe(res => {
+        const uri = 'create' + this.createdUser.userType.toLowerCase();
+        this.backendService.addUser(uri, this.createdUser).subscribe(res => {
             this.message = res;
         });
     }
-
-
-
 }

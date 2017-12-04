@@ -1,4 +1,4 @@
-package com.ubb.gymapp.service;
+package com.ubb.gymapp.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.ubb.gymapp.model.Administrator;
 import com.ubb.gymapp.model.User;
-import com.ubb.gymapp.model.User.UserType;
 import com.ubb.gymapp.repository.UserRepository;
 
 @Service
@@ -27,7 +26,7 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
     		user.setEmail("admin");
     		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     		String hashedPassword = passwordEncoder.encode("admin");
-    		user.setPassword(hashedPassword);
+    		((Administrator) user).setPassword(hashedPassword);
     	}
     	else
     	{

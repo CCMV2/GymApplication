@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "user_has_workout")
-public class UserWorkout implements Serializable{
+public class TrainerWorkout implements Serializable{
 
 	/**
 	 * 
@@ -23,14 +23,14 @@ public class UserWorkout implements Serializable{
 
 	private Long id;
 	
-	private User trainer;
+	private Trainer trainer;
 	
 	private Workout workout;
 
-	public UserWorkout() {
+	public TrainerWorkout() {
 	}
 	
-	public UserWorkout(User trainer, Workout workout) {
+	public TrainerWorkout(Trainer trainer, Workout workout) {
 		super();
 		this.trainer = trainer;
 		this.workout = workout;
@@ -49,11 +49,11 @@ public class UserWorkout implements Serializable{
 
 	@ManyToOne (fetch = FetchType.LAZY)
 	@JoinColumn (name = "idUser")
-	public User getTrainer() {
+	public Trainer getTrainer() {
 		return trainer;
 	}
 
-	public void setTrainer(User trainer) {
+	public void setTrainer(Trainer trainer) {
 		this.trainer = trainer;
 	}
 	
@@ -85,7 +85,7 @@ public class UserWorkout implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UserWorkout other = (UserWorkout) obj;
+		TrainerWorkout other = (TrainerWorkout) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../../backend.service';
 import { SessionStorageService } from 'ngx-webstorage';
 import { Workout } from '../../../models/workout';
-import { User } from '../../../models/user';
+import { Trainer } from '../../../models/user';
 import { TrainerWorkout } from '../../../models/trainer-workout';
 
 @Component({
@@ -16,12 +16,15 @@ export class UpdateWorkoutComponent implements OnInit {
 
   trainerWorkouts: TrainerWorkout;
 
-  trainerList: User[] = [];
+  trainerList: Trainer[] = [];
 
   message = "";
 
   ngOnInit() {
     this.trainerWorkouts = this.session.retrieve('workoutToUpdate');
+    for (let trainer of this.trainerWorkouts.trainers) {
+        trainer.completeName = trainer.name + ' ' + trainer.surname;
+    }
     this.getAllTrainers();
   }
 
@@ -34,7 +37,12 @@ export class UpdateWorkoutComponent implements OnInit {
   }
 
   getAllTrainers() {
-    this.backendService.getAllTrainers().subscribe(res => this.trainerList = res);
+      this.backendService.getAllTrainers().subscribe(res => {
+          this.trainerList = res;
+          for (let trainer of this.trainerList) {
+              trainer.completeName = trainer.name + ' ' + trainer.surname;
+          }
+      });
   }
 
 }
