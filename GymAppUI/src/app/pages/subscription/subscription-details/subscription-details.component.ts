@@ -4,6 +4,7 @@ import {Workout} from '../../../models/workout';
 import {WorkoutList} from '../../../models/workoutlist';
 import {Subscription} from '../../../models/subscriptionModel';
 import { Subscribable } from 'rxjs/Observable';
+import { IStarRatingOnClickEvent } from 'angular-star-rating/src/star-rating-struct';
 
 
 @Component({
@@ -13,6 +14,8 @@ import { Subscribable } from 'rxjs/Observable';
 })
 export class SubscriptionDetailsComponent implements OnInit {
   subscriptionsAndWorkouts: WorkoutList[] = [];
+  onClickResult: IStarRatingOnClickEvent;
+  ratingVal = 3.5;
   constructor(private backendService: BackendService) { }
   
   
@@ -24,6 +27,13 @@ export class SubscriptionDetailsComponent implements OnInit {
       this.subscriptionsAndWorkouts = res;
       console.log( this.subscriptionsAndWorkouts);
   } );
+  }
+
+  onClick = ( $event: IStarRatingOnClickEvent ) => {
+    console.log( 'onClick $event: ', $event );
+    this.onClickResult = $event;
+    const rating = $event.rating;
+    alert(rating);
   }
 
 }

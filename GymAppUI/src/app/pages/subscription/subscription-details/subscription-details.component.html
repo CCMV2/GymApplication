@@ -5,7 +5,7 @@
   <tr>
     <th>Name</th>
     <th>Descriptions</th>
-    
+    <th>Rating</th>
   </tr>
   <tr *ngFor="let entry of subscriptionsAndWorkouts">
     <td>{{entry?.subscription.name}} </td>
@@ -17,10 +17,15 @@
           <th>Description</th>
         </tr>
         <tr *ngFor="let workout of entry.workouts">
-          <td><span title="workout.description" onmouseover="longText(descriprion)" onmouseout="shortText(description)">{{workout?.description}}</span></td>
+          <td>
+            <div id="div" title="{{workout.description}}">{{workout?.description}}</div>
+          <td>
           <!--button>Delete</button-->
         </tr>
       </table>
+    </td>
+    <td>
+      <star-rating-comp [starType]="'svg'" [rating]="ratingVal" (onClick)="onClick($event)"></star-rating-comp>
     </td>
     
     </tr>
