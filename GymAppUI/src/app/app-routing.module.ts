@@ -17,8 +17,10 @@ import { HomeComponent } from './pages/home/home/home.component';
 import {CreateTimetableComponent} from './pages/timetable/create-timetable/create-timetable.component';
 import {AdminPageComponent} from './pages/admin-page/admin-page.component';
 import { AuthGuardGuard } from './services/auth-guard.guard';
-import { UpdateTimetableComponent } from "./pages/timetable/update-timetable/update-timetable.component";
-import {SubscriptionDetailsComponent} from "./pages/subscription/subscription-details/subscription-details.component";
+import { UpdateTimetableComponent } from './pages/timetable/update-timetable/update-timetable.component';
+import {SubscriptionDetailsComponent} from './pages/subscription/subscription-details/subscription-details.component';
+import { DemoComponent } from './pages/demo/demo.component';
+
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuardGuard] },
@@ -33,11 +35,12 @@ const routes: Routes = [
     { path: 'timetable', component: TimetableComponent, canActivate: [AuthGuardGuard] },
     { path: 'updateTimetable', component: UpdateTimetableComponent, canActivate: [AuthGuardGuard] },
     { path: 'newtimetable', component: CreateTimetableComponent, canActivate: [AuthGuardGuard] },
-	  { path: 'createuser', component: CreateUserComponent, canActivate: [AuthGuardGuard]},
+    { path: 'createuser', component: CreateUserComponent, canActivate: [AuthGuardGuard]},
     { path: 'login', component: LoginPageComponent},
     { path: 'updateuser', component: UpdateUserComponent, canActivate: [AuthGuardGuard]},
     { path: 'listusers', component: UserPageComponent, canActivate: [AuthGuardGuard]},
-    { path: 'subscriptiondetails',component: SubscriptionDetailsComponent, canActivate:[AuthGuardGuard]}
+    { path: 'subscriptiondetails', component: SubscriptionDetailsComponent, canActivate: [AuthGuardGuard]},
+    { path: 'demo', component: DemoComponent}
 ];
 
 @NgModule({

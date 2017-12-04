@@ -32,7 +32,11 @@ import { HeaderComponent } from './common/header/header.component';
 import { UpdateTimetableComponent } from './pages/timetable/update-timetable/update-timetable.component';
 import { SideButtonComponent } from './tool-box/side-button/side-button.component';
 import {CalendarModule, MultiSelectModule} from 'primeng/primeng';
+import { AgmCoreModule } from '@agm/core';
+import { StarRatingModule } from 'angular-star-rating';
 import { SubscriptionDetailsComponent } from './pages/subscription/subscription-details/subscription-details.component';
+import { DemoComponent } from './pages/demo/demo.component';
+
 
 @NgModule({
   declarations: [
@@ -57,7 +61,8 @@ import { SubscriptionDetailsComponent } from './pages/subscription/subscription-
     HomeComponent,
     HeaderComponent,
     UpdateTimetableComponent,
-    SubscriptionDetailsComponent
+    SubscriptionDetailsComponent,
+    DemoComponent
   ],
   imports: [
     HttpModule,
@@ -66,8 +71,13 @@ import { SubscriptionDetailsComponent } from './pages/subscription/subscription-
     AppRoutingModule,
     FormsModule,
     CalendarModule,
-    MultiSelectModule
+    MultiSelectModule,
+    AgmCoreModule.forRoot({
+        // sa inlocuiti cheia
+        apiKey: 'AIzaSyBlV0xjA3L_OjqbMNXyqX_i1Hx9Pft38Jw'
+      }),
     //NgbModule.forRoot()
+      StarRatingModule.forRoot()
   ],
   providers: [BackendService,
               AuthenticationService,
