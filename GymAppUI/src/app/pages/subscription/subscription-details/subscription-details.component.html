@@ -17,7 +17,7 @@
           <th>Description</th>
         </tr>
         <tr *ngFor="let workout of entry.workouts">
-          <td>{{workout?.description}}</td>
+          <td><span title="workout.description" onmouseover="longText(descriprion)" onmouseout="shortText(description)">{{workout?.description}}</span></td>
           <!--button>Delete</button-->
         </tr>
       </table>

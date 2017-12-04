@@ -39,7 +39,7 @@ const routes: Routes = [
     { path: 'login', component: LoginPageComponent},
     { path: 'updateuser', component: UpdateUserComponent, canActivate: [AuthGuardGuard]},
     { path: 'listusers', component: UserPageComponent, canActivate: [AuthGuardGuard]},
-    { path: 'subscriptiondetails', component: SubscriptionDetailsComponent, canActivate: [AuthGuardGuard]},
+    { path: 'subscriptiondetails', component: SubscriptionDetailsComponent},
     { path: 'demo', component: DemoComponent}
 ];
 

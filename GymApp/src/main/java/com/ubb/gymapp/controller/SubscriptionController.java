@@ -28,10 +28,6 @@ public class SubscriptionController {
 		return subscriptionService.findAllSubscriptions();
 	}
 	
-	@RequestMapping(value = "/subscriptiondetails",method = RequestMethod.GET)
-	public List<SubscriptionWorkouts> getSubscriptionDetails(){
-		return subscriptionService.findSubcriptionsAndWorkouts();
-	}
 	
 	@RequestMapping(value="/createsubscription", method = RequestMethod.POST)
 	public String addSubscription(@RequestBody SubscriptionWorkouts subscriptionWorkouts){

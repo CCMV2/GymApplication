@@ -20,7 +20,7 @@ export class SubscriptionDetailsComponent implements OnInit {
     this.getSubscriptions();
   }
   getSubscriptions(): void{
-    this.backendService.getAllSubscriptionDetails().subscribe( res => {
+    this.backendService.getAllSubscriptions().subscribe( res => {
       this.subscriptionsAndWorkouts = res;
       console.log( this.subscriptionsAndWorkouts);
   } );
