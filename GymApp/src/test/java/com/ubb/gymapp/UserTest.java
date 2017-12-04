@@ -12,10 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.ubb.gymapp.model.Administrator;
+import com.ubb.gymapp.model.Client;
+import com.ubb.gymapp.model.Trainer;
 import com.ubb.gymapp.model.User;
 import com.ubb.gymapp.model.User.UserType;
 import com.ubb.gymapp.repository.UserRepository;
-import com.ubb.gymapp.service.JwtUserDetailsServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -27,16 +29,16 @@ public class UserTest {
 	@Test
 	public void authenticateUser(){
 		
-		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN);
+		Administrator user = new Administrator("aaa", "aaa", "aaa", "superAdmin", "aaa");
 		user = userRepo.save(user);
-		User user1 = userRepo.findByEmail("aaa");
+		User user1 = userRepo.findByEmail("superAdmin");
 		assertEquals(user.getId(), user1.getId());
-		
+		userRepo.delete(user);
 	}
 	
 	@Test
 	public void addUser() {
-		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN);
+		Administrator user = new Administrator("aaa", "aaa", "aaa", "aaa", "aaa");
 		user = userRepo.save(user);
 		User user1 = userRepo.findOne(user.getId());
 		assertNotNull(user1.getId());
@@ -47,7 +49,7 @@ public class UserTest {
 	
 	@Test
 	public void deleteUser(){
-		User newUser = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN);
+		Administrator newUser = new Administrator("aaa", "aaa", "aaa", "aaa", "aaa");
 		newUser = userRepo.save(newUser);
 		userRepo.delete(newUser.getId());
 		assertNull(userRepo.findOne(newUser.getId()));
@@ -55,7 +57,7 @@ public class UserTest {
 	
 	@Test
 	public void testFindUserById(){
-		User newUser = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN);
+		Administrator newUser = new Administrator("aaa", "aaa", "aaa", "aaa", "aaa");
 		User dbUser = userRepo.save(newUser);
 		User user = userRepo.findOne(dbUser.getId());
 		assertNotNull(user);
@@ -64,7 +66,7 @@ public class UserTest {
 	
 	@Test
 	public void testGetAllUsers(){
-		User newUser = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN);
+		Administrator newUser = new Administrator("aaa", "aaa", "aaa", "aaa", "aaa");
 		newUser = userRepo.save(newUser);
 		List<User> listOfUsers = userRepo.findAll();
 		assertNotNull(listOfUsers);
@@ -73,7 +75,7 @@ public class UserTest {
 	
 	@Test
 	public void testUpdateUsers(){
-		User user = new User("aaa", "aaa", "aaa", "aaa", "aaa", UserType.ADMIN);
+		Administrator user = new Administrator("aaa", "aaa", "aaa", "aaa", "aaa");
 		user = userRepo.save(user);
 		user.setName("test");
 		userRepo.save(user);
@@ -84,9 +86,9 @@ public class UserTest {
 	
 	@Test
 	public void testFindAllByUserType() {
-		User trainer = new User("password", "Don","Huan","huan@mail.com", "0721878974", UserType.TRAINER);
-		User user1 = new User("password", "Don","Huan","huan@mail.com", "0721878974", UserType.CLIENT);
-		User user2 = new User("password", "Don","Huan","huan@mail.com", "0721878974", UserType.CLIENT);
+		Trainer trainer = new Trainer("password", "Don","Huan","huan@mail.com", "0721878974");
+		Client user1 = new Client("1234567", "Don","Huan","huan@mail.com", "0721878974");
+		Client user2 = new Client("2345678", "Don","Huan","huan@mail.com", "0721878974");
 		
 		userRepo.save(trainer);
 		userRepo.save(user1);

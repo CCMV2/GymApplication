@@ -7,7 +7,7 @@ import { Subscription } from './models/subscriptionModel';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Injectable } from '@angular/core';
-import { User } from './models/user';
+import { User, Trainer } from './models/user';
 import { Timetable } from './models/Timetable';
 import { AuthenticationService } from './services/authentication.service';
 import { WorkoutList } from './models/workoutlist';
@@ -28,12 +28,12 @@ export class BackendService {
         return this.http.get(this.link + 'listusers', this.options).map(response => response.json()).catch(this.handleError);
     }
 
-    public addUser(user: User): Observable<any> {
-        return this.http.post(this.link + 'createuser', user, this.options).map(response => response.text()).catch(this.handleError);
+    public addUser(uri: string, user: User): Observable<any> {
+        return this.http.post(this.link + uri, user, this.options).map(response => response.text()).catch(this.handleError);
     }
 
-    public deleteUser(user: User): Observable<any> {
-        return this.http.post(this.link + 'deleteuser', user, this.options).map(response => response.json()).catch(this.handleError);
+    public deleteUser(uri: string, user: User): Observable<any> {
+        return this.http.post(this.link + uri, user, this.options).map(response => response.text()).catch(this.handleError);
     }
 
     public getAllRooms(): Observable<Room[]> {
@@ -61,7 +61,7 @@ export class BackendService {
     }
 
     public updateTimetable(timetable: Timetable): Observable<any> {
-        return this.http.post(this.link + 'updatetimetable', timetable, this.options).map(response => response.text()).catch(this.handleError);
+        return this.http.post(this.link + 'addtimetable', timetable, this.options).map(response => response.text()).catch(this.handleError);
     }
 
     public addSubscription(subscription: WorkoutList): Observable<any> {
@@ -107,7 +107,7 @@ export class BackendService {
         return this.http.post(this.link + 'deleteworkout', workout, this.options).map(response => response.json()).catch(this.handleError);
     }
 
-    public getAllTrainers(): Observable<User[]> {
+    public getAllTrainers(): Observable<Trainer[]> {
         return this.http.get(this.link + 'getalltrainers', this.options).map(response => response.json()).catch(this.handleError);
     }
 

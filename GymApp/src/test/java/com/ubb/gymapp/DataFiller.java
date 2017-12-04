@@ -8,16 +8,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.ubb.gymapp.model.Room;
 import com.ubb.gymapp.model.Subscription;
-import com.ubb.gymapp.model.User;
-import com.ubb.gymapp.model.User.UserType;
-import com.ubb.gymapp.model.UserWorkout;
+import com.ubb.gymapp.model.Trainer;
+import com.ubb.gymapp.model.TrainerWorkout;
 import com.ubb.gymapp.model.Workout;
 import com.ubb.gymapp.model.Workout.Difficulty;
 import com.ubb.gymapp.model.WorkoutList;
 import com.ubb.gymapp.repository.RoomRepository;
 import com.ubb.gymapp.repository.SubscriptionRepository;
 import com.ubb.gymapp.repository.UserRepository;
-import com.ubb.gymapp.repository.UserWorkoutRepository;
+import com.ubb.gymapp.repository.TrainerWorkoutRepository;
 import com.ubb.gymapp.repository.WorkoutListRepository;
 import com.ubb.gymapp.repository.WorkoutRepository;
 
@@ -38,7 +37,7 @@ public class DataFiller {
 	private UserRepository userRepo;
 	
 	@Autowired
-	private UserWorkoutRepository userWorkoutRepo;
+	private TrainerWorkoutRepository userWorkoutRepo;
 	
 	@Autowired
 	private RoomRepository roomRepo;
@@ -104,19 +103,19 @@ public class DataFiller {
 		workoutListRepo.save(wl17);
 		workoutListRepo.save(wl18);
 		
-		User trainer1 = new User("trainer1", "John", "Doe", "john.doe@gmail.com", "0758914523", UserType.TRAINER);
-		User trainer2 = new User("trainer2", "Jane", "Doe", "jane.doe@gmail.com", "0758914524", UserType.TRAINER);
-		User trainer3 = new User("trainer3", "Jillian", "Miles", "jillian.miles@gmail.com", "0758914525", UserType.TRAINER);
+		Trainer trainer1 = new Trainer("trainer1", "John", "Doe", "john.doe@gmail.com", "0758914523");
+		Trainer trainer2 = new Trainer("trainer2", "Jane", "Doe", "jane.doe@gmail.com", "0758914524");
+		Trainer trainer3 = new Trainer("trainer3", "Jillian", "Miles", "jillian.miles@gmail.com", "0758914525");
 		userRepo.save(trainer1);
 		userRepo.save(trainer2);
 		userRepo.save(trainer3);
 		
-		UserWorkout uw1 = new UserWorkout(trainer1, work3);
-		UserWorkout uw2 = new UserWorkout(trainer1, work5);
-		UserWorkout uw3 = new UserWorkout(trainer1, work6);
-		UserWorkout uw4 = new UserWorkout(trainer2, work4);
-		UserWorkout uw5 = new UserWorkout(trainer3, work1);
-		UserWorkout uw6 = new UserWorkout(trainer3, work2);
+		TrainerWorkout uw1 = new TrainerWorkout(trainer1, work3);
+		TrainerWorkout uw2 = new TrainerWorkout(trainer1, work5);
+		TrainerWorkout uw3 = new TrainerWorkout(trainer1, work6);
+		TrainerWorkout uw4 = new TrainerWorkout(trainer2, work4);
+		TrainerWorkout uw5 = new TrainerWorkout(trainer3, work1);
+		TrainerWorkout uw6 = new TrainerWorkout(trainer3, work2);
 		userWorkoutRepo.save(uw1);
 		userWorkoutRepo.save(uw2);
 		userWorkoutRepo.save(uw3);

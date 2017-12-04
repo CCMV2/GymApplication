@@ -11,33 +11,32 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubb.gymapp.dto.WorkoutTrainers;
 import com.ubb.gymapp.model.User;
 import com.ubb.gymapp.model.Workout;
-import com.ubb.gymapp.service.IAdminService;
+import com.ubb.gymapp.service.UserService;
+import com.ubb.gymapp.service.WorkoutService;
 
 @RestController
 public class WorkoutController {
 
 	@Autowired
-	private IAdminService adminService;
-
-	@RequestMapping(value = "/getworkout", method = RequestMethod.POST)
-	public Workout findOneWorkout(@RequestBody Long parameter) {
-		return adminService.getWorkoutById(parameter);
-	}
+	private WorkoutService workoutService;
+	
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping(value = "/getallworkouts", method = RequestMethod.GET)
 	public List<Workout> getAllWorkouts() {
-		return adminService.getAllWorkouts();
+		return workoutService.getAllWorkouts();
 	}
 
 	@RequestMapping(value = "/gettrainerworkouts", method = RequestMethod.GET)
 	public List<WorkoutTrainers> findAllWorkoutTrainers() {
-		return adminService.getTrainerWorkouts();
+		return workoutService.getTrainerWorkouts();
 	}
 
 	@RequestMapping(value = "/deleteworkout", method = RequestMethod.POST)
 	public boolean deleteWorkout(@RequestBody Workout parameter) {
 		try {
-			adminService.deleteWorkout(parameter);
+			workoutService.deleteWorkout(parameter);
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -46,13 +45,13 @@ public class WorkoutController {
 
 	@RequestMapping(value = "/getalltrainers", method = RequestMethod.GET)
 	public List<User> getAllTrainers() {
-		return adminService.getAllTrainers();
+		return userService.getAllTrainers();
 	}
 	
 	@RequestMapping(value = "/addworkouttrainers", method = RequestMethod.POST)
 	public String addWorkoutTrainers(@RequestBody WorkoutTrainers workoutTrainers) {
 		try {
-			adminService.addWorkoutTrainers(workoutTrainers);
+			workoutService.addWorkoutTrainers(workoutTrainers);
 			return "Successful";
 		} catch (Exception e) {
 			return "Failed: " + e.getMessage();

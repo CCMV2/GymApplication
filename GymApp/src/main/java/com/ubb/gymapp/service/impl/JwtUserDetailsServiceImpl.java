@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.ubb.gymapp.model.Administrator;
 import com.ubb.gymapp.model.User;
 import com.ubb.gymapp.model.User.UserType;
 import com.ubb.gymapp.repository.UserRepository;
@@ -20,19 +21,13 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    	//FIXME add new method findByUsername in the repository
-    	//        User user = userRepository.findByUsername(username);
-    	// and replace the lines below with the right line
     	User user = null;
     	if(username.equals("admin")){
-    		user = new User();
+    		user = new Administrator();
     		user.setEmail("admin");
     		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     		String hashedPassword = passwordEncoder.encode("admin");
     		user.setPassword(hashedPassword);
-    		user.setUserType(UserType.ADMIN);
-    		
-    		
     	}
     	else
     	{
