@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.ubb.gymapp.model.Administrator;
 import com.ubb.gymapp.model.User;
+import com.ubb.gymapp.model.User.UserType;
 import com.ubb.gymapp.repository.UserRepository;
 
 @Service
@@ -26,6 +27,7 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
     		user.setEmail("admin");
     		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     		String hashedPassword = passwordEncoder.encode("admin");
+    		user.setUserType(UserType.ADMIN);
     		((Administrator) user).setPassword(hashedPassword);
     	}
     	else

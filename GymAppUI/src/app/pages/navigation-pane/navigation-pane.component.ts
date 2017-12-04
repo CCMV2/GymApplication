@@ -5,11 +5,13 @@ class menuItem {
   url: string;
   text: string;
   active: boolean;
+  usertype: string[];
 }
 
 class tab {
   title: string;
   items: menuItem[];
+  usertype: string[];
 }
 
 @Component({
@@ -21,35 +23,40 @@ export class NavigationPaneComponent implements OnInit {
 
   active: boolean = true;
 
+
   tabs: tab[] = [
     {
       title: "User", items: [
-        { active: false, url: "createuser", text: "New User" },
-        { active: false, url: "listusers", text: "User List" }
-      ]
+        { active: false, url: "createuser", text: "New User" , usertype: ['ADMIN' , 'TRAINER']},
+        { active: false, url: "listusers", text: "User List" , usertype: ['ADMIN' , 'TRAINER']}
+      ],
+      usertype: ['ADMIN','TRAINER']
     },
     {
       title: "Workout", items: [
-      { active: false, url: "createworkout", text: "New Workout" },
-      { active: false, url: "listworkout", text: "Workouts" }
-    ]
+      { active: false, url: "createworkout", text: "New Workout" , usertype: ['ADMIN','TRAINER']},
+      { active: false, url: "listworkout", text: "Workouts" , usertype: ['ADMIN','TRAINER']}
+    ], 
+    usertype: ['ADMIN','TRAINER']
     },
     {
       title: "Subscription", items: [
-      { active: false, url: "createsubscription", text: "New Subscription" },
-      { active: false, url: "listsubscription", text: "Subscriptions" }
-    ]
+      { active: false, url: "createsubscription", text: "New Subscription" , usertype: ['ADMIN']},
+      { active: false, url: "listsubscription", text: "Subscriptions" , usertype: ['ADMIN']}
+    ],
+    usertype: ['ADMIN']
     },
     {
       title: "Room", items: [
-      { active: false, url: "roompage", text: "Rooms" }
-    ]
+      { active: false, url: "roompage", text: "Rooms" , usertype: ['ADMIN']}
+    ],
+    usertype: ['ADMIN']
     },
     {
       title: "Timetable", items: [
-      { active: false, url: "newtimetable", text: "New Timetable" },
-      { active: false, url: "timetable", text: "Timetable" }
-    ]
+      { active: false, url: "newtimetable", text: "New Timetable" , usertype: ['ADMIN','TRAINER']},
+      { active: false, url: "timetable", text: "Timetable" , usertype: ['ADMIN','TRAINER']}
+    ], usertype: ['ADMIN','TRAINER']
     }
 
     /*

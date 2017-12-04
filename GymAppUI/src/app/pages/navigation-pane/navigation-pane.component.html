@@ -5,7 +5,7 @@
     <span style="font-size:20px">GymApp Admin</span>
   </button>
   <!--button class="nav-btn" (click)="navigate(url)" [class.nav-btn-active]="url.active">{{url.text}}</button!-->
-  <side-button *ngFor="let tab of tabs" [tab]="tab"></side-button>
+  <side-button *ngFor="let tab of tabs" [tab]="tab" ></side-button>
 </div>
 <div *ngIf="!active">
   <button class="btn btn-primary btn-toggle-closed-back">

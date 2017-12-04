@@ -29,6 +29,12 @@ export class AuthenticationService {
             ).catch(( error: any ) => Observable.throw( error.json().error || 'Server error' ) );
     }
 
+    hasRole(role: string[]): boolean {
+        const currentUser = JSON.parse( localStorage.getItem( 'currentUser' ) );
+        const rol = currentUser && currentUser.role;
+        return role.indexOf(rol) !== -1;
+    }
+
     getToken(): String {
         const currentUser = JSON.parse( localStorage.getItem( 'currentUser' ) );
         const token = currentUser && currentUser.token;

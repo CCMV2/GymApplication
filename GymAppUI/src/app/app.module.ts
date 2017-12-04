@@ -36,6 +36,7 @@ import { AgmCoreModule } from '@agm/core';
 import { StarRatingModule } from 'angular-star-rating';
 import { SubscriptionDetailsComponent } from './pages/subscription/subscription-details/subscription-details.component';
 import { DemoComponent } from './pages/demo/demo.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { DemoComponent } from './pages/demo/demo.component';
     HeaderComponent,
     UpdateTimetableComponent,
     SubscriptionDetailsComponent,
-    DemoComponent
+    DemoComponent,
+    ContactComponent
   ],
   imports: [
     HttpModule,

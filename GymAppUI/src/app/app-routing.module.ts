@@ -20,10 +20,11 @@ import { AuthGuardGuard } from './services/auth-guard.guard';
 import { UpdateTimetableComponent } from './pages/timetable/update-timetable/update-timetable.component';
 import {SubscriptionDetailsComponent} from './pages/subscription/subscription-details/subscription-details.component';
 import { DemoComponent } from './pages/demo/demo.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 
 const routes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuardGuard] },
+    { path: '', component: HomeComponent },
     { path: 'admin-page', component: AdminPageComponent},
     { path: 'createworkout', component: CreateWorkoutComponent, canActivate: [AuthGuardGuard] },
     { path: 'updatesubscription', component: UpdateSubscriptionComponent, canActivate: [AuthGuardGuard] },
@@ -37,6 +38,7 @@ const routes: Routes = [
     { path: 'newtimetable', component: CreateTimetableComponent, canActivate: [AuthGuardGuard] },
     { path: 'createuser', component: CreateUserComponent, canActivate: [AuthGuardGuard]},
     { path: 'login', component: LoginPageComponent},
+    { path: 'contact', component: ContactComponent},
     { path: 'updateuser', component: UpdateUserComponent, canActivate: [AuthGuardGuard]},
     { path: 'listusers', component: UserPageComponent, canActivate: [AuthGuardGuard]},
     { path: 'subscriptiondetails', component: SubscriptionDetailsComponent},
