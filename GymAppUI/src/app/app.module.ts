@@ -25,7 +25,6 @@ import { CreateTimetableComponent } from './pages/timetable/create-timetable/cre
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { ClientPageComponent } from './pages/client-page/client-page.component';
 import {SessionStorageService} from 'ngx-webstorage';
-import { AuthenticationService } from './services/authentication.service';
 import { HomeComponent } from './pages/home/home/home.component';
 import { AuthGuardGuard } from './services/auth-guard.guard';
 import { HeaderComponent } from './common/header/header.component';
@@ -37,6 +36,7 @@ import { StarRatingModule } from 'angular-star-rating';
 import { SubscriptionDetailsComponent } from './pages/subscription/subscription-details/subscription-details.component';
 import { DemoComponent } from './pages/demo/demo.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { AuthenticationService } from "./pages/demo/services/authentication.service";
 
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthenticationService } from "../../services/authentication.service";
+import { AuthenticationService } from '../../pages/demo/services/authentication.service';
 
 class menuItem {
   url: string;
