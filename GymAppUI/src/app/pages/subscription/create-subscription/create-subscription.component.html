@@ -35,6 +35,17 @@
 				 	<p-multiSelect name="workouts" [options]="workouts" [(ngModel)]="workoutList.workouts" optionLabel="workoutType"></p-multiSelect>
 				</div>
 			</div>
+			<div class="form-group">
+					<label class="control-label col-sm-4"  for="workouts">Choose a picture:</label>
+					<div class="col-sm-7">
+				<input id="photo" type="file" />
+				<!-- button to trigger the file upload when submitted -->
+				<button type="button" class="btn btn-success btn-s" (click)="upload()">
+				Upload
+				</button>
+				</div>
+			</div>
+			
 			<button type="button" (click)="addSubscription()" class="btn btn-success submit">Add</button>
 		</form>
 	</div>

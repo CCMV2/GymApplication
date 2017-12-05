@@ -3,8 +3,16 @@ h1{
 }
 #div{
     white-space: nowrap; 
-    width: 12em; 
+    width: 18em; 
     overflow: hidden;
-    text-overflow: ellipsis; 
-/*    border: 1px solid #000000; */
+    text-overflow: ellipsis;    
+}
+
+#rating{
+    text-align: center;
+}
+
+#img{
+    max-width: 180px;
+    max-height: 130px;
 }
