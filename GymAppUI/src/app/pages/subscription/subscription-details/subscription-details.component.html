@@ -3,11 +3,15 @@
 </h1>
 <table class="table table-condensed table-hover">
   <tr>
+    <th></th>
     <th>Name</th>
     <th>Descriptions</th>
     <th><p id="rating">Rating</p></th>
   </tr>
   <tr *ngFor="let entry of subscriptionsAndWorkouts">
+
+    <td><img id="img" src="http://i1.wp.com/fitnesspowerup.com/wp-content/uploads/2016/06/fitness-image.jpg?w=1600" alt="fitness pic"></td>
+
     <td>{{entry?.subscription.name}} </td>
    
 

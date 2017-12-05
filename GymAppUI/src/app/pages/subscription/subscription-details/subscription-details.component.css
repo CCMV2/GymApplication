@@ -11,3 +11,8 @@ h1{
 #rating{
     text-align: center;
 }
+
+#img{
+    max-width: 180px;
+    max-height: 130px;
+}

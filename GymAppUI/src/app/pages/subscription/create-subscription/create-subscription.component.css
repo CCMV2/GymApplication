@@ -29,3 +29,12 @@
 h2{
     text-indent: 150px;
 }
+
+#wrkk{
+    width: 200px;
+}
+
+#image {
+    max-width: 2500px;
+    max-height: 1500px;
+  }
