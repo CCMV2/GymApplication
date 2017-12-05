@@ -9,8 +9,8 @@ import 'rxjs/add/operator/catch';
 import { Injectable } from '@angular/core';
 import { User, Trainer } from './models/user';
 import { Timetable } from './models/Timetable';
-import { AuthenticationService } from './services/authentication.service';
 import { WorkoutList } from './models/workoutlist';
+import { AuthenticationService } from "./pages/demo/services/authentication.service";
 
 @Injectable()
 export class BackendService {
