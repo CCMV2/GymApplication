@@ -1,5 +1,7 @@
 package com.ubb.gymapp.service.impl;
 
+import static com.ubb.gymapp.model.User.UserType.TRAINER;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,6 @@ import com.ubb.gymapp.model.Administrator;
 import com.ubb.gymapp.model.Client;
 import com.ubb.gymapp.model.Trainer;
 import com.ubb.gymapp.model.User;
-import static com.ubb.gymapp.model.User.UserType.*;
-
 import com.ubb.gymapp.repository.TrainerWorkoutRepository;
 import com.ubb.gymapp.repository.UserRepository;
 import com.ubb.gymapp.service.UserService;
@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private TrainerWorkoutRepository trainerWorkoutRepo;
-
+	
 	@Override
 	public List<User> getAllUsers() {
 		return userRepo.findAll();

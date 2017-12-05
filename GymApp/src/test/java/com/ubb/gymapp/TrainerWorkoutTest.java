@@ -33,7 +33,7 @@ public class TrainerWorkoutTest {
 	@Test
 	public void testAdd() {
 		Workout workout = new Workout("Test", Difficulty.EASY,"Test");
-		Trainer user = new Trainer("aaa", "aaa", "aaa", "aaa", "aaa");
+		Trainer user = new Trainer("aaa", "aaa", "aaa", "aaa", "aaa", null);
 		workout = workoutRepo.save(workout);
 		user = userRepo.save(user);
 		TrainerWorkout worklist = new TrainerWorkout(user,workout);
@@ -48,7 +48,7 @@ public class TrainerWorkoutTest {
 	@Test
 	public void testFindOne(){
 		Workout workout = new Workout("Test", Difficulty.EASY,"Test");
-		Trainer user = new Trainer("aaa", "aaa", "aaa", "aaa", "aaa");
+		Trainer user = new Trainer("aaa", "aaa", "aaa", "aaa", "aaa", null);
 		workout = workoutRepo.save(workout);
 		user = userRepo.save(user);
 		TrainerWorkout worklist = new TrainerWorkout(user,workout);
@@ -62,7 +62,7 @@ public class TrainerWorkoutTest {
 	@Test
 	public void testDelete(){
 		Workout workout = new Workout("Test", Difficulty.EASY,"Test");
-		Trainer user = new Trainer("aaa", "aaa", "aaa", "aaa", "aaa");
+		Trainer user = new Trainer("aaa", "aaa", "aaa", "aaa", "aaa", null);
 		workout = workoutRepo.save(workout);
 		user = userRepo.save(user);
 		TrainerWorkout worklist = new TrainerWorkout(user,workout);
@@ -78,9 +78,9 @@ public class TrainerWorkoutTest {
 	@Test
 	public void testFindAll(){
 		Workout workout = new Workout("Test", Difficulty.EASY, "Test");
-		Trainer user = new Trainer("aaa", "aaa", "aaa", "aaa", "aaa");
-		Trainer user2 = new Trainer("aaa", "aaa", "aaa", "aaa", "aaa");
-		Trainer user3 = new Trainer("aaa", "aaa", "aaa", "aaa", "aaa");
+		Trainer user = new Trainer("aaa", "aaa", "aaa", "aaa", "aaa", null);
+		Trainer user2 = new Trainer("aaa", "aaa", "aaa", "aaa", "aaa", null);
+		Trainer user3 = new Trainer("aaa", "aaa", "aaa", "aaa", "aaa",null);
 		workout = workoutRepo.save(workout);
 		user = userRepo.save(user);
 		user2 = userRepo.save(user2);
@@ -107,8 +107,8 @@ public class TrainerWorkoutTest {
 	@Test
 	public void testUpdate(){
 		Workout workout = new Workout("Test", Difficulty.EASY,"Test");
-		Trainer user = new Trainer("aaa", "aaa", "aaa", "aaa", "aaa");
-		Trainer user2 = new Trainer("aaa", "aaa", "aaa", "aaa", "aaa");
+		Trainer user = new Trainer("aaa", "aaa", "aaa", "aaa", "aaa", null);
+		Trainer user2 = new Trainer("aaa", "aaa", "aaa", "aaa", "aaa", null);
 		workout = workoutRepo.save(workout);
 		user = userRepo.save(user);
 		TrainerWorkout worklist = new TrainerWorkout(user,workout);
@@ -127,7 +127,7 @@ public class TrainerWorkoutTest {
 	public void deleteByWorkout(){
 		Workout work1 = new Workout("Zumba", Difficulty.MEDIUM, "Pretty much the most awesome workout ever. Dance to great music, with great people, and burn a ton of calories without even realizing it.");
 		workoutRepo.save(work1);
-		Trainer trainer1 = new Trainer("trainer1", "John", "Doe", "john.doe@gmail.com", "0758914523");
+		Trainer trainer1 = new Trainer("trainer1", "John", "Doe", "john.doe@gmail.com", "0758914523",null);
 		userRepo.save(trainer1);
 		TrainerWorkout uw1 = new TrainerWorkout(trainer1, work1);
 		userWorkoutRepo.save(uw1);
@@ -148,8 +148,8 @@ public class TrainerWorkoutTest {
 		workoutRepo.save(workout1);
 		workoutRepo.save(workout2);
 		workoutRepo.save(workout3);
-		Trainer trainer1 = new Trainer("trainer1", "John", "Doe", "john.doe@gmail.com", "0758914523");
-		Trainer trainer2 = new Trainer("trainer2", "Jane", "Doe", "jane.doe@gmail.com", "0758914523");
+		Trainer trainer1 = new Trainer("trainer1", "John", "Doe", "john.doe@gmail.com", "0758914523", null);
+		Trainer trainer2 = new Trainer("trainer2", "Jane", "Doe", "jane.doe@gmail.com", "0758914523", null);
 		userRepo.save(trainer1);
 		userRepo.save(trainer2);
 		TrainerWorkout uw1 = new TrainerWorkout(trainer1, workout1);

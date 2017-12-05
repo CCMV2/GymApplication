@@ -44,10 +44,10 @@ public class DataFiller {
 	
 	@Test
 	public void fillData() {
-		Subscription sub1 = new Subscription("Standard", 100.0);
-		Subscription sub2 = new Subscription("Full", 150.0);
-		Subscription sub3 = new Subscription("Silver", 200.0);
-		Subscription sub4 = new Subscription("Premium", 400.0);
+		Subscription sub1 = new Subscription("Standard", 100.0, null);
+		Subscription sub2 = new Subscription("Full", 150.0, null);
+		Subscription sub3 = new Subscription("Silver", 200.0, null);
+		Subscription sub4 = new Subscription("Premium", 400.0, null);
 		subRepo.save(sub1);
 		subRepo.save(sub2);
 		subRepo.save(sub3);
@@ -103,9 +103,9 @@ public class DataFiller {
 		workoutListRepo.save(wl17);
 		workoutListRepo.save(wl18);
 		
-		Trainer trainer1 = new Trainer("trainer1", "John", "Doe", "john.doe@gmail.com", "0758914523");
-		Trainer trainer2 = new Trainer("trainer2", "Jane", "Doe", "jane.doe@gmail.com", "0758914524");
-		Trainer trainer3 = new Trainer("trainer3", "Jillian", "Miles", "jillian.miles@gmail.com", "0758914525");
+		Trainer trainer1 = new Trainer("trainer1", "John", "Doe", "john.doe@gmail.com", "0758914523", null);
+		Trainer trainer2 = new Trainer("trainer2", "Jane", "Doe", "jane.doe@gmail.com", "0758914524", null);
+		Trainer trainer3 = new Trainer("trainer3", "Jillian", "Miles", "jillian.miles@gmail.com", "0758914525", null);
 		userRepo.save(trainer1);
 		userRepo.save(trainer2);
 		userRepo.save(trainer3);

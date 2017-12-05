@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.ubb.gymapp.model.Administrator;
 import com.ubb.gymapp.model.Client;
+import com.ubb.gymapp.model.Rating;
 import com.ubb.gymapp.model.Trainer;
 import com.ubb.gymapp.model.User;
 import com.ubb.gymapp.model.User.UserType;
@@ -29,9 +30,9 @@ public class UserTest {
 	@Test
 	public void authenticateUser(){
 		
-		Administrator user = new Administrator("aaa", "aaa", "aaa", "superAdmin", "aaa");
+		Administrator user = new Administrator("aaa", "aaa", "aaa", "superAdmin2", "aaa");
 		user = userRepo.save(user);
-		User user1 = userRepo.findByEmail("superAdmin");
+		User user1 = userRepo.findByEmail("superAdmin2");
 		assertEquals(user.getId(), user1.getId());
 		userRepo.delete(user);
 	}
@@ -86,7 +87,8 @@ public class UserTest {
 	
 	@Test
 	public void testFindAllByUserType() {
-		Trainer trainer = new Trainer("password", "Don","Huan","huan@mail.com", "0721878974");
+		Trainer trainer = new Trainer("password", "Don","Huan","huan@mail.com", "0721878974", null);
+		trainer.setRat(new Rating(2.3, 4L));
 		Client user1 = new Client("1234567", "Don","Huan","huan@mail.com", "0721878974");
 		Client user2 = new Client("2345678", "Don","Huan","huan@mail.com", "0721878974");
 		
@@ -98,6 +100,15 @@ public class UserTest {
 		userRepo.delete(trainer.getId());
 		userRepo.delete(user1.getId());
 		userRepo.delete(user2.getId());
+	}
+	
+	@Test
+	public void testUpdateUserRating() {
+		Trainer trainer = new Trainer("password", "Don","Huan","huan@mail.com", "0721878974", null);
+		trainer.setRat(new Rating(5.0,(long) 2));
+		userRepo.save(trainer);
+		Long id = trainer.getRat().getIdRating();
+		assertNotNull(id);
 	}
 	
 }
