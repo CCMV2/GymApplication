@@ -26,6 +26,7 @@ DROP TABLE if exists `gymapp`.`rating`;
   `Price` bigint NOT NULL,
   `Duration` INT NULL,
   `Rating` bigint NOT NULL DEFAULT 1,
+  `Pic` longblob ,
   PRIMARY KEY (`idSubscription`),
   FOREIGN KEY (`Rating`) references rating (`idRating`));
   
@@ -41,6 +42,7 @@ CREATE TABLE `gymapp`.`user` (
 	`idSubscription` bigint NULL,
      `Start` DATE NULL,
      `Rating` bigint NOT NULL DEFAULT 1,
+     `Pic` longblob ,
  PRIMARY KEY (`idUser`),
  FOREIGN KEY (`idSubscription`) REFERENCES subscription(`idSubscription`));
   
