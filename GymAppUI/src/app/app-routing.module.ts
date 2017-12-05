@@ -21,6 +21,7 @@ import { UpdateTimetableComponent } from './pages/timetable/update-timetable/upd
 import {SubscriptionDetailsComponent} from './pages/subscription/subscription-details/subscription-details.component';
 import { DemoComponent } from './pages/demo/demo.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { UserTimetableComponent } from "./pages/user/user-timetable/user-timetable.component";
 
 
 const routes: Routes = [
@@ -42,7 +43,8 @@ const routes: Routes = [
     { path: 'updateuser', component: UpdateUserComponent, canActivate: [AuthGuardGuard]},
     { path: 'listusers', component: UserPageComponent, canActivate: [AuthGuardGuard]},
     { path: 'subscriptiondetails', component: SubscriptionDetailsComponent},
-    { path: 'demo', component: DemoComponent}
+    { path: 'demo', component: DemoComponent},
+    { path: 'usertimetable', component: UserTimetableComponent, canActivate: [AuthGuardGuard]}
 ];
 
 @NgModule({

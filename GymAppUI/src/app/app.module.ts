@@ -37,6 +37,7 @@ import { SubscriptionDetailsComponent } from './pages/subscription/subscription-
 import { DemoComponent } from './pages/demo/demo.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AuthenticationService } from "./pages/demo/services/authentication.service";
+import { UserTimetableComponent } from './pages/user/user-timetable/user-timetable.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { AuthenticationService } from "./pages/demo/services/authentication.serv
     UpdateTimetableComponent,
     SubscriptionDetailsComponent,
     DemoComponent,
-    ContactComponent
+    ContactComponent,
+    UserTimetableComponent
   ],
   imports: [
     HttpModule,

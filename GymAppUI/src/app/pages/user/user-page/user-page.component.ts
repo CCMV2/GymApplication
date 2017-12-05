@@ -25,7 +25,6 @@ export class UserPageComponent implements OnInit {
     } );
   }
   delete(sub: User): void {
-      debugger;
     const uri = 'delete' + sub.userType.toLowerCase();
     this.backendService.deleteUser(uri, sub).subscribe(res => {
         console.log(res);
@@ -39,7 +38,13 @@ export class UserPageComponent implements OnInit {
   updateUser(entry: User ): void {
     this.session.store('userToUpdate', entry);
     this.router.navigateByUrl('/updateuser');
+    
   }
+  
+  showTimetable(entry: User ): void {
+      this.session.store('userToUpdate', entry);
+      this.router.navigateByUrl('/usertimetable');
+    }
 }
 
 

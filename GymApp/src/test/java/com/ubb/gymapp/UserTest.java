@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -15,10 +16,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.ubb.gymapp.model.Administrator;
 import com.ubb.gymapp.model.Client;
 import com.ubb.gymapp.model.Rating;
+import com.ubb.gymapp.model.Room;
+import com.ubb.gymapp.model.Timetable;
 import com.ubb.gymapp.model.Trainer;
 import com.ubb.gymapp.model.User;
+import com.ubb.gymapp.model.Workout;
 import com.ubb.gymapp.model.User.UserType;
+import com.ubb.gymapp.repository.RoomRepository;
+import com.ubb.gymapp.repository.TimetableRepository;
 import com.ubb.gymapp.repository.UserRepository;
+import com.ubb.gymapp.repository.WorkoutRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -26,7 +33,50 @@ public class UserTest {
 	
 	@Autowired
 	private UserRepository userRepo;
+	@Autowired
+	private TimetableRepository timeRepo ;
 	
+	@Autowired
+	private RoomRepository roomRepo;
+	
+	@Autowired
+	private WorkoutRepository workRepo;
+	@Test
+	public void testTimetable() {
+		Client user = new Client("aaa", "aaa", "aaa", "aaa", "aaa");
+		user = userRepo.save(user);
+		User user1 = userRepo.findOne(user.getId());
+		assertNotNull(user1.getId());
+		
+		
+		Date dat=new Date();
+		Workout work = new Workout();
+		work.setWorkoutType("r");
+		Room room = new Room();
+		workRepo.save(work);
+		roomRepo.save(room);
+		assertNotNull(work);
+		assertNotNull(room);
+		Timetable pro =new Timetable("Joi", dat, 2L, room, work);
+		timeRepo.save(pro);
+		
+		user.addTimeTable(pro);
+		user=userRepo.save(user);
+		
+		assertNotNull(user.getUserTimetable());
+		
+		assertNotNull(pro.getId());
+		
+		
+		
+		userRepo.delete(user.getId());	
+		
+		
+		timeRepo.delete(pro);
+		roomRepo.delete(room);
+
+		workRepo.delete(work);
+	}
 	@Test
 	public void authenticateUser(){
 		
