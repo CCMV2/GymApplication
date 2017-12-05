@@ -9,8 +9,8 @@
       </span>
   </button>
   <div *ngIf="activated" >
-  <ng-container *ngFor="let url of Tab.items" (click)="navigate(url)">
-    <button  class="link-buttons nav-btn-url" *ngIf="authenticationService.hasRole(url.usertype)">
+  <ng-container *ngFor="let url of Tab.items" >
+    <button  class="link-buttons nav-btn-url" *ngIf="authenticationService.hasRole(url.usertype)" (click)="navigate(url)">
      
       <span class="glyphicon glyphicon-share link-glyph"></span>
       {{url.text}}
