@@ -48,6 +48,8 @@
       <br>
       <br>
       <button type="update" class="btn btn-primary-outline pull-right" (click)="updateUser(entry)"><i class="fa fa-plus"></i>Update</button>
+      <br>
+       <button *ngIf="entry.userType==='CLIENT'"  type="button" class="btn btn-primary-outline pull-right" (click)="showTimetable(entry)"><i class="fa fa-plus"></i>Update</button>
     </td>
   </tr>
 

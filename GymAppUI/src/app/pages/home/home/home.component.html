@@ -1,1 +1,17 @@
-This is the home page, add some content here
+<div align="right" *ngIf="!authenticationService.isLoggedIn()">
+	<input type="button" value="Log In"
+		onclick="window.location.href='http://localhost:4200/login?returnUrl=%2F'" />
+</div>
+<div align="right">
+	<input type="button" value="Contact"
+		onclick="window.location.href='http://localhost:4200/contact'" />
+</div>
+<h1 align="center" >Get your summer body her!!!</h1>
+<br>
+<br>
+<img alt="Imagine Gym" align="right"
+	src="https://img3.stockfresh.com/files/d/dash/m/48/887265_stock-photo-couple-at-the-gym.jpg" />
+<h2>NTT-Gim se adreseaza tuturor persoanelor, indiferent de varsta, de greutate sau de program,
+ care doresc sa faca o schimbare pozitiva a stilului lor de viata.</h2>
+<p></p>
+<p></p>

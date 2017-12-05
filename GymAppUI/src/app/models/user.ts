@@ -1,4 +1,5 @@
 import { Subscription } from './subscriptionModel';
+import { Timetable } from "./Timetable";
 
 export class User {
     id: number;
@@ -38,6 +39,7 @@ export class Client extends User {
     cnp: string;
     start: Date;
     subscription: Subscription;
+userTimetable: Timetable[];
     constructor( id: number, cnp: string, name: string, surname: string, email: string, phonenumber: string) {
        super(id, cnp, name, surname, email, phonenumber, 'CLIENT');
        this.cnp = cnp;

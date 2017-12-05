@@ -44,7 +44,7 @@ CREATE TABLE `gymapp`.`user` (
      `Rating` bigint NOT NULL DEFAULT 1,
      `Pic` longblob ,
  PRIMARY KEY (`idUser`),
- FOREIGN KEY (`idSubscription`) REFERENCES subscription(`idSubscription`)
+ FOREIGN KEY (`idSubscription`) REFERENCES subscription(`idSubscription`),
  FOREIGN KEY (`Rating`) references rating (`idRating`));
   
   
@@ -89,4 +89,9 @@ CREATE TABLE `gymapp`.`room` (
   FOREIGN KEY (`idSubscription`) REFERENCES subscription(`idSubscription`),
   FOREIGN KEY (`idWorkout`) REFERENCES workout(`idWorkout`));
 
-  
+  CREATE TABLE `gymapp`.`user_timetable`(
+	`idUser` bigint NOT NULL,
+    `idTimetable` BIGINT NOT NULL,
+    FOREIGN KEY (`idUser`) REFERENCES user(`idUser`),
+    FOREIGN KEY (`idTimetable`) REFERENCES timetable(`idTimetable`)
+  );

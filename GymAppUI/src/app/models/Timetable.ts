@@ -11,6 +11,7 @@ export class Timetable {
       workout: Workout;
       roomName: string;
       workoutType: string;
+      timeTableName: string;
 
 
     constructor(day: string, start: Date, duration: number, roomName: string, workoutType: string) {
