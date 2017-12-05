@@ -22,6 +22,7 @@ import {SubscriptionDetailsComponent} from './pages/subscription/subscription-de
 import { DemoComponent } from './pages/demo/demo.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { UserTimetableComponent } from "./pages/user/user-timetable/user-timetable.component";
+import { TrainerComponent } from "./pages/trainer/trainer.component";
 
 
 const routes: Routes = [
@@ -44,7 +45,8 @@ const routes: Routes = [
     { path: 'listusers', component: UserPageComponent, canActivate: [AuthGuardGuard]},
     { path: 'subscriptiondetails', component: SubscriptionDetailsComponent},
     { path: 'demo', component: DemoComponent},
-    { path: 'usertimetable', component: UserTimetableComponent, canActivate: [AuthGuardGuard]}
+    { path: 'usertimetable', component: UserTimetableComponent, canActivate: [AuthGuardGuard]},
+    { path: 'trainer', component: TrainerComponent, canActivate: [AuthGuardGuard]}
 ];
 
 @NgModule({

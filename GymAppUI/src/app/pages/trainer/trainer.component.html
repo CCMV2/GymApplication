@@ -1,3 +1,11 @@
-<p>
-  trainer works!
-</p>
+<div *ngFor='let trainer of trainers'>
+  <span>
+    {{trainer.completeName}}
+  </span>
+  <span>
+    {{trainer.email}}
+  </span>
+  <span>
+    {{trainer.phonenumber}}
+  </span>
+</div>

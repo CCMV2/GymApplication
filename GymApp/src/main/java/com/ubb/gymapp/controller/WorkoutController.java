@@ -3,6 +3,7 @@ package com.ubb.gymapp.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,6 +44,7 @@ public class WorkoutController {
 		}
 	}
 
+	@CrossOrigin(origins="http://localhost:4200")
 	@RequestMapping(value = "/getalltrainers", method = RequestMethod.GET)
 	public List<User> getAllTrainers() {
 		return userService.getAllTrainers();
