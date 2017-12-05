@@ -5,7 +5,7 @@
   <tr>
     <th>Name</th>
     <th>Descriptions</th>
-    <th>Rating</th>
+    <th><p id="rating">Rating</p></th>
   </tr>
   <tr *ngFor="let entry of subscriptionsAndWorkouts">
     <td>{{entry?.subscription.name}} </td>
@@ -14,7 +14,7 @@
     <td>
       <table class="table table-condensed table-hover">
         <tr>
-          <th>Description</th>
+          
         </tr>
         <tr *ngFor="let workout of entry.workouts">
           <td>
