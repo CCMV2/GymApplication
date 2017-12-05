@@ -1,19 +1,32 @@
-.list-table{
-    margin-top: 30px;
-    margin: 0 auto;
+#workoutTable{
+  width: 100%;
+  border-collapse: collapse;
 }
 
 tr.selected {
     background:grey;
 }
 
-tr.selected:hover {
-    background: green;
+.description {
+  max-width: 110px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
 }
 
-table{
-    border-collapse: collapse;
+#container {
+  position: relative;
 }
-input{
-    font-size: 25px;
+
+.popup {
+  background: #f2f2f2;
+  position:relative;
+
+  padding:10px;
+  white-space: normal;
+}
+
+.button1 .button2 {
+  cursor: default;
 }
