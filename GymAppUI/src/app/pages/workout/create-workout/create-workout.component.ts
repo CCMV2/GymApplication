@@ -37,6 +37,7 @@ export class CreateWorkoutComponent implements OnInit {
         for (let trainer of this.trainerList) {
             trainer.completeName = trainer.name + ' ' + trainer.surname;
         }
+        this.trainerWorkouts.trainers[0] = this.trainerList[0];//asta alege un default trainer dupa ce s-au incarcat din server trainerii
     });
   }
 
