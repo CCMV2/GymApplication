@@ -5,6 +5,7 @@ import {WorkoutList} from '../../../models/workoutlist';
 import {Subscription} from '../../../models/subscriptionModel';
 import { Subscribable } from 'rxjs/Observable';
 import { IStarRatingOnClickEvent } from 'angular-star-rating/src/star-rating-struct';
+import {Rating} from '../../../models/rating';
 
 
 @Component({
@@ -35,5 +36,6 @@ export class SubscriptionDetailsComponent implements OnInit {
     const rating = $event.rating;
     alert(rating);
   }
+ 
 
 }

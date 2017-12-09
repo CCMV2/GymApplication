@@ -13,7 +13,8 @@ export class Subscription{
     name: string,
     price: number,
     duration: number,
-    imageBase64:String) {
+    imageBase64:String,
+    ) {
     this.name = name;
     this.price = price;
     this.duration = duration;
