@@ -37,7 +37,7 @@ public class WorkoutListTest {
 	    public void testAdd() {
 	        Workout workout = new Workout("Swimming", Difficulty.HARD, "You will get wet!");
 	        workout = workoutRepo.save(workout);
-	        Subscription subscription = new Subscription("abo1",500.0, null);
+	        Subscription subscription = new Subscription("abo1",500.0,23, null);
 	        subscription = subscriptionRepo.save(subscription);
 	        WorkoutList workoutList = new WorkoutList(subscription,workout);
 	        workoutList = wlRepo.save(workoutList);
@@ -54,7 +54,7 @@ public class WorkoutListTest {
 	 public void testFind(){
 		 	Workout workout = new Workout("Swimming", Difficulty.HARD, "You will get wet!");
 	        workout = workoutRepo.save(workout);
-	        Subscription subscription = new Subscription("abo1",500.0, null);
+	        Subscription subscription = new Subscription("abo1",500.0,23, null);
 	        subscription = subscriptionRepo.save(subscription);
 	        WorkoutList workoutList = new WorkoutList(subscription,workout);
 	        workoutList = wlRepo.save(workoutList);
@@ -69,21 +69,21 @@ public class WorkoutListTest {
 	public void testDelete(){
 		Workout workout = new Workout("Swimming", Difficulty.HARD, "You will get wet!");
         workout = workoutRepo.save(workout);
-        Subscription subscription = new Subscription("abo1",500.0, null);
+        Subscription subscription = new Subscription("abo1",500.0, 23,null);
         subscription = subscriptionRepo.save(subscription);
         WorkoutList workoutList = new WorkoutList(subscription,workout);
         workoutList = wlRepo.save(workoutList);
         
         Workout workout1 = new Workout("Swimming", Difficulty.HARD, "You will get wet!");
         workout1 = workoutRepo.save(workout1);
-        Subscription subscription1 = new Subscription("abo2",500.0, null);
+        Subscription subscription1 = new Subscription("abo2",500.0,23, null);
         subscription1 = subscriptionRepo.save(subscription);
         WorkoutList workoutList1 = new WorkoutList(subscription1,workout1);
         workoutList1 = wlRepo.save(workoutList1);
         
         Workout workout2 = new Workout("Swimming", Difficulty.MEDIUM, "You will get wet!");
         workout2 = workoutRepo.save(workout2);
-        Subscription subscription2 = new Subscription("abo3",500.0, null);
+        Subscription subscription2 = new Subscription("abo3",500.0, 23,null);
         subscription2 = subscriptionRepo.save(subscription2);
         WorkoutList workoutList2 = new WorkoutList(subscription2,workout2);
         workoutList2 = wlRepo.save(workoutList2);
@@ -115,7 +115,7 @@ public class WorkoutListTest {
 	
 	@Test
 	public void findWorkoutsBySubscription() {
-		Subscription sub1 = new Subscription("Standard", 100.0, null);
+		Subscription sub1 = new Subscription("Standard", 100.0, 23,null);
 		subscriptionRepo.save(sub1);
 		Workout work1 = new Workout("Zumba", Difficulty.MEDIUM, "Pretty much the most awesome workout ever. Dance to great music, with great people, and burn a ton of calories without even realizing it.");
 		Workout work2 = new Workout("Pilates", Difficulty.HARD, "Pilates is a physical fitness system developed in the early 20th century by Joseph Pilates, after whom it was named. It is practiced worldwide.");
@@ -145,7 +145,7 @@ public class WorkoutListTest {
 	
 	@Test
 	public void deleteByWorkout() {
-		Subscription sub1 = new Subscription("Standard", 100.0, null);
+		Subscription sub1 = new Subscription("Standard", 100.0,23, null);
 		subscriptionRepo.save(sub1);
 		Workout work1 = new Workout("Zumba", Difficulty.MEDIUM, "Pretty much the most awesome workout ever. Dance to great music, with great people, and burn a ton of calories without even realizing it.");
 		workoutRepo.save(work1);

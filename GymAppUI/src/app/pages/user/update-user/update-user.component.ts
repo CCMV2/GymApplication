@@ -26,7 +26,7 @@ export class UpdateUserComponent implements OnInit {
                 client.start = new Date();
             }
             if (client.subscription == null) {
-                client.subscription = new Subscription('', 0, 0);
+                client.subscription = new Subscription('', 0, 0,'');
             }
             this.createdUser = client;
         }
@@ -64,7 +64,7 @@ export class UpdateUserComponent implements OnInit {
         if (type === 'CLIENT') {
             const client = this.createdUser as Client;
             if (client.subscription == null || typeof client.subscription === 'undefined') {
-                client.subscription = new Subscription('', 0, 0);
+                client.subscription = new Subscription('', 0, 0,'');
             }
             this.createdUser = client;
         }

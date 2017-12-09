@@ -1,40 +1,53 @@
+<div  class="col-sm-7">
 <h1>
   Subscription Details
 </h1>
 <table class="table table-condensed table-hover">
-  <tr>
-    <th></th>
-    <th>Name</th>
-    <th>Descriptions</th>
-    <th><p id="rating">Rating</p></th>
-  </tr>
+  <thead>
+    <th rowspan="3"></th>
+    <th id="sec-col"></th>
+  </thead>
+  <tbody>
   <tr *ngFor="let entry of subscriptionsAndWorkouts">
-
-    <td><img id="img" src="http://i1.wp.com/fitnesspowerup.com/wp-content/uploads/2016/06/fitness-image.jpg?w=1600" alt="fitness pic"></td>
-
-    <td>{{entry?.subscription.name}} </td>
-   
-
     <td>
-      <table class="table table-condensed table-hover">
+      <img id="img"  src='data:image/png;base64,{{entry?.subscription.imageBase64}}'/>
+
+    </td>
+      
+    <td>
+      <table>
+        <!--thead>
+          <th></th>
+        </thead-->
+        <tbody>
         <tr>
-          
+          <td id="subscriptionname"><b>{{entry?.subscription.name}}</b> </td>
         </tr>
-        <tr *ngFor="let workout of entry.workouts">
-          <td>
-            <div id="div" title="{{workout.description}}">{{workout?.description}}</div>
-          <td>
-          <!--button>Delete</button-->
-        </tr>
+        <tr>
+            <td>
+              <div id="workoutslist">
+              <table  class="table table-condensed table-hover">
+                <tbody id="workoutslist">
+                <tr  *ngFor="let workout of entry.workouts">
+                  <td>
+                    <div id="div" title="{{workout.description}}"><b>{{workout?.workoutType}}</b>: {{workout?.description}}</div>
+                  <td>
+                  
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            </td>
+          </tr>
+          <tr> 
+            <td>
+              <star-rating-comp [starType]="'svg'" [rating]="ratingVal" (onClick)="onClick($event)"></star-rating-comp>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </td>
-    <td>
-      <star-rating-comp [starType]="'svg'" [rating]="ratingVal" (onClick)="onClick($event)"></star-rating-comp>
-    </td>
-    
-    </tr>
-    
-    
-    
-  
+  </tr>
+</tbody>
 </table>
+</div>

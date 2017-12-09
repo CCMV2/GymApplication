@@ -34,11 +34,12 @@ public class Subscription implements Serializable {
 	private String imageBase64;
 	private byte[] image;
 
-	public Subscription(String name, Double price, byte[] image) {
+	public Subscription(String name,Double price, Integer duration,byte[] image) {
 		this.name = name;
 		this.price = price;
 		this.rat = new Rating(0.0, (long) 0);
 		this.image = image;
+		this.duration = duration;
 	}
 
 	public Subscription() {

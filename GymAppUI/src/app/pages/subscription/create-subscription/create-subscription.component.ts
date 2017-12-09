@@ -25,7 +25,7 @@ export class CreateSubscriptionComponent implements OnInit {
   private uploadUrl = 'http://localhost:4200/createsubscription';
  
 
-  subscriptionToCreate: Subscription = new Subscription ('', 0, 0);
+  subscriptionToCreate: Subscription = new Subscription ('', 0, 0,'');
   workoutList : WorkoutList = new WorkoutList(this.subscriptionToCreate, null);
 
   constructor(private backendService: BackendService, private http: Http,   private el: ElementRef) { }

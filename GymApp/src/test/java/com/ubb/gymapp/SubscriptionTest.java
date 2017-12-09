@@ -30,7 +30,7 @@ public class SubscriptionTest {
 	 */
 	@Test 
 	public void addSubscription() {
-		Subscription subscription = new Subscription("abo1",500.0, null);
+		Subscription subscription = new Subscription("abo1",500.0,10, null);
 		subscription.setDuration(2);
 		subscription = subscriptionRepo.save(subscription);
 		Long id = subscription.getSubscriptionId();
@@ -48,7 +48,7 @@ public class SubscriptionTest {
 	
 	@Test
 	public void readOneSubscription(){
-		Subscription subscription = new Subscription("testAbo",680.0, null);
+		Subscription subscription = new Subscription("testAbo",680.0,23, null);
 		subscription = subscriptionRepo.save(subscription);
 		Subscription dbSubscription = subscriptionRepo.findOne(subscription.getSubscriptionId());
 		assertEquals(subscription, dbSubscription);
@@ -59,10 +59,10 @@ public class SubscriptionTest {
 	
 	@Test
 	public void readSubscriptions(){
-		Subscription s1 = new Subscription("testAbo1",500.0, null);
-		Subscription s2 = new Subscription("testAbo2",700.0, null);
-		Subscription s3 = new Subscription("testAbo3",840.0, null);
-		Subscription s4 = new Subscription("testAbo4",1000.0, null);
+		Subscription s1 = new Subscription("testAbo1",500.0, 23,null);
+		Subscription s2 = new Subscription("testAbo2",700.0,23, null);
+		Subscription s3 = new Subscription("testAbo3",840.0, 23,null);
+		Subscription s4 = new Subscription("testAbo4",1000.0,23, null);
 		long currentSubscriptions = subscriptionRepo.count();
 		
 		s1 = subscriptionRepo.save(s1);
@@ -92,7 +92,7 @@ public class SubscriptionTest {
 		
 		Date date = new GregorianCalendar(2017, 11, 17).getTime(); // month is December
 		
-		Subscription sub = new Subscription("testAbo",1000.0, null);
+		Subscription sub = new Subscription("testAbo",1000.0,23, null);
 		sub = subscriptionRepo.save(sub);
 		sub.setName("test");
 		sub.setPrice(700.0);
@@ -114,7 +114,7 @@ public class SubscriptionTest {
 	
 	@Test
 	public void deleteSubscription(){
-		Subscription subscription = new Subscription("testSubscriptions",890.0, null);
+		Subscription subscription = new Subscription("testSubscriptions",890.0,23, null);
 		subscription = subscriptionRepo.save(subscription);
 		assertNotNull(subscription);
 		subscriptionRepo.delete(subscription);
@@ -123,7 +123,7 @@ public class SubscriptionTest {
 	}
 	@Test
 	public void testUpdateSubscriptionRating() {
-		Subscription subscription = new Subscription("testSubscriptions",890.0, null);
+		Subscription subscription = new Subscription("testSubscriptions",890.0, 23,null);
 		subscription.setRat(new Rating(5.0,(long) 2));
 		subscriptionRepo.save(subscription);
 		Long id = subscription.getRat().getIdRating();
