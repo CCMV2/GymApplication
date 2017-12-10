@@ -44,13 +44,14 @@
       </div>
     </td>
     <td>
-      <button type="button" class="btn btn-primary-outline pull-right" (click)="delete(entry)"><i class="fa fa-plus"></i>Delete</button>
+      <button type="delete-button" class="btn btn-primary-outline pull-right" (click)="delete(entry)"><i class="fa fa-plus"></i>Delete</button>
       <br>
       <br>
-      <button type="update" class="btn btn-primary-outline pull-right" (click)="updateUser(entry)"><i class="fa fa-plus"></i>Update</button>
+      <button type="update-button" id="update" class="btn btn-primary-outline pull-right" (click)="updateUser(entry)"><i class="fa fa-plus"></i>Update</button>
       <br>
-       <button *ngIf="entry.userType==='CLIENT'"  type="button" class="btn btn-primary-outline pull-right" (click)="showTimetable(entry)"><i class="fa fa-plus"></i>Update</button>
+       <button type="edit-button" id="edit" *ngIf="entry.userType==='CLIENT'"  class="btn btn-primary-outline pull-right" (click)="showTimetable(entry)"><i class="fa fa-plus"></i>Edit Timetable</button>
     </td>
   </tr>
 
 </table>
+ 

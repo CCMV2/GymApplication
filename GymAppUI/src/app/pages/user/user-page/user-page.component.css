@@ -1,5 +1,5 @@
 button {
-    background-color:#e60909;
+    background-color:red;
     border: none;
     color: white;
     padding: 3px 12px;
@@ -15,4 +15,10 @@ button {
 
 #update{
     background-color: #09a7e6
+}
+
+#edit{
+	background-color:grey;
+ 	
+    
 }
