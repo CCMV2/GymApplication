@@ -36,7 +36,7 @@ export class NavigationPaneComponent implements OnInit {
       title: "Workout", items: [
       { active: false, url: "createworkout", text: "New Workout" , usertype: ['ADMIN','TRAINER']},
       { active: false, url: "listworkout", text: "Workouts" , usertype: ['ADMIN','TRAINER']}
-    ], 
+    ],
     usertype: ['ADMIN','TRAINER']
     },
     {
@@ -57,7 +57,15 @@ export class NavigationPaneComponent implements OnInit {
       { active: false, url: "newtimetable", text: "New Timetable" , usertype: ['ADMIN','TRAINER']},
       { active: false, url: "timetable", text: "Timetable" , usertype: ['ADMIN','TRAINER']}
     ], usertype: ['ADMIN','TRAINER']
+    },
+    {
+      title: "Trainers", items: [
+      { active: false, url: "trainer", text: "Trainers" , usertype: ['ADMIN','TRAINER']}
+    ], usertype: ['ADMIN','TRAINER']
     }
+
+
+
 
     /*
     { active: false, url: "updatesubscription", text: "Update Subscription" },

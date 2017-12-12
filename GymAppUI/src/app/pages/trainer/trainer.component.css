@@ -1,0 +1,43 @@
+.trainer-card {
+  height: 200px;
+  width: 800px;
+  background-color: #14305e;
+  margin: 30px 30px 30px 30px;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+}
+
+.trainer-image {
+  height: 150px;
+  overflow: hidden;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
+.image-container {
+  width: 200px;
+  overflow: hidden;
+}
+
+.trainer-name {
+  font-size: 30px;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.trainer-info {
+  background-color: #13274b;
+  border-radius: 10px;
+  margin-left: 10px;
+  height: 120px;
+  width: 575px;
+}
+
+.trainer-rating {
+  position: relative;
+  bottom: -36px;
+  left: 10px;
+}

@@ -1,5 +1,6 @@
 import { Subscription } from './subscriptionModel';
 import { Timetable } from "./Timetable";
+import {Rating} from "./rating";
 
 export class User {
     id: number;
@@ -23,6 +24,8 @@ export class User {
 }
 export class Trainer extends User {
     completeName: string;
+    rat: Rating;
+    stars: any;
     constructor( id: number, password: string, name: string, surname: string, email: string, phonenumber: string) {
        super(id, password, name, surname, email, phonenumber, 'TRAINER');
        this.password = password;
