@@ -3,6 +3,7 @@ package com.ubb.gymapp.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,6 +30,7 @@ public class Timetable implements Serializable {
 	private long duration;
 	private Room room;
 	private Workout workout;
+	private Trainer trainer;
 	
 	public Timetable() {
 	}
@@ -72,6 +75,16 @@ public class Timetable implements Serializable {
 	@Column (name = "duration")	
 	public long getDuration() {
 		return duration;
+	}
+	
+	@OneToOne( fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "idTrainer", unique = true, nullable = false)
+	public Trainer getTrainer() {
+		return trainer;
+	}
+
+	public void setTrainer(Trainer trainer) {
+		this.trainer = trainer;
 	}
 
 	public void setDuration(long duration) {
@@ -157,6 +170,8 @@ public class Timetable implements Serializable {
 		return "Timetable [id=" + id + ", day=" + day + ", start=" + start + ", duration=" + duration + ", room=" + room
 				+ ", workout=" + workout + "]";
 	}
+
+	
 
 	
 }

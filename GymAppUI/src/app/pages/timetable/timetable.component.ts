@@ -26,6 +26,9 @@ export class TimetableComponent implements OnInit {
       }
 
     deleteTimetable(timetable: Timetable): void {
+        if(timetable.trainer.imageBase64== null){
+            timetable.trainer.imageBase64 = '';
+        }
         this.backendService.deleteTimetable(timetable).subscribe(res => {
           console.log(res);
           this.getTimetables();

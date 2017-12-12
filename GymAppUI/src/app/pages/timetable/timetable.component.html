@@ -7,6 +7,7 @@
 				<th><font color="white">Day</font></th>
 				<th><font color="white">Start</font></th>
 				<th><font color="white">Duration</font></th>
+				<th><font color="white">Trainer</font></th>
 				<th><font color="white">Room</font></th>
 				<th><font color="white">Workout</font></th>
 				<th></th>
@@ -16,10 +17,11 @@
 				<td>{{item?.id}}</td>
 				<td>{{item?.day}}</td>
 				<td ng-non-bindable>{{item?.start | date:'HH:mm'}}</td>
-				<td>{{item?.duration}} h</td>
+				<td>{{item?.duration}} min</td>
+				<td>{{item?.trainer.name}} {{item?.trainer.surname}}</td>
 				<td>{{item?.room.roomName}}</td>
 				<td>{{item?.workout.workoutType}}</td>
-				 <td>
+				<td>
 	            	<button type="button" class="room-button btn btn-info" (click)="goToUpdatePage(item)">
 						  <span class="glyphicon-pencil" aria-hidden="true"></span>
           					Update

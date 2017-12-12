@@ -6,5 +6,5 @@ agm-map {
 }
 .intensity-medium{
 	background-color: orange;
-	color: white;
+	color: white!important;
 }

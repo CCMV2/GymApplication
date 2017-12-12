@@ -5,6 +5,7 @@ import { TrainerWorkout } from '../../../models/trainer-workout';
 import { Timetable } from '../../../models/Timetable';
 import { Workout } from '../../../models/workout';
 import { SessionStorageService } from 'ngx-webstorage/dist/services';
+import { Trainer } from "../../../models/user";
 
 @Component( {
     selector: 'app-update-timetable',
@@ -16,11 +17,13 @@ export class UpdateTimetableComponent implements OnInit {
     allTimetables: Timetable[] = [];
     allRooms: Room[] = [];
     allWorkouts: TrainerWorkout[] = [];
-    timetableToCreate: Timetable = new Timetable('Montag', new Date(), 0, '', '');
+    allTrainers: Trainer[] = [];
+    timetableToCreate: Timetable = new Timetable('Montag', new Date(), 0, '', '', new Trainer( 0 , '' , '', '', '', '', ''));
     message = '';
 
     constructor( private backendService: BackendService , private session: SessionStorageService) { }
     ngOnInit() {
+        this.getTrainers();
         this.getRooms();
         this.getWorkouts();
         this.timetableToCreate = this.session.retrieve('timetableToUpdate') ;
@@ -43,6 +46,7 @@ export class UpdateTimetableComponent implements OnInit {
         const workoutType = this.timetableToCreate.workoutType;
         const room = this.findRoomByName(roomName);
         const workout = this.findWorkoutByType(workoutType);
+        this.timetableToCreate.trainer = this.findTrainerById(this.timetableToCreate.trainer.id);
         this.timetableToCreate.room = room ;
         this.timetableToCreate.workout = workout.workout ;
         this.backendService.updateTimetable(this.timetableToCreate).subscribe(res => {
@@ -58,6 +62,14 @@ export class UpdateTimetableComponent implements OnInit {
         }
         return null;
       }
+    findTrainerById(id: number ): Trainer {
+        for (const i of this.allTrainers) {
+            if (i.id === id) {
+                return i;
+            }
+        }
+        return null;
+      }
     getRooms(): void {
         this.backendService.getAllRooms().subscribe( res => {
             this.allRooms = res;
@@ -68,6 +80,18 @@ export class UpdateTimetableComponent implements OnInit {
         this.backendService.getAllWorkouts().subscribe( res => {
             this.allWorkouts = res;
             console.log( this.allWorkouts );
+        } );
+    }
+    getTrainers(): void {
+        this.backendService.getAllTrainers().subscribe( res => {
+            this.allTrainers = res;
+            for ( let trainer of this.allTrainers ) {
+                if ( trainer.imageBase64 == null ) {
+                    trainer.imageBase64 = '';
+                }
+
+            }
+            console.log( this.allTrainers );
         } );
     }
 }

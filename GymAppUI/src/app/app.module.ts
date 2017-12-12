@@ -40,6 +40,7 @@ import { AuthenticationService } from './pages/demo/services/authentication.serv
 import { TrainerComponent } from './pages/trainer/trainer.component';
 import { UserTimetableComponent } from './pages/user/user-timetable/user-timetable.component';
 import {ScheduleModule} from 'primeng/primeng';
+import { ScheduleComponent } from './pages/timetable/schedule/schedule.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import {ScheduleModule} from 'primeng/primeng';
     DemoComponent,
     ContactComponent,
     TrainerComponent,
-    UserTimetableComponent
+    UserTimetableComponent,
+    ScheduleComponent
   ],
   imports: [
     HttpModule,
