@@ -69,8 +69,10 @@ CREATE TABLE `gymapp`.`room` (
   `start` VARCHAR(45) NULL,
   `duration` VARCHAR(45) NULL,
   `idRoom` bigint NOT NULL,
+  `idTrainer` bigint NOT NULL,
   PRIMARY KEY (`idTimetable`),
   FOREIGN KEY (`idRoom`) REFERENCES room(`idRoom`),
+  FOREIGN KEY (`idTrainer`) REFERENCES user(`idUser`),
   FOREIGN KEY (`idWorkout`) REFERENCES workout(`idWorkout`));
   
    CREATE TABLE `gymapp`.`user_has_workout` (
