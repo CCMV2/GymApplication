@@ -23,6 +23,7 @@ export class User {
 }
 export class Trainer extends User {
     completeName: string;
+    imageBase64: string;
     constructor( id: number, password: string, name: string, surname: string, email: string, phonenumber: string) {
        super(id, password, name, surname, email, phonenumber, 'TRAINER');
        this.password = password;

@@ -2,40 +2,58 @@
   <legend>
     <h2>Create New User</h2>
   </legend>
-  
-  
-<div style= " margin: 0 auto;">
-  	<div class="alert" *ngIf="message.length > 0">
-		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-		<strong>{{message}}!</strong> 
-	</div>
-  
 
-  <label>First name:</label> <input type="text" name="fname" [(ngModel)]="createdUser.name"><br>
-  <label>Last name:</label> <input type="text" name="lname" [(ngModel)]="createdUser.surname"><br>
-  <label *ngIf="createdUser.userType!=='CLIENT'">Password:</label>  <input *ngIf="createdUser.userType!=='CLIENT'" type="password" name="passw" [(ngModel)]="createdUser.password">
-  <label *ngIf="createdUser.userType==='CLIENT'">CNP:</label>  <input *ngIf="createdUser.userType==='CLIENT'" type="text" name="passw" [(ngModel)]="createdUser.cnp">
-  <br>
-  <label>Email:</label> <input type="text" name="email" [(ngModel)]="createdUser.email"><br>
-  <label>PhoneNr:</label> <input type="text" name="phonenr" [(ngModel)]="createdUser.phonenumber"><br>
-  <!-- Subscription ID: ?? -->
-  <div>
-    <label for="type">Choose Type: </label>
 
-    <input type="radio" id="trainer" name="type" value="TRAINER" [(ngModel)]="createdUser.userType">
-    <label for="trainer">TRAINER</label>
+  <div style=" margin: 0 auto;">
+    <div class="alert" *ngIf="message.length > 0">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <strong>{{message}}!</strong>
+    </div>
 
-    <input type="radio" id="client" name="type" value="CLIENT" [(ngModel)]="createdUser.userType">
-    <label for="client">CLIENT</label>
 
-    <input type="radio" id="admin" name="type" value="ADMIN" [(ngModel)]="createdUser.userType">
-    <label for="admin">ADMIN</label>
-  </div>
+    <label>First name:</label>
+    <input type="text" name="fname" [(ngModel)]="createdUser.name">
+    <br>
+    <label>Last name:</label>
+    <input type="text" name="lname" [(ngModel)]="createdUser.surname">
+    <br>
+    <label *ngIf="createdUser.userType!=='CLIENT'">Password:</label>
+    <input *ngIf="createdUser.userType!=='CLIENT'" type="password" name="passw" [(ngModel)]="createdUser.password">
+    <label *ngIf="createdUser.userType==='CLIENT'">CNP:</label>
+    <input *ngIf="createdUser.userType==='CLIENT'" type="text" name="passw" [(ngModel)]="createdUser.cnp">
+    <br>
+    <label>Email:</label>
+    <input type="text" name="email" [(ngModel)]="createdUser.email">
+    <br>
+    <label>PhoneNr:</label>
+    <input type="text" name="phonenr" [(ngModel)]="createdUser.phonenumber">
+    <br>
+    <!-- Subscription ID: ?? -->
+    <div>
+      <label for="type">Choose Type: </label>
 
-  <!--
-  <input type="submit" value="Submit"> -->
-  <button type="button" class="button" (click)="addUser()"><span>Submit </span></button>
-  
+      <input type="radio" id="trainer" name="type" value="TRAINER" [(ngModel)]="createdUser.userType">
+      <label for="trainer">TRAINER</label>
+
+      <input type="radio" id="client" name="type" value="CLIENT" [(ngModel)]="createdUser.userType">
+      <label for="client">CLIENT</label>
+
+      <input type="radio" id="admin" name="type" value="ADMIN" [(ngModel)]="createdUser.userType">
+      <label for="admin">ADMIN</label>
+    </div>
+
+    <div *ngIf="createdUser.userType==='TRAINER'" class="form-group">
+      <label class="control-label col-sm-4">Choose a picture:</label>
+      <div class="col-sm-7">
+        <input type="file" (change)="upload($event)">
+        <br>
+        <img id="imagine" src="" height="200" alt="Image preview...">
+      </div>
+    </div>
+
+    <button type="button" class="button" (click)="addUser()">
+      <span>Submit </span>
+    </button>
+
   </div>
 </fieldset>
-
