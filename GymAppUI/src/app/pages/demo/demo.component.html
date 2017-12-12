@@ -6,4 +6,9 @@
 	
 	Rating
 	<star-rating-comp [starType]="'svg'" [rating]="ratingVal" (onClick)="onClick($event)"></star-rating-comp>
+	Schedule
+	<p-schedule [events]="events" [header]="header" [editable]="false" [defaultView]="'agendaWeek'"
+            (onEventClick)="handleEventClick($event)" (onViewRender)="loadEvents($event)" [allDaySlot]="false" 
+            [minTime]="'08:00:00'" [maxTime]="'23:00:00'" [options]="option" [eventRender]="eventRender"></p-schedule>
+	
 </p>
