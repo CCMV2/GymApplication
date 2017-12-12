@@ -23,14 +23,16 @@ export class DemoComponent implements OnInit {
             'start': 1513080000000,
             'duration': 60,
             'day': 'Montag',
-            'trainer': 'Jane Doe'
+            'trainer': 'Jane Doe',
+            'intensity': 'medium'
         },
         {
             'timeTableName': 'Aerobic',
             'start': 1513087200000,
             'duration': 60,
             'day': 'Montag',
-            'trainer': 'Jay Doe'
+            'trainer': 'Jay Doe',
+                'intensity': 'medium'
         },
         {
             'timeTableName': 'Tae Bo',
@@ -53,7 +55,8 @@ export class DemoComponent implements OnInit {
             'start': 1513087200000,
             'duration': 60,
             'day': 'Mittwoch',
-            'trainer': 'Jane Doe'
+            'trainer': 'Jane Doe',
+            'intensity': 'medium'
         },
         {
             'timeTableName': 'Tae Bo',
@@ -68,14 +71,16 @@ export class DemoComponent implements OnInit {
             'start': 1513080000000,
             'duration': 60,
             'day': 'Donnerstag',
-            'trainer': 'Cucu Doe'
+            'trainer': 'Cucu Doe',
+            'intensity': 'medium'
         },
         {
             'timeTableName': 'Aerobic',
             'start': 1513087200000,
             'duration': 60,
             'day': 'Donnerstag',
-            'trainer': 'Cucu Doe'
+            'trainer': 'Cucu Doe',
+            'intensity': 'medium'
         },
         {
             'timeTableName': 'Tae Bo',
@@ -90,21 +95,24 @@ export class DemoComponent implements OnInit {
             'start': 1513080000000,
             'duration': 60,
             'day': 'Freitag',
-            'trainer': 'Cucu Doe'
+            'trainer': 'Cucu Doe',
+            'intensity': 'medium'
         },
         {
             'timeTableName': 'Karate',
             'start': 1513080000000,
             'duration': 60,
             'day': 'Samstag',
-            'trainer': 'Ion Ionel'
+            'trainer': 'Ion Ionel',
+            'intensity': 'medium'
         },
         {
             'timeTableName': 'Karate',
             'start': 1513080000000,
             'duration': 60,
             'day': 'Sonntag',
-            'trainer': 'Ion Ionel'
+            'trainer': 'Ion Ionel',
+            'intensity': 'medium'
         }
     ];
 
