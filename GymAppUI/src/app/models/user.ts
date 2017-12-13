@@ -10,7 +10,7 @@ export class User {
     phonenumber: string;
     userType: string;
 
-    constructor( id: number, password: string, name: string, surname: string, email: string, phonenumber: string, userType: string ) {
+    constructor(id: number, password: string, name: string, surname: string, email: string, phonenumber: string, userType: string) {
         this.id = id;
         this.password = password;
         this.name = name;
@@ -24,15 +24,16 @@ export class User {
 export class Trainer extends User {
     completeName: string;
     imageBase64: string;
-    constructor( id: number, password: string, name: string, surname: string, email: string, phonenumber: string) {
-       super(id, password, name, surname, email, phonenumber, 'TRAINER');
-       this.password = password;
+    constructor(id: number, password: string, name: string, surname: string, email: string, phonenumber: string, imageBase64: string) {
+        super(id, password, name, surname, email, phonenumber, 'TRAINER');
+        this.imageBase64 = imageBase64;
+        this.password = password;
     }
 }
 
 export class Administrator extends User {
-    constructor( id: number, password: string, name: string, surname: string, email: string, phonenumber: string) {
-       super(id, password, name, surname, email, phonenumber, 'ADMIN');
+    constructor(id: number, password: string, name: string, surname: string, email: string, phonenumber: string) {
+        super(id, password, name, surname, email, phonenumber, 'ADMIN');
     }
 }
 
@@ -40,10 +41,10 @@ export class Client extends User {
     cnp: string;
     start: Date;
     subscription: Subscription;
-userTimetable: Timetable[];
-    constructor( id: number, cnp: string, name: string, surname: string, email: string, phonenumber: string) {
-       super(id, cnp, name, surname, email, phonenumber, 'CLIENT');
-       this.cnp = cnp;
+    userTimetable: Timetable[];
+    constructor(id: number, cnp: string, name: string, surname: string, email: string, phonenumber: string) {
+        super(id, cnp, name, surname, email, phonenumber, 'CLIENT');
+        this.cnp = cnp;
     }
 
 }

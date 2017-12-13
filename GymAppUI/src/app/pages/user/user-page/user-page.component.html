@@ -20,6 +20,10 @@
     
     <td>
       {{entry?.userType}}
+      <br>
+      <div *ngIf="entry.userType==='TRAINER'">
+        <img height="69px" src="{{entry?.imageBase64}}">
+      </div>
     </td>
     <td>
       {{entry?.email}}
