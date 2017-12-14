@@ -85,7 +85,6 @@ export class UpdateUserComponent implements OnInit {
 
     upload($event) {
         var preview = document.querySelector('img');
-        //preview.setAttribute("src", this.trainerImage);
         var file = $event.target.files[0];
         var reader = new FileReader();
 

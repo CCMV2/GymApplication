@@ -1,11 +1,32 @@
 <div *ngFor='let trainer of trainers'>
-  <span>
-    {{trainer.completeName}}
-  </span>
-  <span>
-    {{trainer.email}}
-  </span>
-  <span>
-    {{trainer.phonenumber}}
-  </span>
+  <div class="trainer-card">
+
+    <div class="image-container">
+      <img class="trainer-image" [src]="'data:image/jpg;base64,' + trainer.image">
+    </div>
+    <div>
+      <div class="trainer-name">
+        {{trainer.name}} {{trainer.surname}}
+      </div>
+      <div class="trainer-info">
+        <span>
+          Contact
+        </span>
+        <br>
+        <span>
+        E-Mail: {{trainer.email}}
+        </span>
+        <br>
+        <span>
+        Phone Number: {{trainer.phonenumber}}
+        </span>
+        <div class="trainer-rating">
+          <span *ngFor="let star of trainer.stars">
+            <span *ngIf="star.type==='full'" class="glyphicon glyphicon-star" (click)="sendRating(star.value, trainer)"></span>
+            <span *ngIf="star.type==='empty'" class="glyphicon glyphicon-star-empty" (click)="sendRating(star.value, trainer)"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

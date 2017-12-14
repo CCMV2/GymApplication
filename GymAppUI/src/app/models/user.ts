@@ -1,5 +1,6 @@
 import { Subscription } from './subscriptionModel';
 import { Timetable } from "./Timetable";
+import {Rating} from "./rating";
 
 export class User {
     id: number;
@@ -23,11 +24,13 @@ export class User {
 }
 export class Trainer extends User {
     completeName: string;
+    rat: Rating;
+    stars: any;
     imageBase64: string;
-    constructor(id: number, password: string, name: string, surname: string, email: string, phonenumber: string, imageBase64: string) {
-        super(id, password, name, surname, email, phonenumber, 'TRAINER');
-        this.imageBase64 = imageBase64;
-        this.password = password;
+    constructor( id: number, password: string, name: string, surname: string, email: string, phonenumber: string, imageBase64: string) {
+       super(id, password, name, surname, email, phonenumber, 'TRAINER');
+       this.password = password;
+       this.imageBase64 = imageBase64;
     }
 }
 

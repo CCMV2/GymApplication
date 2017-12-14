@@ -31,7 +31,9 @@
     "primeng": "^4.1.0",
     "font-awesome": "^4.7.0",
     "angular-star-rating": "2.0.0-rc.5",
-    "@agm/core": "1.0.0-beta.2"
+    "@agm/core": "1.0.0-beta.2",
+    "fullcalendar": "^3.3.0",
+    "moment": "^2.18.1"
   },
   "devDependencies": {
     "@angular/cli": "1.5.0",

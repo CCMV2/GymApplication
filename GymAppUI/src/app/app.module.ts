@@ -36,10 +36,11 @@ import { StarRatingModule } from 'angular-star-rating';
 import { SubscriptionDetailsComponent } from './pages/subscription/subscription-details/subscription-details.component';
 import { DemoComponent } from './pages/demo/demo.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { AuthenticationService } from "./pages/demo/services/authentication.service";
+import { AuthenticationService } from './pages/demo/services/authentication.service';
 import { TrainerComponent } from './pages/trainer/trainer.component';
 import { UserTimetableComponent } from './pages/user/user-timetable/user-timetable.component';
-
+import {ScheduleModule} from 'primeng/primeng';
+import { ScheduleComponent } from './pages/timetable/schedule/schedule.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { UserTimetableComponent } from './pages/user/user-timetable/user-timetab
     DemoComponent,
     ContactComponent,
     TrainerComponent,
-    UserTimetableComponent
+    UserTimetableComponent,
+    ScheduleComponent
   ],
   imports: [
     HttpModule,
@@ -78,6 +80,7 @@ import { UserTimetableComponent } from './pages/user/user-timetable/user-timetab
     FormsModule,
     CalendarModule,
     MultiSelectModule,
+    ScheduleModule,
     AgmCoreModule.forRoot({
         // sa inlocuiti cheia
         apiKey: 'AIzaSyBlV0xjA3L_OjqbMNXyqX_i1Hx9Pft38Jw'

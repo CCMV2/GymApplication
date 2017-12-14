@@ -24,12 +24,12 @@ export class UserPageComponent implements OnInit {
       console.log( this.userLists );
     } );
   }
-  delete(sub: User): void {
-    const uri = 'delete' + sub.userType.toLowerCase();
-    this.backendService.deleteUser(uri, sub).subscribe(res => {
+  delete(user: User): void {
+    const uri = 'delete' + user.userType.toLowerCase();
+    this.backendService.deleteUser(uri, user).subscribe(res => {
         console.log(res);
         if (res === 'Successful') {
-            const index = this.userLists.findIndex(d => d.id === sub.id);
+            const index = this.userLists.findIndex(d => d.id === user.id);
             this.userLists.splice(index, 1);
         }
         alert(res);

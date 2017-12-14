@@ -1,3 +1,10 @@
 agm-map {
   height: 300px;
 }
+.fc-time-grid-container {
+	height: auto!important;	
+}
+.intensity-medium{
+	background-color: orange;
+	color: white!important;
+}

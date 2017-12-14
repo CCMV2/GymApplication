@@ -21,8 +21,9 @@ import { UpdateTimetableComponent } from './pages/timetable/update-timetable/upd
 import {SubscriptionDetailsComponent} from './pages/subscription/subscription-details/subscription-details.component';
 import { DemoComponent } from './pages/demo/demo.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { UserTimetableComponent } from "./pages/user/user-timetable/user-timetable.component";
-import { TrainerComponent } from "./pages/trainer/trainer.component";
+import { UserTimetableComponent } from './pages/user/user-timetable/user-timetable.component';
+import { TrainerComponent } from './pages/trainer/trainer.component';
+import { ScheduleComponent } from './pages/timetable/schedule/schedule.component';
 
 
 const routes: Routes = [
@@ -46,7 +47,8 @@ const routes: Routes = [
     { path: 'subscriptiondetails', component: SubscriptionDetailsComponent},
     { path: 'demo', component: DemoComponent},
     { path: 'usertimetable', component: UserTimetableComponent, canActivate: [AuthGuardGuard]},
-    { path: 'trainer', component: TrainerComponent, canActivate: [AuthGuardGuard]}
+    { path: 'trainer', component: TrainerComponent, canActivate: [AuthGuardGuard]},
+    { path: 'schedule', component: ScheduleComponent}
 ];
 
 @NgModule({
