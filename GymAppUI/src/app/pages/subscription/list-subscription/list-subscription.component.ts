@@ -36,7 +36,7 @@ getSubscriptionAndWorkouts(): void {
 
   delete(sub:Subscription):void{
     this.backendService.deleteSubscription(sub).subscribe( res => {
-      this.getSubscriptionAndWorkouts();
+      //this.getSubscriptionAndWorkouts();
       console.log( this.subscriptionAndWorkouts );
   } );
   }

@@ -28,6 +28,16 @@
     <input type="radio" id="admin" name="type" value="ADMIN" [(ngModel)]="createdUser.userType" (click)="changeType('ADMIN')">
     <label for="admin">ADMIN</label>
   </div>
+
+  <div *ngIf="createdUser.userType==='TRAINER'" class="form-group">
+    <label class="control-label col-sm-4">Choose a picture:</label>
+    <div class="col-sm-7">
+      <input type="file" (change)="upload($event)">
+      <br>
+      <img id="imagine" src="{{trainerImage}}" height="200" alt="Image preview...">
+    </div>
+  </div>
+
 	<fieldset *ngIf="createdUser.userType==='CLIENT'">
   <legend>
     <h2>Assign Subscription</h2>

@@ -5,20 +5,24 @@ import { BackendService } from '../../../backend.service';
 import { SessionStorageService } from 'ngx-webstorage';
 import { Subscription } from '../../../models/subscriptionModel';
 
-@Component( {
+@Component({
     selector: 'app-update-user',
     templateUrl: './update-user.component.html',
     styleUrls: ['./update-user.component.css']
-} )
+})
 export class UpdateUserComponent implements OnInit {
     createdUser: User;
     message = '';
-
+    trainerImage = '';
     subscriptionList: Subscription[];
-    constructor( private backendService: BackendService, private session: SessionStorageService ) { }
+    constructor(private backendService: BackendService, private session: SessionStorageService) { }
 
     ngOnInit() {
-        this.createdUser = this.session.retrieve( 'userToUpdate' );
+        this.createdUser = this.session.retrieve('userToUpdate');
+        if (this.createdUser.userType === 'TRAINER') {
+            var tempTrainer = this.createdUser as Trainer;
+            this.trainerImage = tempTrainer.imageBase64;
+        }else
         if (this.createdUser.userType === 'CLIENT') {
             const client = this.createdUser as Client;
             client.start = new Date(client.start);
@@ -26,7 +30,7 @@ export class UpdateUserComponent implements OnInit {
                 client.start = new Date();
             }
             if (client.subscription == null) {
-                client.subscription = new Subscription('', 0, 0,'');
+                client.subscription = new Subscription('', 0, 0, '');
             }
             this.createdUser = client;
         }
@@ -34,21 +38,30 @@ export class UpdateUserComponent implements OnInit {
     }
 
     getAllSubs() {
-        this.backendService.getAllSubscriptionsForUser().subscribe( res => {
+        this.backendService.getAllSubscriptionsForUser().subscribe(res => {
             this.subscriptionList = res;
-        } );
+        });
     }
 
     updateUser() {
-        if (this.createdUser.userType === 'CLIENT') {
-            const client = this.createdUser as Client;
-            client.subscription = this.getSubscription(client.subscription.subscriptionId);
-            this.createdUser = client;
+        if (this.createdUser.userType === "TRAINER") {
+            const uri = 'createtrainer';
+            this.backendService.addUser(uri, new Trainer(this.createdUser.id, this.createdUser.password,
+                this.createdUser.name, this.createdUser.surname, this.createdUser.email, this.createdUser.phonenumber,
+                this.trainerImage)).subscribe(res => {
+                    this.message = res;
+                });
+        } else {
+            if (this.createdUser.userType === 'CLIENT') {
+                const client = this.createdUser as Client;
+                client.subscription = this.getSubscription(client.subscription.subscriptionId);
+                this.createdUser = client;
+            }
+            const uri = 'create' + this.createdUser.userType.toLowerCase();
+            this.backendService.addUser(uri, this.createdUser).subscribe(res => {
+                this.message = res;
+            });
         }
-        const uri = 'create' + this.createdUser.userType.toLowerCase();
-        this.backendService.addUser(uri, this.createdUser).subscribe(res => {
-            this.message = res;
-        });
     }
 
     private getSubscription(id: number): Subscription {
@@ -64,9 +77,24 @@ export class UpdateUserComponent implements OnInit {
         if (type === 'CLIENT') {
             const client = this.createdUser as Client;
             if (client.subscription == null || typeof client.subscription === 'undefined') {
-                client.subscription = new Subscription('', 0, 0,'');
+                client.subscription = new Subscription('', 0, 0, '');
             }
             this.createdUser = client;
+        }
+    }
+
+    upload($event) {
+        var preview = document.querySelector('img');
+        var file = $event.target.files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = (e) => {
+            preview.src = reader.result;
+            this.trainerImage = preview.getAttribute("src");
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
         }
     }
 }

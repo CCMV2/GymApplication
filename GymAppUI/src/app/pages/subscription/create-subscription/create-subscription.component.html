@@ -3,49 +3,47 @@
 		<h2>Create New Subscription</h2>
 	</legend>
 	<div class="centered col-sm-8">
-		
+
 		<form class="form-horizontal">
-				<div class="alert" *ngIf="message.length > 0">
-					<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-					<strong>{{message}}!</strong> 
-				</div>
+			<div class="alert" *ngIf="message.length > 0">
+				<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+				<strong>{{message}}!</strong>
+			</div>
 
 			<div class="form-group">
 				<label class="control-label col-sm-4" for="name">Subscription name:</label>
-				 <div class="col-sm-7"> 
-				 	<input type="text" name="name" [(ngModel)]="subscriptionToCreate.name">
-			 	</div>
+				<div class="col-sm-7">
+					<input type="text" name="name" [(ngModel)]="subscriptionToCreate.name">
+				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-4"  for="price">Price:</label>
-				 <div class="col-sm-7"> 
+				<label class="control-label col-sm-4" for="price">Price:</label>
+				<div class="col-sm-7">
 					<input type="number" step="0.01" name="price" [(ngModel)]="subscriptionToCreate.price" min=0 oninput="validity.valid||(value='');">
 				</div>
 			</div>
-		
+
 			<div class="form-group">
-				<label class="control-label col-sm-4"  for="duration">Duration (days):</label>
-				 <div class="col-sm-7"> 
+				<label class="control-label col-sm-4" for="duration">Duration (days):</label>
+				<div class="col-sm-7">
 					<input type="number" name="duration" [(ngModel)]="subscriptionToCreate.duration" min=0 oninput="validity.valid||(value='');">
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-4"  for="workouts">Workouts:</label>
-				 <div class="col-sm-7"> 
-				 	<p-multiSelect name="workouts" [options]="workouts" [(ngModel)]="workoutList.workouts" optionLabel="workoutType"></p-multiSelect>
+				<label class="control-label col-sm-4" for="workouts">Workouts:</label>
+				<div class="col-sm-7">
+					<p-multiSelect name="workouts" [options]="workouts" [(ngModel)]="workoutList.workouts" optionLabel="workoutType"></p-multiSelect>
 				</div>
 			</div>
 			<div class="form-group">
-					<label class="control-label col-sm-4"  for="workouts">Choose a picture:</label>
-					<div class="col-sm-7">
-				<input id="photo" type="file" />
-				<!-- button to trigger the file upload when submitted -->
-				<button type="button" class="btn btn-success btn-s" (click)="upload()">
-				Upload
-				</button>
+				<label class="control-label col-sm-4" for="workouts">Choose a picture:</label>
+				<div class="col-sm-7">
+					<input type="file" (change)="upload($event)">
+					<br>
+					<img id="imagine" src="" height="200" alt="Image preview...">
 				</div>
 			</div>
-			
+
 			<button type="button" (click)="addSubscription()" class="btn btn-success submit">Add</button>
 		</form>
 	</div>

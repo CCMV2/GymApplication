@@ -1,15 +1,15 @@
 // import { Component, OnInit } from '@angular/core';
-import {BackendService} from '../../../backend.service';
-import {Workout} from '../../../models/workout';
-import {WorkoutList} from '../../../models/workoutlist';
-import {Subscription} from '../../../models/subscriptionModel';
+import { BackendService } from '../../../backend.service';
+import { Workout } from '../../../models/workout';
+import { WorkoutList } from '../../../models/workoutlist';
+import { Subscription } from '../../../models/subscriptionModel';
 import { Subscribable } from 'rxjs/Observable';
 
 
 import 'rxjs/add/operator/switchMap';
-import { Component, OnInit,ElementRef }        from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Location }                 from '@angular/common';
+import { Location } from '@angular/common';
 import { Response, Http } from '@angular/http';
 
 
@@ -23,12 +23,12 @@ export class CreateSubscriptionComponent implements OnInit {
   workouts: Workout[] = [];
   message = '';
   private uploadUrl = 'http://localhost:4200/createsubscription';
- 
 
-  subscriptionToCreate: Subscription = new Subscription ('', 0, 0,'');
-  workoutList : WorkoutList = new WorkoutList(this.subscriptionToCreate, null);
 
-  constructor(private backendService: BackendService, private http: Http,   private el: ElementRef) { }
+  subscriptionToCreate: Subscription = new Subscription('', 0, 0, '');
+  workoutList: WorkoutList = new WorkoutList(this.subscriptionToCreate, null);
+
+  constructor(private backendService: BackendService, private http: Http, private el: ElementRef) { }
 
   ngOnInit() {
     this.getWorkouts();
@@ -36,9 +36,9 @@ export class CreateSubscriptionComponent implements OnInit {
   }
 
   getWorkouts(): void {
-    this.backendService.getAllRealWorkouts().subscribe( res => {
+    this.backendService.getAllRealWorkouts().subscribe(res => {
       this.workouts = res;
-      console.log (this.workouts);
+      console.log(this.workouts);
     });
   }
 
@@ -49,19 +49,23 @@ export class CreateSubscriptionComponent implements OnInit {
   }
 
 
-  
-  upload() {
-    let inputEl: HTMLInputElement = this.el.nativeElement.querySelector('#photo');
-    let fileCount: number = inputEl.files.length;
-    let formData = new FormData();
-    if (fileCount > 0) { // a file was selected
-        formData.append('photo', inputEl.files.item(0));
-        this.http.post(this.uploadUrl, formData)
-        .toPromise().then(this.informUser).catch(this.handleError);
-      }
-   }
 
-   handleError(): void {
+  upload($event) {
+    var preview = document.querySelector('img');
+    var file = $event.target.files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = (e) => {
+      preview.src = reader.result;
+      this.subscriptionToCreate.imageBase64 = preview.getAttribute("src");
+    }
+
+    if (file) {     
+      reader.readAsDataURL(file);
+    }
+  }
+
+  handleError(): void {
     alert('eroare');
   }
 
