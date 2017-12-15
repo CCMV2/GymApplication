@@ -2,15 +2,15 @@ package com.ubb.gymapp.dto;
 
 import java.util.List;
 
-import com.ubb.gymapp.model.User;
+import com.ubb.gymapp.model.Trainer;
 import com.ubb.gymapp.model.Workout;
 
 public class WorkoutTrainers {
 	Workout workout;
 	
-	List<User> trainers;
+	List<Trainer> trainers;
 	
-	public WorkoutTrainers (Workout workout, List<User> trainers) {
+	public WorkoutTrainers (Workout workout, List<Trainer> trainers) {
 		this.workout = workout;
 		this.trainers = trainers;
 	}
@@ -25,11 +25,11 @@ public class WorkoutTrainers {
 		this.workout = workout;
 	}
 
-	public List<User> getTrainers() {
+	public List<Trainer> getTrainers() {
 		return trainers;
 	}
 
-	public void setTrainers(List<User> trainers) {
+	public void setTrainers(List<Trainer> trainers) {
 		this.trainers = trainers;
 	}	
 

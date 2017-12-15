@@ -1,0 +1,30 @@
+<fieldset>
+	<legend><h2>Your Schedule</h2></legend>
+	<div>
+		<table class="table table-hover list-table" align="center" >
+			<tr bgcolor=MidnightBlue>
+				<th><font color="white">Id</font></th>
+				<th><font color="white">Day</font></th>
+				<th><font color="white">Start</font></th>
+				<th><font color="white">Duration</font></th>
+				<th><font color="white">Room</font></th>
+				<th><font color="white">Workout</font></th>
+			</tr>
+			<tr *ngFor="let item of userClient.userTimetable">
+				<td>{{item?.id}}</td>
+				<td>{{item?.day}}</td>
+				<td ng-non-bindable>{{item?.start | date:'HH:mm'}}</td>
+				<td>{{item?.duration}} h</td>
+				<td>{{item?.room.roomName}}</td>
+				<td>{{item?.workout.workoutType}}</td>
+			</tr>
+		</table>
+	</div>
+	
+	
+</fieldset>
+
+<fieldset>
+	<legend><h2>Add New Class</h2></legend>
+		<p-multiSelect name="timetabls" [options]="timeList" [(ngModel)]="userClient.userTimetable" optionLabel="timeTableName"></p-multiSelect>
+</fieldset>

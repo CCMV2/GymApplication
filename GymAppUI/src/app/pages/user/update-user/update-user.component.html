@@ -8,25 +8,27 @@
 		<strong>{{message}}!</strong> 
 	</div>
   
-  First name: <input type="text" name="fname" [(ngModel)]="createdUser.name"><br>
-  Last name: <input type="text" name="lname" [(ngModel)]="createdUser.surname"><br>
-  Password:  <input type="password" name="passw" [(ngModel)]="createdUser.password"><br>
-  Email: <input type="text" name="email" [(ngModel)]="createdUser.email"><br>
-  PhoneNr: <input type="text" name="phonenr" [(ngModel)]="createdUser.phonenumber"><br>
+ <label> First name:  </label><input type="text" name="fname" [(ngModel)]="createdUser.name"><br>
+ <label> Last name:  </label><input type="text" name="lname" [(ngModel)]="createdUser.surname"><br>
+  <label *ngIf="createdUser.userType!=='CLIENT'">Password:</label>  <input *ngIf="createdUser.userType!=='CLIENT'" type="password" name="passw" [(ngModel)]="createdUser.password">
+  <label *ngIf="createdUser.userType==='CLIENT'">CNP:</label>  <input *ngIf="createdUser.userType==='CLIENT'" type="text" name="passw" [(ngModel)]="createdUser.cnp">
+  <br>
+  <label>Email:</label> <input type="text" name="email" [(ngModel)]="createdUser.email"><br>
+  <label>PhoneNr:</label> <input type="text" name="phonenr" [(ngModel)]="createdUser.phonenumber"><br>
   <!-- Subscription ID: ?? -->
   <div>
     <label for="type">Choose Type: </label>
 
-    <input type="radio" id="trainer" name="type" value="TRAINER" [(ngModel)]="createdUser.userType">
+    <input type="radio" id="trainer" name="type" value="TRAINER" [(ngModel)]="createdUser.userType" (click)="changeType('TRAINER')">
     <label for="trainer">TRAINER</label>
 
-    <input type="radio" id="client" name="type" value="CLIENT" [(ngModel)]="createdUser.userType">
+    <input type="radio" id="client" name="type" value="CLIENT" [(ngModel)]="createdUser.userType" (click)="changeType('CLIENT')">
     <label for="client">CLIENT</label>
 
-    <input type="radio" id="admin" name="type" value="ADMIN" [(ngModel)]="createdUser.userType">
+    <input type="radio" id="admin" name="type" value="ADMIN" [(ngModel)]="createdUser.userType" (click)="changeType('ADMIN')">
     <label for="admin">ADMIN</label>
   </div>
-	<fieldset>
+	<fieldset *ngIf="createdUser.userType==='CLIENT'">
   <legend>
     <h2>Assign Subscription</h2>
   </legend>
@@ -40,15 +42,14 @@
         
         <div>
             <label for="subscription">Subscription: </label>
-            <select [(ngModel)]="createdUser.subscription">
-                <option value="null" hidden>Choose a Subscription</option>
-                <option *ngFor="let subscription of subscriptionList" [ngValue]="subscription" >{{subscription.name}}</option>
+            <select [(ngModel)]="createdUser.subscription.subscriptionId">
+                <option *ngFor="let sub of subscriptionList" [ngValue]="sub.subscriptionId" >{{sub.name}}</option>
             </select>
         </div>
         </fieldset>
   <!--
   <input type="submit" value="Submit"> -->
-  <input type="button" (click)="updateUser()" value="Submit">
+  <button type="button" class="button" (click)="updateUser()"><span>Submit </span></button>
   </div>
 </fieldset>
 

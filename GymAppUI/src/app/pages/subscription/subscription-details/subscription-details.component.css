@@ -1,0 +1,29 @@
+h1{
+    text-align: center;
+}
+#div{
+    white-space: nowrap; 
+    width: 18em; 
+    overflow: hidden;
+    text-overflow: ellipsis;    
+}
+
+#rating{
+    text-align: center;
+}
+
+#img{
+    max-width: 250px;
+    max-height: 180px;
+    align-content: center;
+}
+#workoutslist{
+    height: 6.2em;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+#subscriptionname{
+    color: gray;
+    font-size: 140%;
+}
+

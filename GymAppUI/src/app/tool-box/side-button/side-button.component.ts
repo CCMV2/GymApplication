@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from '../../pages/demo/services/authentication.service';
 
 class menuItem {
   url: string;
@@ -22,7 +23,7 @@ export class SideButtonComponent implements OnInit {
   activated: boolean = false;
   @Input("tab") Tab: tab;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }

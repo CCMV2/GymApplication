@@ -16,6 +16,8 @@ export class ListWorkoutComponent implements OnInit {
   selectedWorkout: Workout;
 
   allWorkouts: TrainerWorkout[] = [];
+  descriptionFlag = false;
+  selectedTrainerWorkout: TrainerWorkout;
 
   constructor(private backendService: BackendService, private router: Router , private session: SessionStorageService) { }
 
@@ -25,7 +27,7 @@ export class ListWorkoutComponent implements OnInit {
 
   getAllWorkouts() {
       this.backendService.getAllWorkouts().subscribe(res =>
-        this.allWorkouts = res)
+        this.allWorkouts = res);
     }
 
   update(workout: TrainerWorkout ): void {
@@ -39,5 +41,14 @@ export class ListWorkoutComponent implements OnInit {
     });
 
     console.log(this.allWorkouts);
+  }
+  showDescription(x: TrainerWorkout) {
+    console.log(this.descriptionFlag);
+    this.selectedTrainerWorkout = x;
+    if (this.descriptionFlag === false) {
+      this.descriptionFlag = true;
+    } else {
+      this.descriptionFlag = false;
+    }
   }
 }

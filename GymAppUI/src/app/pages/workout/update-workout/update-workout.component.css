@@ -1,53 +1,69 @@
-h1{
-    text-align: center;
+#title{
+  text-align: center;
+  font-weight: bold;
+  color: #0f213f;
+  padding-bottom: 25px;
 }
 
-form{
-    position: absolute;
-    padding-top: 70px;
-    left: 30%;
+
+
+.form{
+  position: absolute;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  left: 30%;
+}
+#btndiv {
+  padding-top: 15px;
 }
 
-#button{
-    padding-top: 60px;
-    text-align: center;
+#updateButton{
+  background-color: #0f213f;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  position: absolute;
+  left: 46%;
 }
 
-button{
-    font-size: 25px;
+#wname {
+  width:100%;
 }
 
-div{
-    padding-top: 10px;
-    padding-bottom: 10px;
+#description {
+  width: 100%;
 }
 
 select{
-    font-size: 25px;
+  font-size: 25px;
 }
 
 option{
-    font-size: 20px;
+  font-size: 20px;
 }
 
 label{
-    font-size: 25px;
+  font-size: 25px;
 }
 
 .alert {
-    padding: 20px;
-    background-color: #09a7e6;
-	color: rgb(0, 0, 0);
-	text-align: center;
+  padding: 20px;
+  background-color: #09a7e6;
+  color: rgb(0, 0, 0);
+  text-align: center;
 }
 
 .closebtn {
-    margin-left: 15px;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
+  margin-left: 15px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
 }

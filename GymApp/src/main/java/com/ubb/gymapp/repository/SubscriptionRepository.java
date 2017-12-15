@@ -12,6 +12,8 @@ public interface SubscriptionRepository extends JpaRepository<Subscription,Long>
 	
 	Subscription findByPrice(Double price);
 	
-	Subscription findByDuration(Integer duration);*/
+	Subscription findByDuration(Integer duration);
+	
+	Subscription findByRating(Double rat);*/
 
 }

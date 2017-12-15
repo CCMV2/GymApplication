@@ -1,0 +1,53 @@
+<div  class="col-sm-7">
+<h1>
+  Subscription Details
+</h1>
+<table class="table table-condensed table-hover">
+  <thead>
+    <th rowspan="3"></th>
+    <th id="sec-col"></th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let entry of subscriptionsAndWorkouts">
+    <td>
+      <img id="img"  src='data:image/png;base64,{{entry?.subscription.imageBase64}}'/>
+
+    </td>
+      
+    <td>
+      <table>
+        <!--thead>
+          <th></th>
+        </thead-->
+        <tbody>
+        <tr>
+          <td id="subscriptionname"><b>{{entry?.subscription.name}}</b> </td>
+        </tr>
+        <tr>
+            <td>
+              <div id="workoutslist">
+              <table  class="table table-condensed table-hover">
+                <tbody id="workoutslist">
+                <tr  *ngFor="let workout of entry.workouts">
+                  <td>
+                    <div id="div" title="{{workout.description}}"><b>{{workout?.workoutType}}</b>: {{workout?.description}}</div>
+                  <td>
+                  
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            </td>
+          </tr>
+          <tr> 
+            <td>
+              <star-rating-comp [starType]="'svg'" [rating]="ratingVal" (onClick)="onClick($event)"></star-rating-comp>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>

@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.ubb.gymapp.model.Room;
 import com.ubb.gymapp.model.Timetable;
 import com.ubb.gymapp.model.User;
-import com.ubb.gymapp.model.UserWorkout;
+import com.ubb.gymapp.model.TrainerWorkout;
 import com.ubb.gymapp.model.Workout;
 import com.ubb.gymapp.model.User.UserType;
 import com.ubb.gymapp.model.Workout.Difficulty;
