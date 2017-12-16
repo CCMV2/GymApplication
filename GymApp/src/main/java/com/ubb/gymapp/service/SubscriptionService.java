@@ -11,6 +11,7 @@ public interface SubscriptionService {
 	List<Subscription> findAllSubscriptions();
 	List<SubscriptionWorkouts> findSubcriptionsAndWorkouts();
 	void deleteSubscription(Subscription subscription);
+	
 
 
 }

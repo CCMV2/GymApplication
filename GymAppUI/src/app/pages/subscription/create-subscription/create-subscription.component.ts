@@ -27,7 +27,7 @@ export class CreateSubscriptionComponent implements OnInit {
 
   subscriptionToCreate: Subscription = new Subscription('', 0, 0, '');
   workoutList: WorkoutList = new WorkoutList(this.subscriptionToCreate, null);
-
+ // subscriptionImage: String = "";
   constructor(private backendService: BackendService, private http: Http, private el: ElementRef) { }
 
   ngOnInit() {
@@ -43,7 +43,9 @@ export class CreateSubscriptionComponent implements OnInit {
   }
 
   addSubscription(): void {
+   // this.workoutList.subscription.imageBase64 = this.subscriptionImage;
     this.backendService.addSubscription(this.workoutList).subscribe(res => {
+
       this.message = res;
     });
   }
@@ -57,7 +59,7 @@ export class CreateSubscriptionComponent implements OnInit {
 
     reader.onloadend = (e) => {
       preview.src = reader.result;
-      this.subscriptionToCreate.imageBase64 = preview.getAttribute("src");
+      this.workoutList.subscription.imageBase64 = preview.getAttribute("src");
     }
 
     if (file) {     

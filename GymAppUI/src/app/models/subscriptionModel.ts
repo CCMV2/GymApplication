@@ -1,9 +1,11 @@
+import {Rating} from "./rating";
 export class Subscription{
   subscriptionId: number;
   name: string;
   price: number;
   duration: number;
-  //rat: Rating;
+  rat: Rating;
+  stars: any;
 	imageBase64: String;
 
   

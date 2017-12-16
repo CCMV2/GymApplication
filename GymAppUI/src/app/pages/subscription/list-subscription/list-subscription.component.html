@@ -9,7 +9,7 @@
     <th>Workouts</th>
   </tr>
   <tr *ngFor="let entry of subscriptionAndWorkouts">
-    <td>{{entry?.subscription.name}} </td>
+    <td><b>{{entry?.subscription.name}}</b> <br/><img id="img" src='{{entry?.subscription.imageBase64}}'></td>
     <td>{{entry?.subscription.price}} LEI</td>
     <td>{{entry?.subscription.duration}} Days</td>
 

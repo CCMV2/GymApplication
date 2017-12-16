@@ -19,3 +19,8 @@ button {
 #update{
     background-color: #09a7e6
 }
+#img{
+    max-width: 200px;
+    max-height: 150px;
+    align-content: left;
+}

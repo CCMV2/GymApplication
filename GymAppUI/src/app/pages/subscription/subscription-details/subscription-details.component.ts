@@ -16,7 +16,8 @@ import {Rating} from '../../../models/rating';
 export class SubscriptionDetailsComponent implements OnInit {
   subscriptionsAndWorkouts: WorkoutList[] = [];
   onClickResult: IStarRatingOnClickEvent;
-  ratingVal = 3.5;
+  //ratingVal = 3.5;
+  //ratingVal = 0;
   constructor(private backendService: BackendService) { }
   
   
@@ -26,10 +27,27 @@ export class SubscriptionDetailsComponent implements OnInit {
   getSubscriptions(): void{
     this.backendService.getAllSubscriptions().subscribe( res => {
       this.subscriptionsAndWorkouts = res;
+      for(let i=0; i<this.subscriptionsAndWorkouts.length; i++){
+        this.subscriptionsAndWorkouts[i].subscription.stars = [];
+        for(let j=1; j<=this.subscriptionsAndWorkouts[i].subscription.rat.total; j++){
+          this.subscriptionsAndWorkouts[i].subscription.stars.push({type:"full", value:j});
+          //this.ratingVal = j;
+        }
+        for(let j= Math.round(this.subscriptionsAndWorkouts[i].subscription.rat.total); j<5; j++){
+          this.subscriptionsAndWorkouts[i].subscription.stars.push({type:"empty",value:j});
+          //this.ratingVal = j;
+        }
+      }
       console.log( this.subscriptionsAndWorkouts);
   } );
   }
-
+  sendRating(rating: number, subscription: Subscription): void {
+    rating=rating+1;
+    let newRating: number = ( (subscription.rat.total * subscription.rat.nrpers) + rating)/(subscription.rat.nrpers+1);
+    console.log(newRating);
+    subscription.rat.total = newRating;
+    subscription.rat.nrpers = subscription.rat.nrpers + 1;
+  }
   onClick = ( $event: IStarRatingOnClickEvent ) => {
     console.log( 'onClick $event: ', $event );
     this.onClickResult = $event;
