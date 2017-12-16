@@ -41,12 +41,18 @@ export class SubscriptionDetailsComponent implements OnInit {
       console.log( this.subscriptionsAndWorkouts);
   } );
   }
-  sendRating(rating: number, subscription: Subscription): void {
-    rating=rating+1;
-    let newRating: number = ( (subscription.rat.total * subscription.rat.nrpers) + rating)/(subscription.rat.nrpers+1);
+  sendRating(rating: number, subscriptionAndWorkouts: WorkoutList): void {
+    //rating=rating+1;
+    let newRating: number = ( (subscriptionAndWorkouts.subscription.rat.total * subscriptionAndWorkouts.subscription.rat.nrpers) + rating)/(subscriptionAndWorkouts.subscription.rat.nrpers+1);
     console.log(newRating);
-    subscription.rat.total = newRating;
-    subscription.rat.nrpers = subscription.rat.nrpers + 1;
+    subscriptionAndWorkouts.subscription.rat.total = newRating;
+    subscriptionAndWorkouts.subscription.rat.nrpers = subscriptionAndWorkouts.subscription.rat.nrpers + 1;
+    this.backendService.addSubscription(subscriptionAndWorkouts).subscribe(res =>{
+      console.log(res);
+      this.ngOnInit();
+    }
+    );
+    
   }
   onClick = ( $event: IStarRatingOnClickEvent ) => {
     console.log( 'onClick $event: ', $event );

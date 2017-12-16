@@ -43,8 +43,8 @@
           <tr> 
             <td class="subscription-rating">
                 <span *ngFor="let star of entry.subscription.stars">
-                    <span *ngIf="star.type==='full'" class="glyphicon glyphicon-star" (click)="sendRating(star.value, entry.subscription)"></span>
-                    <span *ngIf="star.type==='empty'" class="glyphicon glyphicon-star-empty" (click)="sendRating(star.value, entry.subscription)"></span>
+                    <span *ngIf="star.type==='full'" class="glyphicon glyphicon-star" (click)="sendRating(star.value, entry)"></span>
+                    <span *ngIf="star.type==='empty'" class="glyphicon glyphicon-star-empty" (click)="sendRating(star.value, entry)"></span>
                   </span>
             </td>
             <!--td>
