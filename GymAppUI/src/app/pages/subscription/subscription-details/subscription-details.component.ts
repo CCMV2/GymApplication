@@ -29,12 +29,15 @@ export class SubscriptionDetailsComponent implements OnInit {
       this.subscriptionsAndWorkouts = res;
       for(let i=0; i<this.subscriptionsAndWorkouts.length; i++){
         this.subscriptionsAndWorkouts[i].subscription.stars = [];
+        if(!this.subscriptionsAndWorkouts[i].subscription.rat) {
+          this.subscriptionsAndWorkouts[i].subscription.rat = new Rating(null,0,0);
+        }
         for(let j=1; j<=this.subscriptionsAndWorkouts[i].subscription.rat.total; j++){
           this.subscriptionsAndWorkouts[i].subscription.stars.push({type:"full", value:j});
           //this.ratingVal = j;
         }
         for(let j= Math.round(this.subscriptionsAndWorkouts[i].subscription.rat.total); j<5; j++){
-          this.subscriptionsAndWorkouts[i].subscription.stars.push({type:"empty",value:j});
+          this.subscriptionsAndWorkouts[i].subscription.stars.push({type:"empty",value:j+1});
           //this.ratingVal = j;
         }
       }
