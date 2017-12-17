@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../backend.service';
 import {Trainer} from '../../models/user';
-import {TRAINER_IMAGE} from "../../models/trainer-image";
-import {Rating} from "../../models/rating";
+import {TRAINER_IMAGE} from '../../models/trainer-image';
+import {Rating} from '../../models/rating';
+import { AuthenticationService } from '../demo/services/authentication.service';
 
 @Component({
   selector: 'trainer',
@@ -16,7 +17,7 @@ export class TrainerComponent implements OnInit {
 
   trainerImage: string;
 
-  constructor(private backendservice:BackendService) { }
+  constructor(private backendservice: BackendService, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.trainerImage = TRAINER_IMAGE.image;
@@ -41,6 +42,7 @@ export class TrainerComponent implements OnInit {
 
 
   sendRating(rating: number, trainer: Trainer): void {
+      if ( this.authenticationService.isLoggedIn() ) {
     let newRating: number = ( (trainer.rat.total * trainer.rat.nrpers) + rating)/(trainer.rat.nrpers+1);
     console.log(newRating);
     trainer.rat.total = newRating;
@@ -50,6 +52,9 @@ export class TrainerComponent implements OnInit {
       console.log(res);
       this.ngOnInit();
     } );
+    }
+    else
+        alert('You are not logged in!');
   }
 
 }

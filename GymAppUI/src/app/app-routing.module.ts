@@ -47,7 +47,7 @@ const routes: Routes = [
     { path: 'subscriptiondetails', component: SubscriptionDetailsComponent},
     { path: 'demo', component: DemoComponent},
     { path: 'usertimetable', component: UserTimetableComponent, canActivate: [AuthGuardGuard]},
-    { path: 'trainer', component: TrainerComponent, canActivate: [AuthGuardGuard]},
+    { path: 'trainer', component: TrainerComponent},
     { path: 'schedule', component: ScheduleComponent}
 ];
 

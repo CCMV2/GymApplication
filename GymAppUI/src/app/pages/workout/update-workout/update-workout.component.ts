@@ -39,6 +39,11 @@ export class UpdateWorkoutComponent implements OnInit {
   getAllTrainers() {
       this.backendService.getAllTrainers().subscribe(res => {
           this.trainerList = res;
+          for ( let trainer of this.trainerList ) {
+              if ( trainer.imageBase64 == null ) {
+                  trainer.imageBase64 = '';
+              }
+          }
           for (let trainer of this.trainerList) {
               trainer.completeName = trainer.name + ' ' + trainer.surname;
           }

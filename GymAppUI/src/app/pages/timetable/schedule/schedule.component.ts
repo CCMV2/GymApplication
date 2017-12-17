@@ -65,6 +65,7 @@ export class ScheduleComponent implements OnInit {
             const endDay = new Date( endDayMilliseconds );
             event['end'] = moment( endDay ).format( 'YYYY-MM-DD[T]HH:mm:ss' );
             event['intensity'] = timeTableExample.workout.difficulty;
+            event['stea'] = timeTableExample.star;
             this.events.push( event );
         }
         debugger;
@@ -114,5 +115,6 @@ export class ScheduleComponent implements OnInit {
             this.prepareEvents( this.firstStart );
         } );
     }
+    
 
 }
