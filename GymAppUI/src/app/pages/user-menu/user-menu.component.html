@@ -1,0 +1,10 @@
+<div class="user-pane">
+  <span class="glyphicon glyphicon-home home-button" (click)="navigate({link: 'home'})"></span>
+
+  <div  (mouseenter)="toggleHover(button, true)" (mouseleave)="toggleHover(button, false)"  class="button-div" *ngFor="let button of buttons">
+    <input type="button" class="btn btn-primary nav-btn" value="{{button.label}}">
+    <div *ngFor="let child of button.children">
+      <input *ngIf="button.active"  type="button" class="btn btn-primary nav-btn" value="{{child.label}}" (click)="navigate(child)">
+    </div>
+  </div>
+</div>

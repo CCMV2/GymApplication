@@ -41,6 +41,7 @@ import { TrainerComponent } from './pages/trainer/trainer.component';
 import { UserTimetableComponent } from './pages/user/user-timetable/user-timetable.component';
 import {ScheduleModule} from 'primeng/primeng';
 import { ScheduleComponent } from './pages/timetable/schedule/schedule.component';
+import { UserMenuComponent } from './pages/user-menu/user-menu.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { ScheduleComponent } from './pages/timetable/schedule/schedule.component
     ContactComponent,
     TrainerComponent,
     UserTimetableComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    UserMenuComponent
   ],
   imports: [
     HttpModule,

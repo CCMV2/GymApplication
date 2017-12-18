@@ -27,7 +27,8 @@ import { ScheduleComponent } from './pages/timetable/schedule/schedule.component
 
 
 const routes: Routes = [
-    { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
     { path: 'admin-page', component: AdminPageComponent},
     { path: 'createworkout', component: CreateWorkoutComponent, canActivate: [AuthGuardGuard] },
     { path: 'updatesubscription', component: UpdateSubscriptionComponent, canActivate: [AuthGuardGuard] },

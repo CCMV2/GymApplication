@@ -1,0 +1,52 @@
+.user-pane {
+  background-color: #14305e;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  display: inline-flex;
+}
+
+.home-button {
+  font-size: 35px;
+  color: white;
+  margin-left: 4px;
+  margin-top: 8px;
+}
+
+.button-entry {
+  margin-left: 20px;
+}
+
+.nav-btn {
+  margin-left: 20px;
+  height: 50px;
+  background-color: #14305e;
+  border-width: 0.05px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  color: white;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+  font-size: 17px;
+  font-weight: 400;
+  width: 150px;
+  border-radius: 0px;
+}
+
+.nav-btn:hover {
+  background-color: #0f213f;
+}
+
+.nav-btn:focus {
+  outline: 0;
+}
+
+.button-div {
+  position: relative;
+  top: 0;
+}

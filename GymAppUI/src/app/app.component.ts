@@ -8,6 +8,20 @@ import { AuthenticationService } from './pages/demo/services/authentication.serv
 })
 export class AppComponent {
   title = 'app';
-  
+
   constructor(private authenticationService: AuthenticationService) { }
+
+  isAdmin(): boolean {
+    return false;
+    // return this.authenticationService.hasRole(["ADMIN"]);
+  }
+
+  isUser(): boolean {
+    return true;
+    // return this.authenticationService.hasRole(["USER"]);
+  }
+
+  isTrainer(): boolean {
+    return this.authenticationService.hasRole(["TRAINER"]);
+  }
 }
