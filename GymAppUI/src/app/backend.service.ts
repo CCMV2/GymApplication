@@ -12,6 +12,7 @@ import { Timetable } from './models/Timetable';
 import { WorkoutList } from './models/workoutlist';
 import { AuthenticationService } from './services/authentication.service';
 import { Router } from '@angular/router';
+import { ClientTimetable } from './models/client-timetable';
 
 @Injectable()
 export class BackendService {
@@ -24,7 +25,7 @@ export class BackendService {
     private options = new RequestOptions({ withCredentials: true, headers: this.headers });
 
     constructor(private http: Http, private authenticationService: AuthenticationService,
-            private router: Router) { }
+        private router: Router) { }
 
     public getAllUsers(): Observable<User[]> {
         return this.http.get(this.link + 'listusers', this.options).map(response => response.json()).catch(err => this.handleError(err));
@@ -88,7 +89,7 @@ export class BackendService {
             // nu avem drepturi sa intram pe pagina asta, sau ne-a expirat tokenul din BE
             if (this.authenticationService.isLoggedIn()) {
                 // ne-a expirat tokenul
-                this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.routerState.snapshot.url, error: 'true' }});
+                this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.routerState.snapshot.url, error: 'true' } });
             } else {
                 // nu avem acces, ne intoarcem pe homepage
                 this.router.navigate(['/']);
@@ -124,4 +125,7 @@ export class BackendService {
         return this.http.get(this.link + 'getalluserworkoutsbyworkout', this.options).map(response => response.json()).catch(err => this.handleError(err));
     }
 
+    public addClientTimetable(clientTimetable: ClientTimetable) {
+        return this.http.post(this.link + 'addclienttimetable', clientTimetable, this.options).map(response => response.text()).catch(err => this.handleError(err));
+    }
 }
