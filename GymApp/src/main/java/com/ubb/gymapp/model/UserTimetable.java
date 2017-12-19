@@ -23,6 +23,13 @@ public class UserTimetable implements Serializable {
 	private User user;
 	private Timetable timetable;
 
+	public UserTimetable(User user, Timetable timetable) {
+		this.user = user;
+		this.timetable = timetable;
+	}
+	
+	public UserTimetable() {}
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idUser")
 	public User getUser() {

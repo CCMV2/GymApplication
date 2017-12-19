@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubb.gymapp.dto.ClientTimetable;
 import com.ubb.gymapp.model.Administrator;
 import com.ubb.gymapp.model.Client;
 import com.ubb.gymapp.model.Trainer;
@@ -83,5 +84,12 @@ public class UserController {
 		}
 	}
 	
-	
+	@RequestMapping(value = "/addclienttimetable", method=RequestMethod.POST)
+	public String addClientTimetable(@RequestBody ClientTimetable clientTimetable) {
+		try{
+			return this.userService.addUserTimetable(clientTimetable);
+		}catch (Exception e) {
+			return "Failed:" + e.getMessage();
+		}
+	}
 }

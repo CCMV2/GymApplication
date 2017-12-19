@@ -2,13 +2,16 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BackendService } from '../../../backend.service';
 import { Timetable } from '../../../models/Timetable';
 import * as moment from 'moment';
+import { AuthenticationService } from '../../../services/authentication.service';
+import { Client } from '../../../models/user';
+import { ClientTimetable } from '../../../models/client-timetable';
 
-@Component( {
+@Component({
     selector: 'app-schedule',
     templateUrl: './schedule.component.html',
     styleUrls: ['./schedule.component.css'],
     encapsulation: ViewEncapsulation.None
-} )
+})
 export class ScheduleComponent implements OnInit {
 
     events: any[];
@@ -17,7 +20,7 @@ export class ScheduleComponent implements OnInit {
     allTimetables: Timetable[] = [];
     firstStart: Date;
 
-    constructor( private backendService: BackendService ) { }
+    constructor(private backendService: BackendService, private authenticationService: AuthenticationService) { }
 
     ngOnInit() {
         this.getTimetables();
@@ -33,47 +36,55 @@ export class ScheduleComponent implements OnInit {
         };
     }
 
-    loadEvents( event ) {
-        const startDate = new Date( event.view.start._i );
-        this.prepareEvents( startDate );
-        console.log( 'Here we prepare the timetable for a certain week' );
+    loadEvents(event) {
+        const startDate = new Date(event.view.start._i);
+        this.prepareEvents(startDate);
+        console.log('Here we prepare the timetable for a certain week');
     }
-    handleEventClick( event ) {
-        const startDate = new Date( event.view.start._i );
-        console.log( 'I have been clicked!' );
+    handleEventClick(event) {
+        const startDate = new Date(event.view.start._i);
+        console.log('I have been clicked!');
+        if (this.authenticationService.isLoggedIn()) {
+            if (this.authenticationService.hasRole(["CLIENT"])) {
+                this.backendService.addClientTimetable(new ClientTimetable(this.authenticationService.getCurrentUser(), event.calEvent.id))
+                    .subscribe(r => alert(r));
+            }
+        }
     }
 
-    prepareEvents( startWeek: Date ) {
-        if ( this.allTimetables.length == 0 ) {
+    prepareEvents(startWeek: Date) {
+        if (this.allTimetables.length == 0) {
             this.firstStart = startWeek;
         }
         // scoatem orele extra
-        startWeek = new Date( startWeek.getTime() - startWeek.getHours() * 60 * 60 * 1000 );
+        startWeek = new Date(startWeek.getTime() - startWeek.getHours() * 60 * 60 * 1000);
         this.events = [];
-        for ( const timeTableExample of this.allTimetables ) {
+        for (const timeTableExample of this.allTimetables) {
             const event = {};
+            //ne trebuie id-ul timetable-ului mai departe (un user se inscrie la un timetable)
+            event['id'] = '' + timeTableExample.id;
             // setam titlu
             event['title'] = timeTableExample.workout.workoutType + ' - ' + timeTableExample.trainer.name + ' ' + timeTableExample.trainer.surname;
             // calculam startul in functie de ziua definita (Montag, Dienstag etc) si data de inceput din calendar (care va fi mereu luni)
-            let startDayMilliseconds = startWeek.getTime() + this.getDayIndex( timeTableExample.day ) * 24 * 60 * 60 * 1000;
+            let startDayMilliseconds = startWeek.getTime() + this.getDayIndex(timeTableExample.day) * 24 * 60 * 60 * 1000;
             // setam acum ora si minutele din timetable
-            const timeTableStart = new Date( timeTableExample.start );
+            const timeTableStart = new Date(timeTableExample.start);
             startDayMilliseconds += timeTableStart.getHours() * 60 * 60 * 1000 + timeTableStart.getMinutes() * 60 * 1000;
-            const startDay = new Date( startDayMilliseconds );
-            event['start'] = moment( startDay ).format( 'YYYY-MM-DD[T]HH:mm:ss' );
+            const startDay = new Date(startDayMilliseconds);
+            event['start'] = moment(startDay).format('YYYY-MM-DD[T]HH:mm:ss');
             // calculam end-ul ca start + duration
             const endDayMilliseconds = startDayMilliseconds + timeTableExample.duration * 60 * 1000;
-            const endDay = new Date( endDayMilliseconds );
-            event['end'] = moment( endDay ).format( 'YYYY-MM-DD[T]HH:mm:ss' );
+            const endDay = new Date(endDayMilliseconds);
+            event['end'] = moment(endDay).format('YYYY-MM-DD[T]HH:mm:ss');
             event['intensity'] = timeTableExample.workout.difficulty;
             event['stea'] = timeTableExample.star;
-            this.events.push( event );
+            this.events.push(event);
         }
         debugger;
     }
 
-    getDayIndex( day: string ) {
-        switch ( day ) {
+    getDayIndex(day: string) {
+        switch (day) {
             case 'Montag':
                 return 0;
             case 'Dienstag':
@@ -90,32 +101,32 @@ export class ScheduleComponent implements OnInit {
                 return 6;
         }
     }
-    eventRender( event, element, view ) {
-        console.log( event, element, view );
+    eventRender(event, element, view) {
+        console.log(event, element, view);
         debugger;
         const data = event.start._d;
         // faceti verificarea daca data e in trecut
-        console.log( event );
-        if ( data.getTime() < new Date().getTime() ) {
-            element.addClass( 'intensity-past' );
+        console.log(event);
+        if (data.getTime() < new Date().getTime()) {
+            element.addClass('intensity-past');
         }
-        else if ( event.intensity == 'HARD' ) {
-            element.addClass( 'intensity-hard' );
+        else if (event.intensity == 'HARD') {
+            element.addClass('intensity-hard');
         }
-        else if ( event.intensity == 'MEDIUM' ) {
-            element.addClass( 'intensity-medium' );
+        else if (event.intensity == 'MEDIUM') {
+            element.addClass('intensity-medium');
         }
-        else if ( event.intensity == 'EASY' ) {
-            element.addClass( 'intensity-easy' );
+        else if (event.intensity == 'EASY') {
+            element.addClass('intensity-easy');
         }
     }
     getTimetables(): void {
-        this.backendService.getAllTimetables().subscribe( res => {
+        this.backendService.getAllTimetables().subscribe(res => {
             this.allTimetables = res;
-            console.log( this.allTimetables );
-            this.prepareEvents( this.firstStart );
-        } );
+            console.log(this.allTimetables);
+            this.prepareEvents(this.firstStart);
+        });
     }
-    
+
 
 }

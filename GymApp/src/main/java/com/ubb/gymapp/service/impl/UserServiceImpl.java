@@ -9,10 +9,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.ubb.gymapp.dto.ClientTimetable;
 import com.ubb.gymapp.model.Administrator;
 import com.ubb.gymapp.model.Client;
+import com.ubb.gymapp.model.Timetable;
 import com.ubb.gymapp.model.Trainer;
 import com.ubb.gymapp.model.User;
+import com.ubb.gymapp.model.UserTimetable;
+import com.ubb.gymapp.repository.TimetableRepository;
 import com.ubb.gymapp.repository.TrainerWorkoutRepository;
 import com.ubb.gymapp.repository.UserRepository;
 import com.ubb.gymapp.repository.UserTimetableRepository;
@@ -23,6 +27,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	private TimetableRepository timetableRepo;
 	
 	@Autowired
 	private UserTimetableRepository userTimetableRepo;
@@ -52,6 +59,20 @@ public class UserServiceImpl implements UserService {
 			userTimetableRepo.deleteByUser(client);
 			return userRepo.save(client);
 		}
+	}
+	
+	@Override
+	public String addUserTimetable(ClientTimetable clientTimetable) {
+		User user = userRepo.findByEmail(clientTimetable.getClient());
+		Timetable timetable = timetableRepo.getOne(clientTimetable.getTimetable());
+		UserTimetable userTimetable = userTimetableRepo.findByUserAndTimetable(user, timetable);
+		if(userTimetable == null) {
+			this.userTimetableRepo.save(new UserTimetable(user, timetable));
+			return "Subscribed";
+		}else
+			//this is where we remove from the repo
+			this.userTimetableRepo.delete(userTimetable);
+			return "Unsubscribed";
 	}
 	
 	@Override
