@@ -92,8 +92,10 @@ CREATE TABLE `gymapp`.`room` (
   FOREIGN KEY (`idWorkout`) REFERENCES workout(`idWorkout`));
 
   CREATE TABLE `gymapp`.`user_timetable`(
-	`idUser` bigint NOT NULL,
+    `id` bigint NOT NULL AUTO_INCREMENT,
+    `idUser` bigint NOT NULL,
     `idTimetable` BIGINT NOT NULL,
+    PRIMARY KEY (`id`),
     FOREIGN KEY (`idUser`) REFERENCES user(`idUser`),
     FOREIGN KEY (`idTimetable`) REFERENCES timetable(`idTimetable`)
   );
