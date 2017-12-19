@@ -13,12 +13,24 @@ import * as moment from 'moment';
 export class UserTimetableComponent implements OnInit {
 
     userClient: Client;
+
     timeList: Timetable[];
+
+    message: string = "";
   constructor( private backendService: BackendService, private session: SessionStorageService) { }
 
   ngOnInit() {
       this.userClient = this.session.retrieve('userToUpdate');
       this.getAllTimetables();
+      for (const timeElem of this.userClient.userTimetable) {
+        const startDay = new Date(timeElem.start);
+        const start = moment( startDay ).format( 'HH:mm' );
+        const endDayMilliseconds = startDay.getTime() + timeElem.duration * 60 * 1000;
+        const endDay = new Date( endDayMilliseconds );
+        const end = moment( endDay ).format( 'HH:mm' );
+        timeElem.timeTableName = timeElem.workout.workoutType + ' ' + timeElem.day + ' ' + start + '-' + end;
+    }
+    debugger;
   }
 
   getAllTimetables() {
@@ -32,9 +44,15 @@ export class UserTimetableComponent implements OnInit {
               const end = moment( endDay ).format( 'HH:mm' );
               timeElem.timeTableName = timeElem.workout.workoutType + ' ' + timeElem.day + ' ' + start + '-' + end;
           }
+          debugger;
       });
     }
   addTimetable(){
+      //console.log(JSON.stringify(this.userClient));
+      this.backendService.addUser('createclient', this.userClient).subscribe(res => {
+        this.message = res;
+        //console.log(res);
+    });
       alert('Implement me!');
   }
 }
