@@ -26,7 +26,7 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { ClientPageComponent } from './pages/client-page/client-page.component';
 import {SessionStorageService} from 'ngx-webstorage';
 import { HomeComponent } from './pages/home/home/home.component';
-import { AuthGuardGuard } from './services/auth-guard.guard';
+import { AuthGuard } from './services/auth.guard';
 import { HeaderComponent } from './common/header/header.component';
 import { UpdateTimetableComponent } from './pages/timetable/update-timetable/update-timetable.component';
 import { SideButtonComponent } from './tool-box/side-button/side-button.component';
@@ -36,7 +36,7 @@ import { StarRatingModule } from 'angular-star-rating';
 import { SubscriptionDetailsComponent } from './pages/subscription/subscription-details/subscription-details.component';
 import { DemoComponent } from './pages/demo/demo.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { AuthenticationService } from './pages/demo/services/authentication.service';
+import { AuthenticationService } from './services/authentication.service';
 import { TrainerComponent } from './pages/trainer/trainer.component';
 import { UserTimetableComponent } from './pages/user/user-timetable/user-timetable.component';
 import {ScheduleModule} from 'primeng/primeng';
@@ -92,7 +92,7 @@ import { UserMenuComponent } from './pages/user-menu/user-menu.component';
   ],
   providers: [BackendService,
               AuthenticationService,
-              AuthGuardGuard,
+              AuthGuard,
               SessionStorageService
               ],
   bootstrap: [AppComponent]

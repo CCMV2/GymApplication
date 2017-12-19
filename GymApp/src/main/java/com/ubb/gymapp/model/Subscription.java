@@ -83,8 +83,8 @@ public class Subscription implements Serializable {
 		this.duration = duration;
 	}
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "Rating", unique = true, nullable = false, updatable = false)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "Rating")
 	public Rating getRat() {
 		return rat;
 	}

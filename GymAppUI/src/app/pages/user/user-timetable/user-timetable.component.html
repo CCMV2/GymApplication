@@ -27,4 +27,5 @@
 <fieldset>
 	<legend><h2>Add New Class</h2></legend>
 		<p-multiSelect name="timetabls" [options]="timeList" [(ngModel)]="userClient.userTimetable" optionLabel="timeTableName"></p-multiSelect>
+		<button type="button" class="button" (click)="addTimetable()"><span>Submit </span></button>			
 </fieldset>

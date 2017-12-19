@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BackendService } from '../../../backend.service';
 import { Timetable } from '../../../models/Timetable';
 import * as moment from 'moment';
@@ -6,7 +6,8 @@ import * as moment from 'moment';
 @Component( {
     selector: 'app-schedule',
     templateUrl: './schedule.component.html',
-    styleUrls: ['./schedule.component.css']
+    styleUrls: ['./schedule.component.css'],
+    encapsulation: ViewEncapsulation.None
 } )
 export class ScheduleComponent implements OnInit {
 

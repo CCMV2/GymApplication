@@ -45,8 +45,8 @@ public class Trainer extends User {
 		this.password = password;
 	}
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "Rating", unique = true, nullable = false, updatable = false)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "Rating")
 	public Rating getRat() {
 		return rat;
 	}

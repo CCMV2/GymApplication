@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from "../demo/services/authentication.service";
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component( {
     selector: 'app-login-page',
@@ -24,8 +24,10 @@ export class LoginPageComponent implements OnInit {
         this.authenticationService.logout();
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
         this.authenticationService.logout();
-        const param = this.route.snapshot.queryParams['logout'] && this.route.snapshot.queryParams['logout'].length > 0;
-        this.success = param ? 'You have been succesfully logged out' : '';
+        const succsess = this.route.snapshot.queryParams['logout'] && this.route.snapshot.queryParams['logout'].length > 0;
+        this.success = succsess ? 'You have been succesfully logged out' : '';
+        const error = this.route.snapshot.queryParams['error'] && this.route.snapshot.queryParams['error'].length > 0;
+        this.error = error ? 'Session expired. Please log in again.' : '';
     }
 
     login() {

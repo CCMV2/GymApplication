@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.ubb.gymapp.security.GymAuthenticationProvider;
 import com.ubb.gymapp.security.JwtAuthenticationEntryPoint;
 import com.ubb.gymapp.security.JwtAuthenticationTokenFilter;
 
@@ -27,10 +28,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
+    
+    @Autowired
+    private GymAuthenticationProvider authenticationProvider;
 
     @Autowired
     public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder
+        		.authenticationProvider(authenticationProvider)
                 .userDetailsService(this.userDetailsService)
                 .passwordEncoder(passwordEncoder());
     }
@@ -63,7 +68,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js"
                 ).permitAll()
-                .antMatchers("/auth/**").permitAll()
+                .antMatchers("/auth/**", "/getalltimetables/**").permitAll()
                 .anyRequest().authenticated();
 
         // Custom JWT based security filter

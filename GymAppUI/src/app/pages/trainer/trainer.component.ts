@@ -3,7 +3,7 @@ import { BackendService } from '../../backend.service';
 import {Trainer} from '../../models/user';
 import {TRAINER_IMAGE} from '../../models/trainer-image';
 import {Rating} from '../../models/rating';
-import { AuthenticationService } from '../demo/services/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'trainer',

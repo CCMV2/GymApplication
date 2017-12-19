@@ -6,7 +6,7 @@ import { Subscription } from '../../../models/subscriptionModel';
 import { Subscribable } from 'rxjs/Observable';
 import { IStarRatingOnClickEvent } from 'angular-star-rating/src/star-rating-struct';
 import { Rating } from '../../../models/rating';
-import { AuthenticationService } from '../../demo/services/authentication.service';
+import { AuthenticationService } from '../../../services/authentication.service';
 
 
 @Component( {

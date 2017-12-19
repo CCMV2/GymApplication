@@ -2,7 +2,7 @@
   <div class="trainer-card">
 
     <div class="image-container">
-      <img *ngIf="trainer.image" class="trainer-image" [src]="'data:image/jpg;base64,' + trainer.image">
+      <img *ngIf="trainer.imageBase64" class="trainer-image" [src]="trainer.imageBase64">
       <img *ngIf="!trainer.image" class="trainer-image" [src]="'data:image/jpg;base64,' + trainerImage">
     </div>
     <div>

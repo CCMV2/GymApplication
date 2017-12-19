@@ -1,12 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="row page-container">
   <app-header class="col-md-12" *ngIf="authenticationService.isLoggedIn()"></app-header>
-  <navigation-pane class="col-md-2" *ngIf="isAdmin()"></navigation-pane>
+  <navigation-pane class="col-md-2" *ngIf="isAdminOrTrainer()"></navigation-pane>
   <user-menu *ngIf="isUser()"></user-menu>
-  <div class="page col-md-10" *ngIf="isAdmin()" style="margin-right: 0px">
+  <div class="page col-md-10" *ngIf="isAdminOrTrainer()" style="margin-right: 0px">
     <router-outlet></router-outlet>
   </div>
-  <div class="user-page col-md-12" *ngIf="isUser()" style="margin-right: 0px">
+  <div class="user-page col-md-12" *ngIf="isUser() || !authenticationService.isLoggedIn()" style="margin-right: 0px">
     <router-outlet></router-outlet>
   </div>
 </div>

@@ -62,4 +62,9 @@ public class UserServiceImpl implements UserService {
 		userRepo.delete(user);
 	}
 
+	@Override
+	public User findUserByEmail(String email) {
+		return userRepo.findByEmail(email);
+	}
+
 }

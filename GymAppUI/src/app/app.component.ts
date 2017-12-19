@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from './pages/demo/services/authentication.service';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -11,17 +11,12 @@ export class AppComponent {
 
   constructor(private authenticationService: AuthenticationService) { }
 
-  isAdmin(): boolean {
-    return false;
-    // return this.authenticationService.hasRole(["ADMIN"]);
+  isAdminOrTrainer(): boolean {
+      return this.authenticationService.hasRole(['ADMIN', 'TRAINER']);
   }
 
   isUser(): boolean {
-    return true;
-    // return this.authenticationService.hasRole(["USER"]);
+    return this.authenticationService.hasRole(['CLIENT']);
   }
 
-  isTrainer(): boolean {
-    return this.authenticationService.hasRole(["TRAINER"]);
-  }
 }
