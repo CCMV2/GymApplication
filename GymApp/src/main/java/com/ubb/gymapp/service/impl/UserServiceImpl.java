@@ -15,6 +15,7 @@ import com.ubb.gymapp.model.Trainer;
 import com.ubb.gymapp.model.User;
 import com.ubb.gymapp.repository.TrainerWorkoutRepository;
 import com.ubb.gymapp.repository.UserRepository;
+import com.ubb.gymapp.repository.UserTimetableRepository;
 import com.ubb.gymapp.service.UserService;
 
 @Service
@@ -22,6 +23,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	private UserTimetableRepository userTimetableRepo;
 	
 	@Autowired
 	private TrainerWorkoutRepository trainerWorkoutRepo;
@@ -45,6 +49,7 @@ public class UserServiceImpl implements UserService {
 			return userRepo.save(trainer);
 		default:
 			Client client = (Client) user;
+			userTimetableRepo.deleteByUser(client);
 			return userRepo.save(client);
 		}
 	}
