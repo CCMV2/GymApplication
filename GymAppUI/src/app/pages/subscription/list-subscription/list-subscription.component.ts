@@ -38,6 +38,11 @@ getSubscriptionAndWorkouts(): void {
     this.backendService.deleteSubscription(sub).subscribe( res => {
       //this.getSubscriptionAndWorkouts();
       console.log( this.subscriptionAndWorkouts );
+      if (res === 'Successful') {
+        const index = this.subscriptionAndWorkouts.findIndex(d => d.subscription.subscriptionId === sub.subscriptionId);
+        this.subscriptionAndWorkouts.splice(index, 1);
+    }
+    alert(res);
   } );
   }
 
