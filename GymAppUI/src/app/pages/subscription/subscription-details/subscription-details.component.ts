@@ -50,6 +50,9 @@ export class SubscriptionDetailsComponent implements OnInit {
         if ( this.authenticationService.isLoggedIn() ) {
         const newRating: number = ( ( subscriptionAndWorkouts.subscription.rat.total * subscriptionAndWorkouts.subscription.rat.nrpers ) + rating ) / ( subscriptionAndWorkouts.subscription.rat.nrpers + 1 );
         console.log( newRating );
+        if (subscriptionAndWorkouts.subscription.imageBase64 == null) {
+            subscriptionAndWorkouts.subscription.imageBase64 = '';
+        }
         subscriptionAndWorkouts.subscription.rat.total = newRating;
         subscriptionAndWorkouts.subscription.rat.nrpers = subscriptionAndWorkouts.subscription.rat.nrpers + 1;
         this.backendService.addSubscription( subscriptionAndWorkouts ).subscribe( res => {
