@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="row page-container">
+<div class="row page-container custom-text">
   <app-header class="col-md-12" *ngIf="authenticationService.isLoggedIn()"></app-header>
   <navigation-pane (closeState)="changeMenuState($event)" class="col-md-2 nav-pane" *ngIf="isAdminOrTrainer()"></navigation-pane>
   <user-menu *ngIf="isUser()"></user-menu>

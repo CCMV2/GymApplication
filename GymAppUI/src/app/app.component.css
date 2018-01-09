@@ -12,3 +12,7 @@
 .nav-pane {
   position: absolute;
 }
+
+.custom-text{
+    font-family: 'Quicksand', sans-serif !important;
+}
