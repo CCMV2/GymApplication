@@ -16,12 +16,14 @@ export class UpdateSubscriptionComponent implements OnInit {
     workouts: Workout[];
     workoutList: WorkoutList;
     message = '';
+    subscriptionImage = '';
 
   constructor(private session: SessionStorageService, private backendService: BackendService) { }
 
   ngOnInit() {
     this.workoutList = this.session.retrieve('workoutlist');
     this.subscription = this.workoutList.subscription;
+    this.subscriptionImage = this.workoutList.subscription.imageBase64;
     this.getWorkouts();
   }
 
