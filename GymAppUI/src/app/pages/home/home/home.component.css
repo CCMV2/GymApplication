@@ -6,7 +6,7 @@ p {
   display: table-cell;
   text-align: center;
   vertical-align: middle;
-  min-width: 87.5vw;
+  min-width: calc(100vw-240px);
 }
 
 .content {
@@ -31,4 +31,32 @@ p {
   font-size: 18px;
   margin-top: 30px;
   max-width: 50vw;
+}
+
+.backimage{
+  max-width: 100vw;
+  z-index: -100;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.navmenu{
+  height: 20vw;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.menuimage{
+  height: 16vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  margin-left: 1vw;
+  opacity: 0.6;
+}
+
+.menuimage:hover{
+  opacity: 1;
 }
