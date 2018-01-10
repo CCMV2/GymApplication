@@ -18,12 +18,14 @@ export class ScheduleComponent implements OnInit {
     header: any;
     option: any;
     allTimetables: Timetable[] = [];
+    userTimetables: Timetable[] = [];
     firstStart: Date;
 
     constructor(private backendService: BackendService, private authenticationService: AuthenticationService) { }
 
     ngOnInit() {
         this.getTimetables();
+        this.getUserTimetables();
         this.header = {
             left: 'prev,next today',
             center: 'title',
@@ -42,15 +44,21 @@ export class ScheduleComponent implements OnInit {
         console.log('Here we prepare the timetable for a certain week');
     }
     handleEventClick(event) {
+        
       const startDate = new Date(event.calEvent.start._i);
       console.log('I have been clicked!');
       if (this.authenticationService.isLoggedIn()) {
-        if (this.authenticationService.hasRole(["CLIENT"])) {
+        if (this.authenticationService.hasRole(['CLIENT'])) {
           if (startDate.getTime() < new Date().getTime()) {
             alert('It is too late to subscribe to this workout :(');
           } else {
             this.backendService.addClientTimetable(new ClientTimetable(this.authenticationService.getCurrentUser(), event.calEvent.id))
-              .subscribe(r => alert(r));
+              .subscribe(r => {
+              alert(r);
+              });
+            setTimeout(() => {
+                window.location.reload(false);
+            }, 100);
           }
         }
         } else {
@@ -82,10 +90,9 @@ export class ScheduleComponent implements OnInit {
             const endDay = new Date(endDayMilliseconds);
             event['end'] = moment(endDay).format('YYYY-MM-DD[T]HH:mm:ss');
             event['intensity'] = timeTableExample.workout.difficulty;
-            event['stea'] = timeTableExample.star;
+            event['stea'] = this.hasTimetable(timeTableExample);
             this.events.push(event);
         }
-        debugger;
     }
 
     getDayIndex(day: string) {
@@ -108,7 +115,6 @@ export class ScheduleComponent implements OnInit {
     }
     eventRender(event, element, view) {
         console.log(event, element, view);
-        debugger;
         const data = event.start._d;
         // faceti verificarea daca data e in trecut
         console.log(event);
@@ -124,13 +130,36 @@ export class ScheduleComponent implements OnInit {
         else if (event.intensity == 'EASY') {
             element.addClass('intensity-easy');
         }
+        if(event.stea) {
+            const title = element.find('.fc-title');
+            title.append('<span title="You are subscribed" class="ui-button-icon-left ui-clickable fa fa-fw fa-star" style=" float:  right;"></span>');
+        }
     }
+
+    hasTimetable(timetable: Timetable): boolean {
+        for (const usertimetable of this.userTimetables) {
+            if (usertimetable.id === timetable.id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     getTimetables(): void {
         this.backendService.getAllTimetables().subscribe(res => {
             this.allTimetables = res;
             console.log(this.allTimetables);
             this.prepareEvents(this.firstStart);
         });
+    }
+
+    getUserTimetables(): void {
+        if (this.authenticationService.isLoggedIn()) {
+            this.backendService.getUserTimetables(this.authenticationService.getCurrentUser()).subscribe(res => {
+                this.userTimetables = res;
+                console.log(this.userTimetables);
+            });
+        }
     }
 
 

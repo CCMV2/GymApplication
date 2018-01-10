@@ -38,5 +38,10 @@ public class TimeTableController {
 		timeTableService.deleteTimeTable(parameter);
 		return "Delete successful";
 	}
+	
+	@RequestMapping(value = "/getusertimetables", method = RequestMethod.POST)
+	public List<Timetable> getUserTimetables(@RequestBody String username) {
+		return timeTableService.getUserTimetables(username);
+	}
 
 }

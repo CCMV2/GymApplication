@@ -33,7 +33,7 @@ export class SubscriptionDetailsComponent implements OnInit {
                 if ( !this.subscriptionsAndWorkouts[i].subscription.rat ) {
                     this.subscriptionsAndWorkouts[i].subscription.rat = new Rating( null, 0, 0 );
                 }
-                for ( let j = 1; j <= this.subscriptionsAndWorkouts[i].subscription.rat.total; j++ ) {
+                for ( let j = 1; j <= Math.round(this.subscriptionsAndWorkouts[i].subscription.rat.total); j++ ) {
                     this.subscriptionsAndWorkouts[i].subscription.stars.push( { type: 'full', value: j } );
                     //this.ratingVal = j;
                 }

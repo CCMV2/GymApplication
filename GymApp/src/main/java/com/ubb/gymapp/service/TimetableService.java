@@ -9,5 +9,6 @@ public interface TimetableService {
 	List<Timetable> getAllTimetables();
 	void addTimeTable(Timetable timetable);
 	void deleteTimeTable(Timetable timetable);
+	List<Timetable> getUserTimetables(String username);
 
 }
