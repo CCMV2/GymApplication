@@ -3,7 +3,7 @@ h1{
 }
 #div{
     white-space: nowrap; 
-    width: 18em; 
+    width: 1000px; 
     overflow: hidden;
     text-overflow: ellipsis;    
 }
@@ -18,9 +18,9 @@ h1{
     align-content: center;
 }
 #workoutslist{
-    height: 6.2em;
+    height: 8.5em;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 #subscriptionname{
     color: gray;

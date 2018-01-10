@@ -1,0 +1,13 @@
+<div id="mail-wrapper">
+<div id="mail_main">
+	<b>Subject: </b> <input [(ngModel)]="mail.subject" type="text"
+		placeholder="Subject"> <br>
+	<br> <b>Body: </b>
+	<textarea [(ngModel)]="mail.body" rows="4" cols="50"></textarea>
+	<br>
+	<br> <b>Choose to what  group of people this e-mail
+		shall be adressed to</b>
+	<p-multiSelect name="subList" [options]="subList"
+		[(ngModel)]="mail.subs" optionLabel="name"></p-multiSelect>
+</div>
+</div>

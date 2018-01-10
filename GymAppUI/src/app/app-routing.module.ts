@@ -24,6 +24,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { UserTimetableComponent } from './pages/user/user-timetable/user-timetable.component';
 import { TrainerComponent } from './pages/trainer/trainer.component';
 import { ScheduleComponent } from './pages/timetable/schedule/schedule.component';
+import { MailutilComponent } from "./pages/mailutil/mailutil.component";
 
 
 const routes: Routes = [
@@ -49,7 +50,8 @@ const routes: Routes = [
     { path: 'demo', component: DemoComponent},
     { path: 'usertimetable', component: UserTimetableComponent, canActivate: [AuthGuard]},
     { path: 'trainer', component: TrainerComponent},
-    { path: 'schedule', component: ScheduleComponent}
+    { path: 'schedule', component: ScheduleComponent},
+    { path: 'mailUtil', component: MailutilComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
