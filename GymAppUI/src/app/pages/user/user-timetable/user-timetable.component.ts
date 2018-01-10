@@ -47,9 +47,14 @@ export class UserTimetableComponent implements OnInit {
     }
   addTimetable(){
       //console.log(JSON.stringify(this.userClient));
+      for (const timetable of this.userClient.userTimetable) {
+            if (timetable.trainer.imageBase64 === null) {
+                timetable.trainer.imageBase64 = ""
+            }
+      }
       this.backendService.addUser('createclient', this.userClient).subscribe(res => {
         this.message = res;
-        //console.log(res);
+        console.log(res);
     });
       alert('Implement me!');
   }

@@ -120,6 +120,10 @@ export class BackendService {
         return this.http.get(this.link + 'getalltrainers', this.options).map(response => response.json()).catch(err => this.handleError(err));
     }
 
+    public getUserTimetables(userName: string): Observable<Timetable[]> {
+        return this.http.post(this.link + 'getusertimetables', userName , this.options).map(response => response.json()).catch(err => this.handleError(err));
+    }
+
     public getAllTrainersForWorkout(workout: Workout) {
         return this.http.get(this.link + 'getalluserworkoutsbyworkout', this.options).map(response => response.json()).catch(err => this.handleError(err));
     }
