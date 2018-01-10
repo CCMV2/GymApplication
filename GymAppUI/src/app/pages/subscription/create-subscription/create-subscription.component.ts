@@ -53,16 +53,16 @@ export class CreateSubscriptionComponent implements OnInit {
 
 
   upload($event) {
-    var preview = document.querySelector('img');
-    var file = $event.target.files[0];
-    var reader = new FileReader();
+    let preview = document.querySelector('img');
+    let file = $event.target.files[0];
+    let reader = new FileReader();
 
     reader.onloadend = (e) => {
       preview.src = reader.result;
       this.workoutList.subscription.imageBase64 = preview.getAttribute("src");
     }
 
-    if (file) {     
+    if (file) {
       reader.readAsDataURL(file);
     }
   }

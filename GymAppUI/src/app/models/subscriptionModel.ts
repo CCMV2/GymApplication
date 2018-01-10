@@ -6,16 +6,16 @@ export class Subscription{
   duration: number;
   rat: Rating;
   stars: any;
-	imageBase64: String;
+	imageBase64: string;
 
-  
+
 
 
   constructor(
     name: string,
     price: number,
     duration: number,
-    imageBase64:String,
+    imageBase64: string,
     ) {
     this.name = name;
     this.price = price;
@@ -23,5 +23,5 @@ export class Subscription{
     this.imageBase64 = imageBase64;
   }
 
-  
+
 }

@@ -5,26 +5,26 @@
     <div class="centered col-sm-7">
     <form class="form-horizontal">
             <div class="alert" *ngIf="message.length > 0">
-					<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-					<strong>{{message}}!</strong> 
+					<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+					<strong>{{message}}!</strong>
 				</div>
         <div class="form-group">
             <label class="control-label col-sm-3" for="name">Subscription name:</label>
-            <div class="col-sm-9"> 
+            <div class="col-sm-9">
                 <input type="text" name="SubName" [(ngModel)]="subscription.name">
             </div>
         </div>
-        
+
         <div  class="form-group">
             <label  class="control-label col-sm-3" for="price" >Price:</label>
             <div  class="col-sm-9">
                 <input type="number" name="Price" step="0.01" min=0 oninput="validity.valid||(value='');" [(ngModel)]="subscription.price" ><br>
             </div>
         </div>
-        
+
         <div  class="form-group">
             <label  class="control-label col-sm-3" for="duration">Duration:</label>
-            <div  class="col-sm-9"> 
+            <div  class="col-sm-9">
                 <input type="number" name="Duration" min=0 oninput="validity.valid||(value='');" [(ngModel)]="subscription.duration">
             </div>
         </div>
@@ -34,10 +34,16 @@
         		<p-multiSelect name="workouts" [options]="workouts" [(ngModel)]="workoutList.workouts" optionLabel="workoutType"></p-multiSelect>
             </div>
         </div>
-        
-        
-        
-        <button type="submit"(click)="updateSubscription(workoutList)" class="btn btn-success submit">Submit</button>
+      <div class="form-group">
+        <label class="control-label col-sm-4">Choose a picture:</label>
+        <div class="col-sm-7">
+          <input type="file" (change)="upload($event)">
+          <br>
+          <img id="imagine" src="{{subscriptionImage}}" height="200" alt="Image preview...">
+        </div>
+      </div>
+
+        <button type="submit"(click)="updateSubscription()" class="btn btn-success submit">Submit</button>
     </form>
     </div>
 </fieldset>

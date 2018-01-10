@@ -42,18 +42,21 @@ export class ScheduleComponent implements OnInit {
         console.log('Here we prepare the timetable for a certain week');
     }
     handleEventClick(event) {
-        const startDate = new Date(event.view.start._i);
-        console.log('I have been clicked!');
-        if (this.authenticationService.isLoggedIn()) {
-            if (this.authenticationService.hasRole(["CLIENT"])) {
-                this.backendService.addClientTimetable(new ClientTimetable(this.authenticationService.getCurrentUser(), event.calEvent.id))
-                    .subscribe(r => alert(r));
-            }
-        }else {
-            alert('You must login in order to subscribe!');
+      const startDate = new Date(event.calEvent.start._i);
+      console.log('I have been clicked!');
+      if (this.authenticationService.isLoggedIn()) {
+        if (this.authenticationService.hasRole(["CLIENT"])) {
+          if (startDate.getTime() < new Date().getTime()) {
+            alert('It is too late to subscribe to this workout :(');
+          } else {
+            this.backendService.addClientTimetable(new ClientTimetable(this.authenticationService.getCurrentUser(), event.calEvent.id))
+              .subscribe(r => alert(r));
+          }
+        } else {
+          alert('You must login in order to subscribe!');
         }
+      }
     }
-
     prepareEvents(startWeek: Date) {
         if (this.allTimetables.length == 0) {
             this.firstStart = startWeek;
