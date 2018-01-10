@@ -83,3 +83,14 @@ a:link{
   top: 0px;
   left: -8px;
 }
+
+.home-btn {
+  font-size: 35px;
+  color: white;
+  margin-left: 4px;
+  margin-top: 8px;
+  z-index: 1000;
+  position: absolute;
+  left: 90px;
+  top: 94vh;
+}

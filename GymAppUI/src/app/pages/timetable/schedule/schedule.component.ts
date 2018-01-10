@@ -85,7 +85,6 @@ export class ScheduleComponent implements OnInit {
             event['stea'] = timeTableExample.star;
             this.events.push(event);
         }
-        debugger;
     }
 
     getDayIndex(day: string) {
@@ -108,7 +107,6 @@ export class ScheduleComponent implements OnInit {
     }
     eventRender(event, element, view) {
         console.log(event, element, view);
-        debugger;
         const data = event.start._d;
         // faceti verificarea daca data e in trecut
         console.log(event);

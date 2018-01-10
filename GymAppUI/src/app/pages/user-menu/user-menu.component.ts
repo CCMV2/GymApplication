@@ -19,16 +19,18 @@ class MenuButton {
 })
 export class UserMenuComponent implements OnInit {
 
-  buttons: MenuCluster[] = [
+  buttons: MenuButton[] = [
     {
-      label: "Trainer",
-      children: [
-        {
-          label: "Trainer Overview",
-          link: "trainer"
-        }
-      ],
-      active: false
+      label: "Trainer Overview",
+      link: "trainer"
+    },
+    {
+      label: "Schedule",
+      link: "schedule"
+    },
+    {
+      label: "Contact",
+      link: "contact"
     }
   ];
 

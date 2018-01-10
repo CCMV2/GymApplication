@@ -47,6 +47,10 @@ export class CreateSubscriptionComponent implements OnInit {
     this.backendService.addSubscription(this.workoutList).subscribe(res => {
 
       this.message = res;
+      setTimeout(()=> {
+        this.message = "";
+        console.log("lol");
+      }, 5000);
     });
   }
 

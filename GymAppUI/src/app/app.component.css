@@ -16,3 +16,36 @@
 .custom-text{
     font-family: 'Quicksand', sans-serif !important;
 }
+
+.login-btn {
+  margin-left: 20px;
+  height: 50px;
+  background-color: #14305e;
+  border-width: 0.05px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  color: white;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+  font-size: 17px;
+  font-weight: 400;
+  width: 150px;
+  border-radius: 0px;
+  z-index: 1000;
+  position: absolute;
+  right: 20px;
+}
+
+.login-btn:hover {
+  background-color: #0f213f;
+}
+
+.login-btn:focus {
+  outline: 0;
+}
+
+button {
+  background-color: #0f213f !important;
+}

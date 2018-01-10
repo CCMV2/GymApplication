@@ -1,4 +1,4 @@
-<div class="navigation-sidebar" *ngIf="active">
+<div class="navigation-sidebar" *ngIf="active" [@fadeInOut]>
   <button class="btn btn-primary btn-toggle" (click)="toggleBar()">
     <span class="glyphicon glyphicon-chevron-left side-glyph"
     style="float:left;"></span>
@@ -11,10 +11,12 @@
   <button class="btn btn-primary btn-toggle-closed-back">
   </button>
 </div>
-<div *ngIf="!active">
+<div *ngIf="!active" [@fadeInOut]>
   <button class="btn btn-primary btn-toggle-closed" (click)="toggleBar()">
     <span class="glyphicon glyphicon-chevron-right side-glyph-closed"
           style="float:left;"></span>
     <span style="font-size:20px"></span>
   </button>
 </div>
+
+<span class="glyphicon glyphicon-home home-btn" (click)="navigate('home')"></span>

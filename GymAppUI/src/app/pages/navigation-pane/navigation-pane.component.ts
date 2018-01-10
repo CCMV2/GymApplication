@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import {style, state, animate, transition, trigger} from '@angular/core';
 
 class menuItem {
   url: string;
@@ -17,9 +18,20 @@ class tab {
 @Component({
   selector: 'navigation-pane',
   templateUrl: './navigation-pane.component.html',
-  styleUrls: ['./navigation-pane.component.css']
+  styleUrls: ['./navigation-pane.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [   // :enter is alias to 'void => *'
+        style({left: -200}),
+        animate(500, style({left: 0}))
+      ]),
+      transition(':leave', [   // :leave is alias to '* => void'
+        animate(500, style({left: -200}))
+      ])
+    ])
+  ]
 })
-export class NavigationPaneComponent implements OnInit {
+export class NavigationPaneComponent {
 
   @Output() closeState: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -80,12 +92,12 @@ export class NavigationPaneComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router) { }
 
-  ngOnInit() {
-  }
-
   toggleBar(): void {
     this.active = !this.active;
     this.closeState.emit(this.active);
   }
 
+  navigate(link: string): void {
+    this.router.navigate([link]);
+  }
 }

@@ -1,37 +1,51 @@
 <div *ngIf="isAdminOrTrainer()">
-    <div align="right" *ngIf="!authenticationService.isLoggedIn()">
-        <input type="button" value="Log In"
-               onclick="window.location.href='http://localhost:4200/login?returnUrl=%2F'"/>
-      </div>
-      <div align="right">
-        <input type="button" value="Contact"
-               onclick="window.location.href='http://localhost:4200/contact'"/>
-      </div>
-      <div class="container">
-        <div class="home-title content">Administration Tool</div>
-        <br>
-        <div class="content subtitle">
-          Welcome to the NTT-Gym Admin Tool
-        </div>
-        <br>
-        <div class="content description">
-          This is where you'll be able to edit and
-          manage all of the gym data.
-          Use this to maintain your client base, your trainers, your workouts and everything inbetween.
-        </div>
-      </div>
-      
+
+  <div align="right" *ngIf="!authenticationService.isLoggedIn()">
+    <input type="button" value="Log In"
+           onclick="window.location.href='http://localhost:4200/login?returnUrl=%2F'"/>
+  </div>
+  <div class="contact-button">
+    <input type="button" value="Contact"
+           onclick="window.location.href='http://localhost:4200/contact'"/>
+  </div>
+  <div class="container">
+    <div class="home-title content">Administration Tool</div>
+    <br>
+    <div class="content subtitle">
+      Welcome to the NTT-Gym Admin Tool
+    </div>
+    <br>
+    <div class="content description">
+      This is where you'll be able to edit and
+    </div>
+    <br>
+    <div class="content description">
+      manage all of the gym data.
+    </div>
+    <br>
+    <div class="content description">
+      Use this to maintain your client base,
+    </div>
+    <br>
+    <div class="content description">
+      your trainers,
+    </div>
+    <br>
+    <div class="content description">
+      your workouts
+    </div>
+    <br>
+    <div class="content description">
+      and everything inbetween.
+    </div>
+  </div>
 </div>
-<div *ngIf="isUser()">
-    <img class="backimage" src="assets/images/mainpagephoto.png">
-    <div align="right">
-      <input type="button" value="Contact"
-            onclick="window.location.href='http://localhost:4200/contact'"/>
-    </div>
-    <div class="navmenu">
-        <a href="http://localhost:4200/trainer"><img class="menuimage" src="assets/images/menuimg2.jpg"></a>
-        <img class="menuimage" src="assets/images/menuimg1.jpg">
-        <img class="menuimage" src="assets/images/menuimg3.jpg">
-        <img class="menuimage" src="assets/images/menuimg4.jpeg">    
-    </div>
+<div *ngIf="!isAdminOrTrainer()">
+  <img class="backimage" src="assets/images/mainpagephoto.png">
+  <div class="navmenu">
+    <img class="menuimage" src="assets/images/menuimg2.jpg" (click)="navigateTo('trainer')">
+    <img class="menuimage" src="assets/images/menuimg1.jpg">
+    <img class="menuimage" src="assets/images/menuimg3.jpg">
+    <img class="menuimage" src="assets/images/menuimg4.jpeg">
+  </div>
 </div>

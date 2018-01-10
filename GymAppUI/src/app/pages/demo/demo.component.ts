@@ -194,7 +194,6 @@ export class DemoComponent implements OnInit {
     }
     eventRender( event, element, view ) {
         console.log( event, element, view );
-        debugger;
         element.find( '.fc-content .fc-title' ).html( event.title + '<br/>' + event.trainer );
         const data = event.start._d;
         // faceti verificarea daca data e in trecut

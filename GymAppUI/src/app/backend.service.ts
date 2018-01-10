@@ -84,7 +84,6 @@ export class BackendService {
     }
 
     private handleError(error: any): Observable<any> {
-        debugger;
         if (error.type === 3) {
             // nu avem drepturi sa intram pe pagina asta, sau ne-a expirat tokenul din BE
             if (this.authenticationService.isLoggedIn()) {

@@ -30,7 +30,6 @@ export class UserTimetableComponent implements OnInit {
         const end = moment( endDay ).format( 'HH:mm' );
         timeElem.timeTableName = timeElem.workout.workoutType + ' ' + timeElem.day + ' ' + start + '-' + end;
     }
-    debugger;
   }
 
   getAllTimetables() {
@@ -44,7 +43,6 @@ export class UserTimetableComponent implements OnInit {
               const end = moment( endDay ).format( 'HH:mm' );
               timeElem.timeTableName = timeElem.workout.workoutType + ' ' + timeElem.day + ' ' + start + '-' + end;
           }
-          debugger;
       });
     }
   addTimetable(){

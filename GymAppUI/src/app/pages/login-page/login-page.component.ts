@@ -26,8 +26,14 @@ export class LoginPageComponent implements OnInit {
         this.authenticationService.logout();
         const succsess = this.route.snapshot.queryParams['logout'] && this.route.snapshot.queryParams['logout'].length > 0;
         this.success = succsess ? 'You have been succesfully logged out' : '';
+        setTimeout( () => {
+          this.success = "";
+        }, 5000);
         const error = this.route.snapshot.queryParams['error'] && this.route.snapshot.queryParams['error'].length > 0;
         this.error = error ? 'Session expired. Please log in again.' : '';
+        setTimeout( () => {
+        this.error = "";
+        }, 5000);
     }
 
     login() {
@@ -41,11 +47,17 @@ export class LoginPageComponent implements OnInit {
                 } else {
                     // login failed
                     this.error = 'Username or password is incorrect';
+                  setTimeout( () => {
+                    this.error = "";
+                  }, 5000);
                     this.loading = false;
                 }
             }, error => {
                 this.loading = false;
                 this.error = 'Username or password is incorrect';
+              setTimeout( () => {
+                this.error = "";
+              }, 5000);
             } );
     }
 
