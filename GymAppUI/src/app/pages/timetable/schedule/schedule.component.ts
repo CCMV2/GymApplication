@@ -52,11 +52,11 @@ export class ScheduleComponent implements OnInit {
             this.backendService.addClientTimetable(new ClientTimetable(this.authenticationService.getCurrentUser(), event.calEvent.id))
               .subscribe(r => alert(r));
           }
+        }
         } else {
           alert('You must login in order to subscribe!');
         }
       }
-    }
     prepareEvents(startWeek: Date) {
         if (this.allTimetables.length == 0) {
             this.firstStart = startWeek;
