@@ -8,3 +8,11 @@
 .user-page {
     margin-top: 50px;
 }
+
+.nav-pane {
+  position: absolute;
+}
+
+.custom-text{
+    font-family: 'Quicksand', sans-serif !important;
+}

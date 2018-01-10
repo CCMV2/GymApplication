@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 class menuItem {
@@ -20,6 +20,8 @@ class tab {
   styleUrls: ['./navigation-pane.component.css']
 })
 export class NavigationPaneComponent implements OnInit {
+
+  @Output() closeState: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   active: boolean = true;
 
@@ -83,6 +85,7 @@ export class NavigationPaneComponent implements OnInit {
 
   toggleBar(): void {
     this.active = !this.active;
+    this.closeState.emit(this.active);
   }
 
 }

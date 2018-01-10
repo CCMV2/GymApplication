@@ -7,7 +7,12 @@ import { AuthenticationService } from './services/authentication.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'app';
+
+  isClosed: boolean = false;
+
+  pageMargin: number = 240;
 
   constructor(private authenticationService: AuthenticationService) { }
 
@@ -17,6 +22,14 @@ export class AppComponent {
 
   isUser(): boolean {
     return this.authenticationService.hasRole(['CLIENT']);
+  }
+
+  changeMenuState(state: boolean): void {
+    if(!state) {
+      this.pageMargin = 80;
+    } else {
+      this.pageMargin = 240;
+    }
   }
 
 }

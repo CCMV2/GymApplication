@@ -1,17 +1,37 @@
-<div align="right" *ngIf="!authenticationService.isLoggedIn()">
-	<input type="button" value="Log In"
-		onclick="window.location.href='http://localhost:4200/login?returnUrl=%2F'" />
+<div *ngIf="isAdminOrTrainer()">
+    <div align="right" *ngIf="!authenticationService.isLoggedIn()">
+        <input type="button" value="Log In"
+               onclick="window.location.href='http://localhost:4200/login?returnUrl=%2F'"/>
+      </div>
+      <div align="right">
+        <input type="button" value="Contact"
+               onclick="window.location.href='http://localhost:4200/contact'"/>
+      </div>
+      <div class="container">
+        <div class="home-title content">Administration Tool</div>
+        <br>
+        <div class="content subtitle">
+          Welcome to the NTT-Gym Admin Tool
+        </div>
+        <br>
+        <div class="content description">
+          This is where you'll be able to edit and
+          manage all of the gym data.
+          Use this to maintain your client base, your trainers, your workouts and everything inbetween.
+        </div>
+      </div>
+      
 </div>
-<div align="right">
-	<input type="button" value="Contact"
-		onclick="window.location.href='http://localhost:4200/contact'" />
+<div *ngIf="isUser()">
+    <img class="backimage" src="assets/images/mainpagephoto.png">
+    <div align="right">
+      <input type="button" value="Contact"
+            onclick="window.location.href='http://localhost:4200/contact'"/>
+    </div>
+    <div class="navmenu">
+        <a href="http://localhost:4200/trainer"><img class="menuimage" src="assets/images/menuimg2.jpg"></a>
+        <img class="menuimage" src="assets/images/menuimg1.jpg">
+        <img class="menuimage" src="assets/images/menuimg3.jpg">
+        <img class="menuimage" src="assets/images/menuimg4.jpeg">    
+    </div>
 </div>
-<h1 align="center" >Get your summer booty here!!!</h1>
-<br>
-<br>
-<img alt="Imagine Gym" align="right"
-	src="assets/images/homepage.jpg" />  
-<h2>NTT-Gym se adreseaza tuturor persoanelor, indiferent de varsta, de greutate sau de program,
- care doresc sa faca o schimbare pozitiva a stilului lor de viata.</h2>
-<p></p>
-<p></p>
