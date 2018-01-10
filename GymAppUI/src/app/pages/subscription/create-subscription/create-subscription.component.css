@@ -218,3 +218,7 @@ div.userpass{
   from { background:#5264AE; }
   to 	{ width:0; background:transparent; }
 }
+
+.redcolor{
+  color: red;
+}

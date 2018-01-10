@@ -23,6 +23,7 @@
 }
 
 .help-block {
+  margin-bottom: 3vw;
   width:200px;
   color:white;
   background-color:gray;
@@ -97,7 +98,7 @@ div.userpass{
 }
 
 .labelLogin 				 {
-  color:#999;
+  color:black;
   font-size:18px;
   font-weight:normal;
   position:absolute;
@@ -112,7 +113,7 @@ div.userpass{
 .inputLogin:focus ~ .labelLogin, .inputLogin:valid ~ .labelLogin 		{
   top:-20px;
   font-size:14px;
-  color:#5264AE;
+  color:#999F;
 }
 
 .bar 	{ position:relative; display:block; width:300px; }
