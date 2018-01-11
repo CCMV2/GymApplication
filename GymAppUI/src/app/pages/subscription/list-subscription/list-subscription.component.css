@@ -15,7 +15,27 @@ button {
     cursor: pointer;
     border-radius: 12px;
 }
+.alert {
+    padding: 20px;
+    background-color: #09a7e6;
+	color: rgb(0, 0, 0);
+	text-align: center;
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
+.closebtn {
+    margin-left: 15px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 #update{
     background-color: #09a7e6
 }

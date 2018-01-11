@@ -35,12 +35,12 @@ public class WorkoutController {
 	}
 
 	@RequestMapping(value = "/deleteworkout", method = RequestMethod.POST)
-	public boolean deleteWorkout(@RequestBody Workout parameter) {
+	public String deleteWorkout(@RequestBody Workout parameter) {
 		try {
 			workoutService.deleteWorkout(parameter);
-			return true;
+			return "Successful";
 		} catch (Exception e) {
-			return false;
+			return "Failed:" + e.getMessage(); 
 		}
 	}
 

@@ -36,6 +36,10 @@ export class CreateTimetableComponent implements OnInit {
         this.timetableToCreate.setWorkout( workout );
         this.backendService.addTimetable( this.timetableToCreate ).subscribe( res => {
             this.message = res;
+            setTimeout(()=> {
+                this.message = "";
+                console.log("lol");
+              }, 5000);
         } );
     }
     findRoomByName( name: string ): Room {

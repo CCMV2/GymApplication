@@ -51,6 +51,11 @@ export class UpdateTimetableComponent implements OnInit {
         this.timetableToCreate.workout = workout.workout ;
         this.backendService.updateTimetable(this.timetableToCreate).subscribe(res => {
         this.message = res;
+        setTimeout(()=> {
+            this.message = "";
+            console.log("lol");
+          }, 5000);
+
         });
       }
 

@@ -41,3 +41,9 @@
 			Name: <input type="text" class="form-control room-name" [(ngModel)]="roomToCreate.roomName">
 			<input type="button" class="btn-primary btn create-button" value="Create Room" (click)="addRoom()">
 		</div>
+		<div class="alert" *ngIf="message.length > 0">
+			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+			<strong>{{message}}!</strong>
+		</div>
+
+		
