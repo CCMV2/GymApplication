@@ -18,7 +18,7 @@ export class ListWorkoutComponent implements OnInit {
   allWorkouts: TrainerWorkout[] = [];
   descriptionFlag = false;
   selectedTrainerWorkout: TrainerWorkout;
-
+  message = '';
   constructor(private backendService: BackendService, private router: Router , private session: SessionStorageService) { }
 
   ngOnInit() {
@@ -42,8 +42,20 @@ export class ListWorkoutComponent implements OnInit {
           }
       }
     this.backendService.deleteWorkout(workout.workout).subscribe(res => {
-      console.log(res); this.getAllWorkouts();
+      if(res == '0'){
+        this.message = 'Successful';
+        //console.log(res); 
+        setTimeout(()=> {
+          this.message = "";
+          console.log("lol");
+        }, 5000);
+      }
+      
+      this.getAllWorkouts();
+     
     });
+
+
 
     console.log(this.allWorkouts);
   }

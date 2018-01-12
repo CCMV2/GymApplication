@@ -4,7 +4,12 @@
 			Workout List
 		</h2>
 	</legend>
-		<table class="table table-condensed table-hover" id="workoutTable">
+	<form>
+			<div class="alert" *ngIf="message.length > 0">
+					<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+					<strong>{{message}}!</strong>
+				</div>
+				<table class="table table-condensed table-hover" id="workoutTable">
 			<tr>
 				<th>Name</th>
 				<th>Difficulty</th>
@@ -37,6 +42,9 @@
 							<i class="fa fa-plus"></i>
 						Delete
 					</button>
+					
+					
 				</td>
+				
 			</tr>
 		</table>

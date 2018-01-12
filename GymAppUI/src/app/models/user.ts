@@ -31,7 +31,6 @@ export class Trainer extends User {
        super(id, password, name, surname, email, phonenumber, 'TRAINER');
        this.password = password;
        this.imageBase64 = imageBase64;
-       this.completeName = name + " " + surname;
     }
 }
 

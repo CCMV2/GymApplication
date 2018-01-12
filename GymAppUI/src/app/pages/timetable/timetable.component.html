@@ -1,6 +1,10 @@
 <fieldset>
 	<legend><h2>Timetable List</h2></legend>
 	<div>
+		<div class="alert" *ngIf="message.length > 0">
+			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+			<strong>{{message}}!</strong>
+		</div>
 		<table class="table table-hover list-table" align="center" >
 			<tr>
 				<th>Id</th>

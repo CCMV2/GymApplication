@@ -26,12 +26,20 @@ export class CreateUserComponent implements OnInit {
                 this.createdUser.name, this.createdUser.surname, this.createdUser.email, this.createdUser.phonenumber, 
                 this.trainerImage)).subscribe(res => {
                     this.message = res;
+                    setTimeout(()=> {
+                        this.message = "";
+                        console.log("lol");
+                      }, 5000);
                 });
         }
         else {
             const uri = 'create' + this.createdUser.userType.toLowerCase();
             this.backendService.addUser(uri, this.createdUser).subscribe(res => {
                 this.message = res;
+                setTimeout(()=> {
+                    this.message = "";
+                    console.log("lol");
+                  }, 5000);
             });
         }  
     }

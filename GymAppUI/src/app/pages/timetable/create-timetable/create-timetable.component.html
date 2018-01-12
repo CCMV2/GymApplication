@@ -1,11 +1,12 @@
-
+<div>
 	<legend>
 		<h2>Create Timetable</h2>
 	</legend>
-	<div class="align">
-	<div class="form-group">
-		<div class="message" *ngIf="message.length > 0">
-			<b>{{message}}</b>
+	<div class="centered col-sm-7">
+	<form class="form-horizontal">
+		<div class="alert" *ngIf="message.length > 0">
+			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+			<strong>{{message}}!</strong>
 		</div>
 
 		<div class="form-group">
@@ -71,5 +72,3 @@
 				</select> -->
 			</div>
 		<button (click)="addTimetable()"  class="btn btn-success">Add</button>
-		</div>
-	</div>

@@ -31,6 +31,10 @@
     <td>
         <button id="update" type="button" class="btn btn-primary-outline pull-right" (click)="updateSubscription(entry)"><i class="fa fa-plus"></i>Update</button>
         <br>
+        <div class="alert" *ngIf="message.length > 0">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          <strong>{{message}}!</strong>
+        </div>
         <br>
         <button id="delete" type="button" class="btn btn-primary-outline pull-right" (click)="delete(entry.subscription)"><i class="fa fa-plus"></i>Delete</button>
     </td>

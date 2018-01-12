@@ -11,7 +11,7 @@ import { SessionStorageService } from "ngx-webstorage/dist/services";
 } )
 export class TimetableComponent implements OnInit {
     allTimetables: Timetable[] = [];
-
+    message = '';
     constructor(private backendService: BackendService, private router: Router,private session: SessionStorageService) { }
 
     ngOnInit() {
@@ -30,6 +30,11 @@ export class TimetableComponent implements OnInit {
             timetable.trainer.imageBase64 = '';
         }
         this.backendService.deleteTimetable(timetable).subscribe(res => {
+            this.message = 'Successful';
+            setTimeout(()=> {
+            this.message = "";
+            console.log("lol");
+            }, 5000);
           console.log(res);
           this.getTimetables();
         });

@@ -15,7 +15,7 @@ export class RoomPageComponent implements OnInit {
   allRooms: Room[] = [];
   mode: string = "none";
   updating: boolean = false;
-
+  message = '';
   constructor(private backendService: BackendService) { }
 
   ngOnInit() {
@@ -31,6 +31,14 @@ export class RoomPageComponent implements OnInit {
 
   addRoom(): void {
     this.backendService.addRoom(this.roomToCreate).subscribe(res => {
+      console.log(res);
+      if (res === '0') {
+        this.message = 'Successful';
+        setTimeout(()=> {
+          this.message = "";
+          console.log("lol");
+        }, 5000);
+    }
       console.log(res);
       this.refreshRooms();
       this.roomToCreate = new Room(0,null);
@@ -49,6 +57,11 @@ export class RoomPageComponent implements OnInit {
 
   updateRoom(): void {
     this.backendService.addRoom(this.roomToUpdate).subscribe( res=> {
+      this.message = 'Successful';
+      setTimeout(()=> {
+        this.message = "";
+        console.log("lol");
+      }, 5000);
       console.log(res);
       this.refreshRooms();
     });
@@ -57,6 +70,11 @@ export class RoomPageComponent implements OnInit {
 
   deleteRoom(room: Room): void {
     this.backendService.deleteRoom(room).subscribe(res => {
+      this.message = 'Successful';
+      setTimeout(()=> {
+        this.message = "";
+        console.log("lol");
+      }, 5000);
       console.log(res);
       this.refreshRooms();
     })

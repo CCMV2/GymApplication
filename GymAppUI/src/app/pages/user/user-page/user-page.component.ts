@@ -12,7 +12,7 @@ import {SessionStorageService} from 'ngx-webstorage';
 export class UserPageComponent implements OnInit {
 
   userLists: User[] = [];
-   // users: User[] = [];
+  message = '';
   constructor(private backendService: BackendService, private router: Router , private session: SessionStorageService) {}
 
   ngOnInit() { this.getUsers(); }
@@ -29,10 +29,15 @@ export class UserPageComponent implements OnInit {
     this.backendService.deleteUser(uri, user).subscribe(res => {
         console.log(res);
         if (res === 'Successful') {
+            this.message = res;
             const index = this.userLists.findIndex(d => d.id === user.id);
             this.userLists.splice(index, 1);
+            setTimeout(()=> {
+              this.message = "";
+              console.log("lol");
+            }, 5000);
         }
-        alert(res);
+        //alert(res);
     });
   }
   updateUser(entry: User ): void {
