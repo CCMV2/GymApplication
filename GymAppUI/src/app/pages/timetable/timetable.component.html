@@ -2,15 +2,14 @@
 	<legend><h2>Timetable List</h2></legend>
 	<div>
 		<table class="table table-hover list-table" align="center" >
-			<tr bgcolor=MidnightBlue>
-				<th><font color="white">Id</font></th>
-				<th><font color="white">Day</font></th>
-				<th><font color="white">Start</font></th>
-				<th><font color="white">Duration</font></th>
-				<th><font color="white">Trainer</font></th>
-				<th><font color="white">Room</font></th>
-				<th><font color="white">Workout</font></th>
-				<th></th>
+			<tr>
+				<th>Id</th>
+				<th>Day</th>
+				<th>Start</th>
+				<th>Duration</th>
+				<th>Trainer</th>
+				<th>Room</th>
+				<th>Workout</th>
 				<th></th>
 			</tr>
 			<tr *ngFor="let item of allTimetables">
@@ -26,7 +25,8 @@
 						  <span class="glyphicon-pencil" aria-hidden="true"></span>
           					Update
 					</button>
-	            </td>
+				</td>
+				<br>
 				<td>
 					<button type="button" class="room-button btn btn-danger" (click)="deleteTimetable(item)">
 						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>

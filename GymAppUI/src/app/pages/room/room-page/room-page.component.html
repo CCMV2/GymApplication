@@ -19,7 +19,8 @@
         <button *ngIf="!updating || room != roomToUpdate" type="button" class="room-button btn btn-info" (click)="setRoomToUpdate(room)">
           <span class="glyphicon-pencil" aria-hidden="true"></span>
           Update
-        </button>
+				</button>
+				<br>
         <button *ngIf="updating && room == roomToUpdate" type="button" class="room-button btn btn-info" (click)="updateRoom()">
           <span class="glyphicon-pencil" aria-hidden="true"></span>
           Finish
@@ -33,7 +34,7 @@
 		<div></div>
 		<div class="row">
 			<div>
-				<input class="btn-primary btn room-btn create-button" type="button" value="Create"
+				<input id="createbtn" class="btn-primary btn room-btn create-button" type="button" value="Create"
 					(click)="mode='create'">
 			</div>
 		</div>

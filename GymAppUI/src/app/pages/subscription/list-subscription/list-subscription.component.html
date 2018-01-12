@@ -1,6 +1,8 @@
-<h1>
+<legend>
+<h2>
   Subscription list
-</h1>
+</h2>
+</legend>
 <table class="table table-condensed table-hover">
   <tr>
     <th>Name</th>
@@ -27,10 +29,10 @@
       </table>
     </td>
     <td>
-        <button type="button" class="btn btn-primary-outline pull-right" (click)="delete(entry.subscription)"><i class="fa fa-plus"></i>Delete</button>
-        <br>
-        <br>
         <button id="update" type="button" class="btn btn-primary-outline pull-right" (click)="updateSubscription(entry)"><i class="fa fa-plus"></i>Update</button>
+        <br>
+        <br>
+        <button id="delete" type="button" class="btn btn-primary-outline pull-right" (click)="delete(entry.subscription)"><i class="fa fa-plus"></i>Delete</button>
     </td>
     </tr>
     

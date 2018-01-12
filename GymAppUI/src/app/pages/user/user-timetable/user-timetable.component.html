@@ -10,7 +10,7 @@
 				<th><font color="white">Room</font></th>
 				<th><font color="white">Workout</font></th>
 			</tr>
-			<tr *ngFor="let item of userClient.userTimetable">
+			<tr *ngFor="let item of userClient?.userTimetable">
 				<td>{{item?.id}}</td>
 				<td>{{item?.day}}</td>
 				<td ng-non-bindable>{{item?.start | date:'HH:mm'}}</td>

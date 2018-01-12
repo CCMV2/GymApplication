@@ -14,6 +14,7 @@
   color: white;
   margin-left: 4px;
   margin-top: 8px;
+  cursor: pointer;
 }
 
 .button-entry {
@@ -34,7 +35,7 @@
   border-top: 0px;
   font-size: 17px;
   font-weight: 400;
-  width: 150px;
+  width: 250px;
   border-radius: 0px;
 }
 
@@ -49,4 +50,9 @@
 .button-div {
   position: relative;
   top: 0;
+}
+
+.logout-button-div {
+  position: absolute;
+  right: 10px;
 }

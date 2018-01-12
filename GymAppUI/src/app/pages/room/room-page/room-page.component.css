@@ -1,34 +1,38 @@
-.room-table{
-    margin-top: 30px;
-    margin: 0 auto;
+h1{
+  text-align: center;
 }
 
-.room-table th{
-    background-color: #14305e;
-    color: white;
-    text-align:center;
+button {
+  background-color:#14305e;
+  border: none;
+  color: white;
+  padding: 3px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  width: 95px;
 }
 
-.room-btn{
-    min-width: 230px;
+#delete:hover{
+  background-color: rgb(238, 51, 51);
+  color: white;
 }
 
-.room-table tr.selected tr{
-    background-color: black;
+#update:hover{
+  background-color: #5285d1;
+  color: white; 
 }
 
-.create-div {
-  margin-top: 20px;
+#img{
+  max-width: 200px;
+  max-height: 150px;
+  align-content: left;
 }
 
-.room-button {
-  margin-left: 20px;
-}
-
-.create-button {
-  margin-top: 20px;
-}
-
-.room-name {
-  width: 200px;
+#createbtn{
+  background-color: #14305e;
 }

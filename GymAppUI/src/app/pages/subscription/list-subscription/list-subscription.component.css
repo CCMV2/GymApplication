@@ -3,7 +3,7 @@ h1{
 }
 
 button {
-    background-color:#e60909;
+    background-color:#14305e;
     border: none;
     color: white;
     padding: 3px 12px;
@@ -14,11 +14,19 @@ button {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px;
+    width: 95px;
 }
 
-#update{
-    background-color: #09a7e6
-}
+#delete:hover{
+    background-color: rgb(238, 51, 51);
+    color: white;
+  }
+  
+  #update:hover{
+    background-color: #5285d1;
+    color: white; 
+  }
+  
 #img{
     max-width: 200px;
     max-height: 150px;

@@ -28,10 +28,6 @@
     transition: 0.3s;
 }
 
-h2{
-    text-indent: 150px;
-}
-
 #wrkk{
     width: 200px;
 }
@@ -92,10 +88,11 @@ div.p{
 }
 
 .inputLogin 				{
-  font-size:18px;
-  padding:10px 10px 10px 5px;
+  size: 12px;
+  font-size:15px;
+  padding:10px 10px 5px 5px;
   display:block;
-  width:300px;
+  width:370px;
   border:none;
   border-bottom:1px solid #757575;
 }
@@ -139,18 +136,27 @@ div.box{
   font-size:15px;
   margin: 0 auto;
 }
+
 div.userpass{
   position:relative;
-  margin-bottom:45px;
+  margin-bottom:2.4vw;
 }
 
 .multi-select-thing div{
   width: 200px;
 }
 
+label{
+  display:inline-block;
+  width:100px;
+  font-size: 15px;
+  font-weight: normal;
+  color: black;
+}
+
 .labelLogin 				 {
-  color:#999;
-  font-size:18px;
+  color:black;
+  font-size:15px;
   font-weight:normal;
   position:absolute;
   pointer-events:none;
@@ -159,15 +165,16 @@ div.userpass{
   transition:0.2s ease all;
   -moz-transition:0.2s ease all;
   -webkit-transition:0.2s ease all;
+  width: 200px;
 }
 
 .inputLogin:focus ~ .labelLogin, .inputLogin:valid ~ .labelLogin 		{
   top:-20px;
-  font-size:14px;
-  color:#5264AE;
+  font-size:13px;
+  color:#999F;
 }
 
-.bar 	{ position:relative; display:block; width:300px; }
+.bar 	{ position:relative; display:block; width:370px; }
 .bar:before, .bar:after 	{
   content:'';
   height:2px;

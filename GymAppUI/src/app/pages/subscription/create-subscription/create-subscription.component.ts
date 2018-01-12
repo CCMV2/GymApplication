@@ -72,7 +72,7 @@ export class CreateSubscriptionComponent implements OnInit {
   }
 
   handleError(): void {
-    alert('eroare');
+    alert('error');
   }
 
   informUser(res: Response): void {

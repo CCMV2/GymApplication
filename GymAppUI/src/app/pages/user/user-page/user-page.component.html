@@ -1,10 +1,11 @@
-<h1>
+<legend>
+<h2>
   User list
-</h1>
+</h2>
+</legend>
 <table class="table table-condensed table-hover">
   <tr>
     <th>ID</th>
-    
     <th>Type</th>
     <th>Email</th>
     <th>Name</th>
@@ -48,12 +49,10 @@
       </div>
     </td>
     <td>
-      <button type="delete-button" class="btn btn-primary-outline pull-right" (click)="delete(entry)"><i class="fa fa-plus"></i>Delete</button>
-      <br>
-      <br>
       <button type="update-button" id="update" class="btn btn-primary-outline pull-right" (click)="updateUser(entry)"><i class="fa fa-plus"></i>Update</button>
-      <br>
        <button type="edit-button" id="edit" *ngIf="entry.userType==='CLIENT'"  class="btn btn-primary-outline pull-right" (click)="showTimetable(entry)"><i class="fa fa-plus"></i>Edit Timetable</button>
+      <br>
+       <button type="delete-button" id="delete" class="btn btn-primary-outline pull-right" (click)="delete(entry)"><i class="fa fa-plus"></i>Delete</button>
     </td>
   </tr>
 

@@ -1,15 +1,16 @@
-<fieldset>
+
 	<legend>
-		<h2>Workout List</h2>
+		<h2>
+			Workout List
+		</h2>
 	</legend>
-	<form>
-		<table class="table table-hover list-table" id="workoutTable">
+		<table class="table table-condensed table-hover" id="workoutTable">
 			<tr>
 				<th>Name</th>
 				<th>Difficulty</th>
 				<th>Trainers</th>
 				<th class="description">Description</th>
-				<th colspan="2">Operations</th>
+				<th colspan=""></th>
 			</tr>
 			<tr *ngFor="let trainerworkout of allWorkouts" class.selected = "selectedTrainerWorkout === trainerworkout">
 				<td>{{trainerworkout.workout.workoutType}}</td>
@@ -26,19 +27,16 @@
           </div>
         </td>
 
-				<td id="button1">
-					<button type="button" class="room-button btn btn-info" (click)="update(trainerworkout)">
-            <span class="glyphicon-pencil" aria-hidden="true"></span>
+				<td>
+					<button id="update" type="update-button" class="btn btn-primary-outline pull-right" (click)="update(trainerworkout)">
+							<i class="fa fa-plus"></i>
 						Update
 					</button>
-				</td>
-				<td id="button2">
-					<button type="button" class="room-button btn btn-danger" (click)="delete(trainerworkout)">
-						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+					<br>
+					<button id="delete" type="delete-button" class="btn btn-primary-outline pull-right" (click)="delete(trainerworkout)">
+							<i class="fa fa-plus"></i>
 						Delete
 					</button>
 				</td>
 			</tr>
 		</table>
-	</form>
-</fieldset>
