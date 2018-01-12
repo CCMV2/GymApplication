@@ -34,7 +34,7 @@
 		<div></div>
 		<div class="row">
 			<div>
-				<input id="createbtn" class="btn-primary btn room-btn create-button" type="button" value="Create Room"
+				<input *ngIf="mode!=='create'" id="createbtn" class="btn-primary btn room-btn create-button" type="button" value="Create Room"
 					(click)="mode='create'">
 			</div>
 		</div>

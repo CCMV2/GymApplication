@@ -82,9 +82,7 @@
       <label for="admin">ADMIN</label>
     </div>
   </div>
-  <button class="btn btn-primary" (click)="addUser()">
-      <span>Submit </span>
-    </button>
+
     <div *ngIf="createdUser.userType==='TRAINER'" class="form-group">
       <label class="control-label col-sm-4">Choose a picture:</label>
       <div class="col-sm-7">
@@ -93,5 +91,12 @@
         <img id="imagine" src="" height="200" alt="Image preview...">
       </div>
     </div>
+
+    
+  <div id="btndiv">
+        <button type="button" class="button" (click)="addUser()">
+            <span>Submit </span>
+          </button>
+          </div>
 
   </div>
