@@ -1,50 +1,78 @@
-<fieldset>
+
     <legend>
 		<h2>Update Subscription</h2>
     </legend>
-    <div class="centered col-sm-7">
-    <form class="form-horizontal">
+    <div class="align">
+    <div class="form-group">
             <div class="alert" *ngIf="message.length > 0">
 					<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 					<strong>{{message}}!</strong>
-				</div>
+                </div>
         <div class="form-group">
+            <div class="userpass">
+                <input class="inputLogin" type="text" required name="SubName" [(ngModel)]="subscription.name"/>
+                <span class="highlight"></span>
+                <span class="bar"></span><label class="labelLogin"> Subscription Name </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="userpass">
+              <input class="inputLogin" type="number" required name="Price" [(ngModel)]="subscription.price"/>
+              <span class="highlight"></span>
+              <span class="bar"></span><label class="labelLogin"> Price </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="userpass">
+              <input class="inputLogin" type="number" required name="Duration" [(ngModel)]="subscription.duration"/>
+              <span class="highlight"></span>
+              <span class="bar"></span><label class="labelLogin"> Duration (days) </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label"> Workouts </label>
+            <div class="" style="width: 200px;">
+                <p-multiSelect [style]="{'width':'100%'}" name="workouts" [options]="workouts" [(ngModel)]="workoutList.workouts" optionLabel="workoutType"></p-multiSelect>
+            </div>
+        </div>
+        <!-- <div class="form-group">
             <label class="control-label col-sm-3" for="name">Subscription name:</label>
             <div class="col-sm-9">
                 <input type="text" name="SubName" [(ngModel)]="subscription.name">
             </div>
-        </div>
+        </div> -->
 
-        <div  class="form-group">
+        <!-- <div  class="form-group">
             <label  class="control-label col-sm-3" for="price" >Price:</label>
             <div  class="col-sm-9">
                 <input type="number" name="Price" step="0.01" min=0 oninput="validity.valid||(value='');" [(ngModel)]="subscription.price" ><br>
             </div>
-        </div>
+        </div> -->
 
-        <div  class="form-group">
+        <!-- <div  class="form-group">
             <label  class="control-label col-sm-3" for="duration">Duration:</label>
             <div  class="col-sm-9">
                 <input type="number" name="Duration" min=0 oninput="validity.valid||(value='');" [(ngModel)]="subscription.duration">
             </div>
-        </div>
-        <div class="form-group">
+        </div> -->
+        <!-- <div class="form-group">
             <label  class="control-label col-sm-3" for="workouts">Subscription:</label>
             <div  class="col-sm-9">
         		<p-multiSelect name="workouts" [options]="workouts" [(ngModel)]="workoutList.workouts" optionLabel="workoutType"></p-multiSelect>
             </div>
-        </div>
+        </div> -->
       <div class="form-group">
-        <label class="control-label col-sm-4">Choose a picture:</label>
-        <div class="col-sm-7">
-          <input type="file" (change)="upload($event)">
+        <label class="control-label">Choose a picture</label>
+        <div>
+          <input type="file" class="fielup" (change)="upload($event)">
           <br>
           <img id="imagine" src="{{subscriptionImage}}" height="200" alt="Image preview...">
         </div>
       </div>
 
-        <button type="submit"(click)="updateSubscription()" class="btn btn-success submit">Submit</button>
-
-    </form>
+      <div id="btndiv">
+        <button type="button" class="button" (click)="updateSubscription()"><span>Submit </span></button>
+        </div>
     </div>
-</fieldset>
+    </div>
+

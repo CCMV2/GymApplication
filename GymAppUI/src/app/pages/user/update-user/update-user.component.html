@@ -1,21 +1,55 @@
-<fieldset>
   <legend>
     <h2>Update User</h2>
   </legend>
+<div class="align">
 <div style= " margin: 0 auto;">
   	<div class="alert" *ngIf="message.length > 0">
 		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
 		<strong>{{message}}!</strong> 
 	</div>
   
- <label> First name:  </label><input type="text" name="fname" [(ngModel)]="createdUser.name"><br>
- <label> Last name:  </label><input type="text" name="lname" [(ngModel)]="createdUser.surname"><br>
-  <label *ngIf="createdUser.userType!=='CLIENT'">Password:</label>  <input *ngIf="createdUser.userType!=='CLIENT'" type="password" name="passw" [(ngModel)]="createdUser.password">
-  <label *ngIf="createdUser.userType==='CLIENT'">CNP:</label>  <input *ngIf="createdUser.userType==='CLIENT'" type="text" name="passw" [(ngModel)]="createdUser.cnp">
-  <br>
-  <label>Email:</label> <input type="text" name="email" [(ngModel)]="createdUser.email"><br>
-  <label>PhoneNr:</label> <input type="text" name="phonenr" [(ngModel)]="createdUser.phonenumber"><br>
-  <!-- Subscription ID: ?? -->
+  <div class="form-group">
+    <div class="userpass">
+        <input class="inputLogin" type="text" required name="fname" [(ngModel)]="createdUser.name">
+        <span class="highlight"></span>
+        <span class="bar"></span><label class="labelLogin"> First Name </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="userpass">
+        <input class="inputLogin" type="text" required name="lname" [(ngModel)]="createdUser.surname">
+        <span class="highlight"></span>
+        <span class="bar"></span><label class="labelLogin"> Last Name </label>
+    </div>
+</div>
+<div *ngIf="createdUser.userType!=='CLIENT'" class="form-group">
+  <div class="userpass">
+      <input class="inputLogin" type="password" required name="passw" [(ngModel)]="createdUser.password">
+      <span class="highlight"></span>
+      <span class="bar"></span><label class="labelLogin"> Password </label>
+  </div>
+</div>
+<div *ngIf="createdUser.userType==='CLIENT'" class="form-group">
+  <div class="userpass">
+      <input class="inputLogin" type="text" required name="passw" [(ngModel)]="createdUser.cnp">
+      <span class="highlight"></span>
+      <span class="bar"></span><label class="labelLogin"> CNP (Password) </label>
+  </div>
+</div>
+<div class="form-group">
+  <div class="userpass">
+      <input class="inputLogin" type="text" required name="email" [(ngModel)]="createdUser.email">
+      <span class="highlight"></span>
+      <span class="bar"></span><label class="labelLogin"> Email </label>
+  </div>
+</div>
+<div class="form-group">
+  <div class="userpass">
+      <input class="inputLogin" type="text" required name="phonenr" [(ngModel)]="createdUser.phonenumber">
+      <span class="highlight"></span>
+      <span class="bar"></span><label class="labelLogin"> Phone Nr </label>
+  </div>
+</div>
   <div>
     <label for="type">Choose Type: </label>
 
@@ -56,10 +90,11 @@
                 <option *ngFor="let sub of subscriptionList" [ngValue]="sub.subscriptionId" >{{sub.name}}</option>
             </select>
         </div>
-        </fieldset>
+  </fieldset>
   <!--
   <input type="submit" value="Submit"> -->
+  <div id="btndiv">
   <button type="button" class="button" (click)="updateUser()"><span>Submit </span></button>
   </div>
-</fieldset>
-
+</div>
+</div>

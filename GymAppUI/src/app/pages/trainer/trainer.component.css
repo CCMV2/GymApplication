@@ -1,9 +1,8 @@
 .trainer-card {
   height: 200px;
   width: 800px;
-  background-color: #14305e;
   margin: 30px 30px 30px 30px;
-  color: white;
+  color: black;
   border-radius: 10px;
   display: flex;
 }
@@ -29,7 +28,6 @@
 }
 
 .trainer-info {
-  background-color: #13274b;
   border-radius: 10px;
   margin-left: 10px;
   height: 120px;

@@ -9,6 +9,10 @@
     background-color: #09a7e6;
 	color: rgb(0, 0, 0);
 	text-align: center;
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .closebtn {
@@ -21,3 +25,200 @@
     cursor: pointer;
     transition: 0.3s;
 }
+
+.formLogin{
+    margin-top : 50px;
+    margin-left: 17px;
+    margin-bottom: 50px;
+    margin-right: 17px;
+    background-color: white;
+  }
+  
+  .inputLogin 				{
+    size: 12px;
+    font-size:15px;
+    padding:10px 10px 5px 5px;
+    display:block;
+    width:370px;
+    border:none;
+    border-bottom:1px solid #757575;
+  }
+  
+  .inputLogin:focus 		{ outline:none; }
+  
+  /* input{
+      background-color: white;
+      display: inline-block;
+      margin-right: 10px;
+      height: 35px;
+      text-align: center;
+  } */
+  
+  button.login-button{
+    color: #000045;
+    border-color: #000045;
+    font-size:15px;
+    opacity: 0.6;
+  }
+  
+  button.login-button:hover{
+    background-color:#000045;
+    border-color: #000045;
+  }
+  
+  div.box{
+    font-weight: 500;
+    text-align:center;
+    font-family: verdana,arial,sans-serif;
+    /* border-radius: 7px 7px 12px 12px; */
+    padding: 1px 1px 5px 5px;
+    width: 90%;
+    max-width: 320px;
+    background-color:white;
+    opacity: 0.6;
+    position: relative;
+    padding-bottom: 1px;
+    box-shadow: 0px 1px 5px white(185, 185, 185, 0.95);
+    /* color: white; */
+    font-size:15px;
+    margin: 0 auto;
+  }
+  
+  div.userpass{
+    position:relative;
+    margin-bottom:2.4vw;
+  }
+  
+  .multi-select-thing div{
+    width: 200px;
+  }
+  
+  label{
+    display:inline-block;
+    width:100px;
+    font-size: 15px;
+    font-weight: normal;
+    color: black;
+  }
+  
+  .labelLogin 				 {
+    color:black;
+    font-size:15px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:5px;
+    top:10px;
+    transition:0.2s ease all;
+    -moz-transition:0.2s ease all;
+    -webkit-transition:0.2s ease all;
+    width: 200px;
+  }
+  
+  .inputLogin:focus ~ .labelLogin, .inputLogin:valid ~ .labelLogin 		{
+    top:-20px;
+    font-size:13px;
+    color:#999F;
+  }
+  
+  .bar 	{ position:relative; display:block; width:370px; }
+  .bar:before, .bar:after 	{
+    content:'';
+    height:2px;
+    width:0;
+    bottom:1px;
+    position:absolute;
+    background:#5264AE;
+    transition:0.2s ease all;
+    -moz-transition:0.2s ease all;
+    -webkit-transition:0.2s ease all;
+  }
+  .bar:before {
+    left:50%;
+  }
+  .bar:after {
+    right:50%;
+  }
+  
+  .inputLogin:focus ~ .bar:before, .inputLogin:focus ~ .bar:after {
+    width:50%;
+  }
+  
+  .highlight {
+    position:absolute;
+    height:60%;
+    width:100px;
+    top:25%;
+    left:0;
+    pointer-events:none;
+    opacity:0.5;
+  }
+  
+  .inputLogin:focus ~ .highlight {
+    -webkit-animation:inputHighlighter 0.3s ease;
+    -moz-animation:inputHighlighter 0.3s ease;
+    animation:inputHighlighter 0.3s ease;
+  }
+  
+  @-webkit-keyframes inputHighlighter {
+    from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+  }
+  @-moz-keyframes inputHighlighter {
+    from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+  }
+  @keyframes inputHighlighter {
+    from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+  }
+  
+  #btndiv {
+    padding-top: 15px;
+  }
+
+  .align{
+    display: inline-flex;
+  }
+
+  .button {
+    border-radius: 4px;
+    background-color: #14305e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    width: 110px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    left: 80%;  
+    position: relative;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+  

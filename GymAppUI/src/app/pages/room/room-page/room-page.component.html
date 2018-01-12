@@ -20,12 +20,12 @@
           <span class="glyphicon-pencil" aria-hidden="true"></span>
           Update
 				</button>
-				<br>
         <button *ngIf="updating && room == roomToUpdate" type="button" class="room-button btn btn-info" (click)="updateRoom()">
           <span class="glyphicon-pencil" aria-hidden="true"></span>
           Finish
-        </button>
-					<button type="button" class="room-button btn btn-danger" (click)="deleteRoom(room)">
+				</button>
+				<br>
+					<button *ngIf="!updating || room != roomToUpdate" type="button" class="room-button btn btn-danger" (click)="deleteRoom(room)">
 						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 						Delete
 					</button>
@@ -34,13 +34,23 @@
 		<div></div>
 		<div class="row">
 			<div>
-				<input id="createbtn" class="btn-primary btn room-btn create-button" type="button" value="Create"
+				<input id="createbtn" class="btn-primary btn room-btn create-button" type="button" value="Create Room"
 					(click)="mode='create'">
 			</div>
 		</div>
 		<div *ngIf="mode==='create'" class="create-div">
-			Name: <input type="text" class="form-control room-name" [(ngModel)]="roomToCreate.roomName">
-			<input type="button" class="btn-primary btn create-button" value="Create Room" (click)="addRoom()">
+				<div class="form-group">
+						<div class="userpass">
+								<input class="inputLogin" required name="room" type="text" [(ngModel)]="roomToCreate.roomName">
+								<span class="highlight"></span>
+								<span class="bar"></span><label class="labelLogin"> Room Name </label>
+						</div>
+				</div>
+			<!-- Name: <input type="text" class="form-control room-name" [(ngModel)]="roomToCreate.roomName"> -->
+			<div id="btndiv">
+					<button type="button" class="btnsubmit button" (click)="addRoom()"><span>Submit </span></button>
+			</div>
+			<!-- <input type="button" class="btn-primary btn create-button" value="Create Room" (click)="addRoom()"> -->
 		</div>
 		<div class="alert" *ngIf="message.length > 0">
 			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
