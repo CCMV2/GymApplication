@@ -1,4 +1,4 @@
-<div class="user-pane">
+<div *ngIf="this.router.url !== '/home'" class="user-pane">
   <span class="glyphicon glyphicon-home home-button" (click)="navigate({link: 'home'})"></span>
 
   <div class="button-div" *ngFor="let button of buttons">

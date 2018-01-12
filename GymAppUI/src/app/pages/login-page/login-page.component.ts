@@ -22,7 +22,7 @@ export class LoginPageComponent implements OnInit {
 
     ngOnInit() {
         this.authenticationService.logout();
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
         this.authenticationService.logout();
         const succsess = this.route.snapshot.queryParams['logout'] && this.route.snapshot.queryParams['logout'].length > 0;
         this.success = succsess ? 'You have been succesfully logged out' : '';
