@@ -24,15 +24,15 @@ public class MailController {
 	private SubscriptionService subscriptionService;
 	@RequestMapping(value = "/mailSender", method = RequestMethod.POST)
 	public String sendMail(@RequestBody Mail mail) {
-		//try {
+		try {
 			List<String> emailAdressList = getMailAdreses(mail.getSubs());
 			for(String adress : emailAdressList){
 				MailUtil.sendMail(mail.getSubject(), mail.getBody(), adress);
 			}
 			return "Successfully Sent E-mails";
-//		}catch (Exception e){
-	//		return "Failed to Send E-mails";
-		///}
+		}catch (Exception e){
+			return "Failed to Send E-mails";
+		}
 	}
 	
 	public List<String> getMailAdreses(List<Subscription> listOfSubs){

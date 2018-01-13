@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>gymapp</name>
-	<description>Demo project for Spring Boot</description>
+	<description>NTT Gym</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -43,11 +43,10 @@
 			<version>0.7.0</version>
 		</dependency>
 		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4</version>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.0</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

@@ -1,4 +1,5 @@
 package utils;
+import java.security.GeneralSecurityException;
 import java.util.Properties;
 import java.util.Random;
 
@@ -10,14 +11,20 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import com.sun.mail.util.MailSSLSocketFactory;
+
 public class MailUtil {
 
-	public static void sendMail(String mailSubject, String mailMessage, String recipientMailAdress) {
+	public static void sendMail(String mailSubject, String mailMessage, String recipientMailAdress) throws GeneralSecurityException {
 
 		final String username = "eventim2.0@gmail.com";
 		final String password = "practica17";
 
-		Properties props = new Properties();
+		Properties props = System.getProperties();
+		MailSSLSocketFactory sf = new MailSSLSocketFactory();
+		sf.setTrustAllHosts(true); 
+		props.put("mail.smtp.ssl.trust", "*");
+		props.put("mail.smtp.ssl.socketFactory", sf);
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
 		props.put("mail.smtp.host", "smtp.gmail.com");
