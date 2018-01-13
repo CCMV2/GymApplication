@@ -5,7 +5,7 @@
   <app-header class="col-md-12" *ngIf="isUser() && this.router.url === '/home'"></app-header>
   <app-header class="col-md-12" *ngIf="isUser() && this.router.url !== '/home'" style="margin-top:57px;"></app-header>
   <navigation-pane (closeState)="changeMenuState($event)" class="col-md-2 nav-pane" *ngIf="isAdminOrTrainer()"></navigation-pane>
-   <user-menu *ngIf="!isAdminOrTrainer()"></user-menu>
+   <user-menu *ngIf="!isAdminOrTrainer() && this.router.url !== '/home' && this.router.url !== '/'"></user-menu>
   <div [style.margin-left.px]="pageMargin"
        *ngIf="isAdminOrTrainer()"
        style="margin-right: 0px">

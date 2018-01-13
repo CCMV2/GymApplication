@@ -1,8 +1,27 @@
-agm-map {
-  height: 400px;
+.map {
+  height: 650px;
   width: 900px;
-  float: right
- }
- .left-align{
- 	float:left;
- }
+  float: right;
+  position: relative;
+  top: 100px;
+  right: 20px;
+}
+
+.left-align {
+  float: left;
+}
+
+.contact-info {
+  font-size: 30px;
+  margin-left: 100px;
+  margin-top: 100px;
+  width: 400px;
+}
+
+.contact-container {
+  display: inline-flex;
+}
+
+.map-container {
+  margin-left: 400px;
+}

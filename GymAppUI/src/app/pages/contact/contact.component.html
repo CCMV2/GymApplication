@@ -2,21 +2,21 @@
 	<input type="button" class="test" value="Home"
 		onclick="window.location.href='http://localhost:4200'" />
 </div> -->
-<div class="left-align">
-	<div>
-		<label>Phone Number:</label> <span>071234567</span>
-	</div>
-	<div>
-		<label>Address:</label><br/> <span>Strada Constanta nr. 19-21,</span><br />
-		<span> Cluj-Napoca,</span><br />
-		<span>Cluj</span>
-	</div>
-	<div>
-		<label>Schedule:</label> <span>08:00 - 22:00 daily </span>
-	</div>
-</div>
-<div>
-	<agm-map [latitude]="46.7757348" [longitude]="23.5939828" [zoom]="19">
-	<agm-marker [latitude]="46.7757348" [longitude]="23.5939828"></agm-marker>
-	</agm-map>
+<div class="contact-container">
+  <div class="contact-info">
+    <div>
+      <label>Phone Number:</label> <span>071234567</span>
+    </div>
+    <div>
+      <label>Address:</label> <span>Strada Constanta nr. 19-21, Cluj-Napoca, Cluj</span>
+    </div>
+    <div>
+      <label>Schedule:</label> <span>08:00 - 22:00 daily </span>
+    </div>
+  </div>
+  <div class="map-container">
+    <agm-map class="map" [latitude]="46.7757348" [longitude]="23.5939828" [zoom]="19">
+      <agm-marker [latitude]="46.7757348" [longitude]="23.5939828"></agm-marker>
+    </agm-map>
+  </div>
 </div>

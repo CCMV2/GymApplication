@@ -6,6 +6,9 @@
   color: black;
   border-radius: 10px;
   display: flex;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .trainer-image {
