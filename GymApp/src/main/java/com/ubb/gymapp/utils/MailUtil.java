@@ -1,4 +1,4 @@
-package utils;
+package com.ubb.gymapp.utils;
 import java.security.GeneralSecurityException;
 import java.util.Properties;
 import java.util.Random;
