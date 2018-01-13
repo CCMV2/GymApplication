@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -14,9 +15,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.ubb.gymapp.model.Client;
 import com.ubb.gymapp.model.Rating;
 import com.ubb.gymapp.model.Subscription;
 import com.ubb.gymapp.repository.SubscriptionRepository;
+import com.ubb.gymapp.repository.UserRepository;
 
 
 @RunWith(SpringRunner.class)
@@ -25,6 +28,8 @@ public class SubscriptionTest {
 	
 	@Autowired 
 	private SubscriptionRepository subscriptionRepo;
+	@Autowired
+	private UserRepository userRepo;
 	/**
 	 * Test for CREATE
 	 */
@@ -45,6 +50,20 @@ public class SubscriptionTest {
 	/**
 	 * Tests for READ
 	 */
+	
+	@Test
+	public void testGetClients(){
+		Subscription subscription = new Subscription("testAbo",680.0,23, null);
+		subscription = subscriptionRepo.save(subscription);
+		Client user = new Client("aaa", "aaa", "aaa", "geraldlionb@gmail.com", "aaa");
+		user.setSubscription(subscription);
+		user = userRepo.save(user);
+		List<Client> listOfClients = subscriptionRepo.findClients(Arrays.asList(subscription.getSubscriptionId()));
+		assertNotNull(listOfClients);
+		assertEquals(listOfClients.get(0).getId(), user.getId());
+		userRepo.delete(user);
+		subscriptionRepo.delete(subscription);
+	}
 	
 	@Test
 	public void readOneSubscription(){

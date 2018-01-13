@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ubb.gymapp.dto.SubscriptionWorkouts;
+import com.ubb.gymapp.model.Client;
 import com.ubb.gymapp.model.Subscription;
 import com.ubb.gymapp.model.Workout;
 import com.ubb.gymapp.model.WorkoutList;
 import com.ubb.gymapp.repository.SubscriptionRepository;
+import com.ubb.gymapp.repository.UserRepository;
 import com.ubb.gymapp.repository.WorkoutListRepository;
 import com.ubb.gymapp.service.SubscriptionService;
 
@@ -59,6 +61,18 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	public void deleteSubscription(Subscription subscription) {
 		workoutListRepo.deleteBySubscription(subscription);
 		subscriptionRepo.delete(subscription);
+	}
+
+	@Override
+	public List<Client> findClients(List<Subscription> listofsubs) {
+		// TODO Auto-generated method stub
+		List<Long> listSubId = new ArrayList<Long>();
+		for(Subscription elem : listofsubs){
+			listSubId.add(elem.getSubscriptionId());
+		}
+		
+		List<Client> clientList = subscriptionRepo.findClients(listSubId) ;
+		return clientList;
 	}
 
 

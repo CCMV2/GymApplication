@@ -13,6 +13,7 @@ export class MailutilComponent implements OnInit {
     subList: Subscription[];
     constructor( private backendService: BackendService ) { }
     mail = new Mail( '', [], '' );
+    message = "";
     ngOnInit() {
         this.getAllSubs();
     }
@@ -20,6 +21,18 @@ export class MailutilComponent implements OnInit {
     getAllSubs() {
         this.backendService.getAllSubscriptionsForUser().subscribe( res => {
             this.subList = res;
+        } );
+    }
+    
+    sendMails(){
+        for (const elem of this.subList) {
+            if (elem.imageBase64 == null){
+                elem.imageBase64 = '';
+                }
+        }
+        this.backendService.sendMail(this.mail).subscribe(res => {
+            console.log(res);
+        this.message = res;
         } );
     }
 }

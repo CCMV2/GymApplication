@@ -1,6 +1,8 @@
 package com.ubb.gymapp.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,10 +12,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ubb.gymapp.model.Rating;
 
 @Entity
@@ -33,6 +37,7 @@ public class Subscription implements Serializable {
 	private Rating rat;
 	private String imageBase64;
 	private byte[] image;
+	private List<Client> clients=new ArrayList<Client>();
 
 	public Subscription(String name,Double price, Integer duration,byte[] image) {
 		this.name = name;
@@ -107,7 +112,16 @@ public class Subscription implements Serializable {
 		}
 		this.image = theBytes;
 	}
-	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "subscription", cascade = CascadeType.PERSIST)
+	public List<Client> getClients() {
+		return clients;
+	}
+
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
+
 	@Column(name= "Pic")
 	public byte[] getImage() {
 		return image;
