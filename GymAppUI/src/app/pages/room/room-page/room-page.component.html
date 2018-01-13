@@ -16,18 +16,16 @@
           </span>
           <input class="form-control room-name" *ngIf="room == roomToUpdate" type="text" [(ngModel)]="roomToUpdate.roomName">
         </td>
-        <button *ngIf="!updating || room != roomToUpdate" type="button" class="room-button btn btn-info" (click)="setRoomToUpdate(room)">
-          <span class="glyphicon-pencil" aria-hidden="true"></span>
-          Update
+        <button id="update" *ngIf="!updating || room != roomToUpdate" type="button" class="btn btn-primary-outline pull-right" (click)="setRoomToUpdate(room)">
+          <i class="fa fa-plus"></i> Update
 				</button>
         <button *ngIf="updating && room == roomToUpdate" type="button" class="room-button btn btn-info" (click)="updateRoom()">
           <span class="glyphicon-pencil" aria-hidden="true"></span>
           Finish
 				</button>
 				<br>
-					<button *ngIf="!updating || room != roomToUpdate" type="button" class="room-button btn btn-danger" (click)="deleteRoom(room)">
-						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-						Delete
+					<button id="delete" *ngIf="!updating || room != roomToUpdate" type="button" class="btn btn-primary-outline pull-right" (click)="deleteRoom(room)">
+						<i class="fa fa-minus"></i> Delete
 					</button>
 			</tr>
 		</table>
