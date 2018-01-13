@@ -1,20 +1,44 @@
-<div id="mail-wrapper">
-<div id="mail_main">
 
  <div class="alert" *ngIf="message.length > 0">
     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
     <strong>{{message}}</strong>
   </div>
-	<b>Subject: </b> <input [(ngModel)]="mail.subject" type="text"
-		placeholder="Subject"> <br>
-	<br> <b>Body: </b>
-	<textarea [(ngModel)]="mail.body" rows="4" cols="50"></textarea>
-	<br>
-	<br> <b>Choose to what  group of people this e-mail
-		shall be adressed to</b>
-	<p-multiSelect name="subList" [options]="subList"
-		[(ngModel)]="mail.subs" optionLabel="name"></p-multiSelect>
+	  	
+	  	
+	  	  <legend>
+    <h2>Send Email</h2>
+  </legend>
+	  	
+	  
+	  	<div>
+		<label for = " subject" >Subject:</label> <br><input [(ngModel)]="mail.subject" type="text"
+			placeholder="Subject"> <br> <br> 
+		</div>
+	
+		<div>
+		 <label for ="body" >Body: </label> <br>
+		<textarea [(ngModel)]="mail.body"  type="text"
+			placeholder="Body" rows="4" cols="50"></textarea>
+		<br>
+		</div>
 		
-	<button type="button" class="button" (click)="sendMails()"><span>SEND </span></button>
-</div>
-</div>
+		<div>
+		
+		<br> <br> <b>Choose to what  group of people this e-mail shall be adressed to.</b> 
+		
+	<div><p-multiSelect name="subList" [options]="subList"
+		[(ngModel)]="mail.subs" optionLabel="name"></p-multiSelect>
+		</div>
+		
+		</div>
+	
+	<br> <br>
+	
+	<div> 
+	<button type="button" class="button" (click)="sendMails()">
+	<span>Send </span> <br>
+	</button>
+	</div>
+
+
+	
