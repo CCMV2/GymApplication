@@ -19,6 +19,10 @@ export class TrainerComponent implements OnInit {
 
   constructor(private backendservice: BackendService, private authenticationService: AuthenticationService) { }
 
+  isAdminOrTrainer(): boolean {
+    return this.authenticationService.hasRole(['ADMIN', 'TRAINER']);
+  }
+
   ngOnInit() {
     this.trainerImage = TRAINER_IMAGE.image;
     this.backendservice.getAllTrainers().subscribe(rez=>{

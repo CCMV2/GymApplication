@@ -1,5 +1,5 @@
 .user-pane {
-  background-color: #14305e;
+  background-color: rgba(255, 255, 255, 0.521);
   height: 50px;
   width: 100%;
   position: fixed;
@@ -7,6 +7,7 @@
   top: 0;
   z-index: 100;
   display: inline-flex;
+  color: black;
 }
 
 .home-button {
@@ -24,11 +25,11 @@
 .nav-btn {
   margin-left: 20px;
   height: 50px;
-  background-color: #14305e;
+  background-color: rgba(255, 255, 255, 0);;
   border-width: 0.05px;
   padding-bottom: 0px;
   padding-top: 0px;
-  color: white;
+  color: black;
   border-bottom: 0px;
   border-left: 0px;
   border-right: 0px;
@@ -40,16 +41,22 @@
 }
 
 .nav-btn:hover {
-  background-color: #0f213f;
+  background-color: rgba(165, 165, 165, 0.301);
+}
+
+.nav-btn:target {
+  background-color: rgba(119, 119, 119, 0.247);
 }
 
 .nav-btn:focus {
   outline: 0;
+  background-color: rgba(119, 119, 119, 0.247);
 }
 
 .button-div {
   position: relative;
   top: 0;
+  background-color: transparent;
 }
 
 .logout-button-div {
