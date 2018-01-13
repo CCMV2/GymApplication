@@ -23,6 +23,10 @@ export class ScheduleComponent implements OnInit {
 
     constructor(private backendService: BackendService, private authenticationService: AuthenticationService) { }
 
+    isAdminOrTrainer(): boolean {
+        return this.authenticationService.hasRole(['ADMIN', 'TRAINER']);
+    }
+
     ngOnInit() {
         this.getTimetables();
         this.getUserTimetables();

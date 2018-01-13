@@ -25,6 +25,7 @@ export class TrainerComponent implements OnInit {
 
   ngOnInit() {
     this.trainerImage = TRAINER_IMAGE.image;
+    // adaugare clasa pe body
     this.backendservice.getAllTrainers().subscribe(rez=>{
       this.trainers = rez;
       for(let i = 0; i<this.trainers.length; i++) {
@@ -39,6 +40,7 @@ export class TrainerComponent implements OnInit {
           this.trainers[i].stars.push({type:"empty", value: j+1});
         }
       }
+      //stergere clasa de pe body
       console.log(this.trainers);
     });
   }
