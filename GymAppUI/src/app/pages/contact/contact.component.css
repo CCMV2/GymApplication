@@ -4,5 +4,23 @@ agm-map {
   float: right
  }
  .left-align{
- 	float:left;
+   float:left;
+   margin-left: 3vw;
+   border-radius: 10px;
+   background-color: rgba(255, 255, 255, 0.61);
+   height: 11vw;
+   width: 24vw;
+   padding-left: 1.5vw;
+   padding-top: 0.5vw;
+   display: grid;
+   position: absolute;
  }
+
+ .backimage{
+  max-width: 100vw;
+  width: 100vw;
+  z-index: -100;
+  position: fixed;
+  top: 0;
+  left: 0;
+}

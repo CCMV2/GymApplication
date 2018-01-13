@@ -33,6 +33,7 @@
   margin-left: 10px;
   height: 120px;
   width: 575px;
+  font-size: 16px;
 }
 
 .trainer-rating {
@@ -52,5 +53,5 @@
 
 .card-client{
   border:0;
-  background-color: rgba(255, 255, 255, 0.521);
+  background-color: rgba(255, 255, 255, 0.61);
 }

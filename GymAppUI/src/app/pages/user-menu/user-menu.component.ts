@@ -21,8 +21,16 @@ export class UserMenuComponent implements OnInit {
 
   buttons: MenuButton[] = [
     {
-      label: "Trainer Overview",
+      label: "Home",
+      link: "home"
+    },
+    {
+      label: "Trainers",
       link: "trainer"
+    },
+    {
+      label: "Subscriptions",
+      link: "subscriptiondetails"
     },
     {
       label: "Schedule",
