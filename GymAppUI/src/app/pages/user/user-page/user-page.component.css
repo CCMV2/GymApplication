@@ -10,7 +10,7 @@ button {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px;
-    width: 95px;
+    width: 10vw;
 }
 
 
@@ -27,10 +27,6 @@ button {
     background-color: #5285d1;
     color: white; 
   }
-
-#edit{
-	background-color:grey;
-}
 
 table{
     font-size: 15px;
@@ -58,4 +54,8 @@ table{
     line-height: 20px;
     cursor: pointer;
     transition: 0.3s;
+}
+
+.crudbtns{
+    display: grid;
 }
