@@ -73,9 +73,9 @@ export class NavigationPaneComponent {
     ], usertype: ['ADMIN','TRAINER']
     },
     {
-      title: "Trainers", items: [
-      { active: false, url: "trainer", text: "Trainers" , usertype: ['ADMIN','TRAINER']}
-    ], usertype: ['ADMIN','TRAINER']
+      title: "Promotion Mails", items: [
+      { active: false, url: "sendMail", text: "Send Mail" , usertype: ['ADMIN']}
+    ], usertype: ['ADMIN']
     }
 
 

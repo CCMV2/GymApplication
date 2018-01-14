@@ -10,7 +10,7 @@ button {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px;
-    width: 95px;
+    width: 10vw;
 }
 
 
@@ -28,10 +28,6 @@ button {
     color: white; 
   }
 
-#edit{
-	background-color:grey;
-}
-
 table{
     font-size: 15px;
  	
@@ -40,8 +36,8 @@ table{
 
 .alert {
     padding: 20px;
-    background-color: #09a7e6;
-	color: rgb(0, 0, 0);
+    background-color: #14305e;
+	color: white;
 	text-align: center;
   position: fixed;
   top: 40px;
@@ -51,11 +47,15 @@ table{
 
 .closebtn {
     margin-left: 15px;
-    color: rgb(0, 0, 0);
+    color: white;
     font-weight: bold;
     float: right;
     font-size: 22px;
     line-height: 20px;
     cursor: pointer;
     transition: 0.3s;
+}
+
+.crudbtns{
+    display: grid;
 }

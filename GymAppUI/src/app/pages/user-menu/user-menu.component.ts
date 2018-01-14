@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {AuthenticationService} from "../../services/authentication.service";
 
 class MenuCluster {
   label: string;
@@ -21,8 +22,16 @@ export class UserMenuComponent implements OnInit {
 
   buttons: MenuButton[] = [
     {
-      label: "Trainer Overview",
+      label: "Home",
+      link: "home"
+    },
+    {
+      label: "Trainers",
       link: "trainer"
+    },
+    {
+      label: "Subscriptions",
+      link: "subscriptiondetails"
     },
     {
       label: "Schedule",
@@ -34,7 +43,7 @@ export class UserMenuComponent implements OnInit {
     }
   ];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authenticationService: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -46,5 +55,9 @@ export class UserMenuComponent implements OnInit {
 
   toggleHover(cluster: MenuCluster, state: boolean): void {
     cluster.active = state;
+  }
+
+  notLoggedIn(): boolean {
+    return !this.authenticationService.isLoggedIn();
   }
 }

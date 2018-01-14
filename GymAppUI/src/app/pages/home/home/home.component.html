@@ -42,18 +42,23 @@
 </div>
 <div *ngIf="!isAdminOrTrainer()">
   <img class="backimage" src="assets/images/mainpagephoto.png">
+  <img class="logo-image" src="assets/images/ntt.png">
   <div class="navmenu">
     <div id="firstnav" class="navoption">
       <label class="menu-label"> Trainers </label>
-      <img class="menuimage" src="assets/images/menuimg2.jpg" (click)="navigateTo('trainer')">
+      <img class="menuimage" src="assets/images/menuimg5.jpg" (click)="navigateTo('trainer')">
     </div>
+    <div class="navoption">
+        <label class="menu-label"> Subscriptions </label>
+        <img class="menuimage" src="assets/images/menuimg4.jpeg" (click)="navigateTo('subscriptiondetails')">
+        </div>
     <div class="navoption">
       <label class="menu-label"> Schedule </label>
       <img class="menuimage" src="assets/images/menuimg3.jpg" (click)="navigateTo('schedule')">
       </div>
     <div class="navoption">
       <label class="menu-label"> Contact </label>
-      <img class="menuimage" src="assets/images/menuimg4.jpeg" (click)="navigateTo('contact')">
+      <img class="menuimage" src="assets/images/menuimg6.jpg" (click)="navigateTo('contact')">
     </div>
   </div>
 </div>

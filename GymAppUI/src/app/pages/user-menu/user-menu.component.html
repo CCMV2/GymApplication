@@ -1,7 +1,7 @@
 <div *ngIf="this.router.url !== '/home'" class="user-pane">
-  <span class="glyphicon glyphicon-home home-button" (click)="navigate({link: 'home'})"></span>
-
+  <!-- <span class="glyphicon glyphicon-home home-button" (click)="navigate({link: 'home'})"></span> -->
   <div class="button-div" *ngFor="let button of buttons">
-    <input type="button" class="btn btn-primary nav-btn" value="{{button.label}}" (click)="navigate(button)">
+    <input type="button" class="btn btn-primary nav-btn" value="{{button.label}}" [class.pressed]="this.router.url==='/'+button.link" (click)="navigate(button)">
   </div>
+  <input *ngIf="notLoggedIn() && this.router.url !== '/login' && this.router.url !== '/login?logout=success'" type="button" class="btn btn-primary nav-btn login-button" value="Login" (click)="navigate({link:'login'})">
 </div>

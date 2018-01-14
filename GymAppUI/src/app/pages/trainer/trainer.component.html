@@ -1,6 +1,12 @@
+<div *ngIf="!isAdminOrTrainer()">
+<img class="backimage" src="assets/images/mainpagephoto5.jpeg">
+<legend class="col-sm-7">
+  <h1>
+    Trainer Overview
+  </h1>
+</legend>
 <div *ngFor='let trainer of trainers'>
-  <div class="trainer-card">
-
+  <div class="trainer-card card-client">
     <div class="image-container">
       <img *ngIf="trainer.imageBase64" class="trainer-image" [src]="trainer.imageBase64">
       <img *ngIf="!trainer.image" class="trainer-image" [src]="'data:image/jpg;base64,' + trainerImage">
@@ -30,4 +36,40 @@
       </div>
     </div>
   </div>
+</div>
+</div>
+
+<div *ngIf="isAdminOrTrainer()">
+    <div *ngFor='let trainer of trainers'>
+        <div class="trainer-card">
+          <div class="image-container">
+            <img *ngIf="trainer.imageBase64" class="trainer-image" [src]="trainer.imageBase64">
+            <img *ngIf="!trainer.image" class="trainer-image" [src]="'data:image/jpg;base64,' + trainerImage">
+          </div>
+          <div>
+            <div class="trainer-name">
+              {{trainer.name}} {{trainer.surname}}
+            </div>
+            <div class="trainer-info">
+              <span>
+                Contact
+              </span>
+              <br>
+              <span>
+              E-Mail: {{trainer.email}}
+              </span>
+              <br>
+              <span>
+              Phone Number: {{trainer.phonenumber}}
+              </span>
+              <div class="trainer-rating">
+                <span *ngFor="let star of trainer.stars">
+                  <span *ngIf="star.type==='full'" class="glyphicon glyphicon-star" (click)="sendRating(star.value, trainer)"></span>
+                  <span *ngIf="star.type==='empty'" class="glyphicon glyphicon-star-empty" (click)="sendRating(star.value, trainer)"></span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 </div>

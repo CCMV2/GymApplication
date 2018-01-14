@@ -44,9 +44,10 @@
   font-size:18px;
   padding:10px 10px 10px 5px;
   display:block;
-  width:300px;
+  width:100%;
   border:none;
   border-bottom:1px solid #757575;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .inputLogin:focus 		{ outline:none; }
@@ -79,7 +80,7 @@ div.box{
   padding: 1px 1px 5px 5px;
   width: 90%;
   max-width: 320px;
-  background-color:white;
+  background-color: rgba(255, 255, 255, 0.5);
   opacity: 0.6;
   position: relative;
   padding-bottom: 1px;
@@ -113,10 +114,10 @@ div.userpass{
 .inputLogin:focus ~ .labelLogin, .inputLogin:valid ~ .labelLogin 		{
   top:-20px;
   font-size:14px;
-  color:#999F;
+  color: black;
 }
 
-.bar 	{ position:relative; display:block; width:300px; }
+.bar 	{ position:relative; display:block; width:100%; }
 .bar:before, .bar:after 	{
   content:'';
   height:2px;
@@ -166,4 +167,26 @@ div.userpass{
 @keyframes inputHighlighter {
   from { background:#5264AE; }
   to 	{ width:0; background:transparent; }
+}
+
+.login-btn {
+  width: 322px;
+  height: 48px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.login-page-form {
+
+}
+
+
+.backimage{
+  max-width: 100vw;
+  width: 100vw;
+  z-index: -100;
+  position: fixed;
+  top: 0;
+  left: 0;
 }

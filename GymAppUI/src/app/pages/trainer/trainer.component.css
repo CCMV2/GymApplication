@@ -6,9 +6,6 @@
   color: black;
   border-radius: 10px;
   display: flex;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .trainer-image {
@@ -36,10 +33,25 @@
   margin-left: 10px;
   height: 120px;
   width: 575px;
+  font-size: 16px;
 }
 
 .trainer-rating {
   position: relative;
   bottom: -36px;
   left: 10px;
+}
+
+.backimage{
+  max-width: 100vw;
+  width: 100vw;
+  z-index: -100;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.card-client{
+  border:0;
+  background-color: rgba(255, 255, 255, 0.800);
 }

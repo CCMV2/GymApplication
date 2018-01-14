@@ -51,7 +51,7 @@ const routes: Routes = [
     { path: 'usertimetable', component: UserTimetableComponent, canActivate: [AuthGuard]},
     { path: 'trainer', component: TrainerComponent},
     { path: 'schedule', component: ScheduleComponent},
-    { path: 'mailUtil', component: MailutilComponent, canActivate: [AuthGuard]}
+    { path: 'sendMail', component: MailutilComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

@@ -13,6 +13,7 @@ import { WorkoutList } from './models/workoutlist';
 import { AuthenticationService } from './services/authentication.service';
 import { Router } from '@angular/router';
 import { ClientTimetable } from './models/client-timetable';
+import { Mail } from "./models/mail";
 
 @Injectable()
 export class BackendService {
@@ -130,5 +131,9 @@ export class BackendService {
 
     public addClientTimetable(clientTimetable: ClientTimetable) {
         return this.http.post(this.link + 'addclienttimetable', clientTimetable, this.options).map(response => response.text()).catch(err => this.handleError(err));
+    }
+    
+    public sendMail(mailUtil: Mail) {
+        return this.http.post(this.link + 'mailSender', mailUtil, this.options).map(response => response.text()).catch(err => this.handleError(err));
     }
 }

@@ -13,6 +13,21 @@ button {
   width: 95px;
 }
 
+
+#update{
+  background-color: #14305e;
+}
+
+#delete:hover{
+  background-color: rgb(238, 51, 51);
+  color: white;
+}
+
+#update:hover{
+  background-color: #5285d1;
+  color: white; 
+}
+
 div.userpass{
   position:relative;
   margin-bottom:2.4vw;
@@ -106,8 +121,8 @@ div.box{
 }
 .alert {
   padding: 20px;
-  background-color: #09a7e6;
-color: rgb(0, 0, 0);
+  background-color: #14305e;
+color: white;
 text-align: center;
 position: fixed;
 top: 40px;
@@ -117,7 +132,7 @@ transform: translateX(-50%);
 
 .closebtn {
   margin-left: 15px;
-  color: rgb(0, 0, 0);
+  color: white;
   font-weight: bold;
   float: right;
   font-size: 22px;

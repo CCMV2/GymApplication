@@ -8,8 +8,8 @@
 
 .alert {
     padding: 20px;
-    background-color: #09a7e6;
-	color: rgb(0, 0, 0);
+    background-color: #14305e;
+	color: white;
 	text-align: center;
   position: fixed;
   top: 40px;
@@ -19,7 +19,7 @@
 
 .closebtn {
     margin-left: 15px;
-    color: rgb(0, 0, 0);
+    color: white;
     font-weight: bold;
     float: right;
     font-size: 22px;
@@ -228,8 +228,8 @@ label{
 
 .alert {
     padding: 20px;
-    background-color: #09a7e6;
-	color: rgb(0, 0, 0);
+    background-color: #14305e;
+	color: white;
 	text-align: center;
   position: fixed;
   top: 40px;

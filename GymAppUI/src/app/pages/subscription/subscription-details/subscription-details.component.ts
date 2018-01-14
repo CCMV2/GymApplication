@@ -21,6 +21,9 @@ export class SubscriptionDetailsComponent implements OnInit {
     //ratingVal = 0;
     constructor( private backendService: BackendService, private authenticationService: AuthenticationService ) { }
 
+    isAdminOrTrainer(): boolean {
+        return this.authenticationService.hasRole(['ADMIN', 'TRAINER']);
+    }
 
     ngOnInit() {
         this.getSubscriptions();

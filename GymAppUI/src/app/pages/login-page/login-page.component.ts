@@ -43,7 +43,10 @@ export class LoginPageComponent implements OnInit {
             .subscribe( result => {
                 if ( result === true ) {
                     // login successful
-                    this.router.navigateByUrl(this.returnUrl);
+                    this.router.navigate([this.returnUrl]);
+                    if(this.authenticationService.hasRole(["ADMIN","TRAINER"])) {
+                      window.location.reload();
+                    }
                 } else {
                     // login failed
                     this.error = 'Username or password is incorrect';

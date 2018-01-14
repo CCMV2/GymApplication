@@ -37,38 +37,38 @@
 			</div>
 		</div>
 			<div class="form-group">
-				<label class="control-label"> Room </label>
-				<div class="" style="width: 200px;">
+				<!-- <label class="control-label"> Room </label> -->
+				<!-- <div class="" style="width: 200px;">
 					<p-multiSelect [style]="{'width':'100%'}" name="room" [options]="allRooms" [(ngModel)]="timetableToCreate.roomName" optionLabel="roomName"></p-multiSelect>
-				</div>
-				<!-- <label class="control-label" for="name">Room</label> <select
+				</div> -->
+				<label class="control-label" for="name">Room</label> <select
 					[(ngModel)]="timetableToCreate.roomName" name="room">
 					<option *ngFor="let item of allRooms" value="{{item?.roomName}}">
 						{{item?.roomName}}</option>
-				</select> -->
+				</select>
 			</div>
 			<div class="form-group">
-				<label class="control-label"> Workout </label>
-				<div class="" style="width: 200px;">
+				<!-- <label class="control-label"> Workout </label> -->
+				<!-- <div class="" style="width: 200px;">
 					<p-multiSelect [style]="{'width':'100%'}" name="workout" [options]="allWorkouts" [(ngModel)]="timetableToCreate.workoutType" optionLabel="workout.workoutType"></p-multiSelect>
-				</div>
-				<!-- <label class="control-label col-sm-3" for="name">Workout</label> <select
+				</div> -->
+				<label class="control-label col-sm-3" for="name">Workout</label> <select
 					[(ngModel)]="timetableToCreate.workoutType" name="workout">
 					<option *ngFor="let item of allWorkouts"
 						value="{{item?.workout.workoutType}}">
 						{{item?.workout.workoutType}}</option>
-				</select> -->
+				</select>
 			</div>
 			<div class="form-group">
-				<label class="control-label"> Trainer </label>
-				<div class="" style="width: 200px;">
+				<!-- <label class="control-label"> Trainer </label> -->
+				<!-- <div class="" style="width: 200px;">
 					<p-multiSelect [style]="{'width':'100%'}" name="trainer" [options]="allTrainers" [(ngModel)]="timetableToCreate.trainer" optionLabel="name"></p-multiSelect>
-				</div>
-				<!-- <label class="control-label col-sm-3" for="name">Trainer</label> <select
+				</div> -->
+				<label class="control-label col-sm-3" for="name">Trainer</label> <select
 					[(ngModel)]="timetableToCreate.trainer" name="trainer">
 					<option *ngFor="let item of allTrainers"
 						[ngValue]="item">
 						{{item?.name}} {{item?.surname}}</option>
-				</select> -->
+				</select>
 			</div>
 		<button (click)="addTimetable()"  class="btn btn-success">Add</button>

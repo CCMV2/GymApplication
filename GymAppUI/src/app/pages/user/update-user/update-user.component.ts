@@ -44,6 +44,7 @@ export class UpdateUserComponent implements OnInit {
     }
 
     updateUser() {
+        
         if (this.createdUser.userType === "TRAINER") {
             const uri = 'createtrainer';
             this.backendService.addUser(uri, new Trainer(this.createdUser.id, this.createdUser.password,
@@ -59,6 +60,9 @@ export class UpdateUserComponent implements OnInit {
             if (this.createdUser.userType === 'CLIENT') {
                 const client = this.createdUser as Client;
                 client.subscription = this.getSubscription(client.subscription.subscriptionId);
+                if(client.subscription.imageBase64 == null){
+                    client.subscription.imageBase64 = '';
+                }
                 this.createdUser = client;
             }
             const uri = 'create' + this.createdUser.userType.toLowerCase();

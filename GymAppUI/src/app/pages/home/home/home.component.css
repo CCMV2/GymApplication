@@ -40,6 +40,7 @@ p {
   position: fixed;
   top: 0;
   left: 0;
+  opacity: 0.85;
 }
 
 .navmenu{
@@ -64,8 +65,9 @@ p {
 }
 
 .navoption{
+  margin-left: 85px;
+  margin-right: 85px;
   display: inline-grid;
-  margin-right: 4vw;
   font-size: 18px;
   border-radius: 6px;
   background-color: rgba(255, 255, 255, 0.521);
@@ -74,10 +76,15 @@ p {
 
 .navoption:hover{
   font-size: 24px;
+  cursor: pointer;
 }
 
 .navoption:hover .menuimage{
   opacity: 1;
+}
+
+.navoption label:hover{
+  cursor: pointer;
 }
 
 .navoption:hover label{
@@ -104,4 +111,11 @@ p {
   position: absolute;
   top: 25px;
   right: 30px;
+}
+
+.logo-image {
+  height: 481px;
+  position: absolute;
+  left: 237px;
+  top: -22px;
 }
