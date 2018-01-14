@@ -10,13 +10,13 @@
 					<strong>{{message}}!</strong>
 				</div>
 				<table class="table table-condensed table-hover" id="workoutTable">
-			<tr>
+			<thead>
 				<th>Name</th>
 				<th>Difficulty</th>
 				<th>Trainers</th>
 				<th class="description">Description</th>
 				<th colspan=""></th>
-			</tr>
+			</thead>
 			<tr *ngFor="let trainerworkout of allWorkouts" class.selected = "selectedTrainerWorkout === trainerworkout">
 				<td>{{trainerworkout.workout.workoutType}}</td>
 				<td>{{trainerworkout.workout.difficulty}}</td>

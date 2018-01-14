@@ -25,7 +25,7 @@ button {
 
 #update:hover{
   background-color: #5285d1;
-  color: white; 
+  color: white;
 }
 
 div.userpass{
@@ -96,7 +96,7 @@ div.box{
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
-  left: 37%;  
+  left: 37%;
   position: relative;
 }
 
@@ -107,7 +107,7 @@ div.box{
 
 #update:hover{
   background-color: #5285d1;
-  color: white; 
+  color: white;
 }
 
 #img{
@@ -251,4 +251,8 @@ label{
   font-size: 15px;
   font-weight: normal;
   color: black;
+}
+
+.room-table {
+  width: 800px;
 }

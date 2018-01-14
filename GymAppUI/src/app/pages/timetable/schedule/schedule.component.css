@@ -1,5 +1,5 @@
 .fc-time-grid-container {
-	height: auto!important;	
+	height: auto!important;
 }
 .intensity-medium{
 	background-color: orange;
@@ -26,3 +26,7 @@
 	top: 0;
 	left: 0;
   }
+
+.schedule {
+  margin-top: 115px;
+}

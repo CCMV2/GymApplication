@@ -4,12 +4,12 @@
 </h2>
 </legend>
 <table class="table table-condensed table-hover">
-  <tr>
+  <thead>
     <th>Name</th>
     <th>Price</th>
     <th>Duration</th>
     <th>Workouts</th>
-  </tr>
+  </thead>
   <tr *ngFor="let entry of subscriptionAndWorkouts">
     <td><b>{{entry?.subscription.name}}</b> <br/><img id="img" src='{{entry?.subscription.imageBase64}}'></td>
     <td>{{entry?.subscription.price}} LEI</td>
@@ -17,10 +17,10 @@
 
     <td>
       <table class="table table-condensed table-hover">
-        <tr>
+        <thead>
           <th>Type</th>
           <th>Difficulty</th>
-        </tr>
+        </thead>
         <tr *ngFor="let workout of entry.workouts">
           <td>{{workout?.workoutType}}</td>
           <td>{{workout?.difficulty}}</td>
@@ -39,8 +39,8 @@
         <button id="delete" type="button" class="btn btn-primary-outline pull-right" (click)="delete(entry.subscription)"><i class="fa fa-minus"></i> Delete</button>
     </td>
     </tr>
-    
-    
-    
-  
+
+
+
+
 </table>

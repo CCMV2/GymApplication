@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { BackendService } from '../../../backend.service';
 import { SessionStorageService } from 'ngx-webstorage';
 import { Workout } from '../../../models/workout';
@@ -10,7 +10,7 @@ import { TrainerWorkout } from '../../../models/trainer-workout';
   templateUrl: './update-workout.component.html',
   styleUrls: ['./update-workout.component.css']
 })
-export class UpdateWorkoutComponent implements OnInit {
+export class UpdateWorkoutComponent implements OnInit, OnDestroy {
 
   constructor(private backendService: BackendService, private session: SessionStorageService) { }
 
@@ -28,10 +28,15 @@ export class UpdateWorkoutComponent implements OnInit {
     this.getAllTrainers();
   }
 
+  ngOnDestroy() {
+    this.session.clear('workoutToUpdate');
+  }
+
   updateWorkout() {
     this.backendService.addWorkout(this.trainerWorkouts).subscribe(res => {
       console.log(res);
       this.message = res;
+      this.session.clear();
     }
     );
   }

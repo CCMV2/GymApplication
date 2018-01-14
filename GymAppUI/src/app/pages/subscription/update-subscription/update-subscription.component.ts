@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SessionStorageService} from 'ngx-webstorage';
 import {Subscription} from '../../../models/subscriptionModel';
 import {Workout} from '../../../models/workout';
 import { WorkoutList } from '../../../models/workoutlist';
 import { BackendService } from '../../../backend.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-update-subscription',
@@ -11,14 +12,14 @@ import { BackendService } from '../../../backend.service';
   styleUrls: ['./update-subscription.component.css']
 
 })
-export class UpdateSubscriptionComponent implements OnInit {
+export class UpdateSubscriptionComponent implements OnInit, OnDestroy {
     subscription: Subscription;
     workouts: Workout[];
     workoutList: WorkoutList;
     message = '';
     subscriptionImage = '';
 
-  constructor(private session: SessionStorageService, private backendService: BackendService) { }
+  constructor(private session: SessionStorageService, private backendService: BackendService, private router: Router) { }
 
   ngOnInit() {
     this.workoutList = this.session.retrieve('workoutlist');
@@ -26,6 +27,10 @@ export class UpdateSubscriptionComponent implements OnInit {
     this.subscriptionImage = this.subscription.imageBase64;
     //console.log(this.subscriptionImage);
     this.getWorkouts();
+  }
+
+  ngOnDestroy() {
+    this.session.clear("workoutlist");
   }
 
   getWorkouts(): void {

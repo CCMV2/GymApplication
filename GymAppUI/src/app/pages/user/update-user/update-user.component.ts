@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { User, Client, Administrator, Trainer } from '../../../models/user';
 import { BackendService } from '../../../backend.service';
 import { SessionStorageService } from 'ngx-webstorage';
@@ -10,7 +10,7 @@ import { Subscription } from '../../../models/subscriptionModel';
     templateUrl: './update-user.component.html',
     styleUrls: ['./update-user.component.css']
 })
-export class UpdateUserComponent implements OnInit {
+export class UpdateUserComponent implements OnInit, OnDestroy {
     createdUser: User;
     message = '';
     trainerImage = '';
@@ -37,6 +37,10 @@ export class UpdateUserComponent implements OnInit {
         this.getAllSubs();
     }
 
+    ngOnDestroy() {
+      this.session.clear('userToUpdate');
+    }
+
     getAllSubs() {
         this.backendService.getAllSubscriptionsForUser().subscribe(res => {
             this.subscriptionList = res;
@@ -44,7 +48,7 @@ export class UpdateUserComponent implements OnInit {
     }
 
     updateUser() {
-        
+
         if (this.createdUser.userType === "TRAINER") {
             const uri = 'createtrainer';
             this.backendService.addUser(uri, new Trainer(this.createdUser.id, this.createdUser.password,

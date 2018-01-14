@@ -6,7 +6,7 @@
 			<strong>{{message}}!</strong>
 		</div>
 		<table class="table table-hover list-table" align="center" >
-			<tr>
+			<thead>
 				<th>Id</th>
 				<th>Day</th>
 				<th>Start</th>
@@ -15,7 +15,7 @@
 				<th>Room</th>
 				<th>Workout</th>
 				<th></th>
-			</tr>
+			</thead>
 			<tr *ngFor="let item of allTimetables">
 				<td>{{item?.id}}</td>
 				<td>{{item?.day}}</td>

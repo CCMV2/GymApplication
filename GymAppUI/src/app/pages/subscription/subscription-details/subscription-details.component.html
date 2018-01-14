@@ -1,83 +1,44 @@
 <div *ngIf="!isAdminOrTrainer()">
-<img class="backimage" src="assets/images/mainpagephoto5.jpeg">
-<div class="col-sm-7">
-<legend>
-  <h1>
-  Subscription Details
-  </h1>
-</legend>
-<table class="table table-condensed ">
-  <thead>
-    <th rowspan="3"></th>
-    <th id="sec-col"></th>
-  </thead>
-  <tbody>
-  <tr *ngFor="let entry of subscriptionsAndWorkouts">
-    <td>
-      <img id="img"  src='{{entry?.subscription.imageBase64}}'/>
-      <!--img id="img" src="entry?.subscription.image"-->
+  <img class="backimage" src="assets/images/mainpagephoto5.jpeg">
+  <div class="col-sm-7">
+    <legend>
+      <h1>
+        Subscription Details
+      </h1>
+    </legend>
+    <div class="trainer-card" *ngFor="let entry of subscriptionsAndWorkouts">
+      <img class="trainer-image" src='{{entry?.subscription.imageBase64}}'/>
+      <span class="sub-name">{{entry?.subscription.name}} {{" - "}} {{entry?.subscription.price}} {{"Ron"}}</span>
 
-    </td>
-
-    <td>
-      <table>
-        <!--thead>
-          <th></th>
-        </thead-->
-        <tbody>
-        <tr>
-          <td id="subscriptionname"><b>{{entry?.subscription.name}} &nbsp;&nbsp;&nbsp;&nbsp; {{entry?.subscription.price}} LEI</b></td>
-        </tr>
-        <tr>
-            <td>
-              <div id="workoutslist">
-              <table  class="table table-condensed">
-                <tbody id="workoutslist">
-                <tr  *ngFor="let workout of entry.workouts">
-                  <td>
-                    <div id="div" title="{{workout.description}}"><b>{{workout?.workoutType}}</b>: {{workout?.description}}</div>
-                  <td>
-
-                </tr>
-                </tbody>
-              </table>
-            </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="subscription-rating">
-                <span *ngFor="let star of entry.subscription.stars">
-                    <span *ngIf="star.type==='full'" class="glyphicon glyphicon-star" (click)="sendRating(star.value, entry)"></span>
-                    <span *ngIf="star.type==='empty'" class="glyphicon glyphicon-star-empty" (click)="sendRating(star.value, entry)"></span>
-                  </span>
-            </td>
-            <!--td>
-              <star-rating-comp [starType]="'svg'" [rating]="ratingVal" (onClick)="onClick($event)"></star-rating-comp>
-            </td-->
-          </tr>
-        </tbody>
-      </table>
-    </td>
-  </tr>
-</tbody>
-</table>
-</div>
+      <div class="workouts-div" *ngFor="let workout of entry.workouts">
+        <span>{{workout?.workoutType}} : {{workout?.description}}</span>
+      </div>
+      <div class="sub-stars">
+        <span *ngFor="let star of entry.subscription.stars">
+                    <span *ngIf="star.type==='full'" class="glyphicon glyphicon-star"
+                          (click)="sendRating(star.value, entry)"></span>
+                    <span *ngIf="star.type==='empty'" class="glyphicon glyphicon-star-empty"
+                          (click)="sendRating(star.value, entry)"></span>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div *ngIf="isAdminOrTrainer()">
-<div  class="col-sm-7">
+  <div class="col-sm-7">
     <h1>
       Subscription Details
     </h1>
     <table class="table table-condensed ">
       <thead>
-        <th rowspan="3"></th>
-        <th id="sec-col"></th>
+      <th rowspan="3"></th>
+      <th id="sec-col"></th>
       </thead>
       <tbody>
       <tr *ngFor="let entry of subscriptionsAndWorkouts">
         <td>
-          <img id="img"  src='{{entry?.subscription.imageBase64}}'/>
+          <img id="img" src='{{entry?.subscription.imageBase64}}'/>
           <!--img id="img" src="entry?.subscription.image"-->
 
         </td>
@@ -89,40 +50,45 @@
             </thead-->
             <tbody>
             <tr>
-              <td id="subscriptionname"><b>{{entry?.subscription.name}} &nbsp;&nbsp;&nbsp;&nbsp; {{entry?.subscription.price}} LEI</b></td>
+              <td id="subscriptionname"><b>{{entry?.subscription.name}} &nbsp;&nbsp;&nbsp;&nbsp;
+                {{entry?.subscription.price}} LEI</b></td>
             </tr>
             <tr>
-                <td>
-                  <div id="workoutslist">
-                  <table  class="table table-condensed ">
+              <td>
+                <div id="workoutslist">
+                  <table class="table table-condensed ">
                     <tbody id="workoutslist">
-                    <tr  *ngFor="let workout of entry.workouts">
+                    <tr *ngFor="let workout of entry.workouts">
                       <td>
-                        <div id="div" title="{{workout.description}}"><b>{{workout?.workoutType}}</b>: {{workout?.description}}</div>
+                        <div id="div" title="{{workout.description}}"><b>{{workout?.workoutType}}</b>:
+                          {{workout?.description}}
+                        </div>
                       <td>
 
                     </tr>
                     </tbody>
                   </table>
                 </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="subscription-rating">
+              </td>
+            </tr>
+            <tr>
+              <td class="subscription-rating">
                     <span *ngFor="let star of entry.subscription.stars">
-                        <span *ngIf="star.type==='full'" class="glyphicon glyphicon-star" (click)="sendRating(star.value, entry)"></span>
-                        <span *ngIf="star.type==='empty'" class="glyphicon glyphicon-star-empty" (click)="sendRating(star.value, entry)"></span>
+                        <span *ngIf="star.type==='full'" class="glyphicon glyphicon-star"
+                              (click)="sendRating(star.value, entry)"></span>
+                        <span *ngIf="star.type==='empty'" class="glyphicon glyphicon-star-empty"
+                              (click)="sendRating(star.value, entry)"></span>
                       </span>
-                </td>
-                <!--td>
-                  <star-rating-comp [starType]="'svg'" [rating]="ratingVal" (onClick)="onClick($event)"></star-rating-comp>
-                </td-->
-              </tr>
+              </td>
+              <!--td>
+                <star-rating-comp [starType]="'svg'" [rating]="ratingVal" (onClick)="onClick($event)"></star-rating-comp>
+              </td-->
+            </tr>
             </tbody>
           </table>
         </td>
       </tr>
-    </tbody>
+      </tbody>
     </table>
-    </div>
   </div>
+</div>

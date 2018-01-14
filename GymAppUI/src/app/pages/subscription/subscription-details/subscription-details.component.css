@@ -1,8 +1,8 @@
 #div{
-    white-space: nowrap; 
-    width: 1000px; 
+    white-space: nowrap;
+    width: 1000px;
     overflow: hidden;
-    text-overflow: ellipsis;    
+    text-overflow: ellipsis;
 }
 
 .backimage{
@@ -13,7 +13,7 @@
     top: 0;
     left: 0;
   }
-  
+
 
 #rating{
     text-align: center;
@@ -38,3 +38,51 @@
     left: 10px;
 }
 
+.trainer-card {
+  background-color: rgba(255, 255, 255, 0.800);
+  border: 0.5px solid rgb(192, 192, 192);
+  height: 200px;
+  width: 800px;
+  margin: 30px 30px 30px 30px;
+  color: black;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.trainer-image {
+  height: 150px;
+  overflow: hidden;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
+.sub-name {
+  position: relative;
+  top: -62px;
+  left: 14px;
+  font-size: 25px;
+}
+
+.workouts-div {
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  overflow: auto;
+  max-height: 122px;
+  height: 122px;
+  width: 527px;
+  top: -139px;
+  left: 250px;
+  font-size: 23px;
+  background-color: rgba(255, 255, 255, 0.800);
+}
+
+.sub-stars {
+  position: relative;
+  top: -304px;
+  left: 644px;
+  font-size: 21px;
+  color: cadetblue;
+}

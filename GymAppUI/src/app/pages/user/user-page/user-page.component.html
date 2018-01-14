@@ -8,7 +8,7 @@
     <strong>{{message}}!</strong>
   </div>
 <table class="table table-condensed table-hover">
-  <tr>
+  <thead>
     <th>ID</th>
     <th>Type</th>
     <th>Email</th>
@@ -18,12 +18,12 @@
     <th>Start</th>
     <th>Subscription</th>
     <th></th>
-  </tr>
+  </thead>
   <tr *ngFor="let entry of userLists">
     <td>
       {{entry?.id}}
     </td>
-    
+
     <td>
       {{entry?.userType}}
       <br>
@@ -43,22 +43,21 @@
     <td>
       {{entry?.phonenumber}}
     </td>
-    
+
      <td>
       {{entry?.start | date:'dd.MM.yyyy'}}
     </td>
-    
+
     <td>
     	<div *ngIf="entry.subscription">
       		{{entry?.subscription.name}}
       </div>
     </td>
     <td class="crudbtns">
-      <button type="edit-button" id="update" *ngIf="entry.userType==='CLIENT'"  class="btn btn-primary-outline pull-right" (click)="showTimetable(entry)"><i class="fa fa-plus"></i> Edit Timetable</button>   
+      <button type="edit-button" id="update" *ngIf="entry.userType==='CLIENT'"  class="btn btn-primary-outline pull-right" (click)="showTimetable(entry)"><i class="fa fa-plus"></i> Edit Timetable</button>
       <button type="update-button" id="update" class="btn btn-primary-outline pull-right" (click)="updateUser(entry)"><i class="fa fa-plus"></i> Update</button>
       <button type="delete-button" id="delete" class="btn btn-primary-outline pull-right" (click)="delete(entry)"><i class="fa fa-minus"></i> Delete</button>
     </td>
   </tr>
 
 </table>
- 
