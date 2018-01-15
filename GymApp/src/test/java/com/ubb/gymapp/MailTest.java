@@ -2,7 +2,7 @@ package com.ubb.gymapp;
 
 import java.security.GeneralSecurityException;
 
-import utils.MailUtil;
+import com.ubb.gymapp.utils.MailUtil;
 
 public class MailTest {
 
