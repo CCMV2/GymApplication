@@ -22,19 +22,12 @@ export class UserTimetableComponent implements OnInit {
   ngOnInit() {
       this.userClient = this.session.retrieve('userToUpdate');
       this.getAllTimetables();
-      for (const timeElem of this.userClient.userTimetable) {
-        const startDay = new Date(timeElem.start);
-        const start = moment( startDay ).format( 'HH:mm' );
-        const endDayMilliseconds = startDay.getTime() + timeElem.duration * 60 * 1000;
-        const endDay = new Date( endDayMilliseconds );
-        const end = moment( endDay ).format( 'HH:mm' );
-        timeElem.timeTableName = timeElem.workout.workoutType + ' ' + timeElem.day + ' ' + start + '-' + end;
-    }
   }
 
   getAllTimetables() {
       this.backendService.getAllTimetables().subscribe(res => {
           this.timeList = res;
+          let temporaryClientList = [];
           for (const timeElem of this.timeList) {
               const startDay = new Date(timeElem.start);
               const start = moment( startDay ).format( 'HH:mm' );
@@ -42,20 +35,32 @@ export class UserTimetableComponent implements OnInit {
               const endDay = new Date( endDayMilliseconds );
               const end = moment( endDay ).format( 'HH:mm' );
               timeElem.timeTableName = timeElem.workout.workoutType + ' ' + timeElem.day + ' ' + start + '-' + end;
+              const userTimetable = this.hasUserTimetable(timeElem.id);
+              if (userTimetable) {
+                  temporaryClientList.push(timeElem);
+              }
           }
+          this.userClient.userTimetable = temporaryClientList;
       });
     }
-  addTimetable(){
+  addTimetable() {
       //console.log(JSON.stringify(this.userClient));
       for (const timetable of this.userClient.userTimetable) {
             if (timetable.trainer.imageBase64 === null) {
-                timetable.trainer.imageBase64 = ""
+                timetable.trainer.imageBase64 = '';
             }
       }
       this.backendService.addUser('createclient', this.userClient).subscribe(res => {
         this.message = res;
         console.log(res);
     });
-      alert('Implement me!');
+  }
+  hasUserTimetable(id: number): boolean {
+      for (const timeElem of this.userClient.userTimetable) {
+          if (timeElem.id === id) {
+              return true;
+          }
+      }
+      return false;
   }
 }
