@@ -14,6 +14,7 @@
    padding-top: 0.5vw;
    display: grid;
    position: absolute;
+   margin-top: 5%;
  }
 
  .backimage{
