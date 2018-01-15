@@ -19,7 +19,6 @@ import {AdminPageComponent} from './pages/admin-page/admin-page.component';
 import { AuthGuard } from './services/auth.guard';
 import { UpdateTimetableComponent } from './pages/timetable/update-timetable/update-timetable.component';
 import {SubscriptionDetailsComponent} from './pages/subscription/subscription-details/subscription-details.component';
-import { DemoComponent } from './pages/demo/demo.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { UserTimetableComponent } from './pages/user/user-timetable/user-timetable.component';
 import { TrainerComponent } from './pages/trainer/trainer.component';
@@ -47,7 +46,6 @@ const routes: Routes = [
     { path: 'updateuser', component: UpdateUserComponent, canActivate: [AuthGuard]},
     { path: 'listusers', component: UserPageComponent, canActivate: [AuthGuard]},
     { path: 'subscriptiondetails', component: SubscriptionDetailsComponent},
-    { path: 'demo', component: DemoComponent},
     { path: 'usertimetable', component: UserTimetableComponent, canActivate: [AuthGuard]},
     { path: 'trainer', component: TrainerComponent},
     { path: 'schedule', component: ScheduleComponent},

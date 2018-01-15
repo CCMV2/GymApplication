@@ -34,7 +34,6 @@ import {CalendarModule, MultiSelectModule} from 'primeng/primeng';
 import { AgmCoreModule } from '@agm/core';
 import { StarRatingModule } from 'angular-star-rating';
 import { SubscriptionDetailsComponent } from './pages/subscription/subscription-details/subscription-details.component';
-import { DemoComponent } from './pages/demo/demo.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AuthenticationService } from './services/authentication.service';
 import { TrainerComponent } from './pages/trainer/trainer.component';
@@ -68,7 +67,6 @@ import { MailutilComponent } from './pages/mailutil/mailutil.component';
     HeaderComponent,
     UpdateTimetableComponent,
     SubscriptionDetailsComponent,
-    DemoComponent,
     ContactComponent,
     TrainerComponent,
     UserTimetableComponent,
