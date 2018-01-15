@@ -18,7 +18,7 @@ export class UpdateTimetableComponent implements OnInit {
     allRooms: Room[] = [];
     allWorkouts: TrainerWorkout[] = [];
     allTrainers: Trainer[] = [];
-    timetableToCreate: Timetable = new Timetable('Montag', new Date(), 0, '', '', new Trainer( 0 , '' , '', '', '', '', ''));
+    timetableToCreate: Timetable = new Timetable('Monday', new Date(), 0, '', '', new Trainer( 0 , '' , '', '', '', '', ''));
     message = '';
 
     constructor( private backendService: BackendService , private session: SessionStorageService) { }

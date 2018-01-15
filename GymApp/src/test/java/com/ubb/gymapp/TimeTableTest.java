@@ -116,7 +116,7 @@ public class TimeTableTest {
 		workRepo.save(work1);
 		Room room1 = new Room("Main room");
 		roomRepo.save(room1);
-		Timetable timetable = new Timetable("Montag", new Date(), 10, room1, work1);
+		Timetable timetable = new Timetable("Monday", new Date(), 10, room1, work1);
 		timeRepo.save(timetable);
 		long id = timetable.getId();
 		timeRepo.deleteByWorkout(work1);

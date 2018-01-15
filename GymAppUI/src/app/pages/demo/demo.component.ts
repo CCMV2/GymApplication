@@ -22,7 +22,7 @@ export class DemoComponent implements OnInit {
             'timeTableName': 'Zumba',
             'start': 1513080000000,
             'duration': 60,
-            'day': 'Montag',
+            'day': 'Monday',
             'trainer': 'Jane Doe',
             'intensity': 'medium'
         },
@@ -30,7 +30,7 @@ export class DemoComponent implements OnInit {
             'timeTableName': 'Aerobic',
             'start': 1513087200000,
             'duration': 60,
-            'day': 'Montag',
+            'day': 'Monday',
             'trainer': 'Jay Doe',
                 'intensity': 'medium'
         },
@@ -38,7 +38,7 @@ export class DemoComponent implements OnInit {
             'timeTableName': 'Tae Bo',
             'start': 1513080000000,
             'duration': 60,
-            'day': 'Montag',
+            'day': 'Monday',
             'trainer': 'Jane Doe',
             'intensity': 'medium'
         },
@@ -46,7 +46,7 @@ export class DemoComponent implements OnInit {
             'timeTableName': 'Tae Bo',
             'start': 1513080000000,
             'duration': 60,
-            'day': 'Dienstag',
+            'day': 'Tuesday',
             'trainer': 'Cucu Bau',
             'intensity': 'medium'
         },
@@ -54,7 +54,7 @@ export class DemoComponent implements OnInit {
             'timeTableName': 'Aerobic',
             'start': 1513087200000,
             'duration': 60,
-            'day': 'Mittwoch',
+            'day': 'Wednesday',
             'trainer': 'Jane Doe',
             'intensity': 'medium'
         },
@@ -62,7 +62,7 @@ export class DemoComponent implements OnInit {
             'timeTableName': 'Tae Bo',
             'start': 1513080000000,
             'duration': 60,
-            'day': 'Mittwoch',
+            'day': 'Wednesday',
             'trainer': 'Jane Doe',
             'intensity': 'medium'
         },
@@ -70,7 +70,7 @@ export class DemoComponent implements OnInit {
             'timeTableName': 'Zumba',
             'start': 1513080000000,
             'duration': 60,
-            'day': 'Donnerstag',
+            'day': 'Thursday',
             'trainer': 'Cucu Doe',
             'intensity': 'medium'
         },
@@ -78,7 +78,7 @@ export class DemoComponent implements OnInit {
             'timeTableName': 'Aerobic',
             'start': 1513087200000,
             'duration': 60,
-            'day': 'Donnerstag',
+            'day': 'Thursday',
             'trainer': 'Cucu Doe',
             'intensity': 'medium'
         },
@@ -86,7 +86,7 @@ export class DemoComponent implements OnInit {
             'timeTableName': 'Tae Bo',
             'start': 1513080000000,
             'duration': 60,
-            'day': 'Donnerstag',
+            'day': 'Thursday',
             'trainer': 'Cucu Doe',
             'intensity': 'medium'
         },
@@ -94,7 +94,7 @@ export class DemoComponent implements OnInit {
             'timeTableName': 'Zumba',
             'start': 1513080000000,
             'duration': 60,
-            'day': 'Freitag',
+            'day': 'Friday',
             'trainer': 'Cucu Doe',
             'intensity': 'medium'
         },
@@ -102,7 +102,7 @@ export class DemoComponent implements OnInit {
             'timeTableName': 'Karate',
             'start': 1513080000000,
             'duration': 60,
-            'day': 'Samstag',
+            'day': 'Saturday',
             'trainer': 'Ion Ionel',
             'intensity': 'medium'
         },
@@ -110,7 +110,7 @@ export class DemoComponent implements OnInit {
             'timeTableName': 'Karate',
             'start': 1513080000000,
             'duration': 60,
-            'day': 'Sonntag',
+            'day': 'Sunday',
             'trainer': 'Ion Ionel',
             'intensity': 'medium'
         }
@@ -157,7 +157,7 @@ export class DemoComponent implements OnInit {
             const event = {};
             // setam titlu
             event['title'] = timeTableExample.timeTableName;
-            // calculam startul in functie de ziua definita (Montag, Dienstag etc) si data de inceput din calendar (care va fi mereu luni)
+            // calculam startul in functie de ziua definita (Monday, Tuesday etc) si data de inceput din calendar (care va fi mereu luni)
             let startDayMilliseconds = startWeek.getTime() + this.getDayIndex( timeTableExample.day ) * 24 * 60 * 60 * 1000;
             // setam acum ora si minutele din timetable
             const timeTableStart = new Date( timeTableExample.start );
@@ -176,19 +176,19 @@ export class DemoComponent implements OnInit {
 
     getDayIndex( day: string ) {
         switch ( day ) {
-            case 'Montag':
+            case 'Monday':
                 return 0;
-            case 'Dienstag':
+            case 'Tuesday':
                 return 1;
-            case 'Mittwoch':
+            case 'Wednesday':
                 return 2;
-            case 'Donnerstag':
+            case 'Thursday':
                 return 3;
-            case 'Freitag':
+            case 'Friday':
                 return 4;
-            case 'Samstag':
+            case 'Saturday':
                 return 5;
-            case 'Sonntag':
+            case 'Sunday':
                 return 6;
         }
     }

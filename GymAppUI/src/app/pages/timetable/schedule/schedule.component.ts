@@ -82,7 +82,7 @@ export class ScheduleComponent implements OnInit {
             event['id'] = '' + timeTableExample.id;
             // setam titlu
             event['title'] = timeTableExample.workout.workoutType + ' - ' + timeTableExample.trainer.name + ' ' + timeTableExample.trainer.surname;
-            // calculam startul in functie de ziua definita (Montag, Dienstag etc) si data de inceput din calendar (care va fi mereu luni)
+            // calculam startul in functie de ziua definita (Monday, Tuesday etc) si data de inceput din calendar (care va fi mereu luni)
             let startDayMilliseconds = startWeek.getTime() + this.getDayIndex(timeTableExample.day) * 24 * 60 * 60 * 1000;
             // setam acum ora si minutele din timetable
             const timeTableStart = new Date(timeTableExample.start);
@@ -101,19 +101,19 @@ export class ScheduleComponent implements OnInit {
 
     getDayIndex(day: string) {
         switch (day) {
-            case 'Montag':
+            case 'Monday':
                 return 0;
-            case 'Dienstag':
+            case 'Tuesday':
                 return 1;
-            case 'Mittwoch':
+            case 'Wednesday':
                 return 2;
-            case 'Donnerstag':
+            case 'Thursday':
                 return 3;
-            case 'Freitag':
+            case 'Friday':
                 return 4;
-            case 'Samstag':
+            case 'Saturday':
                 return 5;
-            case 'Sonntag':
+            case 'Sunday':
                 return 6;
         }
     }
