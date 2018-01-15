@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { BackendService } from '../../../backend.service';
 import { Room } from '../../../models/room';
 import { TrainerWorkout } from '../../../models/trainer-workout';
@@ -6,13 +6,14 @@ import { Timetable } from '../../../models/Timetable';
 import { Workout } from '../../../models/workout';
 import { SessionStorageService } from 'ngx-webstorage/dist/services';
 import { Trainer } from "../../../models/user";
+import {Router} from "@angular/router";
 
 @Component( {
     selector: 'app-update-timetable',
     templateUrl: './update-timetable.component.html',
     styleUrls: ['./update-timetable.component.css']
 } )
-export class UpdateTimetableComponent implements OnInit {
+export class UpdateTimetableComponent implements OnInit, OnDestroy {
 
     allTimetables: Timetable[] = [];
     allRooms: Room[] = [];
@@ -21,7 +22,7 @@ export class UpdateTimetableComponent implements OnInit {
     timetableToCreate: Timetable = new Timetable('Monday', new Date(), 0, '', '', new Trainer( 0 , '' , '', '', '', '', ''));
     message = '';
 
-    constructor( private backendService: BackendService , private session: SessionStorageService) { }
+    constructor( private backendService: BackendService , private session: SessionStorageService, private router: Router) { }
     ngOnInit() {
         this.getTrainers();
         this.getRooms();
@@ -30,6 +31,10 @@ export class UpdateTimetableComponent implements OnInit {
         this.timetableToCreate.roomName = this.timetableToCreate.room.roomName;
         this.timetableToCreate.workoutType = this.timetableToCreate.workout.workoutType;
         this.timetableToCreate.start = new Date(this.timetableToCreate.start);
+    }
+
+    ngOnDestroy(): void {
+      this.session.clear("timetableToUpdate");
     }
 
     findRoomByName(name: string ): Room {

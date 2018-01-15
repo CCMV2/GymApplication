@@ -236,3 +236,7 @@ label{
   left: 50%;
   transform: translateX(-50%);
 }
+
+.select-width {
+  width: 175px;
+}

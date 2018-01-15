@@ -1,58 +1,65 @@
-<fieldset>
-	<legend>
-		<h2>Update Timetable</h2>
-	</legend>
-	<div class="centered col-sm-7">
-		<form class="form-horizontal">
-				<div class="alert" *ngIf="message.length > 0">
-						<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-						<strong>{{message}}!</strong>
-					</div>
-			<div class="form-group">
-				<label class="control-label col-sm-3" for="name">Day:</label> 
-				<select	[(ngModel)]="timetableToCreate.day" name="day">
-					<option>Monday</option>
-					<option>Tuesday</option>
-					<option>Wednesday</option>
-					<option>Thursday</option>
-					<option>Friday</option>
-					<option>Saturday</option>
-					<option>Sunday</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-3" for="name">Start:</label> 
-				<p-calendar icon="fa-clock-o" name="start" [(ngModel)]="timetableToCreate.start" [timeOnly]="true" [showIcon]="true"></p-calendar> 
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-3" for="name">Duration</label> <input
-					type="text" [(ngModel)]="timetableToCreate.duration" name="duration">
+<div>
+  <legend>
+    <h2>Update Timetable</h2>
+  </legend>
+  <div style="display: inline-grid;" class="centered col-sm-7">
+    <form class="form-horizontal">
+      <div class="alert" *ngIf="message.length > 0">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>{{message}}!</strong>
+      </div>
 
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-3" for="name">Room:</label> <select
-					[(ngModel)]="timetableToCreate.roomName" name="room">
-					<option *ngFor="let item of allRooms" value="{{item?.roomName}}">
-						{{item?.roomName}}</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-3" for="name">Workout:</label> <select
-					[(ngModel)]="timetableToCreate.workoutType" name="workout">
-					<option *ngFor="let item of allWorkouts"
-						value="{{item?.workout.workoutType}}">
-						{{item?.workout.workoutType}}</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-3" for="name">Trainer:</label> <select
-					[(ngModel)]="timetableToCreate.trainer.id" name="trainer">
-					<option *ngFor="let item of allTrainers"
-						[ngValue]="item.id">
-						{{item?.name}} {{item?.surname}}</option>
-				</select>
-			</div>
-			<button (click)="updateTimetable()" class="btn btn-success">Update</button>
-		</form>
-	</div>
-</fieldset>
+      <div>
+        <div class="userpass">
+          <label for="name">Day</label>
+          <select class="select-width" [(ngModel)]="timetableToCreate.day" name="day">
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+            <option>Saturday</option>
+            <option>Sunday</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <div class="userpass">
+          <label for="name">Start</label>
+          <p-calendar icon="fa-clock-o" name="start" [(ngModel)]="timetableToCreate.start" [timeOnly]="true" [showIcon]="true"></p-calendar>
+        </div>
+      </div>
+      <div>
+        <div class="userpass">
+          <input class="inputLogin" type="number" required name="duration" [(ngModel)]="timetableToCreate.duration"/>
+          <span class="highlight"></span>
+          <span class="bar"></span><label class="labelLogin"> Duration </label>
+        </div>
+      </div>
+      <div>
+        <label for="name">Room</label> <select class="select-width"
+                                               [(ngModel)]="timetableToCreate.roomName" name="room">
+        <option *ngFor="let item of allRooms" value="{{item?.roomName}}">
+          {{item?.roomName}}</option>
+      </select>
+      </div>
+      <div>
+        <label for="name">Workout</label> <select class="select-width"
+                                                  [(ngModel)]="timetableToCreate.workoutType" name="workout">
+        <option *ngFor="let item of allWorkouts"
+                value="{{item?.workout.workoutType}}">
+          {{item?.workout.workoutType}}</option>
+      </select>
+      </div>
+      <div>
+        <label for="name">Trainer</label> <select class="select-width"
+                                                  [(ngModel)]="timetableToCreate.trainer" name="trainer">
+        <option *ngFor="let item of allTrainers"
+                [ngValue]="item">
+          {{item?.name}} {{item?.surname}}</option>
+      </select>
+      </div>
+      <button (click)="addTimetable()"  class="btn btn-primary" style="margin-top: 20px; width: 80px;">Add</button>
+    </form>
+  </div>
+</div>
