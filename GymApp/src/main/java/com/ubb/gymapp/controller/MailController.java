@@ -14,7 +14,7 @@ import com.ubb.gymapp.model.Client;
 import com.ubb.gymapp.model.Subscription;
 import com.ubb.gymapp.service.SubscriptionService;
 
-import utils.MailUtil;
+import com.ubb.gymapp.utils.MailUtil;
 
 
 
