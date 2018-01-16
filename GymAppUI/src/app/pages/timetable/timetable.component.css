@@ -32,5 +32,24 @@ h1{
     max-height: 150px;
     align-content: left;
   }
+
+  #update{
+    background-color: #14305e;
+}
+
+#delete:hover{
+    background-color: rgb(238, 51, 51);
+    color: white;
+  }
+  
+  #update:hover{
+    background-color: #5285d1;
+    color: white; 
+  }
+
+
+  .crudbtns{
+    display: grid;
+}
   
  
