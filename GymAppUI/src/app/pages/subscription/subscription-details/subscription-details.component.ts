@@ -8,7 +8,8 @@ import { IStarRatingOnClickEvent } from 'angular-star-rating/src/star-rating-str
 import { Rating } from '../../../models/rating';
 import { AuthenticationService } from '../../../services/authentication.service';
 
-
+declare var showPleaseWait: any;
+declare var hidePleaseWait: any;
 @Component( {
     selector: 'app-subscription-details',
     templateUrl: './subscription-details.component.html',
@@ -26,9 +27,12 @@ export class SubscriptionDetailsComponent implements OnInit {
     }
 
     ngOnInit() {
+        
         this.getSubscriptions();
+        
     }
     getSubscriptions(): void {
+        showPleaseWait();
         this.backendService.getAllSubscriptions().subscribe( res => {
             this.subscriptionsAndWorkouts = res;
             for ( let i = 0; i < this.subscriptionsAndWorkouts.length; i++ ) {
@@ -46,6 +50,7 @@ export class SubscriptionDetailsComponent implements OnInit {
                 }
             }
             console.log( this.subscriptionsAndWorkouts );
+            hidePleaseWait();
         } );
     }
     sendRating( rating: number, subscriptionAndWorkouts: WorkoutList ): void {

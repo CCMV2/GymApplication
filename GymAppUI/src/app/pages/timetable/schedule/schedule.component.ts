@@ -8,6 +8,8 @@ import { ClientTimetable } from '../../../models/client-timetable';
 import * as $ from 'jquery';
 import { Subscription } from 'rxjs/Subscription';
 
+declare var showPleaseWait: any;
+declare var hidePleaseWait: any;
 @Component({
     selector: 'app-schedule',
     templateUrl: './schedule.component.html',
@@ -29,7 +31,7 @@ export class ScheduleComponent implements OnInit {
     isAdminOrTrainer(): boolean {
         return this.authenticationService.hasRole(['ADMIN', 'TRAINER']);
     }
-
+    
     ngOnInit() {
         this.getUserTimetables();
         this.getTimetables();
@@ -168,21 +170,27 @@ export class ScheduleComponent implements OnInit {
     }
 
     getTimetables(): void {
+        showPleaseWait();
         this.backendService.getAllTimetables().subscribe(res => {
             this.allTimetables = res;
             console.log(this.allTimetables);
             this.prepareEvents(this.firstStart);
+            hidePleaseWait();
         });
+        
     }
 
     getUserTimetables(): void {
+        showPleaseWait();
         if (this.authenticationService.isLoggedIn()) {
             this.backendService.getUserTimetables(this.authenticationService.getCurrentUser()).subscribe(res => {
                 this.userTimetables = res;
                 console.log(this.userTimetables);
                 this.prepareEvents(this.firstStart);
+                hidePleaseWait();
             });
         }
+        
     }
 
 
