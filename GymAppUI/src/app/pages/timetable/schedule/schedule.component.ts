@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { Client } from '../../../models/user';
 import { ClientTimetable } from '../../../models/client-timetable';
+import * as $ from 'jquery';
 
 @Component({
     selector: 'app-schedule',
@@ -48,9 +49,9 @@ export class ScheduleComponent implements OnInit {
         console.log('Here we prepare the timetable for a certain week');
     }
     handleEventClick(event) {
-        
       const startDate = new Date(event.calEvent.start._i);
       console.log('I have been clicked!');
+      const $titleElement = $(event.jsEvent.currentTarget).find('.fc-title')[0];
       if (this.authenticationService.isLoggedIn()) {
         if (this.authenticationService.hasRole(['CLIENT'])) {
           if (startDate.getTime() < new Date().getTime()) {
