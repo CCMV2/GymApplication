@@ -44,14 +44,14 @@ export class ListWorkoutComponent implements OnInit {
     this.backendService.deleteWorkout(workout.workout).subscribe(res => {
       if(res == '0'){
         this.message = 'Successful';
-        //console.log(res); 
+        const index = this.allWorkouts.findIndex(d => d.workout.idWorkout === workout.workout.idWorkout);
+        this.allWorkouts.splice(index, 1);
         setTimeout(()=> {
           this.message = "";
           console.log("lol");
         }, 5000);
       }
       
-      this.getAllWorkouts();
      
     });
 
