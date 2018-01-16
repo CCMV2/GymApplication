@@ -19,7 +19,7 @@ export class UpdateTimetableComponent implements OnInit, OnDestroy {
     allRooms: Room[] = [];
     allWorkouts: TrainerWorkout[] = [];
     allTrainers: Trainer[] = [];
-    timetableToCreate: Timetable = new Timetable('Monday', new Date(), 0, '', '', new Trainer( 0 , '' , '', '', '', '', ''));
+    timetableToCreate: Timetable;
     message = '';
 
     constructor( private backendService: BackendService , private session: SessionStorageService, private router: Router) { }

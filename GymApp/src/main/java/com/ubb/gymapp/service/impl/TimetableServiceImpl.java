@@ -27,6 +27,7 @@ public class TimetableServiceImpl implements TimetableService{
 
 	@Override
 	public void deleteTimeTable(Timetable timetable) {
+		userTimetableRepo.deleteByTimetable(timetable);
 		timetableRepo.delete(timetable);
 	}
 

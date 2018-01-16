@@ -17,6 +17,11 @@ public interface UserTimetableRepository extends JpaRepository<UserTimetable, Lo
 	@Query("delete from UserTimetable u where u.user = ?1")
 	public void deleteByUser(User user);
 	
+	@Transactional
+	@Modifying
+	@Query("delete from UserTimetable u where u.timetable = ?1")
+	public void deleteByTimetable(Timetable timetable);
+	
 	public UserTimetable findByUserAndTimetable(User user, Timetable timetable);
 
 	@Query("select u.timetable from UserTimetable u where u.user.email = ?1")

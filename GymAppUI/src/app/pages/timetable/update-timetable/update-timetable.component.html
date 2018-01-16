@@ -53,13 +53,13 @@
       </div>
       <div>
         <label for="name">Trainer</label> <select class="select-width"
-                                                  [(ngModel)]="timetableToCreate.trainer" name="trainer">
+                                                  [(ngModel)]="timetableToCreate.trainer.id" name="trainer">
         <option *ngFor="let item of allTrainers"
-                [ngValue]="item">
+                value="{{item?.id}}">
           {{item?.name}} {{item?.surname}}</option>
       </select>
       </div>
-      <button (click)="addTimetable()"  class="btn btn-primary" style="margin-top: 20px; width: 80px;">Add</button>
+      <button (click)="updateTimetable()"  class="btn btn-primary" style="margin-top: 20px; width: 80px;">Update</button>
     </form>
   </div>
 </div>
