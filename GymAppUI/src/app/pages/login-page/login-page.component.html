@@ -5,7 +5,7 @@
     </div>
     <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate style="width: 34%; margin: 0 auto; padding-top: 100px;">
 	    <div class="alert-error" *ngIf="error.length > 0">
-	    	<b>{{error}}</b>
+	    	<b>{{error}}</b><br/>
 	    </div>
 	    <div class="success-message" *ngIf="success.length > 0">
 	    	<b>{{success}}</b>

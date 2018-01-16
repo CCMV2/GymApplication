@@ -24,7 +24,11 @@
 				<td>{{item?.trainer.name}} {{item?.trainer.surname}}</td>
 				<td>{{item?.room.roomName}}</td>
 				<td>{{item?.workout.workoutType}}</td>
-				<td>
+				<td class="crudbtns">
+						<button type="update-button" id="update" class="btn btn-primary-outline pull-right" (click)="goToUpdatePage(item)"><i class="fa fa-plus"></i> Update</button>
+						<button type="delete-button" id="delete" class="btn btn-primary-outline pull-right" (click)="deleteTimetable(item)"><i class="fa fa-minus"></i> Delete</button>
+				</td>
+				<!-- <td>
 	            	<button type="button" class="room-button btn btn-info" (click)="goToUpdatePage(item)">
 						  <span class="glyphicon-pencil" aria-hidden="true"></span>
           					Update
@@ -36,7 +40,7 @@
 						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 						Delete
 					</button>
-				</td>
+				</td> -->
 			</tr>
 		</table>
 	</div>

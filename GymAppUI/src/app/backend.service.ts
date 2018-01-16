@@ -92,7 +92,7 @@ export class BackendService {
                 this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.routerState.snapshot.url, error: 'true' } });
             } else {
                 // nu avem acces, ne intoarcem pe homepage
-                this.router.navigate(['/']);
+                this.router.navigate(['/home']);
             }
 
         }

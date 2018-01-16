@@ -22,6 +22,7 @@ export class ScheduleComponent implements OnInit {
     allTimetables: Timetable[] = [];
     userTimetables: Timetable[] = [];
     firstStart: Date;
+    title: any;
 
     constructor(private backendService: BackendService, private authenticationService: AuthenticationService) { }
 
@@ -30,8 +31,8 @@ export class ScheduleComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getTimetables();
         this.getUserTimetables();
+        this.getTimetables();
         this.header = {
             left: 'prev,next today',
             center: 'title',
@@ -52,7 +53,7 @@ export class ScheduleComponent implements OnInit {
     handleEventClick(event) {
       const startDate = new Date(event.calEvent.start._i);
       console.log('I have been clicked!');
-      const $titleElement = $(event.jsEvent.currentTarget).find('.fc-title')[0];
+      this.title = $(event.jsEvent.currentTarget).find('.fc-title')[0];
       if (this.authenticationService.isLoggedIn()) {
         if (this.authenticationService.hasRole(['CLIENT'])) {
             const sDate: Date = this.authenticationService.getStart();
@@ -63,19 +64,25 @@ export class ScheduleComponent implements OnInit {
             }else {
                 if (startDate.getTime() < new Date().getTime()) {
                     alert('It is too late to subscribe to this workout :(');
-                } else {
+                  } else {
                     this.backendService.addClientTimetable(new ClientTimetable(this.authenticationService.getCurrentUser(), event.calEvent.id))
-                    .subscribe(r => {
-                    alert(r);
-                    });
-                    setTimeout(() => {
-                    window.location.reload(false);
-                    }, 100);
-                }
+                      .subscribe(r => {
+                      alert(r);
+                      this.addStar(r);
+                      });
+                  }
             }
         } else {
             alert('You must login in order to subscribe!');
         }
+      }
+    }
+    
+    addStar(response: string) {
+        if (response === 'Subscribed') {
+            $(this.title).append('<span title="You are subscribed" class="ui-button-icon-left ui-clickable fa fa-fw fa-star" style=" float:  right;"></span>');
+        }else {
+            $(this.title).find('span').remove();
         }
     }
     prepareEvents(startWeek: Date) {
@@ -143,6 +150,8 @@ export class ScheduleComponent implements OnInit {
         else if (event.intensity == 'EASY') {
             element.addClass('intensity-easy');
         }
+        console.log(event);
+        console.log(event.stea);
         if(event.stea) {
             const title = element.find('.fc-title');
             title.append('<span title="You are subscribed" class="ui-button-icon-left ui-clickable fa fa-fw fa-star" style=" float:  right;"></span>');
@@ -171,6 +180,7 @@ export class ScheduleComponent implements OnInit {
             this.backendService.getUserTimetables(this.authenticationService.getCurrentUser()).subscribe(res => {
                 this.userTimetables = res;
                 console.log(this.userTimetables);
+                this.prepareEvents(this.firstStart);
             });
         }
     }
