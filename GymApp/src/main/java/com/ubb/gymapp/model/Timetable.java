@@ -35,12 +35,13 @@ public class Timetable implements Serializable {
 	public Timetable() {
 	}
 	
-	public Timetable(String day, Date start, long duration, Room room, Workout workout) {
+	public Timetable(String day, Date start, long duration, Room room,Workout workout) {
 		this.day = day;
 		this.start = start;
 		this.duration = duration;
 		this.room = room;
 		this.workout = workout;
+		
 	}
 
 	@Id

@@ -57,8 +57,15 @@ public class UserTest {
 		roomRepo.save(room);
 		assertNotNull(work);
 		assertNotNull(room);
+		Trainer trainer = new Trainer("aaa", "aaa", "aaa", "aaa", "aaa", null);
+	
+		userRepo.save(trainer);
+	
 		Timetable pro =new Timetable("Joi", dat, 2L, room, work);
+		pro.setTrainer(trainer);
 		timeRepo.save(pro);
+		
+		
 		
 		user.addTimeTable(pro);
 		user=userRepo.save(user);
