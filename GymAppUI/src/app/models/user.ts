@@ -45,9 +45,10 @@ export class Client extends User {
     start: Date;
     subscription: Subscription;
     userTimetable: Timetable[];
-    constructor(id: number, cnp: string, name: string, surname: string, email: string, phonenumber: string) {
+    constructor(id: number, cnp: string, name: string, surname: string, email: string, phonenumber: string, start: Date) {
         super(id, cnp, name, surname, email, phonenumber, 'CLIENT');
         this.cnp = cnp;
+        this.start = start;
     }
 
 }

@@ -3,9 +3,10 @@ import { BackendService } from '../../../backend.service';
 import { Timetable } from '../../../models/Timetable';
 import * as moment from 'moment';
 import { AuthenticationService } from '../../../services/authentication.service';
-import { Client } from '../../../models/user';
+import { Client, User } from '../../../models/user';
 import { ClientTimetable } from '../../../models/client-timetable';
 import * as $ from 'jquery';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'app-schedule',
@@ -54,22 +55,29 @@ export class ScheduleComponent implements OnInit {
       const $titleElement = $(event.jsEvent.currentTarget).find('.fc-title')[0];
       if (this.authenticationService.isLoggedIn()) {
         if (this.authenticationService.hasRole(['CLIENT'])) {
-          if (startDate.getTime() < new Date().getTime()) {
-            alert('It is too late to subscribe to this workout :(');
-          } else {
-            this.backendService.addClientTimetable(new ClientTimetable(this.authenticationService.getCurrentUser(), event.calEvent.id))
-              .subscribe(r => {
-              alert(r);
-              });
-            setTimeout(() => {
-                window.location.reload(false);
-            }, 100);
-          }
-        }
+            const sDate: Date = this.authenticationService.getStart();
+            this.authenticationService.getCurrentUser
+            console.log(new Date().valueOf());
+            if(sDate < startDate){
+                alert("Subscription expired");
+            }else {
+                if (startDate.getTime() < new Date().getTime()) {
+                    alert('It is too late to subscribe to this workout :(');
+                } else {
+                    this.backendService.addClientTimetable(new ClientTimetable(this.authenticationService.getCurrentUser(), event.calEvent.id))
+                    .subscribe(r => {
+                    alert(r);
+                    });
+                    setTimeout(() => {
+                    window.location.reload(false);
+                    }, 100);
+                }
+            }
         } else {
-          alert('You must login in order to subscribe!');
+            alert('You must login in order to subscribe!');
         }
-      }
+        }
+    }
     prepareEvents(startWeek: Date) {
         if (this.allTimetables.length == 0) {
             this.firstStart = startWeek;
