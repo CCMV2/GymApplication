@@ -190,3 +190,6 @@ div.userpass{
   top: 0;
   left: 0;
 }
+.alert-error{
+	margin-bottom: 20px;
+}

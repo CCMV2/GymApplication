@@ -31,9 +31,6 @@ export class LoginPageComponent implements OnInit {
         }, 5000);
         const error = this.route.snapshot.queryParams['error'] && this.route.snapshot.queryParams['error'].length > 0;
         this.error = error ? 'Session expired. Please log in again.' : '';
-        setTimeout( () => {
-        this.error = "";
-        }, 5000);
     }
 
     login() {
