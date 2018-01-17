@@ -207,6 +207,37 @@ public class UserTimetableTest {
         userRepo.delete(trainer);
     }
 
+    @Transactional
+    @Test
+    public void findByUserandTimetable(){
+        Client user = new Client("a","a","a","a","a");
+        user = userRepo.save(user);
+
+        Date dat=new Date();
+        Workout work = new Workout();
+        work.setWorkoutType("r");
+        Room room = new Room();
+        Trainer trainer = new Trainer("1234","1234","1234","1234","1234",null);
+        userRepo.save(trainer);
+        workRepo.save(work);
+        roomRepo.save(room);
+        assertNotNull(work);
+        assertNotNull(room);
+        assertNotNull(user);
+        Timetable pro =new Timetable("Joi", dat, 2L, room, work);
+        pro.setTrainer(trainer);
+        timeRepo.save(pro);
+        assertNotNull(pro.getId());
+        UserTimetable userTimetable = new UserTimetable(user, pro);
+        userTimetable = userTimetableRepository.save(userTimetable);
+        assertEquals(userTimetableRepository.findByUserAndTimetable(user,pro).getId(), userTimetable.getId());
+        timeRepo.delete(pro);
+        userRepo.delete(trainer);
+        workRepo.delete(work);
+        roomRepo.delete(room);
+        userRepo.delete(user);
+    }
+
     @Test
     public void deleteByUser(){
         Client user = new Client("a","a","a","a","a");
@@ -231,6 +262,39 @@ public class UserTimetableTest {
         userTimetable = userTimetableRepository.save(userTimetable);
         long id = userTimetable.getId();
         userTimetableRepository.deleteByUser(user);
+        boolean isDeleted = !userTimetableRepository.exists(id);
+        assertTrue(isDeleted);
+        timeRepo.delete(pro);
+        workRepo.delete(work);
+        roomRepo.delete(room);
+        userRepo.delete(user);
+        userRepo.delete(trainer);
+    }
+
+    @Test
+    public void deleteByTimetable(){
+        Client user = new Client("a","a","a","a","a");
+        user = userRepo.save(user);
+
+        Date dat=new Date();
+        Workout work = new Workout();
+        work.setWorkoutType("r");
+        Room room = new Room();
+        Trainer trainer = new Trainer("1234","1234","1234","1234","1234",null);
+        userRepo.save(trainer);
+        workRepo.save(work);
+        roomRepo.save(room);
+        assertNotNull(work);
+        assertNotNull(room);
+        assertNotNull(user);
+        Timetable pro =new Timetable("Joi", dat, 2L, room, work);
+        pro.setTrainer(trainer);
+        timeRepo.save(pro);
+        assertNotNull(pro.getId());
+        UserTimetable userTimetable = new UserTimetable(user, pro);
+        userTimetable = userTimetableRepository.save(userTimetable);
+        long id = userTimetable.getId();
+        userTimetableRepository.deleteByTimetable(pro);
         boolean isDeleted = !userTimetableRepository.exists(id);
         assertTrue(isDeleted);
         timeRepo.delete(pro);
