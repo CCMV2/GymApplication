@@ -172,4 +172,20 @@ public class TrainerWorkoutTest {
 		userRepo.delete(trainer1);
 		userRepo.delete(trainer2);
 	}
+	@Test
+	public void deleteByTrainer(){
+		Workout work1 = new Workout("Zumba", Difficulty.MEDIUM, "Pretty much the most awesome workout ever. Dance to great music, with great people, and burn a ton of calories without even realizing it.");
+		workoutRepo.save(work1);
+		Trainer trainer1 = new Trainer("trainer1", "John", "Doe", "john.doe@gmail.com", "0758914523",null);
+		userRepo.save(trainer1);
+		TrainerWorkout uw1 = new TrainerWorkout(trainer1, work1);
+		userWorkoutRepo.save(uw1);
+		long uw1Id = uw1.getId();
+		userWorkoutRepo.deleteByTrainer(trainer1);
+		boolean isDeleted = !userWorkoutRepo.exists(uw1Id);
+		assertTrue(isDeleted);
+		workoutRepo.delete(work1);
+		userRepo.delete(trainer1);
+
+	}
 }
