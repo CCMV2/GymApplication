@@ -1,11 +1,13 @@
 package com.ubb.gymapp;
 
+import com.ubb.gymapp.repository.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.ubb.gymapp.model.Timetable;
 import com.ubb.gymapp.model.Room;
 import com.ubb.gymapp.model.Subscription;
 import com.ubb.gymapp.model.Trainer;
@@ -13,12 +15,8 @@ import com.ubb.gymapp.model.TrainerWorkout;
 import com.ubb.gymapp.model.Workout;
 import com.ubb.gymapp.model.Workout.Difficulty;
 import com.ubb.gymapp.model.WorkoutList;
-import com.ubb.gymapp.repository.RoomRepository;
-import com.ubb.gymapp.repository.SubscriptionRepository;
-import com.ubb.gymapp.repository.UserRepository;
-import com.ubb.gymapp.repository.TrainerWorkoutRepository;
-import com.ubb.gymapp.repository.WorkoutListRepository;
-import com.ubb.gymapp.repository.WorkoutRepository;
+
+import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -41,6 +39,9 @@ public class DataFiller {
 	
 	@Autowired
 	private RoomRepository roomRepo;
+
+	@Autowired
+	private TimetableRepository timeRepo;
 	
 	@Test
 	public void fillData() {
@@ -56,20 +57,34 @@ public class DataFiller {
 		subRepo.save(sub2);
 		subRepo.save(sub3);
 		subRepo.save(sub4);
-		
+
 		Workout work1 = new Workout("Zumba", Difficulty.MEDIUM, "Pretty much the most awesome workout ever. Dance to great music, with great people, and burn a ton of calories without even realizing it.");
 		Workout work2 = new Workout("Pilates", Difficulty.HARD, "Pilates is a physical fitness system developed in the early 20th century by Joseph Pilates, after whom it was named. It is practiced worldwide.");
-		Workout work3 = new Workout("Tae-Bo", Difficulty.HARD, "Tae Bo is a total body fitness system that incorporates martial arts techniques such as kicks and punches, which became quite popular in the 1990s.");
+		Workout work3 = new Workout("Tae-Bo", Difficulty.HARD, "Tae Bo is a total body fitness 4system that incorporates martial arts techniques such as kicks and punches, which became quite popular in the 1990s.");
 		Workout work4 = new Workout("Kangoo Jumps", Difficulty.EASY, "Kangoo Jumps rebound shoes are perfect for cross-training activities and provide many additional health and fitness benefits. They are designed for all ages.");
 		Workout work5 = new Workout("Step Basic", Difficulty.EASY, "Basic aerobic workout which will make you feel free and have fun in the same time.");
 		Workout work6 = new Workout("Step Advanced", Difficulty.MEDIUM, "Step it up with the next level aerobic workout which will make you feel free and have fun in the same time.");
+		Workout work7 = new Workout("Kickboxing", Difficulty.HARD, "To get better balance, power and agility, kickboxing is king among workouts.");
+		Workout work8 = new Workout("Yoga", Difficulty.MEDIUM, "Yoga is designed to improve the health, performance, and mental acuity of athletes or individuals interested in improving their level of fitness.");
+		Workout work9 = new Workout("Trx",Difficulty.HARD,"The TRX Suspension Trainer is the original, best-in-class workout system that leverages gravity and your bodyweight to perform hundreds of exercises." );
+		Workout work10 = new Workout("Stretching", Difficulty.MEDIUM, "Studies have shed light on the function, in stretching, of a large protein within the myofibrils of skeletal muscles named titin.");
+		Workout work11 = new Workout("Capoeira", Difficulty.EASY, "Capoeira is an Afro-Brazilian martial art that combines elements of dance, acrobatics and music. ");
+
+
+
+
 		workoutRepo.save(work1);
 		workoutRepo.save(work2);
 		workoutRepo.save(work3);
 		workoutRepo.save(work4);
 		workoutRepo.save(work5);
 		workoutRepo.save(work6);
-		
+		workoutRepo.save(work7);
+		workoutRepo.save(work8);
+		workoutRepo.save(work9);
+		workoutRepo.save(work10);
+		workoutRepo.save(work11);
+
 		WorkoutList wl1 = new WorkoutList(sub1, work1);
 		WorkoutList wl2 = new WorkoutList(sub1, work2);
 		WorkoutList wl3 = new WorkoutList(sub1, work5);
@@ -106,33 +121,94 @@ public class DataFiller {
 		workoutListRepo.save(wl16);
 		workoutListRepo.save(wl17);
 		workoutListRepo.save(wl18);
-		
+
 		Trainer trainer1 = new Trainer("trainer1", "John", "Doe", "john.doe@gmail.com", "0758914523", null);
 		Trainer trainer2 = new Trainer("trainer2", "Jane", "Doe", "jane.doe@gmail.com", "0758914524", null);
 		Trainer trainer3 = new Trainer("trainer3", "Jillian", "Miles", "jillian.miles@gmail.com", "0758914525", null);
+		Trainer trainer4 = new Trainer("trainer4", "Philip", "Smith", "philip.smith@gmail.com", "0770970589", null);
+		Trainer trainer5 = new Trainer("trainer5", "Thomas", "Davis", "thomas.davis@gmail.com", "0754538929", null);
+		Trainer trainer6 = new Trainer("trainer6", "Martin", "Harris", "martin.harris@gmail.com", "0755273905", null);
+		Trainer trainer7 = new Trainer("trainer7", "Lucas", "Williams", "lucas.williams@gmail.com", "0745537289", null);
+		Trainer trainer8 = new Trainer("trainer8", "Tom", "Collins", "tom.collins@gmail.com", "0722435387",null);
+		Trainer trainer9 = new Trainer("trainer9", "Kevin", "Parker", "kevin.parker@gmail.com", "0744723478", null);
+		Trainer trainer10 = new Trainer("trainer10", "Sophie", "Carter", "sophie.carter@gmail.com", "0722275342", null);
+		Trainer trainer11 = new Trainer("trainer11", "Emma" ,"Morris" , "emma.morris@gmail.com","0753548829", null);
+
 		userRepo.save(trainer1);
 		userRepo.save(trainer2);
 		userRepo.save(trainer3);
-		
+		userRepo.save(trainer4);
+		userRepo.save(trainer5);
+		userRepo.save(trainer6);
+		userRepo.save(trainer7);
+		userRepo.save(trainer8);
+		userRepo.save(trainer9);
+		userRepo.save(trainer10);
+		userRepo.save(trainer11);
+
 		TrainerWorkout uw1 = new TrainerWorkout(trainer1, work3);
-		TrainerWorkout uw2 = new TrainerWorkout(trainer1, work5);
-		TrainerWorkout uw3 = new TrainerWorkout(trainer1, work6);
+		TrainerWorkout uw2 = new TrainerWorkout(trainer6, work5);
+		TrainerWorkout uw3 = new TrainerWorkout(trainer4, work6);
 		TrainerWorkout uw4 = new TrainerWorkout(trainer2, work4);
 		TrainerWorkout uw5 = new TrainerWorkout(trainer3, work1);
-		TrainerWorkout uw6 = new TrainerWorkout(trainer3, work2);
+		TrainerWorkout uw6 = new TrainerWorkout(trainer5, work2);
 		userWorkoutRepo.save(uw1);
 		userWorkoutRepo.save(uw2);
 		userWorkoutRepo.save(uw3);
 		userWorkoutRepo.save(uw4);
 		userWorkoutRepo.save(uw5);
 		userWorkoutRepo.save(uw6);
-		
+
 		Room room1 = new Room("Main room");
 		Room room2 = new Room("Aerobic");
 		Room room3 = new Room("Martial arts");
+		Room room4 = new Room("Trx");
+		Room room5 = new Room("Cycling");
+		Room room6 = new Room("Stretching");
+		Room room7 = new Room("Fitness");
+		Room room8 = new Room("Kickboxing");
+		Room room9 = new Room("Capoeira");
+		Room room10 = new Room("Zumba");
+		Room room11 = new Room("Yoga");
 		roomRepo.save(room1);
 		roomRepo.save(room2);
 		roomRepo.save(room3);
-	}
+		roomRepo.save(room4);
+		roomRepo.save(room5);
+		roomRepo.save(room6);
+		roomRepo.save(room7);
+		roomRepo.save(room8);
+		roomRepo.save(room9);
+		roomRepo.save(room10);
+		roomRepo.save(room11);
 
+
+
+		Timetable time1 = new Timetable("Monday", new Date(), 120L, room2, work5);
+		Timetable time2 = new Timetable("Sunday", new Date(), 45L, room6, work2);
+		Timetable time3 = new Timetable("Tuesday", new Date(), 50L, room2, work3);
+		Timetable time4 = new Timetable("Saturday", new Date(), 30L, room4, work6);
+		Timetable time5 = new Timetable("Friday", new Date(), 50L, room6, work10);
+		Timetable time6 = new Timetable("Wednesday", new Date(), 45L, room8, work8);
+		Timetable time7 = new Timetable("Thursday", new Date(), 45L, room10, work11);
+
+		time1.setTrainer(trainer1);
+		timeRepo.save(time1);
+		time2.setTrainer(trainer2);
+		timeRepo.save(time2);
+		time3.setTrainer(trainer3);
+		timeRepo.save(time3);
+		time4.setTrainer(trainer4);
+		timeRepo.save(time4);
+		time5.setTrainer(trainer5);
+		timeRepo.save(time5);
+		time6.setTrainer(trainer6);
+		timeRepo.save(time6);
+		time7.setTrainer(trainer7);
+		timeRepo.save(time7);
+
+
+
+
+	}
 }
