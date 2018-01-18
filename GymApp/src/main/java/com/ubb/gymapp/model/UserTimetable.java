@@ -1,6 +1,7 @@
 package com.ubb.gymapp.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,12 +23,23 @@ public class UserTimetable implements Serializable {
 	private Long id;
 	private User user;
 	private Timetable timetable;
+	private Date day;
 
 	public UserTimetable(User user, Timetable timetable) {
 		this.user = user;
 		this.timetable = timetable;
 	}
 	
+	
+	@Column(name = "Day")
+	public Date getDay() {
+		return day;
+	}
+
+	public void setDay(Date day) {
+		this.day = day;
+	}
+
 	public UserTimetable() {}
 
 	@ManyToOne(fetch = FetchType.LAZY)

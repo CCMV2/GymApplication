@@ -1,4 +1,4 @@
-Drop schema `gymapp`;
+drop schema `gymapp` ;
 CREATE SCHEMA `gymapp` ;
 
 DROP TABLE if exists `gymapp`.`workoutlist`;
@@ -95,6 +95,7 @@ CREATE TABLE `gymapp`.`room` (
     `id` bigint NOT NULL AUTO_INCREMENT,
     `idUser` bigint NOT NULL,
     `idTimetable` BIGINT NOT NULL,
+	`Start` DATE NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`idUser`) REFERENCES user(`idUser`),
     FOREIGN KEY (`idTimetable`) REFERENCES timetable(`idTimetable`)
