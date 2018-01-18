@@ -99,4 +99,4 @@ CREATE TABLE `gymapp`.`room` (
     PRIMARY KEY (`id`),
     FOREIGN KEY (`idUser`) REFERENCES user(`idUser`),
     FOREIGN KEY (`idTimetable`) REFERENCES timetable(`idTimetable`)
-  );
+  ); 
