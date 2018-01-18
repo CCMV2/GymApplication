@@ -70,13 +70,17 @@ export class RoomPageComponent implements OnInit {
 
   deleteRoom(room: Room): void {
     this.backendService.deleteRoom(room).subscribe(res => {
-      this.message = 'Successful';
-      setTimeout(()=> {
-        this.message = "";
-        console.log("lol");
+      console.log( this.allRooms);
+      if (res === '0') {
+        this.message = 'Successful';
+        const index = this. allRooms.findIndex(d => d.roomId === room.roomId);
+        this.allRooms.splice(index, 1);
+        setTimeout(()=> {
+          this.message = "";
+          console.log("lol");
       }, 5000);
-      console.log(res);
-      this.refreshRooms();
+      //console.log(res);
+    }
     })
   }
 

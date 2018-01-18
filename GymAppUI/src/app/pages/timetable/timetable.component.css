@@ -51,5 +51,25 @@ h1{
   .crudbtns{
     display: grid;
 }
-  
+.alert {
+  padding: 20px;
+  background-color: #14305e;
+color: white;
+text-align: center;
+position: fixed;
+top: 40px;
+left: 50%;
+transform: translateX(-50%);
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
  
