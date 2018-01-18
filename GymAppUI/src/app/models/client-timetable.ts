@@ -1,10 +1,16 @@
-export class ClientTimetable {
-    client: string;
-    timetable: number;
-    day: Date;
+import { Client } from './user';
+import { Timetable } from './Timetable';
+   
 
-    constructor(client: string, timetable: number) {
+export class ClientTimetable {
+    client: Client;
+    timetable: Timetable;
+    day: Date;
+    id: number;
+
+    constructor(client: Client, timetable: Timetable) {
         this.client = client;
         this.timetable = timetable;
+        this.day = new Date();
     }
 }

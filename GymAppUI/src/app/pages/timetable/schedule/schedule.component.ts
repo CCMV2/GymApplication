@@ -4,7 +4,7 @@ import { Timetable } from '../../../models/Timetable';
 import * as moment from 'moment';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { Client, User } from '../../../models/user';
-import { ClientTimetable } from '../../../models/client-timetable';
+import { ClientTimetable, ClientTimetable } from '../../../models/client-timetable';
 import * as $ from 'jquery';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -22,9 +22,11 @@ export class ScheduleComponent implements OnInit {
     header: any;
     option: any;
     allTimetables: Timetable[] = [];
-    userTimetables: Timetable[] = [];
     firstStart: Date;
     title: any;
+    client: Client;
+    clientTimetables: ClientTimetable[];
+
 
     constructor(private backendService: BackendService, private authenticationService: AuthenticationService) { }
 
@@ -33,7 +35,8 @@ export class ScheduleComponent implements OnInit {
     }
     
     ngOnInit() {
-        this.getUserTimetables();
+        this.getUserById();
+
         this.getTimetables();
         this.header = {
             left: 'prev,next today',
@@ -59,7 +62,6 @@ export class ScheduleComponent implements OnInit {
       if (this.authenticationService.isLoggedIn()) {
         if (this.authenticationService.hasRole(['CLIENT'])) {
             const sDate: Date = this.authenticationService.getStart();
-            this.authenticationService.getCurrentUser
             console.log(new Date().valueOf());
             if(sDate < startDate){
                 alert("Subscription expired");
@@ -67,11 +69,14 @@ export class ScheduleComponent implements OnInit {
                 if (startDate.getTime() < new Date().getTime()) {
                     alert('It is too late to subscribe to this workout :(');
                   } else {
-                    this.backendService.addClientTimetable(new ClientTimetable(this.authenticationService.getCurrentUser(), event.calEvent.id))
-                      .subscribe(r => {
-                      alert(r);
-                      this.addStar(r);
-                      });
+                    if (event.calEvent.stea) {
+                        const item = this.findUserTimetable(this.findTimetableById( event.calEvent.id), startDate);
+                        this.deleteTimetable(item, event);
+                    } else {
+                          const item = new ClientTimetable(this.client, this.findTimetableById( event.calEvent.id));
+                          item.day = startDate;
+                        this.addTimetable(item, event);
+                    }
                   }
             }
         } else {
@@ -88,7 +93,8 @@ export class ScheduleComponent implements OnInit {
         }
     }
     prepareEvents(startWeek: Date) {
-        if (this.allTimetables.length == 0) {
+        $('.fa-star').remove();
+        if (this.allTimetables.length === 0) {
             this.firstStart = startWeek;
         }
         // scoatem orele extra
@@ -112,7 +118,7 @@ export class ScheduleComponent implements OnInit {
             const endDay = new Date(endDayMilliseconds);
             event['end'] = moment(endDay).format('YYYY-MM-DD[T]HH:mm:ss');
             event['intensity'] = timeTableExample.workout.difficulty;
-            event['stea'] = this.hasTimetable(timeTableExample);
+            event['stea'] = this.clientTimetables ? this.hasTimetable(timeTableExample, startDay) : false;
             this.events.push(event);
         }
     }
@@ -160,13 +166,24 @@ export class ScheduleComponent implements OnInit {
         }
     }
 
-    hasTimetable(timetable: Timetable): boolean {
-        for (const usertimetable of this.userTimetables) {
-            if (usertimetable.id === timetable.id) {
+    hasTimetable(timetable: Timetable, day: Date): boolean {
+        for (const clientTimetable of this.clientTimetables) {
+            if (clientTimetable.timetable.id === timetable.id && clientTimetable.day.getDate() === day.getDate()
+                    && clientTimetable.day.getMonth() === day.getMonth() && clientTimetable.day.getFullYear() === day.getFullYear()) {
                 return true;
             }
         }
         return false;
+    }
+    
+    findUserTimetable(timetable: Timetable, day: Date): ClientTimetable {
+        for (const clientTimetable of this.clientTimetables) {
+            if (clientTimetable.timetable.id === timetable.id && clientTimetable.day.getDate() === day.getDate()
+                    && clientTimetable.day.getMonth() === day.getMonth() && clientTimetable.day.getFullYear() === day.getFullYear()) {
+                return clientTimetable;
+            }
+        }
+        return null;
     }
 
     getTimetables(): void {
@@ -177,21 +194,70 @@ export class ScheduleComponent implements OnInit {
             this.prepareEvents(this.firstStart);
             hidePleaseWait();
         });
-        
     }
 
-    getUserTimetables(): void {
-        showPleaseWait();
+    getUserById() {
         if (this.authenticationService.isLoggedIn()) {
-            this.backendService.getUserTimetables(this.authenticationService.getCurrentUser()).subscribe(res => {
-                this.userTimetables = res;
-                console.log(this.userTimetables);
-                this.prepareEvents(this.firstStart);
-                hidePleaseWait();
+            this.backendService.getUserById(this.authenticationService.getId()).subscribe(res => {
+                this.client = res;
+                this.getAllClientsTimetables();
             });
         }
-        
     }
+    getAllClientsTimetables() {
+        if ( this.client.subscription.imageBase64 === null) {
+            this.client.subscription.imageBase64 = '';
+        }
+        this.backendService.getClientTimetables(this.client).subscribe(res => {
+            this.clientTimetables = res;
+            for (const variabila of this.clientTimetables) {
+                variabila.day = new Date(variabila.day);
+  }
+            this.getTimetables();
+        });
+      }
+    findTimetableById(id: number) {
+        for (const timeTable of this.allTimetables) {
+            if (timeTable.id == id) {
+                return timeTable;
+            }
+        }
+        return null;
+    }
+    
+    addTimetable(item: ClientTimetable, event: any) {
+        if ( item.timetable.trainer.imageBase64 === null) {
+            item.timetable.trainer.imageBase64 = '';
+        }
+        if ( item.client.subscription.imageBase64 === null) {
+            item.client.subscription.imageBase64 = '';
+        }
+        this.backendService.addClientTimetable(item).subscribe(res => {
+          alert(res);
+          event.calEvent.stea = true;
+          this.addStar(res);
+          this.clientTimetables.push(item);
+      });
+    }
+
+    deleteTimetable(item: ClientTimetable, event: any) {
+          if ( item.timetable.trainer.imageBase64 === null) {
+              item.timetable.trainer.imageBase64 = '';
+          }
+          if ( item.client.subscription.imageBase64 === null) {
+              item.client.subscription.imageBase64 = '';
+          }
+        this.backendService.deleteClientTimetable(item).subscribe(res => {
+         alert(res);
+         event.calEvent.stea = false;
+         this.addStar(res);
+         const index = this.clientTimetables.findIndex(d => d.timetable.id === item.timetable.id &&
+                 d.day.getDate() === item.day.getDate()
+                 && d.day.getMonth() === item.day.getMonth() && d.day.getFullYear() === item.day.getFullYear());
+         this.clientTimetables.splice(index, 1);
+      });
+    }
+
 
 
 }

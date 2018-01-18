@@ -1,18 +1,12 @@
 package com.ubb.gymapp.model;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
@@ -26,29 +20,9 @@ public class Client extends User{
 	private String cnp;
 	private Subscription subscription;
 	private Date start;
-	private List<Timetable> userTimetable;
 	public Client() {
 		super();
 	}
-	
-	
-	@OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-        name="user_timetable",
-        joinColumns = @JoinColumn( name="idUser"),
-        inverseJoinColumns = @JoinColumn( name="idTimetable")
-    )
-	public List<Timetable> getUserTimetable() {
-		return userTimetable;
-	}
-
-
-
-	public void setUserTimetable(List<Timetable> userTimetable) {
-		this.userTimetable = userTimetable;
-	}
-
-
 
 	public Client(String cnp, String name, String surname, String email, String phonenumber) {
 		super(name, surname, email, phonenumber);
@@ -89,12 +63,5 @@ public class Client extends User{
 	public String getPassword() {
 		return this.cnp;
 	}
-	
-	public  void addTimeTable(Timetable timeTable){
-		if(userTimetable == null){
-			userTimetable = new ArrayList<Timetable>();
-		}
-		
-		userTimetable.add(timeTable);
-	}
+
 }

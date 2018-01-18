@@ -32,10 +32,10 @@ public class UserTimetableTest {
     private TimetableRepository timeRepo;
 
     @Autowired
-    private UserTimetableRepository userTimetableRepository;
+    private ClientTimetableRepository clientTimetableRepository;
 
     @Test
-    public void addUserTimetable(){
+    public void addClientTimetable(){
         Client user = new Client("a","a","a","a","a");
         user = userRepo.save(user);
 
@@ -54,10 +54,10 @@ public class UserTimetableTest {
         pro.setTrainer(trainer);
         timeRepo.save(pro);
         assertNotNull(pro.getId());
-        UserTimetable userTimetable = new UserTimetable(user, pro);
-        userTimetable = userTimetableRepository.save(userTimetable);
-        assertNotNull(userTimetableRepository.findOne(userTimetable.getId()));
-        userTimetableRepository.delete(userTimetable);
+        ClientTimetable userTimetable = new ClientTimetable(user, pro);
+        userTimetable = clientTimetableRepository.save(userTimetable);
+        assertNotNull(clientTimetableRepository.findOne(userTimetable.getId()));
+        clientTimetableRepository.delete(userTimetable);
         timeRepo.delete(pro);
         workRepo.delete(work);
         roomRepo.delete(room);
@@ -87,10 +87,10 @@ public class UserTimetableTest {
         pro.setTrainer(trainer);
         timeRepo.save(pro);
         assertNotNull(pro.getId());
-        UserTimetable userTimetable = new UserTimetable(user, pro);
-        userTimetable = userTimetableRepository.save(userTimetable);
-        assertEquals(userTimetableRepository.findOne(userTimetable.getId()), userTimetable);
-        userTimetableRepository.delete(userTimetable);
+        ClientTimetable userTimetable = new ClientTimetable(user, pro);
+        userTimetable = clientTimetableRepository.save(userTimetable);
+        assertEquals(clientTimetableRepository.findOne(userTimetable.getId()), userTimetable);
+        clientTimetableRepository.delete(userTimetable);
         timeRepo.delete(pro);
         workRepo.delete(work);
         roomRepo.delete(room);
@@ -119,10 +119,10 @@ public class UserTimetableTest {
         pro.setTrainer(trainer);
         timeRepo.save(pro);
         assertNotNull(pro.getId());
-        UserTimetable userTimetable = new UserTimetable(user, pro);
-        userTimetable = userTimetableRepository.save(userTimetable);
-        userTimetableRepository.delete(userTimetable);
-        assertNull(userTimetableRepository.findOne(userTimetable.getId()));
+        ClientTimetable userTimetable = new ClientTimetable(user, pro);
+        userTimetable = clientTimetableRepository.save(userTimetable);
+        clientTimetableRepository.delete(userTimetable);
+        assertNull(clientTimetableRepository.findOne(userTimetable.getId()));
         timeRepo.delete(pro);
         workRepo.delete(work);
         roomRepo.delete(room);
@@ -153,13 +153,13 @@ public class UserTimetableTest {
         pro.setTrainer(trainer);
         timeRepo.save(pro);
         assertNotNull(pro.getId());
-        UserTimetable userTimetable = new UserTimetable(user, pro);
-        userTimetable = userTimetableRepository.save(userTimetable);
-        userTimetable.setUser(user2);
-        userTimetableRepository.save(userTimetable);
-        UserTimetable userTimetable2 = userTimetableRepository.findOne(userTimetable.getId());
+        ClientTimetable userTimetable = new ClientTimetable(user, pro);
+        userTimetable = clientTimetableRepository.save(userTimetable);
+        userTimetable.setClient(user2);
+        clientTimetableRepository.save(userTimetable);
+        ClientTimetable userTimetable2 = clientTimetableRepository.findOne(userTimetable.getId());
         assertEquals(userTimetable,userTimetable2);
-        userTimetableRepository.delete(userTimetable);
+        clientTimetableRepository.delete(userTimetable);
         timeRepo.delete(pro);
         workRepo.delete(work);
         roomRepo.delete(room);
@@ -189,17 +189,17 @@ public class UserTimetableTest {
         pro.setTrainer(trainer);
         timeRepo.save(pro);
         assertNotNull(pro.getId());
-        UserTimetable userTimetable = new UserTimetable(user, pro);
-        UserTimetable userTimetable2 = new UserTimetable(user, pro);
-        UserTimetable userTimetable3 = new UserTimetable(user, pro);
-        userTimetable = userTimetableRepository.save(userTimetable);
-        userTimetable2 = userTimetableRepository.save(userTimetable2);
-        userTimetable3 = userTimetableRepository.save(userTimetable3);
-        List<UserTimetable> list = userTimetableRepository.findAll();
+        ClientTimetable userTimetable = new ClientTimetable(user, pro);
+        ClientTimetable userTimetable2 = new ClientTimetable(user, pro);
+        ClientTimetable userTimetable3 = new ClientTimetable(user, pro);
+        userTimetable = clientTimetableRepository.save(userTimetable);
+        userTimetable2 = clientTimetableRepository.save(userTimetable2);
+        userTimetable3 = clientTimetableRepository.save(userTimetable3);
+        List<ClientTimetable> list = clientTimetableRepository.findAll();
         assertThat(list,hasItems(userTimetable,userTimetable2,userTimetable3));
-        userTimetableRepository.delete(userTimetable);
-        userTimetableRepository.delete(userTimetable2);
-        userTimetableRepository.delete(userTimetable3);
+        clientTimetableRepository.delete(userTimetable);
+        clientTimetableRepository.delete(userTimetable2);
+        clientTimetableRepository.delete(userTimetable3);
         timeRepo.delete(pro);
         workRepo.delete(work);
         roomRepo.delete(room);
@@ -228,9 +228,9 @@ public class UserTimetableTest {
         pro.setTrainer(trainer);
         timeRepo.save(pro);
         assertNotNull(pro.getId());
-        UserTimetable userTimetable = new UserTimetable(user, pro);
-        userTimetable = userTimetableRepository.save(userTimetable);
-        assertEquals(userTimetableRepository.findByUserAndTimetable(user,pro).getId(), userTimetable.getId());
+        ClientTimetable userTimetable = new ClientTimetable(user, pro);
+        userTimetable = clientTimetableRepository.save(userTimetable);
+        assertEquals(clientTimetableRepository.findByClientAndTimetable(user,pro).getId(), userTimetable.getId());
         timeRepo.delete(pro);
         userRepo.delete(trainer);
         workRepo.delete(work);
@@ -258,11 +258,11 @@ public class UserTimetableTest {
         pro.setTrainer(trainer);
         timeRepo.save(pro);
         assertNotNull(pro.getId());
-        UserTimetable userTimetable = new UserTimetable(user, pro);
-        userTimetable = userTimetableRepository.save(userTimetable);
+        ClientTimetable userTimetable = new ClientTimetable(user, pro);
+        userTimetable = clientTimetableRepository.save(userTimetable);
         long id = userTimetable.getId();
-        userTimetableRepository.deleteByUser(user);
-        boolean isDeleted = !userTimetableRepository.exists(id);
+        clientTimetableRepository.deleteByClient(user);
+        boolean isDeleted = !clientTimetableRepository.exists(id);
         assertTrue(isDeleted);
         timeRepo.delete(pro);
         workRepo.delete(work);
@@ -291,11 +291,11 @@ public class UserTimetableTest {
         pro.setTrainer(trainer);
         timeRepo.save(pro);
         assertNotNull(pro.getId());
-        UserTimetable userTimetable = new UserTimetable(user, pro);
-        userTimetable = userTimetableRepository.save(userTimetable);
+        ClientTimetable userTimetable = new ClientTimetable(user, pro);
+        userTimetable = clientTimetableRepository.save(userTimetable);
         long id = userTimetable.getId();
-        userTimetableRepository.deleteByTimetable(pro);
-        boolean isDeleted = !userTimetableRepository.exists(id);
+        clientTimetableRepository.deleteByTimetable(pro);
+        boolean isDeleted = !clientTimetableRepository.exists(id);
         assertTrue(isDeleted);
         timeRepo.delete(pro);
         workRepo.delete(work);

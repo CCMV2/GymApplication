@@ -12,11 +12,13 @@ public class JwtAuthenticationResponse implements Serializable {
     private final String token;
     private final String role;
     private final long start;
+    private final Long id;
 
-    public JwtAuthenticationResponse(String token, String role, long start) {
+    public JwtAuthenticationResponse(String token, String role, long start, Long id) {
         this.token = token;
         this.role = role;
         this.start = start;
+        this.id = id;
     }
 
     public String getToken() {
@@ -29,5 +31,9 @@ public class JwtAuthenticationResponse implements Serializable {
 
 	public long getStart() {
 		return start;
+	}
+
+	public Long getId() {
+		return id;
 	}
 }

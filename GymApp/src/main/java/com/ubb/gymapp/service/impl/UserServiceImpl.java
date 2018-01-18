@@ -9,17 +9,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.ubb.gymapp.dto.ClientTimetable;
 import com.ubb.gymapp.model.Administrator;
 import com.ubb.gymapp.model.Client;
-import com.ubb.gymapp.model.Timetable;
+import com.ubb.gymapp.model.ClientTimetable;
 import com.ubb.gymapp.model.Trainer;
 import com.ubb.gymapp.model.User;
-import com.ubb.gymapp.model.UserTimetable;
-import com.ubb.gymapp.repository.TimetableRepository;
+import com.ubb.gymapp.repository.ClientTimetableRepository;
 import com.ubb.gymapp.repository.TrainerWorkoutRepository;
 import com.ubb.gymapp.repository.UserRepository;
-import com.ubb.gymapp.repository.UserTimetableRepository;
 import com.ubb.gymapp.service.UserService;
 
 @Service
@@ -29,10 +26,7 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepo;
 	
 	@Autowired
-	private TimetableRepository timetableRepo;
-	
-	@Autowired
-	private UserTimetableRepository userTimetableRepo;
+	private ClientTimetableRepository clientTimetableRepo;
 	
 	@Autowired
 	private TrainerWorkoutRepository trainerWorkoutRepo;
@@ -56,24 +50,24 @@ public class UserServiceImpl implements UserService {
 			return userRepo.save(trainer);
 		default:
 			Client client = (Client) user;
-			userTimetableRepo.deleteByUser(client);
+			clientTimetableRepo.deleteByClient(client);
 			return userRepo.save(client);
 		}
 	}
 	
 	@Override
-	public String addUserTimetable(ClientTimetable clientTimetable) {
-		User user = userRepo.findByEmail(clientTimetable.getClient());
-		Timetable timetable = timetableRepo.getOne(clientTimetable.getTimetable());
-		UserTimetable userTimetable = userTimetableRepo.findByUserAndTimetable(user, timetable);
-		if(userTimetable == null) {
-			this.userTimetableRepo.save(new UserTimetable(user, timetable));
-			return "Subscribed";
-		}else
-			//this is where we remove from the repo
-			this.userTimetableRepo.delete(userTimetable);
-			return "Unsubscribed";
+	public String addUserTimetable(ClientTimetable userTimetable) {
+		this.clientTimetableRepo.save(userTimetable);
+		return "Subscribed";
+		
 	}
+	
+	@Override
+	public String deleteUserTimetable(ClientTimetable userTimetable) {
+		this.clientTimetableRepo.delete(userTimetable);
+		return "Unsubscribed";
+	}
+	
 	
 	@Override
 	public List<User> getAllTrainers() {
@@ -91,6 +85,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User findUserByEmail(String email) {
 		return userRepo.findByEmail(email);
+	}
+
+	@Override
+	public List<ClientTimetable> findByClient(Client client) {
+		return clientTimetableRepo.findByClient(client);
+	}
+
+	@Override
+	public User findUserById(Long id) {
+		return userRepo.findOne(id);
 	}
 
 }

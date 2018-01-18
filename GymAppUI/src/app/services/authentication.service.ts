@@ -17,7 +17,7 @@ export class AuthenticationService {
                 const token = response.json() && response.json().token;
                 if ( token ) {
                     // store username and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem( 'currentUser', JSON.stringify( { username: username, token: token, role: response.json().role, start:response.json().start } ) );
+                    localStorage.setItem( 'currentUser', JSON.stringify( { username: username, token: token, role: response.json().role, start:response.json().start, id:response.json().id} ) );
 
                     // return true to indicate successful login
                     return true;
@@ -60,6 +60,12 @@ export class AuthenticationService {
         const currentUser = JSON.parse( localStorage.getItem( 'currentUser' ) );
         const start = currentUser && currentUser.start;
         return start ? new Date(start) : new Date();
+    }
+
+    getId(): number {
+        const currentUser = JSON.parse( localStorage.getItem( 'currentUser' ) );
+        const id = currentUser && currentUser.id;
+        return id ? id : 0;
     }
 
 }

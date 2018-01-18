@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ubb.gymapp.dto.ClientTimetable;
 import com.ubb.gymapp.model.Administrator;
 import com.ubb.gymapp.model.Client;
+import com.ubb.gymapp.model.ClientTimetable;
 import com.ubb.gymapp.model.Trainer;
 import com.ubb.gymapp.model.User;
 import com.ubb.gymapp.service.UserService;
@@ -91,5 +91,24 @@ public class UserController {
 		}catch (Exception e) {
 			return "Failed:" + e.getMessage();
 		}
+	}
+	
+	@RequestMapping(value = "/deleteclienttimetable", method=RequestMethod.POST)
+	public String deleteClientTimetable(@RequestBody ClientTimetable clientTimetable) {
+		try{
+			return this.userService.deleteUserTimetable(clientTimetable);
+		}catch (Exception e) {
+			return "Failed:" + e.getMessage();
+		}
+	}
+	
+	@RequestMapping(value = "/getclienttimetables", method=RequestMethod.POST)
+	public List<ClientTimetable> getClientTimetables(@RequestBody Client client) {
+		return this.userService.findByClient(client);
+	}
+	
+	@RequestMapping(value = "/findUserById", method=RequestMethod.POST)
+	public User getUserbyId(@RequestBody Long id) {
+		return this.userService.findUserById(id);
 	}
 }

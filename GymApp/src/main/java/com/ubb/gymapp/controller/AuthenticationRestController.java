@@ -61,7 +61,7 @@ public class AuthenticationRestController {
         	start = cal.getTimeInMillis();
         }
         // Return the token
-        return ResponseEntity.ok(new JwtAuthenticationResponse(token, user.getUserType().toString(), start));
+        return ResponseEntity.ok(new JwtAuthenticationResponse(token, user.getUserType().toString(), start, user.getId()));
     }
 
 }

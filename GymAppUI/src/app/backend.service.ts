@@ -7,7 +7,7 @@ import { Subscription } from './models/subscriptionModel';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Injectable } from '@angular/core';
-import { User, Trainer } from './models/user';
+import { User, Trainer, Client } from './models/user';
 import { Timetable } from './models/Timetable';
 import { WorkoutList } from './models/workoutlist';
 import { AuthenticationService } from './services/authentication.service';
@@ -132,8 +132,18 @@ export class BackendService {
     public addClientTimetable(clientTimetable: ClientTimetable) {
         return this.http.post(this.link + 'addclienttimetable', clientTimetable, this.options).map(response => response.text()).catch(err => this.handleError(err));
     }
-    
+
     public sendMail(mailUtil: Mail) {
         return this.http.post(this.link + 'mailSender', mailUtil, this.options).map(response => response.text()).catch(err => this.handleError(err));
+    }
+
+    public getClientTimetables(client: Client) {
+        return this.http.post(this.link + 'getclienttimetables', client, this.options).map(response => response.json()).catch(err => this.handleError(err));
+    }
+    public deleteClientTimetable(clientTimetable: ClientTimetable) {
+        return this.http.post(this.link + 'deleteclienttimetable', clientTimetable, this.options).map(response => response.text()).catch(err => this.handleError(err));
+    }
+    public getUserById(id: number) {
+        return this.http.post(this.link + 'findUserById', id, this.options).map(response => response.json()).catch(err => this.handleError(err));
     }
 }

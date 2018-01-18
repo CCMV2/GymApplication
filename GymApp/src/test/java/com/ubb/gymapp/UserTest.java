@@ -67,10 +67,7 @@ public class UserTest {
 		
 		
 		
-		user.addTimeTable(pro);
-		user=userRepo.save(user);
 		
-		assertNotNull(user.getUserTimetable());
 		
 		assertNotNull(pro.getId());
 		

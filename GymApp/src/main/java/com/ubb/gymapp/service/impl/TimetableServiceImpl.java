@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ubb.gymapp.model.Timetable;
+import com.ubb.gymapp.repository.ClientTimetableRepository;
 import com.ubb.gymapp.repository.TimetableRepository;
-import com.ubb.gymapp.repository.UserTimetableRepository;
 import com.ubb.gymapp.service.TimetableService;
 
 @Service
@@ -17,7 +17,7 @@ public class TimetableServiceImpl implements TimetableService{
 	public TimetableRepository timetableRepo;
 	
 	@Autowired
-	public UserTimetableRepository userTimetableRepo;
+	public ClientTimetableRepository clientTimetableRepo;
 	
 	@Override
 	public void addTimeTable(Timetable timetable) {
@@ -27,7 +27,7 @@ public class TimetableServiceImpl implements TimetableService{
 
 	@Override
 	public void deleteTimeTable(Timetable timetable) {
-		userTimetableRepo.deleteByTimetable(timetable);
+		clientTimetableRepo.deleteByTimetable(timetable);
 		timetableRepo.delete(timetable);
 	}
 
@@ -38,7 +38,7 @@ public class TimetableServiceImpl implements TimetableService{
 
 	@Override
 	public List<Timetable> getUserTimetables(String username) {
-		return userTimetableRepo.getUserTimetables(username);
+		return clientTimetableRepo.getClientTimetables(username);
 	}
 
 }
