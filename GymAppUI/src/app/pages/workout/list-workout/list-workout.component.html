@@ -27,7 +27,7 @@
 				<td class="description" (click)="showDescription(trainerworkout)">{{trainerworkout.workout.description}}
           <div id="container">
             <div *ngIf="descriptionFlag && trainerworkout === selectedTrainerWorkout"  class="popup">
-              <p>{{trainerworkout.workout.description}}</p>
+              <div class = "content">{{trainerworkout.workout.description}}</div>
             </div>
           </div>
         </td>
