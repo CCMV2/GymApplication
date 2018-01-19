@@ -60,3 +60,17 @@ transform: translateX(-50%);
   cursor: pointer;
   transition: 0.3s;
 }
+
+.popup{
+  margin: 0px auto;
+  padding: 2px;
+  background: #fff;
+  border-radius: 5px;
+  width: 100%;
+  position: relative;
+}
+
+.popup .content {
+  max-height: 100%;
+  overflow: auto;
+}
