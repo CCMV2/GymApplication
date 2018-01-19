@@ -6,6 +6,8 @@ import {Router} from '@angular/router';
 import { BackendService } from "../../../backend.service";
 import {SessionStorageService} from "ngx-webstorage";
 
+declare var showPleaseWait: any;
+declare var hidePleaseWait: any;
 @Component({
   selector: 'app-list-subscription',
   templateUrl: './list-subscription.component.html',
@@ -27,9 +29,11 @@ export class ListSubscriptionComponent implements OnInit {
   }
 
 getSubscriptionAndWorkouts(): void {
+  showPleaseWait();
   this.backendService.getAllSubscriptions().subscribe( res => {
       this.subscriptionAndWorkouts = res;
       console.log( this.subscriptionAndWorkouts );
+  hidePleaseWait();
   } );
 }
 

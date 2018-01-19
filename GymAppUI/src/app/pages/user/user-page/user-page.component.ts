@@ -4,6 +4,8 @@ import {Router} from '@angular/router';
 import { BackendService } from '../../../backend.service';
 import {SessionStorageService} from 'ngx-webstorage';
 
+declare var showPleaseWait: any;
+declare var hidePleaseWait: any;
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
@@ -18,10 +20,12 @@ export class UserPageComponent implements OnInit {
   ngOnInit() { this.getUsers(); }
 
   getUsers(): void {
+    showPleaseWait();
     this.backendService.getAllUsers().subscribe( res => {
       this.userLists = res;
      
       console.log( this.userLists );
+      hidePleaseWait();
     } );
   }
   delete(user: User): void {

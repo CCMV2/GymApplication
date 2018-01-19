@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Room } from '../../../models/room';
 import {BackendService} from '../../../backend.service';
 
+declare var showPleaseWait: any;
+declare var hidePleaseWait: any;
+
 @Component({
   selector: 'app-room-page',
   templateUrl: './room-page.component.html',
@@ -23,9 +26,11 @@ export class RoomPageComponent implements OnInit {
   }
 
   refreshRooms(): void {
+    showPleaseWait();
     this.backendService.getAllRooms().subscribe(res => {
       this.allRooms = res;
       console.log(this.allRooms);
+    hidePleaseWait();
     });
   }
 

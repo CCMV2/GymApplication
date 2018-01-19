@@ -4,6 +4,8 @@ import { BackendService } from '../../backend.service';
 import { Router } from "@angular/router";
 import { SessionStorageService } from "ngx-webstorage/dist/services";
 
+declare var showPleaseWait: any;
+declare var hidePleaseWait: any;
 @Component( {
     selector: 'app-timetable',
     templateUrl: './timetable.component.html',
@@ -57,9 +59,12 @@ export class TimetableComponent implements OnInit {
       }
 
     getTimetables(): void {
+        showPleaseWait();
         this.backendService.getAllTimetables().subscribe( res => {
             this.allTimetables = res;
             console.log( this.allTimetables );
+        hidePleaseWait();
         } );
+        
     }
 }

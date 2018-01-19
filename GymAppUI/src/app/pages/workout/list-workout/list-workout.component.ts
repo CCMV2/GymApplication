@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { SessionStorageService } from 'ngx-webstorage';
 import { Observable } from 'rxjs/Observable';
 
+declare var showPleaseWait: any;
+declare var hidePleaseWait: any;
 @Component({
   selector: 'app-list-workout',
   templateUrl: './list-workout.component.html',
@@ -26,9 +28,16 @@ export class ListWorkoutComponent implements OnInit {
   }
 
   getAllWorkouts() {
-      this.backendService.getAllWorkouts().subscribe(res =>
-        this.allWorkouts = res);
+    showPleaseWait();
+      this.backendService.getAllWorkouts().subscribe(res => {
+        this.allWorkouts = res;
+        hidePleaseWait();
+        }
+      );
+      
+        
     }
+    
 
   update(workout: TrainerWorkout ): void {
     this.session.store('workoutToUpdate', workout);
@@ -51,7 +60,7 @@ export class ListWorkoutComponent implements OnInit {
           console.log("lol");
         }, 5000);
       }
-      
+
      
     });
 
