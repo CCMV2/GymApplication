@@ -4,7 +4,7 @@ import { Timetable } from '../../../models/Timetable';
 import * as moment from 'moment';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { Client, User } from '../../../models/user';
-import { ClientTimetable, ClientTimetable } from '../../../models/client-timetable';
+import { ClientTimetable } from '../../../models/client-timetable';
 import * as $ from 'jquery';
 import { Subscription } from 'rxjs/Subscription';
 
