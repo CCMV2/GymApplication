@@ -7,6 +7,7 @@ import { Subscribable } from 'rxjs/Observable';
 import { IStarRatingOnClickEvent } from 'angular-star-rating/src/star-rating-struct';
 import { Rating } from '../../../models/rating';
 import { AuthenticationService } from '../../../services/authentication.service';
+import { SUBSCRIPTION_IMAGE } from '../../../models/trainer-image';
 
 declare var showPleaseWait: any;
 declare var hidePleaseWait: any;
@@ -20,6 +21,8 @@ export class SubscriptionDetailsComponent implements OnInit {
     onClickResult: IStarRatingOnClickEvent;
     //ratingVal = 3.5;
     //ratingVal = 0;
+
+    subscriptionImage: string;
     constructor( private backendService: BackendService, private authenticationService: AuthenticationService ) { }
 
     isAdminOrTrainer(): boolean {
@@ -29,7 +32,7 @@ export class SubscriptionDetailsComponent implements OnInit {
     ngOnInit() {
         
         this.getSubscriptions();
-        
+        this.subscriptionImage = SUBSCRIPTION_IMAGE.image;
     }
     getSubscriptions(): void {
         showPleaseWait();

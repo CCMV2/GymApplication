@@ -1,18 +1,22 @@
 <div *ngIf="!isAdminOrTrainer()">
   <img class="backimage" src="assets/images/mainpagephoto5.jpeg">
-  <div class="col-sm-7">
+  <div class="col-sm-9">
     <legend>
       <h1>
         Subscription Details
       </h1>
     </legend>
     <div class="trainer-card" *ngFor="let entry of subscriptionsAndWorkouts">
-      <img class="trainer-image" src='{{entry?.subscription.imageBase64}}'/>
+      <img *ngIf="entry.subscription.imageBase64" class="trainer-image" [src]="entry.subscription.imageBase64">
+      <img *ngIf="!entry.subscription.image" class="trainer-image" [src]="'data:image/jpg;base64,' + subscriptionImage">
       <span class="sub-name">{{entry?.subscription.name}} {{" - "}} {{entry?.subscription.price}} {{"Ron"}}</span>
 
-      <div class="workouts-div" *ngFor="let workout of entry.workouts">
-        <span>{{workout?.workoutType}} : {{workout?.description}}</span>
+		<div class="workouts-div">
+      <div *ngFor="let workout of entry.workouts">
+        <span><b>{{workout?.workoutType}}</b> : {{workout?.description}}</span>
       </div>
+      </div>
+      <br/>
       <div class="sub-stars">
         <span *ngFor="let star of entry.subscription.stars">
                     <span *ngIf="star.type==='full'" class="glyphicon glyphicon-star"

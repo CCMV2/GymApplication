@@ -41,12 +41,12 @@
 .trainer-card {
   background-color: rgba(255, 255, 255, 0.800);
   border: 0.5px solid rgb(192, 192, 192);
-  height: 200px;
   width: 800px;
   margin: 30px 30px 30px 30px;
   color: black;
   border-radius: 10px;
   display: inline-block;
+  max-height: 300px;
 }
 
 .trainer-image {
@@ -56,12 +56,12 @@
   margin-bottom: 25px;
   margin-left: 10px;
   border-radius: 10px;
+  float: left;
+  padding-right: 10px;
 }
 
 .sub-name {
   position: relative;
-  top: -62px;
-  left: 14px;
   font-size: 25px;
 }
 
@@ -70,19 +70,16 @@
   display: -ms-grid;
   display: grid;
   overflow: auto;
-  max-height: 122px;
-  height: 122px;
   width: 527px;
-  top: -139px;
-  left: 250px;
-  font-size: 23px;
+  font-size: 14px;
   background-color: rgba(255, 255, 255, 0.800);
+  max-height: 200px;
 }
 
 .sub-stars {
   position: relative;
-  top: -304px;
-  left: 644px;
   font-size: 21px;
   color: cadetblue;
+  float: right;
+  margin-left: -10px;
 }
