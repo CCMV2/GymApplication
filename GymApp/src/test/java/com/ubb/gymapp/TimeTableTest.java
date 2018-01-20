@@ -151,7 +151,75 @@ public class TimeTableTest {
 		roomRepo.delete(room1);
 		workRepo.delete(work1);
 		userRepo.delete(user);
-
+	}
+	
+	@Test
+	public void findByDay() {
+		Date dat=new Date();
+		Workout work = new Workout();
+		work.setWorkoutType("r");
+		Room room = new Room();
+		Trainer user = new Trainer("1234","1234","1234","1234","1234",null);
+		userRepo.save(user);
+		workRepo.save(work);
+		roomRepo.save(room);
+		assertNotNull(work);
+		assertNotNull(room);
+		assertNotNull(user);
+		Timetable pro =new Timetable("Joi", dat, 2L, room, work);
+		pro.setTrainer(user);
+		timeRepo.save(pro);
+		assertNotNull(timeRepo.findByDay("Joi"));
+		timeRepo.delete(pro);
+		workRepo.delete(work);
+		roomRepo.delete(room);	
+		userRepo.delete(user);
+	}
+	
+	@Test
+	public void findByRoom() {
+		Date dat=new Date();
+		Workout work = new Workout();
+		work.setWorkoutType("r");
+		Room room = new Room();
+		Trainer user = new Trainer("1234","1234","1234","1234","1234",null);
+		userRepo.save(user);
+		workRepo.save(work);
+		roomRepo.save(room);
+		assertNotNull(work);
+		assertNotNull(room);
+		assertNotNull(user);
+		Timetable pro =new Timetable("Joi", dat, 2L, room, work);
+		pro.setTrainer(user);
+		timeRepo.save(pro);
+		assertNotNull(timeRepo.findByRoom(room));
+		timeRepo.delete(pro);
+		workRepo.delete(work);
+		roomRepo.delete(room);	
+		userRepo.delete(user);
+	}
+	
+	@Test
+	public void findByWorkout() {
+		Date dat=new Date();
+		Workout work = new Workout();
+		work.setWorkoutType("r");
+		Room room = new Room();
+		Trainer user = new Trainer("1234","1234","1234","1234","1234",null);
+		userRepo.save(user);
+		workRepo.save(work);
+		roomRepo.save(room);
+		assertNotNull(work);
+		assertNotNull(room);
+		assertNotNull(user);
+		Timetable pro =new Timetable("Joi", dat, 2L, room, work);
+		pro.setTrainer(user);
+		timeRepo.save(pro);
+		assertNotNull(timeRepo.findByWorkout(work));
+		timeRepo.delete(pro);
+		workRepo.delete(work);
+		roomRepo.delete(room);	
+		userRepo.delete(user);
 	}
 
 }
