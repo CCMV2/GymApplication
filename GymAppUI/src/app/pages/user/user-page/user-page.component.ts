@@ -29,6 +29,11 @@ export class UserPageComponent implements OnInit {
     } );
   }
   delete(user: User): void {
+      if(user.userType === "TRAINER") {
+          if(!user.imageBase64) {
+              user.imageBase64 = "";
+          }
+      }
     const uri = 'delete' + user.userType.toLowerCase();
     this.backendService.deleteUser(uri, user).subscribe(res => {
         console.log(res);

@@ -46,7 +46,7 @@ export class UserTimetableComponent implements OnInit {
     }
 
   getAllClientsTimetables() {
-      if ( this.userClient.subscription.imageBase64 === null) {
+      if ( this.userClient.subscription && this.userClient.subscription.imageBase64 === null) {
           this.userClient.subscription.imageBase64 = '';
       }
       this.backendService.getClientTimetables(this.userClient).subscribe(res => {
@@ -61,7 +61,7 @@ export class UserTimetableComponent implements OnInit {
         if ( this.clientTimetable.timetable.trainer.imageBase64 === null) {
             this.clientTimetable.timetable.trainer.imageBase64 = '';
         }
-        if ( this.clientTimetable.client.subscription.imageBase64 === null) {
+        if ( this.clientTimetable.client.subscription && this.clientTimetable.client.subscription.imageBase64 === null) {
            this.clientTimetable.client.subscription.imageBase64 = '';
         }
       this.backendService.addClientTimetable(this.clientTimetable).subscribe(res => {

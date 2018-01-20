@@ -58,3 +58,10 @@ div.userpass{
 #btndiv {
   padding-top: 15px;
 }
+
+.alert {
+  padding: 20px;
+  background-color: #14305e;
+  color: white;
+  text-align: center;
+}

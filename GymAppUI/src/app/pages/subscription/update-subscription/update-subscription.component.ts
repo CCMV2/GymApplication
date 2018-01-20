@@ -43,6 +43,9 @@ export class UpdateSubscriptionComponent implements OnInit, OnDestroy {
     let newSubscription = new Subscription(this.workoutList.subscription.name, this.workoutList.subscription.price,
       this.workoutList.subscription.duration, this.subscriptionImage);
     newSubscription.subscriptionId = this.workoutList.subscription.subscriptionId;
+    if(newSubscription.imageBase64 == null){
+        newSubscription.imageBase64="";
+    }
     let workoutListToUpdate: WorkoutList = new WorkoutList(newSubscription, this.workoutList.workouts);
     this.backendService.addSubscription(workoutListToUpdate).subscribe(res => {
       if(res === 'Successful'){
