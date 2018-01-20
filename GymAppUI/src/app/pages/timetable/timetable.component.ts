@@ -32,7 +32,7 @@ export class TimetableComponent implements OnInit {
             timetable.trainer.imageBase64 = '';
         }
         this.backendService.deleteTimetable(timetable).subscribe(res => {
-            if(res === '0'){
+            if(res === 'Successful'){
                 this.message = 'Successful';
                 const index = this.allTimetables.findIndex(d => d.id === timetable.id);
                 this.allTimetables.splice(index, 1);
@@ -42,7 +42,6 @@ export class TimetableComponent implements OnInit {
                 }, 5000);
               console.log(res);
             }
-            
         });
       }
     /*

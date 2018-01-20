@@ -55,10 +55,9 @@ getSubscriptionAndWorkouts(): void {
         }, 5000);
         
         
+    } else {
+        alert('The subscription you are about to delete is still being used');
     }
-      else {
-          alert('The subscription you are about to delete is still being used');
-      }
     
    // alert(res);
   } );

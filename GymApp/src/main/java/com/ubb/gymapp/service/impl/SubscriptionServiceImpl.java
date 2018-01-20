@@ -20,11 +20,13 @@ import com.ubb.gymapp.service.SubscriptionService;
 public class SubscriptionServiceImpl implements SubscriptionService {
 	
 	@Autowired
-	public SubscriptionRepository subscriptionRepo;
+	private SubscriptionRepository subscriptionRepo;
 	
 	@Autowired
-	public WorkoutListRepository workoutListRepo;
+	private WorkoutListRepository workoutListRepo;
 
+	@Autowired
+	private UserRepository userRepo;
 
 	@Override
 	public void addSubscription(SubscriptionWorkouts subscriptionWorkouts) {
@@ -60,6 +62,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	@Override
 	public void deleteSubscription(Subscription subscription) {
 		workoutListRepo.deleteBySubscription(subscription);
+		userRepo.deleteSubscriptionReference(subscription);
 		subscriptionRepo.delete(subscription);
 	}
 

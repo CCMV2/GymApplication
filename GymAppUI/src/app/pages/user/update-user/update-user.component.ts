@@ -20,7 +20,7 @@ export class UpdateUserComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.createdUser = this.session.retrieve('userToUpdate');
         if (this.createdUser.userType === 'TRAINER') {
-            var tempTrainer = this.createdUser as Trainer;
+            const tempTrainer = this.createdUser as Trainer;
             this.trainerImage = tempTrainer.imageBase64;
         }else
         if (this.createdUser.userType === 'CLIENT') {
@@ -48,8 +48,10 @@ export class UpdateUserComponent implements OnInit, OnDestroy {
     }
 
     updateUser() {
-
         if (this.createdUser.userType === "TRAINER") {
+            if (!this.trainerImage) {
+                this.trainerImage = '';
+            }
             const uri = 'createtrainer';
             this.backendService.addUser(uri, new Trainer(this.createdUser.id, this.createdUser.password,
                 this.createdUser.name, this.createdUser.surname, this.createdUser.email, this.createdUser.phonenumber,

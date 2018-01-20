@@ -74,3 +74,6 @@ transform: translateX(-50%);
   max-height: 100%;
   overflow: auto;
 }
+p {
+	font-size: 15px;
+}

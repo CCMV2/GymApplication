@@ -11,6 +11,7 @@ import com.ubb.gymapp.model.Trainer;
 import com.ubb.gymapp.model.TrainerWorkout;
 import com.ubb.gymapp.model.User;
 import com.ubb.gymapp.model.Workout;
+import com.ubb.gymapp.repository.ClientTimetableRepository;
 import com.ubb.gymapp.repository.TimetableRepository;
 import com.ubb.gymapp.repository.TrainerWorkoutRepository;
 import com.ubb.gymapp.repository.WorkoutListRepository;
@@ -21,16 +22,19 @@ import com.ubb.gymapp.service.WorkoutService;
 public class WorkoutServiceImpl implements WorkoutService {
 
 	@Autowired
-	public WorkoutRepository workoutRepo;
+	private WorkoutRepository workoutRepo;
 
 	@Autowired
-	public TrainerWorkoutRepository userWorkoutRepo;
+	private TrainerWorkoutRepository userWorkoutRepo;
 
 	@Autowired
-	public WorkoutListRepository workoutListRepo;
+	private WorkoutListRepository workoutListRepo;
 	
 	@Autowired
-	public TimetableRepository timetableRepo;
+	private TimetableRepository timetableRepo;
+	
+	@Autowired
+	private ClientTimetableRepository clientTimetableRepo;
 	
 	@Override
 	public List<WorkoutTrainers> getTrainerWorkouts() {
@@ -47,6 +51,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 	@Override
 	public void deleteWorkout(Workout workout) {
 		userWorkoutRepo.deleteByWorkout(workout);
+		clientTimetableRepo.deleteByTimetableWorkout(workout);
 		timetableRepo.deleteByWorkout(workout);
 		workoutListRepo.deleteByWorkout(workout);
 		workoutRepo.delete(workout);

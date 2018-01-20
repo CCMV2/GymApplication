@@ -35,8 +35,12 @@ public class TimeTableController {
 
 	@RequestMapping(value = "/deletetimetable", method = RequestMethod.POST)
 	public String deleteTimeTable(@RequestBody Timetable parameter) {
-		timeTableService.deleteTimeTable(parameter);
-		return "Delete successful";
+		try {
+			timeTableService.deleteTimeTable(parameter);
+			return "Successful";
+		} catch (Exception e) {
+			return "Failed:" + e.getMessage(); 
+		}
 	}
 	
 	@RequestMapping(value = "/getusertimetables", method = RequestMethod.POST)

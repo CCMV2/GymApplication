@@ -15,6 +15,7 @@ import com.ubb.gymapp.model.ClientTimetable;
 import com.ubb.gymapp.model.Trainer;
 import com.ubb.gymapp.model.User;
 import com.ubb.gymapp.repository.ClientTimetableRepository;
+import com.ubb.gymapp.repository.TimetableRepository;
 import com.ubb.gymapp.repository.TrainerWorkoutRepository;
 import com.ubb.gymapp.repository.UserRepository;
 import com.ubb.gymapp.service.UserService;
@@ -30,6 +31,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private TrainerWorkoutRepository trainerWorkoutRepo;
+	
+	@Autowired
+	private TimetableRepository timetableRepository;
 	
 	@Override
 	public List<User> getAllUsers() {
@@ -78,6 +82,10 @@ public class UserServiceImpl implements UserService {
 	public void deleteUser(User user){
 		if (user instanceof Trainer) {
 			trainerWorkoutRepo.deleteByTrainer((Trainer) user);
+			clientTimetableRepo.deleteByTimetableTrainer((Trainer) user);
+			timetableRepository.deleteByTrainer((Trainer) user);
+		} else if (user instanceof Client) {
+			clientTimetableRepo.deleteByClient((Client) user);
 		}
 		userRepo.delete(user);
 	}

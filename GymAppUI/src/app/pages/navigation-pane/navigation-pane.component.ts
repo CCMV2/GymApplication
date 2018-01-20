@@ -69,7 +69,7 @@ export class NavigationPaneComponent {
     {
       title: "Timetable", items: [
       { active: false, url: "newtimetable", text: "New Timetable" , usertype: ['ADMIN','TRAINER']},
-      { active: false, url: "timetable", text: "Timetable" , usertype: ['ADMIN','TRAINER']}
+      { active: false, url: "timetable", text: "Timetables" , usertype: ['ADMIN','TRAINER']}
     ], usertype: ['ADMIN','TRAINER']
     },
     {

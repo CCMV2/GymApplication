@@ -89,7 +89,7 @@ export class RoomPageComponent implements OnInit {
       else{
           alert('The room is still being used!');
       }
-    }
+    });
   }
 
 }
