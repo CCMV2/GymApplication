@@ -44,6 +44,9 @@ export class CreateSubscriptionComponent implements OnInit {
 
   addSubscription(): void {
    // this.workoutList.subscription.imageBase64 = this.subscriptionImage;
+      if(this.workoutList.subscription.imageBase64 == null){
+          this.workoutList.subscription.imageBase64="";
+      }
     this.backendService.addSubscription(this.workoutList).subscribe(res => {
 
       this.message = res;

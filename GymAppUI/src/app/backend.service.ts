@@ -49,7 +49,7 @@ export class BackendService {
     }
 
     public deleteRoom(room: Room): Observable<any> {
-        return this.http.post(this.link + 'deleteroom', room, this.options).map(response => response.json()).catch(err => this.showDeleteMessage(err, 'room'));
+        return this.http.post(this.link + 'deleteroom', room, this.options).map(response => response.text()).catch(err => this.showDeleteMessage(err, 'room'));
     }
 
     public getAllTimetables(): Observable<Timetable[]> {
@@ -61,7 +61,7 @@ export class BackendService {
     }
 
     public deleteTimetable(timetable: Timetable): Observable<any> {
-        return this.http.post(this.link + 'deletetimetable', timetable, this.options).map(response => response.json()).catch(err => this.showDeleteMessage(err, 'timetable'));
+        return this.http.post(this.link + 'deletetimetable', timetable, this.options).map(response => response.text()).catch(err => this.showDeleteMessage(err, 'timetable'));
     }
 
     public updateTimetable(timetable: Timetable): Observable<any> {
@@ -100,7 +100,8 @@ export class BackendService {
     }
 
     private showDeleteMessage(error: any, object: string): Observable<any> {
-        alert('Cannot delete ' + object + ', it is still being used');
+    debugger ;
+    alert('Cannot delete ' + object + ', it is still being used');
         return error.message || error;
     }
 
@@ -119,7 +120,7 @@ export class BackendService {
     }
 
     public deleteWorkout(workout: Workout): Observable<any> {
-        return this.http.post(this.link + 'deleteworkout', workout, this.options).map(response => response.json()).catch(err => this.showDeleteMessage(err, 'workout'));
+        return this.http.post(this.link + 'deleteworkout', workout, this.options).map(response => response.text()).catch(err => this.showDeleteMessage(err, 'workout'));
     }
 
     public getAllTrainers(): Observable<Trainer[]> {

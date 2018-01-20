@@ -39,9 +39,10 @@ getSubscriptionAndWorkouts(): void {
 
 
   delete(sub:Subscription):void{
+      if(sub.imageBase64 == null){
+          sub.imageBase64="";
+      }
     this.backendService.deleteSubscription(sub).subscribe( res => {
-    
-
       //this.getSubscriptionAndWorkouts();
       console.log( this.subscriptionAndWorkouts );
       if (res === 'Successful') {
@@ -55,6 +56,9 @@ getSubscriptionAndWorkouts(): void {
         
         
     }
+      else {
+          alert('The subscription you are about to delete is still being used');
+      }
     
    // alert(res);
   } );

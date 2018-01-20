@@ -51,8 +51,8 @@ export class ListWorkoutComponent implements OnInit {
           }
       }
     this.backendService.deleteWorkout(workout.workout).subscribe(res => {
-      if(res == '0'){
-        this.message = 'Successful';
+      if(res === 'Successful'){
+        this.message = res;
         const index = this.allWorkouts.findIndex(d => d.workout.idWorkout === workout.workout.idWorkout);
         this.allWorkouts.splice(index, 1);
         setTimeout(()=> {
@@ -60,6 +60,11 @@ export class ListWorkoutComponent implements OnInit {
           console.log("lol");
         }, 5000);
       }
+      else{
+          alert('This workout is still being used!');
+      }
+     
+          
 
      
     });

@@ -47,10 +47,12 @@
   border-radius: 10px;
   display: inline-block;
   max-height: 300px;
+  position: right
 }
 
 .trainer-image {
   height: 150px;
+  width:235px;
   overflow: hidden;
   margin-top: 25px;
   margin-bottom: 25px;
@@ -66,7 +68,7 @@
 }
 
 .workouts-div {
-  position: relative;
+  position: right;
   display: -ms-grid;
   display: grid;
   overflow: auto;

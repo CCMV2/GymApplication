@@ -76,7 +76,7 @@ export class RoomPageComponent implements OnInit {
   deleteRoom(room: Room): void {
     this.backendService.deleteRoom(room).subscribe(res => {
       console.log( this.allRooms);
-      if (res === '0') {
+      if (res === 'Successful') {
         this.message = 'Successful';
         const index = this. allRooms.findIndex(d => d.roomId === room.roomId);
         this.allRooms.splice(index, 1);
@@ -86,7 +86,10 @@ export class RoomPageComponent implements OnInit {
       }, 5000);
       //console.log(res);
     }
-    })
+      else{
+          alert('The room is still being used!');
+      }
+    }
   }
 
 }

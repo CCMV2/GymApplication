@@ -32,7 +32,11 @@ public class RoomController {
 
 	@RequestMapping(value = "/deleteroom", method = RequestMethod.POST)
 	public String deleteRoom(@RequestBody Room parameter) {
-		roomService.deleteRoom(parameter);
-		return "Delete successful";
+		try {
+			roomService.deleteRoom(parameter);
+			return "Successful";
+		} catch (Exception e) {
+			return "Failed: " + e.getMessage();
+		}
 	}
 }

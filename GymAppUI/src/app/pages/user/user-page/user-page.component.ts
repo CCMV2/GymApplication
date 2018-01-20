@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User, Trainer} from '../../../models/user';
+import {User, Trainer, Client} from '../../../models/user';
 import {Router} from '@angular/router';
 import { BackendService } from '../../../backend.service';
 import {SessionStorageService} from 'ngx-webstorage';
@@ -36,6 +36,13 @@ export class UserPageComponent implements OnInit {
           }
       }
     const uri = 'delete' + user.userType.toLowerCase();
+    if(user.userType==="CLIENT"){
+        const client= user as Client;
+        
+        if(client.subscription.imageBase64==null){
+            client.subscription.imageBase64="";
+        }
+    }
     this.backendService.deleteUser(uri, user).subscribe(res => {
         console.log(res);
         if (res === 'Successful') {
@@ -46,6 +53,9 @@ export class UserPageComponent implements OnInit {
               this.message = "";
               console.log("lol");
             }, 5000);
+        }
+        else{
+            alert("This user is still being used");
         }
         //alert(res);
     });
