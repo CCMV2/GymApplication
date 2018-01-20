@@ -56,10 +56,10 @@ export class AuthenticationService {
         return currentUser && currentUser.username ? currentUser.username : '';
     }
 
-    getStart(): Date {
+    getStart(): number {
         const currentUser = JSON.parse( localStorage.getItem( 'currentUser' ) );
         const start = currentUser && currentUser.start;
-        return start ? new Date(start) : new Date();
+        return start ? start : 0;
     }
 
     getId(): number {

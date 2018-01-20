@@ -61,24 +61,31 @@ export class ScheduleComponent implements OnInit {
       this.title = $(event.jsEvent.currentTarget).find('.fc-title')[0];
       if (this.authenticationService.isLoggedIn()) {
         if (this.authenticationService.hasRole(['CLIENT'])) {
-            const sDate: Date = this.authenticationService.getStart();
-            console.log(new Date().valueOf());
-            if(sDate < startDate){
-                alert("Subscription expired");
-            }else {
-                if (startDate.getTime() < new Date().getTime()) {
-                    alert('It is too late to subscribe to this workout :(');
-                  } else {
-                    if (event.calEvent.stea) {
-                        const item = this.findUserTimetable(this.findTimetableById( event.calEvent.id), startDate);
-                        this.deleteTimetable(item, event);
-                    } else {
-                          const item = new ClientTimetable(this.client, this.findTimetableById( event.calEvent.id));
-                          item.day = startDate;
-                        this.addTimetable(item, event);
-                    }
-                  }
+            const start = this.authenticationService.getStart();
+            if (start === 0) {
+                alert("You have no subscription!");
             }
+            else {
+                const sDate: Date = new Date(start);
+                console.log(new Date().valueOf());
+                if(sDate < startDate){
+                    alert("Your subscription has expired. Please contact your trainers.");
+                }else {
+                    if (startDate.getTime() < new Date().getTime()) {
+                        alert('It is too late to subscribe to this workout :(');
+                    } else {
+                        if (event.calEvent.stea) {
+                            const item = this.findUserTimetable(this.findTimetableById( event.calEvent.id), startDate);
+                            this.deleteTimetable(item, event);
+                        } else {
+                            const item = new ClientTimetable(this.client, this.findTimetableById( event.calEvent.id));
+                            item.day = startDate;
+                            this.addTimetable(item, event);
+                        }
+                    }
+                }
+            }
+            
         } else {
             alert('You must login in order to subscribe!');
         }
