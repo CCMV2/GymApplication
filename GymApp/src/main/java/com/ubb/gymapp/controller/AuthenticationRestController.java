@@ -55,10 +55,12 @@ public class AuthenticationRestController {
         if (user.getUserType().equals(UserType.CLIENT)) {
         	Date dat = new Date();
         	dat = ((Client) user).getStart();
-        	Calendar cal = Calendar.getInstance();
-        	cal.setTime(dat);
-        	cal.add(Calendar.DAY_OF_YEAR, ((Client) user).getSubscription().getDuration());
-        	start = cal.getTimeInMillis();
+        	if (dat != null) {
+        		Calendar cal = Calendar.getInstance();
+        		cal.setTime(dat);
+        		cal.add(Calendar.DAY_OF_YEAR, ((Client) user).getSubscription().getDuration());
+        		start = cal.getTimeInMillis();
+        	}
         }
         // Return the token
         return ResponseEntity.ok(new JwtAuthenticationResponse(token, user.getUserType().toString(), start, user.getId()));
