@@ -26,7 +26,9 @@ export class TrainerComponent implements OnInit {
     }
 
     ngOnInit() {
+      
         this.trainerImage = TRAINER_IMAGE.image;
+       
         // adaugare clasa pe body
         showPleaseWait();
         this.backendservice.getAllTrainers().subscribe( rez => {
@@ -51,13 +53,16 @@ export class TrainerComponent implements OnInit {
 
 
 
-    sendRating( rating: number, trainer: Trainer ): void {
+    sendRating( rating: number, trainer: Trainer ): void {        
         if ( this.authenticationService.isLoggedIn() ) {
             let newRating: number = ( ( trainer.rat.total * trainer.rat.nrpers ) + rating ) / ( trainer.rat.nrpers + 1 );
             console.log( newRating );
             trainer.rat.total = newRating;
             trainer.rat.nrpers = trainer.rat.nrpers + 1;
             const uri = 'create' + trainer.userType.toLowerCase();
+            if ( trainer.imageBase64 === null) {
+               trainer.imageBase64 = '';
+            }    
             this.backendservice.addUser( uri, trainer ).subscribe( res => {
                 console.log( res );
                 this.ngOnInit();
