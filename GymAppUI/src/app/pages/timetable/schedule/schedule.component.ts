@@ -101,9 +101,7 @@ export class ScheduleComponent implements OnInit {
     }
     prepareEvents(startWeek: Date) {
         $('.fa-star').remove();
-        if (this.allTimetables.length === 0) {
-            this.firstStart = startWeek;
-        }
+        this.firstStart = startWeek;
         // scoatem orele extra
         startWeek = new Date(startWeek.getTime() - startWeek.getHours() * 60 * 60 * 1000);
         this.events = [];
@@ -231,7 +229,7 @@ export class ScheduleComponent implements OnInit {
         }
         return null;
     }
-    
+
     addTimetable(item: ClientTimetable, event: any) {
         if ( item.timetable.trainer.imageBase64 === null) {
             item.timetable.trainer.imageBase64 = '';
@@ -240,10 +238,15 @@ export class ScheduleComponent implements OnInit {
             item.client.subscription.imageBase64 = '';
         }
         this.backendService.addClientTimetable(item).subscribe(res => {
-          alert(res);
-          event.calEvent.stea = true;
-          this.addStar(res);
-          this.clientTimetables.push(item);
+            if (res.toLowerCase().indexOf('subscribed') !== -1) {
+                const id = parseInt(res.substring(0, res.indexOf(':')), 10);
+                const result = res.substring(res.indexOf(':') + 1);
+                alert(result);
+                // this.addStar(result);
+                item.id = id;
+                this.clientTimetables.push(item);
+                this.prepareEvents(this.firstStart);
+            }
       });
     }
 
@@ -256,12 +259,10 @@ export class ScheduleComponent implements OnInit {
           }
         this.backendService.deleteClientTimetable(item).subscribe(res => {
          alert(res);
-         event.calEvent.stea = false;
-         this.addStar(res);
-         const index = this.clientTimetables.findIndex(d => d.timetable.id === item.timetable.id &&
-                 d.day.getDate() === item.day.getDate()
-                 && d.day.getMonth() === item.day.getMonth() && d.day.getFullYear() === item.day.getFullYear());
+//         this.addStar(res);
+         const index = this.clientTimetables.findIndex(d => d.id === item.id);
          this.clientTimetables.splice(index, 1);
+         this.prepareEvents(this.firstStart);
       });
     }
 

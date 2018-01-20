@@ -65,9 +65,12 @@ export class UserTimetableComponent implements OnInit {
            this.clientTimetable.client.subscription.imageBase64 = '';
         }
       this.backendService.addClientTimetable(this.clientTimetable).subscribe(res => {
-        this.message = res;
-        console.log(res);
-        this.clientTimetables.push(this.clientTimetable);
+          const id = parseInt(res.substring(0, res.indexOf(':')), 10);
+          const result = res.substring(res.indexOf(':') + 1);
+          this.message = result;
+          console.log(result);
+          this.clientTimetable.id = id;
+          this.clientTimetables.push(this.clientTimetable);
     });
   }
   filterTimetable() {
@@ -113,7 +116,7 @@ export class UserTimetableComponent implements OnInit {
       this.backendService.deleteClientTimetable(item).subscribe(res => {
         this.message = res;
         console.log(res);
-        const index = this.clientTimetables.findIndex(d => d.timetable.id === item.timetable.id && d.day === item.day);
+        const index = this.clientTimetables.findIndex(d => d.id === item.id);
         this.clientTimetables.splice(index, 1);
     });
   }

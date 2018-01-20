@@ -57,8 +57,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public String addUserTimetable(ClientTimetable userTimetable) {
-		this.clientTimetableRepo.save(userTimetable);
-		return "Subscribed";
+		userTimetable = this.clientTimetableRepo.save(userTimetable);
+		return userTimetable + ":Subscribed";
 		
 	}
 	
