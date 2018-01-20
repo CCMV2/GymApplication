@@ -37,7 +37,7 @@ export class BackendService {
     }
 
     public deleteUser(uri: string, user: User): Observable<any> {
-        return this.http.post(this.link + uri, user, this.options).map(response => response.text()).catch(err => this.handleError(err));
+        return this.http.post(this.link + uri, user, this.options).map(response => response.text()).catch(err => {alert("User already in use, cannot delete!")});
     }
 
     public getAllRooms(): Observable<Room[]> {
@@ -49,7 +49,7 @@ export class BackendService {
     }
 
     public deleteRoom(room: Room): Observable<any> {
-        return this.http.post(this.link + 'deleteroom', room, this.options).map(response => response.json()).catch(err => this.handleError(err));
+        return this.http.post(this.link + 'deleteroom', room, this.options).map(response => response.json()).catch(err => {alert("Room already in use, cannot delete!")});
     }
 
     public getAllTimetables(): Observable<Timetable[]> {
@@ -61,7 +61,7 @@ export class BackendService {
     }
 
     public deleteTimetable(timetable: Timetable): Observable<any> {
-        return this.http.post(this.link + 'deletetimetable', timetable, this.options).map(response => response.json()).catch(err => this.handleError(err));
+        return this.http.post(this.link + 'deletetimetable', timetable, this.options).map(response => response.json()).catch(err => {alert("Timetable already in use, cannot delete!")});
     }
 
     public updateTimetable(timetable: Timetable): Observable<any> {
@@ -81,7 +81,7 @@ export class BackendService {
         return this.http.get(this.link + 'listsubscriptions', this.options).map(response => response.json()).catch(err => this.handleError(err));
     }
     public deleteSubscription(subscription: Subscription): Observable<any> {
-        return this.http.post(this.link + 'deletesubscription', subscription, this.options).map(response => response.text()).catch(err => this.handleError(err));
+        return this.http.post(this.link + 'deletesubscription', subscription, this.options).map(response => response.text()).catch(err => {alert("Subscription already in use, cannot delete!")});
     }
 
     private handleError(error: any): Observable<any> {
@@ -114,7 +114,7 @@ export class BackendService {
     }
 
     public deleteWorkout(workout: Workout): Observable<any> {
-        return this.http.post(this.link + 'deleteworkout', workout, this.options).map(response => response.json()).catch(err => this.handleError(err));
+        return this.http.post(this.link + 'deleteworkout', workout, this.options).map(response => response.json()).catch(err => {console.log(err);alert("Workout already in use, cannot delete!")});
     }
 
     public getAllTrainers(): Observable<Trainer[]> {
