@@ -24,7 +24,11 @@ export class UpdateWorkoutComponent implements OnInit, OnDestroy {
     this.trainerWorkouts = this.session.retrieve('workoutToUpdate');
     for (let trainer of this.trainerWorkouts.trainers) {
         trainer.completeName = trainer.name + ' ' + trainer.surname;
+        if(!trainer.imageBase64) {
+          trainer.imageBase64 = '';
+        }
     }
+    console.log(this.trainerWorkouts.trainers);
     this.getAllTrainers();
   }
 
@@ -33,6 +37,11 @@ export class UpdateWorkoutComponent implements OnInit, OnDestroy {
   }
 
   updateWorkout() {
+    this.trainerWorkouts.trainers.forEach(trainer => {
+      if(!trainer.imageBase64) {
+        trainer.imageBase64 = '';
+      }
+    })
     this.backendService.addWorkout(this.trainerWorkouts).subscribe(res => {
       console.log(res);
       this.message = res;
@@ -54,5 +63,4 @@ export class UpdateWorkoutComponent implements OnInit, OnDestroy {
           }
       });
   }
-
 }

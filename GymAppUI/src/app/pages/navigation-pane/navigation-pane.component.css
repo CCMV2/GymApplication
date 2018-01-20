@@ -90,7 +90,8 @@ a:link{
   margin-left: 4px;
   margin-top: 8px;
   z-index: 1000;
-  position: absolute;
-  left: 90px;
-  top: 94vh;
+  position: fixed;
+  left: 80px;
+  top: unset;
+  bottom: 10px;
 }

@@ -52,8 +52,8 @@ export class UpdateSubscriptionComponent implements OnInit, OnDestroy {
           console.log("lol");
         }, 5000);
       }
-     
-  
+
+
       console.log(this.message);
       console.log(this.workoutList);
     });

@@ -38,11 +38,12 @@
 	</legend>
 	 <div  class="form-group">
             <label  class="control-label col-sm-3" for="start">Date:</label>
-            <div  class="col-sm-9"> 
+            <div  class="col-sm-9">
         		<p-calendar name="day" [(ngModel)]="clientTimetable.day" [showIcon]="true" dateFormat="dd.mm.yy" (onSelect)="filterTimetable()"></p-calendar>
             </div>
             	<div>
-				<label for="name">Timetable</label> <select class="select-width"
+				<label for="name">Timetable</label>
+                <select class="select-width"
 					[(ngModel)]="clientTimetable.timetable" name="timetable">
 					<option *ngFor="let item of listTimetable"
 						[ngValue]="item">
