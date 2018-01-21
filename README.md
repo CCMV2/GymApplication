@@ -1,6 +1,5 @@
 This is the repository for our brand new Gym Application.
 
-Vasile
 Requirements:
 A gym owner has requested that we build a web application, which will handle the following:
 1. Management of trainers, subscriptions and available rooms by an administrator
