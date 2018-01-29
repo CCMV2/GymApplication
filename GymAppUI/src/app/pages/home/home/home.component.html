@@ -1,0 +1,67 @@
+<div *ngIf="isAdminOrTrainer()">
+
+  <div align="right" *ngIf="!authenticationService.isLoggedIn()">
+    <input type="button" value="Log In"
+           onclick="window.location.href='http://localhost:4200/login?returnUrl=%2F'"/>
+  </div>
+  <!-- <div class="contact-button">
+    <input type="button" value="Contact"
+           onclick="window.location.href='http://localhost:4200/contact'"/>
+  </div> -->
+  <div class="container">
+    <div class="home-title content">Administration Tool</div>
+    <br>
+    <div class="content subtitle">
+      Welcome to the NTT-Gym Admin Tool
+    </div>
+    <br>
+    <div class="content description">
+      This is where you'll be able to edit and
+    </div>
+    <br>
+    <div class="content description">
+      manage all of the gym data.
+    </div>
+    <br>
+    <div class="content description">
+      Use this to maintain your client base,
+    </div>
+    <br>
+    <div class="content description">
+      your trainers,
+    </div>
+    <br>
+    <div class="content description">
+      your workouts
+    </div>
+    <br>
+    <div class="content description">
+      and everything inbetween.
+    </div>
+  </div>
+</div>
+<div *ngIf="!isAdminOrTrainer()">
+  <img class="backimage" src="assets/images/mainpagephoto.png">
+  <div class="logo-image">
+  	<span style="font-size:150px;font-weight:800;">NTT Gym</span>
+  	<img style="height: 68px;" src="assets/images/favicon.png">
+  </div>
+  <div class="navmenu">
+    <div id="firstnav" class="navoption">
+      <label class="menu-label"> Trainers </label>
+      <img class="menuimage" src="assets/images/menuimg5.jpg" (click)="navigateTo('trainer')">
+    </div>
+    <div class="navoption">
+        <label class="menu-label"> Subscriptions </label>
+        <img class="menuimage" src="assets/images/menuimg4.jpeg" (click)="navigateTo('subscriptiondetails')">
+        </div>
+    <div class="navoption">
+      <label class="menu-label"> Schedule </label>
+      <img class="menuimage" src="assets/images/menuimg3.jpg" (click)="navigateTo('schedule')">
+      </div>
+    <div class="navoption">
+      <label class="menu-label"> Contact </label>
+      <img class="menuimage" src="assets/images/menuimg6.jpg" (click)="navigateTo('contact')">
+    </div>
+  </div>
+</div>

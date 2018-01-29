@@ -1,0 +1,37 @@
+<img class="backimage" src="assets/images/login-page-bg.jpg">
+<div class="col-md-12 login-page-form" style="    margin-top: 100px;    position: fixed;    left: -27vw;    top: 30vh;">
+    <div style="width: 50%; margin: 0 auto; text-align: center; text: white;">
+    <h1 >Login</h1>
+    </div>
+    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate style="width: 34%; margin: 0 auto; padding-top: 100px;">
+	    <div class="alert-error" *ngIf="error.length > 0">
+	    	<b>{{error}}</b><br/>
+	    </div>
+	    <div class="success-message" *ngIf="success.length > 0">
+	    	<b>{{success}}</b>
+	    </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+
+          <div class="userpass">
+            <input class="inputLogin" type="text" required name="username" [(ngModel)]="model.username"  #username="ngModel" required/>
+            <span class="highlight"></span>
+            <span class="bar"></span><label class="labelLogin"> Username </label>
+          </div>
+          <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+
+
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+
+            <div class="userpass">
+              <input class="inputLogin" type="password" required name="password" [(ngModel)]="model.password" #password="ngModel" required/>
+              <span class="highlight"></span>
+              <span class="bar"></span><label class="labelLogin"> Password </label>
+            </div>
+            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary login-btn">Login</button>
+        </div>
+    </form>
+</div>

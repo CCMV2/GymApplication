@@ -1,0 +1,18 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="row page-container custom-text">
+  <input *ngIf="!isLoggedIn() && (this.router.url === '/home' || this.router.url === '/')" type="button" class="btn btn-primary nav-btn" value="Login" (click)="login()">
+  <app-header class="col-md-12" *ngIf="isAdminOrTrainer()"></app-header>
+  <app-header class="col-md-12" *ngIf="isUser() && this.router.url === '/home'"></app-header>
+  <app-header class="col-md-12" *ngIf="isUser() && this.router.url !== '/home'" style="margin-top:57px;"></app-header>
+  <navigation-pane (closeState)="changeMenuState($event)" class="col-md-2 nav-pane" *ngIf="isAdminOrTrainer()"></navigation-pane>
+   <user-menu *ngIf="!isAdminOrTrainer() && this.router.url !== '/home' && this.router.url !== '/'"></user-menu>
+  <div [style.margin-left.px]="pageMargin"
+       *ngIf="isAdminOrTrainer()"
+       style="margin-right: 0px">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="user-page col-md-12" *ngIf="(isUser() || !authenticationService.isLoggedIn())" style="margin-right: 0px">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

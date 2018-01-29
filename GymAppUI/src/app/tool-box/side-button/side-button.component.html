@@ -1,0 +1,20 @@
+<div *ngIf="authenticationService.hasRole(Tab.usertype)">
+  <button class="nav-btn" (click)="activateButtons()">
+      <span>
+      {{Tab.title}}
+      </span>
+    <span [class.glyphicon-chevron-up]="activated"
+          [class.glyphicon-chevron-down]="!activated"
+          class="glyphicon side-glyph">
+      </span>
+  </button>
+  <div *ngIf="activated" >
+  <ng-container *ngFor="let url of Tab.items" >
+    <button  class="link-buttons nav-btn-url" *ngIf="authenticationService.hasRole(url.usertype)" (click)="navigate(url)">
+     
+      <span class="glyphicon glyphicon-share link-glyph"></span>
+      {{url.text}}
+    </button>
+    </ng-container>
+  </div>
+</div>

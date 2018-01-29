@@ -1,0 +1,97 @@
+.navigation-sidebar{
+    display: block;
+    background-color: #0f213f;
+    height: 100vh;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    color: #b8cef2;
+    text-align: center;
+    z-index: 50;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+.navbar-hidden {
+  left: -200px;
+}
+
+.btn-toggle {
+  width: 100%;
+  height: 80px;
+  background-color: #0f213f;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  color: white;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+}
+
+.side-glyph {
+  float: left;
+  position: relative;
+  top: 6px;
+  left: 0px;
+ }
+
+.btn-toggle:hover {
+  background-color: #14305e;
+}
+
+.btn-toggle-closed {
+  width: 10px;
+  height: 80px;
+  background-color: #0f213f;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  color: white;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+}
+
+.btn-toggle-closed-back {
+  width: 5px !important;
+  height: 80px;
+  background-color: #0f213f;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  color: white;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+  position: fixed;
+  top: 0;
+  left: -8px;
+  border-radius: 0px;
+}
+
+.side-glyph-closed {
+  float: left;
+  position: relative;
+  top: 0px;
+  left: -8px;
+}
+
+.home-btn {
+  font-size: 35px;
+  color: white;
+  margin-left: 4px;
+  margin-top: 8px;
+  z-index: 1000;
+  position: fixed;
+  left: 80px;
+  top: unset;
+  bottom: 10px;
+}

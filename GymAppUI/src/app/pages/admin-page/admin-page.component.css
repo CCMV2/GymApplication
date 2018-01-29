@@ -1,0 +1,7 @@
+.page{
+  overflow: auto;
+  height: 100vh;
+}
+.page-container{
+  width: 100vw;
+}

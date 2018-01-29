@@ -1,0 +1,59 @@
+<legend><h2>Room List</h2></legend>
+		<table class="table table-hover room-table">
+			<thead>
+				<th>Id</th>
+				<th>Name</th>
+			</thead>
+			<tr *ngFor="let room of allRooms" (click)="select(room)">
+				<td style="width: 71px;">
+          <span>
+            {{room?.roomId}}
+          </span>
+        </td>
+				<td>
+          <span *ngIf="room != roomToUpdate">
+            {{room?.roomName}}
+          </span>
+          <input class="form-control room-name" *ngIf="room == roomToUpdate" type="text" [(ngModel)]="roomToUpdate.roomName">
+        </td>
+        <td style="width: 218px;">
+          <button id="update" *ngIf="!updating || room != roomToUpdate" type="button" class="btn btn-primary-outline" (click)="setRoomToUpdate(room)">
+            <i class="fa fa-plus"></i> Update
+          </button>
+          <button *ngIf="updating && room == roomToUpdate" type="button" class="room-button btn btn-info" (click)="updateRoom()">
+            <span class="glyphicon-pencil" aria-hidden="true"></span>
+            Finish
+          </button>
+          <button id="delete" *ngIf="!updating || room != roomToUpdate" type="button" class="btn btn-primary-outline" (click)="deleteRoom(room)">
+            <i class="fa fa-minus"></i> Delete
+          </button>
+        </td>
+			</tr>
+		</table>
+		<div></div>
+		<div class="row">
+			<div>
+				<input *ngIf="mode!=='create'" id="createbtn" class="btn-primary btn room-btn create-button" type="button" value="Create Room"
+					(click)="mode='create'">
+			</div>
+		</div>
+		<div *ngIf="mode==='create'" class="create-div">
+				<div class="form-group">
+						<div class="userpass">
+								<input class="inputLogin" required name="room" type="text" [(ngModel)]="roomToCreate.roomName">
+								<span class="highlight"></span>
+								<span class="bar"></span><label class="labelLogin"> Room Name </label>
+						</div>
+				</div>
+			<!-- Name: <input type="text" class="form-control room-name" [(ngModel)]="roomToCreate.roomName"> -->
+			<div id="btndiv">
+					<button type="button" class="btnsubmit button" (click)="addRoom()"><span>Submit </span></button>
+			</div>
+			<!-- <input type="button" class="btn-primary btn create-button" value="Create Room" (click)="addRoom()"> -->
+		</div>
+		<div class="alert" *ngIf="message.length > 0">
+			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+			<strong>{{message}}!</strong>
+		</div>
+
+

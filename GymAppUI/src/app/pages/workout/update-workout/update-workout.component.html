@@ -1,0 +1,49 @@
+<legend>
+  <h2>Update Workout</h2>
+</legend>
+<div class="align">
+  <div class="alert" *ngIf="message.length > 0">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>{{message}}!</strong>
+  </div>
+  <div class="form-group">
+    <div class="userpass">
+      <input class="inputLogin" type="text" required name="wname" [(ngModel)]="trainerWorkouts.workout.workoutType">
+      <span class="highlight"></span>
+      <span class="bar"></span><label class="labelLogin"> Workout Type </label>
+    </div>
+  </div>
+  <div>
+    <label for="description">Description </label> <br>
+    <textarea name="description" id="description" [(ngModel)]="trainerWorkouts.workout.description"></textarea>
+    <br>
+  </div>
+  <div class="dif radiobtn">
+    <div>
+      <label for="difficulty">Choose difficulty </label>
+    </div>
+    <div class="radiobtn">
+      <div>
+        <input type="radio" class="difficulty" id="easy" name="difficulty" value="EASY" [(ngModel)]="trainerWorkouts.workout.difficulty">
+        <label for="easy">Easy</label>
+      </div>
+      <div>
+        <input type="radio" class="difficulty" id="medium" name="difficulty" value="MEDIUM" [(ngModel)]="trainerWorkouts.workout.difficulty">
+        <label for="medium">Medium</label>
+      </div>
+      <div>
+        <input type="radio" class="difficulty" id="hard" name="difficulty" value="HARD" [(ngModel)]="trainerWorkouts.workout.difficulty">
+        <label for="hard">Hard</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group trainerlabel">
+    <label class="control-label" for="trainerList"> Trainers </label>
+    <div>
+      <p-multiSelect name="trainers" [style]="{'width':'100%'}" [options]="trainerList" [(ngModel)]="trainerWorkouts.trainers" optionLabel="completeName" class="btntr"></p-multiSelect>
+    </div>
+  </div>
+  <div id="btndiv">
+    <button type="button" class="button" (click)="updateWorkout()"><span>Update </span></button>
+  </div>
+</div>

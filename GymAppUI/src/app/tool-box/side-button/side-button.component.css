@@ -1,0 +1,69 @@
+.nav-btn {
+  height: 50px;
+  width: 100%;
+  background-color: #0f213f;
+  border-width: 0.05px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  color: white;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.nav-btn-url {
+  height: 30px;
+  width: 100%;
+  background-color: #0f213f;
+  border-width: 0.05px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  color: white;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.nav-btn:hover {
+  background-color: #14305e;
+}
+
+.nav-btn-url:hover {
+  background-color: #14305e;
+}
+
+.nav-btn-active {
+  background-color: #14305e;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.nav-btn:focus {
+  outline: 0;
+}
+
+.link-buttons {
+  display: inline-block;
+}
+
+.side-glyph {
+  position: relative;
+  left: 5px;
+  float: right;
+  margin-right:5px;
+}
+
+.link-glyph {
+  position: relative;
+  left: 25px;
+  float: left;
+  margin-top: 3px;
+}

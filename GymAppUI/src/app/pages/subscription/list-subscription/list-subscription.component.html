@@ -1,0 +1,46 @@
+<legend>
+<h2>
+  Subscription list
+</h2>
+</legend>
+<table class="table table-condensed table-hover">
+  <thead>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Duration</th>
+    <th>Workouts</th>
+  </thead>
+  <tr *ngFor="let entry of subscriptionAndWorkouts">
+    <td><b>{{entry?.subscription.name}}</b> <br/><img id="img" src='{{entry?.subscription.imageBase64}}'></td>
+    <td>{{entry?.subscription.price}} LEI</td>
+    <td>{{entry?.subscription.duration}} Days</td>
+
+    <td>
+      <table class="table table-condensed table-hover">
+        <thead>
+          <th>Type</th>
+          <th>Difficulty</th>
+        </thead>
+        <tr *ngFor="let workout of entry.workouts">
+          <td>{{workout?.workoutType}}</td>
+          <td>{{workout?.difficulty}}</td>
+          <!--button>Delete</button-->
+        </tr>
+      </table>
+    </td>
+    <td>
+        <button id="update" type="button" class="btn btn-primary-outline pull-right" (click)="updateSubscription(entry)"><i class="fa fa-plus"></i> Update</button>
+        <br>
+        <div class="alert" *ngIf="message.length > 0">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          <strong>{{message}}!</strong>
+        </div>
+        <br>
+        <button id="delete" type="button" class="btn btn-primary-outline pull-right" (click)="delete(entry.subscription)"><i class="fa fa-minus"></i> Delete</button>
+    </td>
+    </tr>
+
+
+
+
+</table>

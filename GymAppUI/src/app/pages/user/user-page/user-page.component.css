@@ -1,0 +1,61 @@
+button {
+    background-color:#14305e;
+    border: none;
+    color: white;
+    padding: 3px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 10vw;
+}
+
+
+#update{
+    background-color: #14305e;
+}
+
+#delete:hover{
+    background-color: rgb(238, 51, 51);
+    color: white;
+  }
+  
+  #update:hover{
+    background-color: #5285d1;
+    color: white; 
+  }
+
+table{
+    font-size: 15px;
+ 	
+    
+}
+
+.alert {
+    padding: 20px;
+    background-color: #14305e;
+	color: white;
+	text-align: center;
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.crudbtns{
+    display: grid;
+}

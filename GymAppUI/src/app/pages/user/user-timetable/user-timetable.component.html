@@ -1,0 +1,57 @@
+<fieldset>
+	<legend>
+		<h2>Your Schedule</h2>
+	</legend>
+	<div>
+		<table class="table table-hover list-table" align="center">
+			<thead bgcolor=MidnightBlue>
+				<th><font color="white">Date</font></th>
+				<th><font color="white">Start</font></th>
+				<th><font color="white">Duration</font></th>
+				<th><font color="white">Room</font></th>
+				<th><font color="white">Workout</font></th>
+				<th></th>
+			</thead>
+			<tr *ngFor="let item of clientTimetables">
+				<td>{{item?.day | date:'dd.MM.yyyy'}}</td>
+				<td ng-non-bindable>{{item?.timetable.start | date:'HH:mm'}}</td>
+				<td>{{item?.timetable.duration}} minutes</td>
+				<td>{{item?.timetable.room.roomName}}</td>
+				<td>{{item?.timetable.workout.workoutType}}</td>
+				<td class="crudbtns">
+					<button type="delete-button" id="delete"
+						class="btn btn-primary-outline pull-right" (click)="deleteTimetable(item)">
+						<i class="fa fa-minus"></i> Delete
+					</button>
+				</td>
+
+			</tr>
+		</table>
+	</div>
+
+
+</fieldset>
+
+<fieldset>
+	<legend>
+		<h2>Add New Class</h2>
+	</legend>
+	 <div  class="form-group">
+            <label  class="control-label col-sm-3" for="start">Date:</label>
+            <div  class="col-sm-9">
+        		<p-calendar name="day" [(ngModel)]="clientTimetable.day" [showIcon]="true" dateFormat="dd.mm.yy" (onSelect)="filterTimetable()"></p-calendar>
+            </div>
+            	<div>
+				<label for="name">Timetable</label>
+                <select class="select-width"
+					[(ngModel)]="clientTimetable.timetable" name="timetable">
+					<option *ngFor="let item of listTimetable"
+						[ngValue]="item">
+						{{item?.timeTableName}}</option>
+				</select>
+			</div>
+        </div>
+	<button type="button" class="button" (click)="addTimetable()">
+		<span>Submit </span>
+	</button>
+</fieldset>

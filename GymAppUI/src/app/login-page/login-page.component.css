@@ -1,0 +1,34 @@
+.alert {
+  width:200px;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+ 
+.alert.alert-info {
+  color:#607D8B;
+}
+
+.success-message{
+	color: green;
+	font-size:16pt;
+}
+ 
+.alert.alert-error {
+  color:red;
+  font-size:16pt;
+}
+ 
+.help-block {
+  width:200px;
+  color:white;
+  background-color:gray;
+}
+ 
+.form-control {
+  width: 200px;
+  margin-bottom:10px;
+}
+ 
+.btn {
+  margin-top:20px;
+}

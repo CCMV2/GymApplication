@@ -1,0 +1,102 @@
+drop schema `gymapp` ;
+CREATE SCHEMA `gymapp` ;
+
+DROP TABLE if exists `gymapp`.`workoutlist`;
+DROP TABLE if exists `gymapp`.`user_has_workout`;
+DROP TABLE if exists `gymapp`.`timetable`;
+DROP TABLE if exists `gymapp`.`room`;
+DROP TABLE if exists `gymapp`.`workout`;
+DROP TABLE if exists `gymapp`.`user`;
+DROP TABLE if exists `gymapp`.`subscription`;
+DROP TABLE if exists `gymapp`.`rating`;
+
+
+
+ CREATE TABLE `gymapp`.`rating` (
+ `idRating` bigint NOT NULL AUTO_INCREMENT,
+ `total` double NOT NULL,
+ `nrpers` bigint NOT NULL,
+ PRIMARY KEY (`idRating`));
+ 
+ INSERT INTO `gymapp`.`rating` (idRating, total, nrpers) VALUES ( 1 , 0 , 0);
+
+ CREATE TABLE `gymapp`.`subscription` (
+  `idSubscription` bigint NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(100) NOT NULL,
+  `Price` bigint NOT NULL,
+  `Duration` INT NULL,
+  `Rating` bigint,
+  `Pic` longblob ,
+  PRIMARY KEY (`idSubscription`),
+  FOREIGN KEY (`Rating`) references rating (`idRating`));
+  
+
+CREATE TABLE `gymapp`.`user` (
+  `idUser` bigint NOT NULL AUTO_INCREMENT,
+	`Passw` VARCHAR(100) NOT NULL,
+	`Type` VARCHAR(100) NULL,
+	`Email` VARCHAR(100) NULL,
+	`Name` VARCHAR(100) NOT NULL,
+	`Surname` VARCHAR(100) NOT NULL,
+	`PhoneNr` VARCHAR(45) NULL,
+	`idSubscription` bigint NULL,
+     `Start` DATE NULL,
+     `Rating` bigint,
+     `Pic` longblob ,
+ PRIMARY KEY (`idUser`),
+ FOREIGN KEY (`idSubscription`) REFERENCES subscription(`idSubscription`),
+ FOREIGN KEY (`Rating`) references rating (`idRating`));
+  
+  
+  CREATE TABLE `gymapp`.`workout` (
+  `idWorkout` bigint NOT NULL AUTO_INCREMENT,
+  `WorkoutType` VARCHAR(100) NOT NULL,
+  `Difficulty` VARCHAR(45) NULL,
+  `Descr` VARCHAR(1000) NULL,
+  PRIMARY KEY (`idWorkout`));
+  
+
+CREATE TABLE `gymapp`.`room` (
+  `idRoom` bigint NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45),
+  PRIMARY KEY (`idRoom`));
+
+
+  CREATE TABLE `gymapp`.`timetable` (
+  `idTimetable` bigint NOT NULL AUTO_INCREMENT,
+  `idWorkout` bigint NOT NULL,
+  `day` VARCHAR(100) NOT NULL,
+  `start` VARCHAR(45) NULL,
+  `duration` VARCHAR(45) NULL,
+  `idRoom` bigint NOT NULL,
+  `idTrainer` bigint NOT NULL,
+  PRIMARY KEY (`idTimetable`),
+  FOREIGN KEY (`idRoom`) REFERENCES room(`idRoom`),
+  FOREIGN KEY (`idTrainer`) REFERENCES user(`idUser`),
+  FOREIGN KEY (`idWorkout`) REFERENCES workout(`idWorkout`));
+  
+   CREATE TABLE `gymapp`.`user_has_workout` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `idUser` bigint NOT NULL,
+  `idWorkout` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`idUser`) REFERENCES user(`idUser`),
+  FOREIGN KEY (`idWorkout`) REFERENCES workout(`idWorkout`));
+  
+  CREATE TABLE `gymapp`.`workoutlist` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `idSubscription` bigint NOT NULL,
+  `idWorkout` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`idSubscription`) REFERENCES subscription(`idSubscription`),
+  FOREIGN KEY (`idWorkout`) REFERENCES workout(`idWorkout`));
+
+  CREATE TABLE `gymapp`.`user_timetable`(
+    `id` bigint NOT NULL AUTO_INCREMENT,
+    `idUser` bigint NOT NULL,
+    `idTimetable` BIGINT NOT NULL,
+	`day` DATE NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`idUser`) REFERENCES user(`idUser`),
+    FOREIGN KEY (`idTimetable`) REFERENCES timetable(`idTimetable`)
+  ); 

@@ -1,0 +1,191 @@
+.centered {
+  margin-left:10%
+}
+.submit{
+  float:right;
+}
+
+.alert {
+  padding: 20px;
+  background-color: #14305e;
+  color: white;
+  text-align: center;
+}
+
+.help-block {
+  width:200px;
+  color:white;
+  background-color:gray;
+}
+
+.inputLogin 				{
+  size: 12px;
+  font-size:15px;
+  padding:10px 10px 5px 5px;
+  display:block;
+  width:370px;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+
+.inputLogin:focus 		{ outline:none; }
+
+.labelLogin 				 {
+  color:black;
+  font-size:15px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+  width: 200px;
+}
+
+.inputLogin:focus ~ .labelLogin, .inputLogin:valid ~ .labelLogin 		{
+  top:-20px;
+  font-size:13px;
+  color:#999F;
+}
+
+.bar 	{ position:relative; display:block; width:370px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px;
+  width:0;
+  bottom:1px;
+  position:absolute;
+  background:#5264AE;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%;
+}
+
+.inputLogin:focus ~ .bar:before, .inputLogin:focus ~ .bar:after {
+  width:50%;
+}
+
+.highlight {
+  position:absolute;
+  height:60%;
+  width:100px;
+  top:25%;
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+.inputLogin:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+@-webkit-keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+
+div.box{
+  font-weight: 500;
+  text-align:center;
+  font-family: verdana,arial,sans-serif;
+  /* border-radius: 7px 7px 12px 12px; */
+  padding: 1px 1px 5px 5px;
+  width: 90%;
+  max-width: 320px;
+  background-color:white;
+  opacity: 0.6;
+  position: relative;
+  padding-bottom: 1px;
+  box-shadow: 0px 1px 5px white(185, 185, 185, 0.95);
+  /* color: white; */
+  font-size:15px;
+  margin: 0 auto;
+}
+
+
+.closebtn {
+  margin-left: 15px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+label{
+	display:inline-block;
+  width:100px;
+  font-size: 15px;
+  font-weight: normal;
+  color: black;
+}
+
+.button {
+  border-radius: 4px;
+  background-color: #14305e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 16px;
+  padding: 20px;
+  width: 110px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  left: 80%;  
+  position: relative;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+div.userpass{
+  position:relative;
+  margin-bottom:2.4vw;
+}
+
+#btndiv {
+  padding-top: 15px;
+}

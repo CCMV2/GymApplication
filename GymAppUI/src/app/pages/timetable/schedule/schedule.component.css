@@ -1,0 +1,32 @@
+.fc-time-grid-container {
+	height: auto!important;
+}
+.intensity-medium{
+	background-color: orange;
+	color: white!important;
+}
+.intensity-easy{
+	background-color: #80ff80;
+	color: white!important;
+}
+.intensity-hard{
+	background-color: #ff0000;
+	color: white!important;
+}
+.intensity-past{
+	background-color: #c0c0c0;
+	color: white!important;
+}
+
+.backimage{
+	max-width: 100vw;
+	width: 100vw;
+	z-index: -100;
+	position: fixed;
+	top: 0;
+	left: 0;
+  }
+
+.schedule {
+  margin-top: 115px;
+}

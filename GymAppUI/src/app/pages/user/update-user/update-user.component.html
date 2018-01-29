@@ -1,0 +1,100 @@
+  <legend>
+    <h2>Update User</h2>
+  </legend>
+<div class="align">
+<div style= " margin: 0 auto;">
+  	<div class="alert" *ngIf="message.length > 0">
+		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+		<strong>{{message}}!</strong> 
+	</div>
+  
+  <div class="form-group">
+    <div class="userpass">
+        <input class="inputLogin" type="text" required name="fname" [(ngModel)]="createdUser.name">
+        <span class="highlight"></span>
+        <span class="bar"></span><label class="labelLogin"> First Name </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="userpass">
+        <input class="inputLogin" type="text" required name="lname" [(ngModel)]="createdUser.surname">
+        <span class="highlight"></span>
+        <span class="bar"></span><label class="labelLogin"> Last Name </label>
+    </div>
+</div>
+<div *ngIf="createdUser.userType!=='CLIENT'" class="form-group">
+  <div class="userpass">
+      <input class="inputLogin" type="password" required name="passw" [(ngModel)]="createdUser.password">
+      <span class="highlight"></span>
+      <span class="bar"></span><label class="labelLogin"> Password </label>
+  </div>
+</div>
+<div *ngIf="createdUser.userType==='CLIENT'" class="form-group">
+  <div class="userpass">
+      <input class="inputLogin" type="text" required name="passw" [(ngModel)]="createdUser.cnp">
+      <span class="highlight"></span>
+      <span class="bar"></span><label class="labelLogin"> CNP (Password) </label>
+  </div>
+</div>
+<div class="form-group">
+  <div class="userpass">
+      <input class="inputLogin" type="text" required name="email" [(ngModel)]="createdUser.email">
+      <span class="highlight"></span>
+      <span class="bar"></span><label class="labelLogin"> Email </label>
+  </div>
+</div>
+<div class="form-group">
+  <div class="userpass">
+      <input class="inputLogin" type="text" required name="phonenr" [(ngModel)]="createdUser.phonenumber">
+      <span class="highlight"></span>
+      <span class="bar"></span><label class="labelLogin"> Phone Nr </label>
+  </div>
+</div>
+  <div>
+    <label for="type">Choose Type: </label>
+
+    <input type="radio" id="trainer" name="type" value="TRAINER" [(ngModel)]="createdUser.userType" (click)="changeType('TRAINER')">
+    <label for="trainer">TRAINER</label>
+
+    <input type="radio" id="client" name="type" value="CLIENT" [(ngModel)]="createdUser.userType" (click)="changeType('CLIENT')">
+    <label for="client">CLIENT</label>
+
+    <input type="radio" id="admin" name="type" value="ADMIN" [(ngModel)]="createdUser.userType" (click)="changeType('ADMIN')">
+    <label for="admin">ADMIN</label>
+  </div>
+
+  <div *ngIf="createdUser.userType==='TRAINER'" class="form-group">
+    <label class="control-label col-sm-4">Choose a picture:</label>
+    <div class="col-sm-7">
+      <input type="file" (change)="upload($event)">
+      <br>
+      <img id="imagine" src="{{trainerImage}}" height="200" alt="Image preview...">
+    </div>
+  </div>
+
+	<fieldset *ngIf="createdUser.userType==='CLIENT'">
+  <legend>
+    <h2>Assign Subscription</h2>
+  </legend>
+  
+   <div  class="form-group">
+            <label  class="control-label col-sm-3" for="start">Start date:</label>
+            <div  class="col-sm-9"> 
+        		<p-calendar name="start" [(ngModel)]="createdUser.start" [showIcon]="true" dateFormat="dd.mm.yy"></p-calendar>
+            </div>
+        </div>
+        
+        <div>
+            <label for="subscription">Subscription: </label>
+            <select [(ngModel)]="createdUser.subscription.subscriptionId">
+                <option *ngFor="let sub of subscriptionList" [ngValue]="sub.subscriptionId" >{{sub.name}}</option>
+            </select>
+        </div>
+  </fieldset>
+  <!--
+  <input type="submit" value="Submit"> -->
+  <div id="btndiv">
+  <button type="button" class="button" (click)="updateUser()"><span>Update </span></button>
+  </div>
+</div>
+</div>

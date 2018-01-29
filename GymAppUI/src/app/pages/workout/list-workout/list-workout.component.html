@@ -1,0 +1,38 @@
+
+	<legend>
+		<h2>
+			Workout List
+		</h2>
+	</legend>
+	<form>
+			<div class="alert" *ngIf="message.length > 0">
+					<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+					<strong>{{message}}!</strong>
+				</div>
+				<table class="table table-condensed table-hover" id="workoutTable">
+			<thead>
+				<th>Name</th>
+				<th>Difficulty</th>
+				<th>Trainers</th>
+				<th class="description">Description</th>
+				<th colspan=""></th>
+			</thead>
+			<tr *ngFor="let trainerworkout of allWorkouts" class.selected = "selectedTrainerWorkout === trainerworkout">
+				<td>{{trainerworkout.workout.workoutType}}</td>
+				<td>{{trainerworkout.workout.difficulty}}</td>
+				<td>
+          <p *ngFor="let trainer of trainerworkout.trainers">{{trainer.name}} {{trainer.surname}}</p>
+				</td>
+
+				<td>{{trainerworkout.workout.description}}         
+        </td>
+
+				<td>
+					<button id="update" type="update-button" class="btn btn-primary-outline pull-right" (click)="update(trainerworkout)">
+							<i class="fa fa-plus"></i> Update</button>
+					<br>
+					<button id="delete" type="delete-button" class="btn btn-primary-outline pull-right" (click)="delete(trainerworkout)">
+							<i class="fa fa-minus"></i> Delete</button>
+				</td>
+			</tr>
+		</table>
